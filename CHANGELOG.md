@@ -9,6 +9,77 @@ sau [direct pe GitHub](https://github.com/ionutbaban7-bit/coaching-path/issues/n
 
 ---
 
+## [1.3.0] — 2026-09-14
+
+### Reparat — deploy
+- **Render nu putea publica nimic**: `render.yaml`, `package.json` și `server.js` existau doar în
+  branch-ul de lucru, nu în branch-ul implicit (`main`) din care Render citește Blueprint-ul.
+  Acum `render.yaml` e un Blueprint complet funcțional după merge, cu varianta statică implicită,
+  rute scurte (`/teorie`, `/individual`, `/echipa`, `/legal`) și antete de cache.
+- `server.js` rescris: **compresie gzip/brotli** (pagina principală: ~27 KB → ~7 KB), rute cu slash
+  final (`/teorie/`), 301 pentru `/index.html`, 405 pentru metode non-GET, **antete de securitate**
+  (CSP, `frame-ancestors`, `X-Frame-Options`, `Permissions-Policy`, COOP) și cache corect
+  (active versionate = imutabile, HTML mereu revalidat).
+- Workflow-ul de GitHub Pages rulează acum `npm run check` **înainte** de publicare.
+
+### Reparat — fonturi
+- **Fontul nu se încărca deloc**: token-urile cereau „Inter”, dar niciun fișier nu era livrat, deci
+  browserul cădea pe fontul de sistem (arăta diferit pe fiecare dispozitiv).
+- Inter Variable **găzduit local** (`assets/fonts/`, 2 subseturi WOFF2 + licență OFL), cu
+  `unicode-range` corect pentru diacriticele românești (ă â î ș ț sunt în subsetul latin-ext),
+  `font-display:swap`, preload în toate paginile. Zero cereri către Google Fonts, merge offline.
+- Eticheta din logo mărită de la 9,5 px la 10,5 px (era greu lizibilă).
+
+### Reparat — fluiditate
+- Eliminat `transition:all` (15 locuri) — se tranziționau și proprietăți de layout, cu repictări
+  inutile la fiecare hover; acum tranzițiile sunt pe liste explicite (`--t-ui`, `--t-ui-slow`).
+- **Navigarea nu mai smucește pagina**: linkul activ din bara de sus se derula cu `scrollIntoView()`,
+  care pe mobil trăgea toată pagina după el. Acum se derulează doar bara, pe orizontală.
+- **Saltul dublu din „De unde pornești?”** (hash + `scrollIntoView`) a devenit un singur salt lin.
+- Ilustrațiile de pagină trecute din PNG în **WebP** (174/203/133 KB → 36/20/18 KB), cu `width`/`height`
+  explicite, `decoding="async"` și `fetchpriority="high"` — fără sărituri de layout.
+- Header-ul lipicios renunță la `backdrop-filter` pe ecrane mici (repictare scumpă la derulare);
+  respectă și `prefers-reduced-transparency`.
+
+### Reparat — funcționalități neterminate
+- **Cuprinsul paginilor de conținut nu arăta niciodată unde ești** (`.toc a.active` exista în CSS,
+  dar nimic nu adăuga clasa). Acum e urmărit cu IntersectionObserver.
+- **Conectorii hărții** erau desenați după o ordine fixă, valabilă doar pe desktop: pe tabletă și
+  telefon liniile se încrucișau peste carduri. Acum ordinea se calculează din pozițiile reale.
+- **Panoul hărții rămânea în limba veche** după schimbarea limbii; la fel, pașii deschiși din
+  learning pathuri se închideau la orice re-randare. Ambele stări se păstrează acum.
+- **Fereastra modală** avea `aria-hidden="true"` permanent, focusul rămânea în pagină și Tab-ul
+  ieșea din dialog. Acum: `aria-hidden` comutat, focus mutat pe butonul de închidere, capcană de
+  Tab, focus restituit la închidere, compensare pentru bara de derulare.
+- Accesibilitate la tastatură: pașii din pathuri se deschid cu Enter/Spațiu (`role="button"`,
+  `aria-expanded`), cardurile de credențiale se deschid cu tastatura, chipurile de filtrare au
+  `aria-pressed`, acordeonul FAQ are `aria-expanded`, taburile au `role="tab"` și navigare cu
+  săgeți, linkul activ din meniu are `aria-current`, butoanele din header au etichete bilingve.
+- Căutarea din credențiale nu mai pierde focusul și poziția cursorului când schimbi filtrul;
+  lista goală afișează acum un mesaj clar în loc de spațiu gol.
+- Eliminate 13 atribute HTML rupte (ghilimele drepte neescapate în textele englezești, care
+  stricau markup-ul) în `individual.html`, `echipa.html`, `teorie.html`.
+- Corectat linkul extern către directorul ICF care era fără `rel="noopener"` și cheia de traducere
+  lipsă a titlului „De unde pornești?” (rămânea în română pe engleză).
+
+### Adăugat
+- **Service worker** (`sw.js`): offline după prima vizită, încărcare instant la revizitare,
+  versiune de cache clară.
+- **SEO/partajare**: `manifest.webmanifest`, `robots.txt`, `sitemap.xml`, `rel="canonical"`,
+  `og:url`, `og:image` absolut cu dimensiuni, `og:site_name`, `og:locale`, `twitter:card`,
+  `theme-color` pentru light/dark.
+- **`tools/check-site.mjs`** (`npm run check`): sintaxă JS, JSON valid, referințe locale existente,
+  paritate RO/EN, acolade CSS echilibrate, versiune consecventă, zero cereri externe.
+- **Conținut nou în planul 1:1** (bilingv): fișa de intake (8 întrebări) + filtru de orientare,
+  checklist de contract în 9 puncte, grilă de măsurare a progresului, bilanțul de final, planul de
+  practică pe cele 8 competențe (exercițiu, semn de progres, dovadă) și tabelul de administrare a
+  instrumentelor (când, cât durează, cum se citește, semnale de interpretare greșită).
+  Statusurile din tabelul „Ce rămâne de populat” au fost actualizate.
+
+### Note
+- Versiunea activelor din pagini (`?v=1.3.0`) se schimbă odată cu `package.json`, ca browserele să
+  nu țină CSS/JS vechi după deploy.
+
 ## [1.2.0] — 2026-09-14
 
 ### Adăugat — pachet de credibilitate

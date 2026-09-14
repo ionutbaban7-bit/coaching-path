@@ -79,6 +79,7 @@ const I18N = {
  updated:{ro:"Actualizat la 14 septembrie 2026 · surse oficiale verificate",en:"Updated September 14, 2026 · verified official sources"},
  heroTitle:{ro:"Harta ta clară spre certificarea de coaching",en:"Your clear map to coaching certification"},
  heroLead:{ro:"Toate certificările, cerințele și evaluările ICF, EMCC și ANC România într-un singur loc: learning pathuri interactive, treceri între sisteme (ANC → ICF, ACC → PCC, PCC → MCC), școli acreditate și verificator de recenzii.",en:"Every ICF, EMCC and Romanian ANC certification, requirement and assessment in one place: interactive learning paths, bridges between systems (ANC → ICF, ACC → PCC, PCC → MCC), accredited schools and a review checker."},
+ qstart:{ro:"🚀 De unde pornești?",en:"🚀 Where do you start?"},
  ctaPath:{ro:"▶ Începe learning path-ul",en:"▶ Start the learning path"},
  ctaTrans:{ro:"🔀 Am deja o certificare",en:"🔀 I already have a credential"},
  qZero:{ro:"Sunt la început — nu am nicio certificare",en:"I'm starting out — no credential yet"},
@@ -152,27 +153,41 @@ function renderNews(){
 }
 
 /* ====================== PATHS ====================== */
+/* pașii deschiși se țin minte: înainte, orice re-randare (bifez un pas,
+   schimb limba) închidea tot și te scotea din context */
+const openSteps = new Set();
 function renderPathTabs(){
  const meta={icf:['ICF','var(--icf)'],emcc:['EMCC','var(--emcc)'],ro:['ANC RO','var(--anc)']};
+ $('#pathTabs').setAttribute('role','tablist');
  $('#pathTabs').innerHTML = Object.keys(PATHS).map(k=>`
-  <button class="tab ${k===currentPath?'active':''}" data-tab="${k}">
+  <button class="tab ${k===currentPath?'active':''}" data-tab="${k}" role="tab"
+          aria-selected="${k===currentPath?'true':'false'}" tabindex="${k===currentPath?'0':'-1'}">
     <span class="dot-t" style="background:${meta[k][1]}"></span>${meta[k][0]} · ${UI[lang].paths[k]}
   </button>`).join('');
- $$('#pathTabs .tab').forEach(b=>b.onclick=()=>{currentPath=b.dataset.tab;renderPathTabs();renderStepper();});
+ $$('#pathTabs .tab').forEach(b=>{
+   b.onclick=()=>{currentPath=b.dataset.tab;renderPathTabs();renderStepper();};
+   b.onkeydown=ev=>{   // navigare cu săgeți între trasee
+     if(ev.key!=='ArrowRight'&&ev.key!=='ArrowLeft') return;
+     const tabs=$$('#pathTabs .tab');
+     const i=tabs.indexOf(b), next=tabs[(i+(ev.key==='ArrowRight'?1:tabs.length-1))%tabs.length];
+     if(next){ next.click(); next.focus(); }
+   };
+ });
 }
 function renderStepper(){
  const p = PATHS[currentPath];
  const key = 'path_'+currentPath;
  const done = progress[key]||[];
+ const isOpen = s => openSteps.has(key+':'+s.id);
  $('#stepper').innerHTML = p.steps.map((s,i)=>`
-  <li class="step ${done.includes(s.id)?'done':''}" data-step="${s.id}">
-    <div class="step-head">
+  <li class="step ${done.includes(s.id)?'done':''} ${isOpen(s)?'open':''}" data-step="${s.id}">
+    <div class="step-head" role="button" tabindex="0" aria-expanded="${isOpen(s)?'true':'false'}" aria-controls="step-body-${s.id}">
       <span class="step-num">${done.includes(s.id)?'✓':i+1}</span>
       <span class="step-title"><b>${L(s.t)}</b><span>${L(s.s)}</span></span>
-      <label class="step-check" title="${lang==='ro'?'Marchează gata':'Mark done'}"><input type="checkbox" ${done.includes(s.id)?'checked':''}></label>
+      <label class="step-check" title="${lang==='ro'?'Marchează gata':'Mark done'}"><input type="checkbox" aria-label="${lang==='ro'?'Marchează pasul ca parcurs':'Mark this step as done'}" ${done.includes(s.id)?'checked':''}></label>
       <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
     </div>
-    <div class="step-body">
+    <div class="step-body" id="step-body-${s.id}">
       <div class="kv">${s.kv.map(([k,v])=>`<div class="kv-item"><div class="k">${kvt(k)}</div><div class="v">${kvt(v)}</div></div>`).join('')}</div>
       <ul>${s.b[lang].map(x=>`<li>${x}</li>`).join('')}</ul>
       ${s.tip?`<div class="rec"><b>💡 ${lang==='ro'?'Recomandare':'Tip'}:</b> ${L(s.tip)}</div>`:''}
@@ -180,10 +195,18 @@ function renderStepper(){
     </div>
   </li>`).join('');
  updateBar();
+ const toggle = (head) => {
+   const id = head.parentElement.dataset.step;
+   const k = key+':'+id;
+   if(openSteps.has(k)) openSteps.delete(k); else openSteps.add(k);
+   const open = openSteps.has(k);
+   head.parentElement.classList.toggle('open', open);
+   head.setAttribute('aria-expanded', open?'true':'false');
+ };
  $$('#stepper .step-head').forEach(h=>{
-   h.onclick=(ev)=>{
-     if(ev.target.tagName==='INPUT') return;
-     h.parentElement.classList.toggle('open');
+   h.onclick=(ev)=>{ if(ev.target.tagName==='INPUT') return; toggle(h); };
+   h.onkeydown=(ev)=>{                      // accesibil și fără mouse
+     if(ev.key==='Enter'||ev.key===' '||ev.key==='Spacebar'){ ev.preventDefault(); toggle(h); }
    };
  });
  $$('#stepper input[type=checkbox]').forEach(c=>c.onchange=ev=>{
@@ -243,13 +266,19 @@ function openTrans(id){
 function renderCredFilters(){
  const f=UI[lang].filters;
  const chips=[['all',f.all],['icf','ICF'],['emcc','EMCC'],['anc','ANC'],['coach',f.coach],['mentor',f.mentor],['team',f.team],['trainer',f.trainer]];
- const prevVal=$('#credSearch')?.value||'';
+ const prev=$('#credSearch');
+ const prevVal=prev?.value||'';
+ // dacă omul scria în căutare, păstrăm focusul și poziția cursorului după re-randare
+ const hadFocus = !!prev && document.activeElement===prev;
+ const caret = hadFocus ? prev.selectionStart : null;
  $('#credFilters').innerHTML =
-  `<input class="search" id="credSearch" placeholder="${lang==='ro'?'🔎 ACC, PCC, EIA, COR…':'🔎 Search ACC, PCC, EIA, COR…'}">`+
-  chips.map(([k,v])=>`<button class="fchip ${k===credFilter?'active':''}" data-cf="${k}">${v}</button>`).join('');
- $('#credSearch').value=prevVal;
+  `<input class="search" id="credSearch" aria-label="${lang==='ro'?'Caută o certificare':'Search a credential'}" placeholder="${lang==='ro'?'🔎 ACC, PCC, EIA, COR…':'🔎 Search ACC, PCC, EIA, COR…'}">`+
+  chips.map(([k,v])=>`<button class="fchip ${k===credFilter?'active':''}" data-cf="${k}" aria-pressed="${k===credFilter?'true':'false'}">${v}</button>`).join('');
+ const input=$('#credSearch');
+ input.value=prevVal;
+ if(hadFocus){ input.focus(); try{ input.setSelectionRange(caret,caret); }catch(e){} }
  $$('#credFilters [data-cf]').forEach(b=>b.onclick=()=>{credFilter=b.dataset.cf;renderCredFilters();renderCreds();});
- $('#credSearch').oninput=renderCreds;
+ input.oninput=renderCreds;
 }
 function credVisible(c,q){
  if(credFilter==='icf'&&c.org!=='icf')return false;
@@ -261,9 +290,16 @@ function credVisible(c,q){
 }
 function renderCreds(){
  const q=$('#credSearch')?.value.trim()||'';
- $('#credGrid').innerHTML = CREDS.filter(c=>credVisible(c,q)).map(c=>{
+ const list=CREDS.filter(c=>credVisible(c,q));
+ if(!list.length){
+   $('#credGrid').innerHTML=`<div class="empty-state">${lang==='ro'
+     ?'Nicio certificare nu se potrivește. Șterge căutarea sau alege „Toate”.'
+     :'No credential matches. Clear the search or pick “All”.'}</div>`;
+   return;
+ }
+ $('#credGrid').innerHTML = list.map(c=>{
    const o=orgMeta(c.org);
-   return `<div class="cred-card" data-cred="${c.id}">
+   return `<div class="cred-card" data-cred="${c.id}" role="button" tabindex="0" aria-label="${esc(L(c.name))}">
      <div class="cc-top">
        <div class="cc-ic" style="background:${o.bg};color:${o.color}">${c.badge}</div>
        <div><h3>${L(c.name)}</h3></div>
@@ -272,7 +308,10 @@ function renderCreds(){
      <div class="cred-meta">${c.stats.map(s=>`<span class="mini-stat">${s.v} · ${L(s.l)}</span>`).join('')}</div>
    </div>`;
  }).join('');
- $$('#credGrid .cred-card').forEach(c=>c.onclick=()=>openCred(c.dataset.cred));
+ $$('#credGrid .cred-card').forEach(c=>{
+   c.onclick=()=>openCred(c.dataset.cred);
+   c.onkeydown=(ev)=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); openCred(c.dataset.cred); } };
+ });
 }
 function openCred(id){
  const c=CREDS.find(x=>x.id===id), o=orgMeta(c.org);
@@ -303,7 +342,7 @@ function renderSchoolFilters(){
  const wrap=document.createElement('span');
  wrap.id='sfChips';
  wrap.style.display='contents';
- wrap.innerHTML=chips.map(([k,v])=>`<button class="fchip ${k===schoolFilter?'active':''}" data-sf="${k}" style="white-space:nowrap">${v}</button>`).join('');
+  wrap.innerHTML=chips.map(([k,v])=>`<button class="fchip ${k===schoolFilter?'active':''}" data-sf="${k}" aria-pressed="${k===schoolFilter?'true':'false'}" style="white-space:nowrap">${v}</button>`).join('');
  $('#schoolFilters').appendChild(wrap);
  $$('#schoolFilters [data-sf]').forEach(b=>b.onclick=()=>{schoolFilter=b.dataset.sf;renderSchoolFilters();renderSchools();});
  $('#schoolSearch').oninput=renderSchools;
@@ -345,8 +384,8 @@ function renderSchools(){
    </tr>`;
  }).join('') || `<tr><td style="padding:20px;color:var(--muted)">${lang==='ro'?'Niciun rezultat — resetează filtrele.':'No results — reset filters.'}</td></tr>`;
  $('#schoolsNote').innerHTML = (lang==='ro'
-  ?'Lista provine din secțiunea oficială „Cum devii coach profesionist” a ICF România (programe cu predare în limba română sau cu prezență locală), completată cu furnizori ANC. <b>Stelele Google se schimbă săptămânal</b> — butonul ⭐ deschide Google Maps cu ratingul și recenziile la zi. Verifică fiecare program ICF în <a href="'+ESS+'" target="_blank">directorul ESS</a>, iar statutul ANC în autorizația furnizorului.'
-  :'The list comes from ICF Romania\'s official "How to become a professional coach" section (programs taught in Romanian or with local presence), plus ANC providers. <b>Google stars change weekly</b> — the ⭐ button opens Google Maps with today\'s rating and reviews. Verify each ICF program in the <a href="'+ESS+'" target="_blank">ESS directory</a>, and ANC status in the provider\'s authorisation.');
+  ?'Lista provine din secțiunea oficială „Cum devii coach profesionist” a ICF România (programe cu predare în limba română sau cu prezență locală), completată cu furnizori ANC. <b>Stelele Google se schimbă săptămânal</b> — butonul ⭐ deschide Google Maps cu ratingul și recenziile la zi. Verifică fiecare program ICF în <a href="'+ESS+'" target="_blank" rel="noopener">directorul ESS</a>, iar statutul ANC în autorizația furnizorului.'
+  :'The list comes from ICF Romania\'s official "How to become a professional coach" section (programs taught in Romanian or with local presence), plus ANC providers. <b>Google stars change weekly</b> — the ⭐ button opens Google Maps with today\'s rating and reviews. Verify each ICF program in the <a href="'+ESS+'" target="_blank" rel="noopener">ESS directory</a>, and ANC status in the provider\'s authorisation.');
 }
 function lang_ro(){ return lang==='ro'?'Google recenzii':'Google reviews'; }
 
@@ -371,10 +410,13 @@ function renderCosts(){
 function renderFaq(){
  $('#faqList').innerHTML = FAQ.map((f,i)=>`
   <div class="faq-item">
-    <button class="faq-q"><span class="pls">+</span><span>${L(f.q)}</span></button>
-    <div class="faq-a">${L(f.a)}</div>
+    <button class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}"><span class="pls" aria-hidden="true">+</span><span>${L(f.q)}</span></button>
+    <div class="faq-a" id="faq-a-${i}">${L(f.a)}</div>
   </div>`).join('');
- $$('#faqList .faq-q').forEach(q=>q.onclick=()=>q.parentElement.classList.toggle('open'));
+ $$('#faqList .faq-q').forEach(q=>q.onclick=()=>{
+   const open=q.parentElement.classList.toggle('open');
+   q.setAttribute('aria-expanded', open?'true':'false');
+ });
 }
 function renderGloss(){
  const q=($('#glossSearch').value||'').toLowerCase();
@@ -395,33 +437,73 @@ function renderSources(){
 }
 
 /* ====================== MODAL ====================== */
-function modal(head,body){
- $('#modalBox').innerHTML=`
-  <div class="modal-head">${head}<button class="modal-close" id="mClose">✕</button></div>
-  <div class="modal-body">${body}</div>`;
- $('#modalBg').classList.add('open');
- $('#mClose').onclick=closeModal;
- document.body.style.overflow='hidden';
+/* Fereastra modală: rol de dialog respectat cu adevărat.
+   Înainte: aria-hidden rămânea „true” (cititoarele de ecran nu vedeau conținutul),
+   focusul rămânea în pagină, iar Tab-ul ieșea din dialog. */
+var modalLastFocus=null;
+function modalOpenNow(){ return $('#modalBg').classList.contains('open'); }
+function modalScrollbar(on){
+ const w=window.innerWidth-document.documentElement.clientWidth;
+ document.body.style.paddingRight=(on&&w>0)?w+'px':'';
 }
-function closeModal(){$('#modalBg').classList.remove('open');document.body.style.overflow='';}
+function modal(head,body){
+ modalLastFocus=document.activeElement;
+ $('#modalBox').innerHTML=`
+  <div class="modal-head">${head}<button class="modal-close" id="mClose" aria-label="${lang==='ro'?'Închide':'Close'}">✕</button></div>
+  <div class="modal-body">${body}</div>`;
+ var bg=$('#modalBg');
+ bg.classList.add('open');
+ bg.setAttribute('aria-hidden','false');
+ document.body.style.overflow='hidden';
+ modalScrollbar(true);
+ var close=$('#mClose');
+ close.onclick=closeModal;
+ close.focus();
+ bg.onkeydown=modalTrap;
+}
+function modalTrap(e){
+ if(e.key!=='Tab') return;
+ var f=$$('#modalBox a[href],#modalBox button,#modalBox input,#modalBox select,#modalBox textarea,#modalBox [tabindex]:not([tabindex="-1"])');
+ if(!f.length) return;
+ var first=f[0], last=f[f.length-1];
+ if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+ else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+}
+function closeModal(){
+ if(!modalOpenNow()) return;
+ $('#modalBg').classList.remove('open');
+ $('#modalBg').setAttribute('aria-hidden','true');
+ document.body.style.overflow='';
+ modalScrollbar(false);
+ if(modalLastFocus && modalLastFocus.focus) modalLastFocus.focus();
+}
 $('#modalBg').addEventListener('click',e=>{if(e.target.id==='modalBg')closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 /* ====================== QUICK START ====================== */
+/* Înainte se schimba location.hash ȘI se chema scrollIntoView: două derulări
+   în oglindă, adică exact senzația de „nu merge fluid”. Acum: un singur salt. */
+function goTo(sel){
+ const el=document.querySelector(sel);
+ if(!el) return;
+ try{ history.replaceState(null,'',sel); }catch(e){}
+ el.scrollIntoView({behavior:'smooth',block:'start'});
+}
 $$('.qstart-item').forEach(b=>b.onclick=()=>{
  const g=b.dataset.go;
  if(g==='zero'){
    currentPath='icf';renderPathTabs();renderStepper();
-   location.hash='#harta';
+   goTo('#harta');
    setTimeout(()=>{
      const first=document.querySelector('.rm-node');
-     if(first){first.click();first.scrollIntoView({behavior:'smooth',block:'center'});}
-   },280);
+     if(first){ window.Roadmap && window.Roadmap.open ? window.Roadmap.open(first.dataset.id) : first.click(); }
+   },420);
+   return;
  }
- if(g==='anc'){location.hash='#transitions';setTimeout(()=>openTrans('t-ancacc'),350);}
- if(g==='acc'){location.hash='#transitions';setTimeout(()=>openTrans('t-accpcc'),350);}
- if(g==='pcc'){location.hash='#transitions';setTimeout(()=>openTrans('t-pccmcc'),350);}
- if(g==='schools'){location.hash='#schools';}
+ if(g==='anc'){ goTo('#transitions'); setTimeout(()=>openTrans('t-ancacc'),450); return; }
+ if(g==='acc'){ goTo('#transitions'); setTimeout(()=>openTrans('t-accpcc'),450); return; }
+ if(g==='pcc'){ goTo('#transitions'); setTimeout(()=>openTrans('t-pccmcc'),450); return; }
+ if(g==='schools'){ goTo('#schools'); }
 });
 
 /* ====================== INIT ====================== */

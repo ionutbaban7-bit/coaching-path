@@ -51,8 +51,8 @@
   --danger-soft:#fceaed;
 
   /* ---------- Tipografie ---------- */
-  --font-sans:"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --font-display:"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-sans:"Inter Variable","Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-display:"Inter Variable","Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   --font-serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
   --font-mono:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
 
@@ -85,6 +85,11 @@
   --ease:cubic-bezier(.22,.68,.24,1);
   --ease-out:cubic-bezier(.16,1,.3,1);
   --dur-1:120ms; --dur-2:200ms; --dur-3:340ms; --dur-4:520ms;
+
+  /* Tranziții gata făcute — înlocuiesc `transition:all`, care repicta
+     și proprietăți neintenționate (layout, filtre) la fiecare hover. */
+  --t-ui:background-color var(--dur-2) var(--ease),border-color var(--dur-2) var(--ease),color var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease),opacity var(--dur-2) var(--ease);
+  --t-ui-slow:background-color var(--dur-3) var(--ease),border-color var(--dur-3) var(--ease),color var(--dur-3) var(--ease),box-shadow var(--dur-3) var(--ease),transform var(--dur-3) var(--ease),opacity var(--dur-3) var(--ease);
 
   /* ---------- Layout ---------- */
   --wrap:1200px;
@@ -164,6 +169,8 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   font-feature-settings:"cv11","ss01";
+  font-optical-sizing:auto;
+  font-synthesis-weight:none;
   text-rendering:optimizeLegibility;
   overflow-x:hidden;
   transition:background var(--dur-3) var(--ease), color var(--dur-3) var(--ease);

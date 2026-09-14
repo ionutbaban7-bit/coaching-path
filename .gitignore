@@ -5,3 +5,6 @@
 
 # rapoarte generate de jobul de actualizare (se produc la fiecare rulare)
 reports/
+
+# dependențe locale (nu sunt necesare pentru rulare)
+node_modules/

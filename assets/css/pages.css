@@ -49,7 +49,7 @@
   display:block;padding:7px 10px;border-radius:var(--r-xs);
   font-size:var(--fs-13);font-weight:650;color:var(--ink-2);
   border-left:2px solid transparent;
-  transition:all var(--dur-2) var(--ease);
+  transition:var(--t-ui);
 }
 .toc a:hover{background:var(--surface-2);color:var(--ink);text-decoration:none}
 .toc a.active{background:var(--brand-soft);color:var(--brand);border-left-color:var(--brand);font-weight:750}

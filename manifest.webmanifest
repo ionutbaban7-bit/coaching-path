@@ -1,0 +1,17 @@
+{
+  "name": "Coaching Learning Path — harta coachingului și a certificărilor",
+  "short_name": "Coaching Path",
+  "description": "Hartă interactivă, teorie și planuri de coaching 1:1 / echipă. ICF · EMCC · ANC, bilingv RO/EN, fără cont.",
+  "lang": "ro",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fc",
+  "theme_color": "#4b57d4",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/img/favicon.png", "sizes": "256x256", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

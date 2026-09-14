@@ -62,6 +62,19 @@
       var v = el.getAttribute('data-i18n-ph-' + lang);
       if(v != null) el.placeholder = v;
     });
+    /* etichete citite de cititoarele de ecran (buton de temă, meniu, hartă) */
+    $$('[data-i18n-aria-ro]').forEach(function(el){
+      var v = el.getAttribute('data-i18n-aria-' + lang);
+      if(v != null) el.setAttribute('aria-label', v);
+    });
+    /* titlul tab-ului și descrierea paginii urmează limba aleasă */
+    var html = document.documentElement;
+    var t = html.getAttribute('data-title-' + lang);
+    if(t) document.title = t;
+    $$('meta[name="description"]').forEach(function(m){
+      var d = m.getAttribute('data-desc-' + lang);
+      if(d) m.setAttribute('content', d);
+    });
     var label = $('#langLabel');
     if(label) label.textContent = (lang === 'ro' ? 'EN' : 'RO');
     var flag = $('#langFlag');
@@ -90,7 +103,8 @@
     html += '<span class="nav-sep" aria-hidden="true"></span>';
     html += PAGES.map(function(p){
       var active = (page === p.id) ? ' active' : '';
-      return '<a class="is-page' + active + '" href="' + p.href + '">' + p.label[lang] + '</a>';
+      var current = (page === p.id) ? ' aria-current="page"' : '';
+      return '<a class="is-page' + active + '"' + current + ' href="' + p.href + '">' + p.label[lang] + '</a>';
     }).join('');
 
     box.innerHTML = html;
@@ -123,6 +137,58 @@
     });
   }
 
+  /* Menține linkul activ vizibil în bara de navigare, FĂRĂ să miște pagina.
+     Înainte se folosea scrollIntoView(), care pe mobil (nav lipit sus, fix)
+     trăgea toată pagina după el — de aici săltările la derulare. */
+  function keepLinkVisible(a){
+    var nav = $('#navlinks');
+    if(!nav || nav.scrollWidth <= nav.clientWidth + 4) return;   // nimic de derulat
+    var target = a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2;
+    var max = nav.scrollWidth - nav.clientWidth;
+    var next = Math.max(0, Math.min(max, target));
+    if(Math.abs(nav.scrollLeft - next) > 2) nav.scrollLeft = next;
+  }
+
+  /* ---------- CUPRINS (pagini de conținut) ---------- */
+  /* .toc a.active exista în CSS, dar nimic nu adăuga clasa: cuprinsul nu
+     arăta niciodată unde ești. Acum îl urmărim cu IntersectionObserver. */
+  function initToc(){
+    var links = $$('.toc a[href^="#"]');
+    if(!links.length) return;
+    var map = {};
+    links.forEach(function(a){
+      var id = a.getAttribute('href').slice(1);
+      if(id) map[id] = a;
+    });
+    var sections = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+    if(!sections.length) return;
+
+    function mark(id){
+      links.forEach(function(a){
+        var on = (a === map[id]);
+        a.classList.toggle('active', on);
+        if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+      });
+    }
+    if(!('IntersectionObserver' in window)){
+      mark(sections[0].id); return;
+    }
+    var visible = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) visible[e.target.id] = e.intersectionRatio;
+        else delete visible[e.target.id];
+      });
+      var ids = Object.keys(visible);
+      if(ids.length){
+        ids.sort(function(a,b){ return visible[b] - visible[a]; });
+        mark(ids[0]);
+      }
+    }, { rootMargin:'-20% 0px -70% 0px', threshold:[0,.25,.5,1] });
+    sections.forEach(function(s){ io.observe(s); });
+    mark(sections[0].id);
+  }
+
   /* ---------- SCROLL-SPY ---------- */
   function initSpy(){
     var links = $$('#navlinks a[data-spy]');
@@ -139,8 +205,7 @@
           var a = map[e.target.id];
           if(a){
             a.classList.add('active');
-            // menține linkul activ vizibil în nav-ul cu scroll orizontal
-            if(a.scrollIntoView) a.scrollIntoView({ block:'nearest', inline:'nearest' });
+            keepLinkVisible(a);
           }
         }
       });
@@ -220,6 +285,19 @@
     pages: PAGES
   };
 
+  /* ---------- OFFLINE / VITEZĂ LA REVIZITARE ---------- */
+  /* Site-ul se declară „fără internet”; un service worker minimal face
+     promisiunea adevărată: la a doua vizită paginile se încarcă din cache,
+     iar fără rețea site-ul se deschide în continuare. Se activează doar
+     pe http/https (nu pe file://) și doar dacă browserul îl suportă. */
+  function initOffline(){
+    if(!('serviceWorker' in navigator)) return;
+    if(location.protocol !== 'http:' && location.protocol !== 'https:') return;
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('sw.js').catch(function(){/* fără offline, site-ul merge la fel */});
+    });
+  }
+
   /* ---------- INIT ---------- */
   function boot(){
     initTheme();
@@ -227,9 +305,11 @@
     renderNav();
     initScrollFx();
     initSpy();
+    initToc();
     initReveal();
     initMobileNav();
     initLang();
+    initOffline();
     // sincronizare cu schimbarea de limbă făcută de app.js
     document.addEventListener('clp:lang', function(e){
       lang = e.detail.lang;

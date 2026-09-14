@@ -1,33 +1,93 @@
-# Coaching Learning Path — configurare Render (Blueprint)
-# ------------------------------------------------------------
-# Se publică în două feluri, ambele funcționează cu acest repo:
+# ============================================================
+#  Coaching Learning Path — Render Blueprint
+#  ------------------------------------------------------------
+#  DE CE NU MERGEA DEPLOY-UL PÂNĂ ACUM
+#  Blueprint-ul se citește din branch-ul implicit (main), iar pe
+#  `main` nu existau render.yaml / package.json / server.js —
+#  erau doar în branch-ul de lucru. De aici eroarea de la Render.
+#  După merge-ul PR-ului în `main`, fișierul acesta e complet.
 #
-#   A) WEB SERVICE (implicit, aici)  → Build: npm install · Start: node server.js
-#      Merge garantat: repo-ul are acum package.json + server.js fără dependențe.
+#  Cum publici (două variante, ambele fără costuri):
 #
-#   B) STATIC SITE (mai ieftin, fără spin-down)
-#      Type: Static Site · Build Command: (gol) · Publish Directory: .
-#      În acest caz server.js e ignorat — Render servește fișierele direct.
+#  A) STATIC SITE (recomandat — fără spin-down, fără build)  ← implicit mai jos
+#     Render → New → Static Site → branch: main → Build Command gol
+#     → Publish Directory: .
 #
-# Pe Render: New → Blueprint → selectezi repo-ul → Render citește acest fișier.
-# După merge-ul PR-ului în `main`, schimbă `branch` în `main`.
+#  B) WEB SERVICE (Node, zero dependențe)
+#     Render → New → Web Service → branch: main →
+#     Build: npm install --omit=dev · Start: node server.js
+#     (blocul comentat de la finalul fișierului)
+#
+#  Pentru Blueprint (New → Blueprint) e nevoie ca acest fișier să
+#  existe pe branch-ul implicit. Dacă vrei să publici ACUM, din
+#  branch-ul de lucru: folosește varianta A din dashboard și alege
+#  branch-ul respectiv la pasul „Branch”.
+# ============================================================
 
 services:
+  # ---------- A) STATIC SITE (implicit) ----------
   - type: web
     name: coaching-learning-path
-    runtime: node
-    repo: https://github.com/ionutbaban7-bit/coaching-path
-    branch: arena/01a09f1d-coaching-path   # ← după merge: main
-    region: frankfurt                      # cel mai aproape de România
+    runtime: static
+    branch: main                    # ← după merge; în dashboard poți alege orice branch
     plan: free
-    autoDeploy: true
-
-    buildCommand: npm install --omit=dev
-    startCommand: node server.js
-    healthCheckPath: /
+    autoDeployTrigger: commit       # redeploy automat la fiecare push
+    buildCommand: ''                # nimic de construit — HTML/CSS/JS pur
+    staticPublishPath: .            # se publică rădăcina repo-ului
 
     envVars:
       - key: NODE_VERSION
         value: "20"
-      - key: NODE_ENV
-        value: production
+
+    # Rute „frumoase”, identice cu cele din server.js
+    routes:
+      - type: rewrite
+        source: /teorie
+        destination: /teorie.html
+      - type: rewrite
+        source: /individual
+        destination: /individual.html
+      - type: rewrite
+        source: /echipa
+        destination: /echipa.html
+      - type: rewrite
+        source: /legal
+        destination: /legal.html
+      - type: rewrite
+        source: /index
+        destination: /index.html
+
+    headers:
+      # Activele sunt versionate în HTML (?v=1.3.0) → pot fi cache-uite un an
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      # HTML-ul se reverifică mereu, ca să prinzi imediat o versiune nouă
+      - path: /*.html
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+
+# ---------- B) WEB SERVICE (alternativă, dacă vrei serverul Node) ----------
+# services:
+#   - type: web
+#     name: coaching-learning-path-node
+#     runtime: node
+#     branch: main
+#     region: frankfurt
+#     plan: free
+#     autoDeployTrigger: commit
+#     buildCommand: npm install --omit=dev
+#     startCommand: node server.js
+#     healthCheckPath: /

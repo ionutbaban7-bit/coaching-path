@@ -1,5 +1,7 @@
 name: Deploy to GitHub Pages
 
+# Se declanșează la push pe main. Pentru a publica din alt branch,
+# folosește Actions → „Deploy to GitHub Pages” → Run workflow → alege branch-ul.
 on:
   push:
     branches: [main]
@@ -22,6 +24,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Pregătește Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Nu publicăm un site rupt: verificăm sintaxa, referințele locale, paritatea RO/EN
+      - name: Verifică site-ul
+        run: node tools/check-site.mjs
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

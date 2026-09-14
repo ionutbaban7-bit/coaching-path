@@ -171,10 +171,10 @@
       var col = (row === 1) ? (i + 1) : (8 - i);       // șerpuitor: rândul 2 merge dreapta→stânga
       return '<button class="rm-node" type="button" data-id="' + n.id + '" data-lane="' + n.lane + '"' +
              ' style="grid-row:' + row + ';grid-column:' + col + '"' +
-             ' aria-expanded="false">' +
-               '<span class="rm-step">' + (done.indexOf(n.id) > -1 ? '✓' : (i + 1)) + '</span>' +
+             ' aria-controls="rmPanel" aria-expanded="' + (current === n.id ? 'true' : 'false') + '">' +
+               '<span class="rm-step" aria-hidden="true">' + (done.indexOf(n.id) > -1 ? '✓' : (i + 1)) + '</span>' +
                '<span class="rm-tag">' + L(n.tag) + '</span>' +
-               '<span class="rm-ic">' + n.icon + '</span>' +
+               '<span class="rm-ic" aria-hidden="true">' + n.icon + '</span>' +
                '<h4>' + L(n.t) + '</h4>' +
                '<p>' + L(n.d) + '</p>' +
              '</button>';
@@ -184,8 +184,12 @@
     drawRoads();
 
     host.querySelectorAll('.rm-node').forEach(function(btn){
-      btn.addEventListener('click', function(){ open(btn.dataset.id, btn); });
+      btn.addEventListener('click', function(){ open(btn.dataset.id); });
     });
+
+    // după o re-randare (ex. schimbarea limbii) redeschidem oprirea selectată,
+    // altfel panoul rămânea cu textul în limba veche
+    if(current) open(current);
 
     // contor progres
     var meter = document.getElementById('rmMeter');
@@ -205,6 +209,8 @@
     var host = document.getElementById('roadmap');
     var svg = document.getElementById('rmRoads');
     if(!host || !svg) return;
+    // pe ecrane mici grila are o coloană, iar liniile deveneau zigzag peste carduri
+    if(svg.offsetParent === null || getComputedStyle(svg).display === 'none'){ svg.innerHTML = ''; return; }
     var nodes = Array.prototype.slice.call(host.querySelectorAll('.rm-node'));
     if(nodes.length < 2) return;
     var box = host.getBoundingClientRect();
@@ -214,11 +220,28 @@
       var r = n.getBoundingClientRect();
       return {
         x: r.left - box.left + r.width / 2,
-        y: r.top - box.top + r.height / 2
+        y: r.top - box.top + r.height / 2,
+        cy: r.top - box.top,            // pentru gruparea pe rânduri
+        node: n
       };
     });
-    // ordinea vizuală: rândul 1 stânga→dreapta, rândul 2 dreapta→stânga
-    var order = [pts[0], pts[1], pts[2], pts[3], pts[7], pts[6], pts[5], pts[4]];
+    /* Ordinea vizuală se calculează din pozițiile reale, nu presupunând
+       „8 noduri în 2 rânduri de 4”: pe tabletă grila are 2 coloane, iar
+       vechea listă fixă desena linii care se încrucișau peste carduri. */
+    var rows = [];
+    pts.forEach(function(p){
+      var row = rows.filter(function(r){ return Math.abs(r.y - p.cy) < 24; })[0];
+      if(row) row.items.push(p);
+      else rows.push({ y:p.cy, items:[p] });
+    });
+    rows.sort(function(a,b){ return a.y - b.y; });
+    var order = [];
+    rows.forEach(function(r, i){
+      r.items.sort(function(a,b){ return a.x - b.x; });
+      if(i % 2 === 1) r.items.reverse();      // șerpuitor: rândurile pare merg invers
+      order = order.concat(r.items);
+    });
+    if(order.length < 2) return;
 
     var d = 'M' + order[0].x + ' ' + order[0].y;
     for(var i = 1; i < order.length; i++){
@@ -234,10 +257,11 @@
     svg.innerHTML = '<path d="' + d + '"/>';
   }
 
-  function open(id, btn){
+  function open(id){
     var n = ROADMAP.filter(function(x){ return x.id === id; })[0];
     var panel = document.getElementById('rmPanel');
     if(!n || !panel) return;
+    current = id;
     var host = document.getElementById('roadmap');
 
     host.querySelectorAll('.rm-node').forEach(function(x){
@@ -245,6 +269,7 @@
       x.setAttribute('aria-expanded', x.dataset.id === id ? 'true' : 'false');
     });
 
+    panel.setAttribute('aria-label', L({ro:'Detalii oprire', en:'Stop details'}));
     panel.innerHTML =
       '<div class="rm-head">' +
         '<span class="rm-tag" style="background:var(--surface-3);color:var(--muted)">' + L(n.tag) + '</span>' +
@@ -298,5 +323,5 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 
-  window.Roadmap = { render: render, data: ROADMAP };
+  window.Roadmap = { render: render, open: open, data: ROADMAP };
 })();

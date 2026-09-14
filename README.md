@@ -23,9 +23,16 @@ Planurile de pe `individual.html` și `echipa.html` au **structura completă**, 
 
 **Simplu:** dublu-click pe `index.html`. Merge offline, în orice browser modern.
 
-**Sau cu un server local:**
+**Sau cu un server local (recomandat: compresie + rute scurte):**
 ```bash
-python3 -m http.server 8000   # apoi deschide http://localhost:8000
+npm start                     # → http://localhost:3000  (Node >= 18, zero dependențe)
+# echivalent, fără Node:
+python3 -m http.server 8000   # → http://localhost:8000
+```
+
+**Verificare înainte de publicare:**
+```bash
+npm run check                 # sintaxă JS, referințe locale, paritate RO/EN, versiuni
 ```
 
 ## Structura proiectului
@@ -33,6 +40,7 @@ python3 -m http.server 8000   # apoi deschide http://localhost:8000
 ```
 index.html · teorie.html · individual.html · echipa.html · legal.html
 assets/
+  css/fonts.css    → @font-face pentru Inter Variable, găzduit local (fără Google Fonts)
   css/tokens.css   → design tokens (culoare, spațiere, tipografie, dark mode)
   css/app.css      → componente (nav, hartă, carduri, stepper, tabele, bandă de verificare, footer)
   css/pages.css    → pagini de conținut (cuprins, matrice, timeline, planuri, print)
@@ -42,12 +50,17 @@ assets/
   js/map.js        → harta interactivă
   js/plan.js       → banca de întrebări, instrumente de echipă, ateliere
   js/credibility.js→ banda „verificat la / surse / raportează o greșeală”
-  img/             → favicon, copertă socială, ilustrații
+  fonts/           → Inter Variable (2 subseturi WOFF2 + licența OFL)
+  img/             → favicon, copertă socială, ilustrații WebP
+data/sources.json  → registrul surselor oficiale (ce se verifică, la ce interval)
+manifest.webmanifest · robots.txt · sitemap.xml  → instalare, indexare, SEO
+sw.js              → service worker: site-ul merge și offline, a doua vizită e instant
 data/sources.json  → registrul surselor oficiale (ce se verifică, la ce interval)
 tools/update-info.mjs  → jobul de verificare a datelor (rulează manual sau lunar)
+tools/check-site.mjs   → verificare înainte de publicare (npm run check)
 server.js          → server static, zero dependențe (pentru Render Web Service)
 package.json       → npm start / npm run update-info
-render.yaml        → Blueprint Render (Web Service Node + instrucțiuni Static Site)
+render.yaml        → Blueprint Render (Static Site implicit + Web Service Node comentat)
 404.html           → pagină de eroare personalizată
 CHANGELOG.md       → istoricul modificărilor
 ```
@@ -58,6 +71,9 @@ CHANGELOG.md       → istoricul modificărilor
 - **Mod întunecat** — detectează preferința sistemului, se poate comuta manual, se memorează.
 - **Progres salvat local** — pașii bifați din learning pathuri și opririle parcurse de pe hartă rămân la reîncărcare (fără cont, fără server).
 - **Căutare și filtre** — pe școli (nume, descriere, oraș), pe credențiale (organism, tip, text liber) și în glosar.
+- **Font propriu, fără internet** — Inter Variable, găzduit în `assets/fonts/`: același text pe orice dispozitiv, fără cereri către Google Fonts.
+- **Offline după prima vizită** — un service worker (`sw.js`) păstrează paginile și activele în cache: a doua vizită se încarcă instant, iar fără rețea site-ul se deschide în continuare.
+- **Cuprins care te urmărește** — pagina de conținut marchează secțiunea în care ești, iar navigarea nu mai sare la derulare.
 - **Accesibil** — contrast WCAG AA/AAA, navigare cu tastatura, focus vizibil, `prefers-reduced-motion`, stiluri de print.
 
 ## Publicare pe GitHub Pages
@@ -71,49 +87,56 @@ După activare, site-ul apare la `https://ionutbaban7-bit.github.io/coaching-pat
 
 ## Deploy pe Render
 
-Repo-ul funcționează în **ambele** regimuri Render: Web Service și Static Site.
-`server.js` (zero dependențe) + `package.json` fac ca și varianta Web Service să pornească
-fără nicio configurare suplimentară.
+**De ce nu mergea înainte:** Render citește `render.yaml` din **branch-ul implicit** al repo-ului,
+adică din `main`. Pe `main` existau doar fișierul vechi `index.html` și un zip — `package.json`,
+`server.js` și `render.yaml` trăiau doar în branch-ul de lucru. Așa că orice încercare de deploy
+(Blueprint sau Web Service) se oprea imediat. Rezolvarea are două părți:
 
-După merge-ul PR-ului în `main`, schimbă `branch` în `main` în `render.yaml`.
+1. **Publică modificările în `main`** (merge PR-ul din branch-ul de lucru). Din acel moment
+   `render.yaml` există pe branch-ul implicit și Blueprint-ul funcționează.
+2. **Sau publică acum, fără merge**, direct din dashboard, alegând branch-ul la pasul „Branch”.
 
-### Varianta A — Web Service (implicit în `render.yaml`)
+### Varianta A — Static Site (recomandat, fără spin-down, fără build)
+
+| Câmp | Valoare |
+|------|---------|
+| Type | **Static Site** |
+| Branch | `main` (sau branch-ul tău de lucru) |
+| Build Command | *lasă gol* |
+| Publish Directory | `.` (rădăcina repo-ului) |
+
+`render.yaml` conține deja rutele scurte (`/teorie`, `/individual`, `/echipa`, `/legal`) și
+antetele de cache pentru varianta statică, deci nu trebuie configurat nimic manual.
+
+### Varianta B — Web Service (Node, dacă vrei serverul propriu)
 
 | Câmp | Valoare |
 |------|---------|
 | Type | **Web Service** |
 | Runtime | **Node** |
-| Repository | `ionutbaban7-bit/coaching-path` |
-| Branch | `arena/01a09f1d-coaching-path` |
+| Branch | `main` |
 | Region | Frankfurt (cel mai aproape de România) |
 | Build Command | `npm install --omit=dev` |
 | Start Command | `node server.js` |
 | Health Check Path | `/` |
-| Auto-Deploy | **Yes** |
 
-Nu trebuie variabile de mediu, nu trebuie bază de date, nu există dependențe npm.
+`server.js` (zero dependențe) adaugă compresie gzip/brotli, rute scurte, cache corect și antete
+de securitate (CSP, `frame-ancestors`, `Permissions-Policy`). Blocul e pregătit, comentat, în `render.yaml`.
 
-### Varianta B — Static Site (fără server, fără spin-down)
+### Rute disponibile (cu server.js sau cu rewrite-urile din render.yaml)
 
-| Câmp | Valoare |
-|------|---------|
-| Type | **Static Site** |
-| Branch | `arena/01a09f1d-coaching-path` |
-| Build Command | *lasă gol* |
-| Publish Directory | `.` (rădăcina) |
-| Auto-Deploy | **Yes** |
+`/` · `/teorie` · `/individual` · `/echipa` · `/legal`
+plus variantele clasice: `/teorie.html`, `/individual.html`, `/echipa.html`, `/legal.html`.
+`404.html` se servește automat pe rutele inexistente.
 
-În această variantă `server.js` e ignorat — Render servește fișierele direct.
+> Workflow-ul pentru **GitHub Pages** (`.github/workflows/pages.yml`) rulează verificarea
+> `npm run check` înainte de publicare — dacă site-ul e rupt, deploy-ul se oprește, nu publică.
 
-### Rute disponibile
+### Dacă schimbi domeniul
 
-`/` · `/teorie.html` · `/individual.html` · `/echipa.html` · `/legal.html`
-Plus variantele scurte: `/teorie` · `/individual` · `/echipa` · `/legal` (când rulezi prin `server.js`).
-
-Paginile personalizate de eroare (`404.html`) se servesc automat pe rutele inexistente.
-
-> Workflow-ul pentru **GitHub Pages** (`.github/workflows/pages.yml`) rămâne configurat
-> și nu interferează cu Render — le poți folosi pe oricare, sau pe ambele.
+Canonical, `og:url`, `og:image` și `sitemap.xml` folosesc adresa
+`https://ionutbaban7-bit.github.io/coaching-path/`. Dacă muți site-ul pe un domeniu propriu,
+înlocuiește adresa în cele 6 pagini HTML și în `sitemap.xml` (o singură căutare-înlocuire).
 
 ## Jobul „Actualizare informații · Update Info”
 
