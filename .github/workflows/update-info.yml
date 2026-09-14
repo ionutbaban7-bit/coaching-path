@@ -1,0 +1,117 @@
+# ============================================================
+# JOBUL „ACTUALIZARE INFORMAȚII · UPDATE INFO”
+# ------------------------------------------------------------
+# Îl găsești în: Actions → „Actualizare informații · Update Info” → Run workflow
+#
+# Ce face:
+#   1. inventariază toate datele aplicației (câte înregistrări, unde sunt)
+#   2. calculează ce a expirat (conținut, surse, evenimente cu dată)
+#   3. validează datele (inclusiv paritatea traducerilor RO/EN)
+#   4. opțional verifică linkurile surselor oficiale
+#   5. lasă un raport descărcabil + un sumar chiar în pagina rulării
+#
+# NU modifică nimic de unul singur — doar spune ce trebuie actualizat.
+# Rulat automat, lunar (pe branch-ul implicit), deschide un issue dacă a expirat ceva.
+# ============================================================
+
+name: Actualizare informații · Update Info
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Ce face jobul'
+        required: true
+        default: 'report'
+        type: choice
+        options:
+          - report      # raport + validări (fără rețea)
+          - full        # raport + validări + verificare linkuri
+      check_links:
+        description: 'Verifică și linkurile surselor oficiale (face apeluri pe net)'
+        required: false
+        default: false
+        type: boolean
+      days:
+        description: 'Pragul de expirare, în zile'
+        required: false
+        default: '60'
+        type: string
+  schedule:
+    # în fiecare zi de 1 a lunii, la 07:23 UTC — doar pe branch-ul implicit
+    - cron: '23 7 1 * *'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  update-info:
+    name: Verifică datele (Update Info)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Preia codul
+        uses: actions/checkout@v4
+
+      - name: Pregătește Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rulează jobul de actualizare a informațiilor
+        id: run
+        run: |
+          ARGS="--mode=${{ inputs.mode || 'report' }}"
+          if [ "${{ inputs.check_links }}" = "true" ]; then ARGS="$ARGS --links"; fi
+          ARGS="$ARGS --days=${{ inputs.days || '60' }}"
+          echo "Comandă: node tools/update-info.mjs $ARGS"
+          node tools/update-info.mjs $ARGS
+
+      - name: Pune raportul în pagina rulării
+        if: always()
+        run: |
+          if [ -f reports/update-info-report.md ]; then
+            cat reports/update-info-report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Salvează raportul ca artefact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: update-info-report
+          path: reports/
+          retention-days: 90
+
+      - name: Deschide un issue dacă ceva a expirat (doar la rulare automată)
+        if: github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const p = 'reports/summary.json';
+            if (!fs.existsSync(p)) { core.info('Fără sumar — sar pasul.'); return; }
+            const s = JSON.parse(fs.readFileSync(p, 'utf8'));
+            if (!s.needs_update) { core.info('Totul e în termen — nu deschid issue.'); return; }
+
+            const title = 'Actualizare informații — raport automat ' + new Date().toISOString().slice(0,10);
+            const lines = [];
+            lines.push('Jobul **Actualizare informații · Update Info** a rulat automat și a găsit:');
+            lines.push('');
+            if (s.age_days !== null) lines.push(`- conținut verificat ultima dată acum **${s.age_days} zile** (prag ${s.threshold_days})`);
+            if (s.overdue) lines.push(`- **${s.overdue}** eveniment(e) cu data depășită`);
+            if (s.upcoming) lines.push(`- **${s.upcoming}** eveniment(e) în următoarele 60 de zile`);
+            if (s.stale_sources?.length) lines.push(`- surse expirate: ${s.stale_sources.join(', ')}`);
+            if (s.errors?.length) lines.push(`- erori de validare: ${s.errors.join('; ')}`);
+            lines.push('');
+            lines.push('Raportul complet e în artefactul `update-info-report` al rulării.');
+            lines.push('');
+            lines.push('Pași: verifică sursa → corectează în `assets/js/data.js` → actualizează `data/sources.json` → notează în `CHANGELOG.md` → rulează din nou jobul.');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body: lines.join('\n'),
+              labels: ['actualizare-informatii']
+            });

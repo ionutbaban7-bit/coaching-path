@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ro" data-title-en="Individual coaching (1:1) — full plan · Coaching Learning Path" data-desc-en="A complete 1:1 coaching programme: architecture, session models, a question bank, a competency practice plan, an hours log and a self-evaluation rubric.">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Coaching individual (1:1) — plan complet · Coaching Learning Path</title>
+<meta name="description" content="Plan complex de coaching individual: anatomia unui program 1:1, modele de sesiune, bancă de întrebări, plan de practică pe cele 8 competențe ICF, jurnal de ore și rubrică de autoevaluare.">
+<meta name="theme-color" content="#4b57d4">
+<meta name="color-scheme" content="light dark">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Coaching Path">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-capable" content="yes">
+<meta property="og:title" content="Coaching individual (1:1) — plan complet">
+<meta property="og:description" content="Structura completă a unui program de coaching 1:1, gata de populat cu conținutul vostru.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Coaching Learning Path">
+  <meta name="twitter:description" content="Harta completă a coachingului și a certificărilor ICF · EMCC · ANC. Bilingv RO/EN.">
+  <meta name="twitter:image" content="https://ionutbaban7-bit.github.io/coaching-path/assets/img/og-cover.png">
+  <meta property="og:image" content="https://ionutbaban7-bit.github.io/coaching-path/assets/img/og-cover.png?v=1.7.0">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Coaching Learning Path">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ionutbaban7-bit.github.io/coaching-path/individual.html">
+  <meta property="og:site_name" content="Coaching Learning Path">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <link rel="canonical" href="https://ionutbaban7-bit.github.io/coaching-path/individual.html">
+  <meta name="theme-color" content="#4b57d4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0e18" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest?v=1.7.0">
+<link rel="apple-touch-icon" href="assets/img/favicon.png?v=1.7.0">
+<link rel="icon" href="assets/img/favicon.svg?v=1.7.0" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/inter-latin-ext-wght-normal.woff2?v=1.7.0" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2?v=1.7.0" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css?v=1.7.0">
+<link rel="stylesheet" href="assets/css/tokens.css?v=1.7.0">
+<link rel="stylesheet" href="assets/css/app.css?v=1.7.0">
+<link rel="stylesheet" href="assets/css/pages.css?v=1.7.0">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('cp_theme');
+    if(!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+  document.documentElement.classList.add('js');
+})();
+</script>
+</head>
+
+<body data-page="individual">
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Sari direct la conținut</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="index.html" aria-label="Coaching Learning Path — acasă">
+      <span class="logo-badge" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <b>Coaching Learning Path</b>
+        <span data-i18n-ro="Hartă · Teorie · Certificare" data-i18n-en="Map · Theory · Credentials">Hartă · Teorie · Certificare</span>
+      </span>
+    </a>
+    <nav class="navlinks" id="navlinks" aria-label="Navigare principală"></nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Comută tema" data-i18n-aria-ro="Comută tema" data-i18n-aria-en="Toggle theme">
+        <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>
+        </svg>
+      </button>
+      <button class="lang-btn" id="langBtn" data-i18n-aria-ro="Schimbă limba" data-i18n-aria-en="Switch language"><span class="flag" id="langFlag">🇬🇧</span><span id="langLabel">EN</span></button>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" data-i18n-aria-ro="Deschide meniul" data-i18n-aria-en="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="page-hero">
+  <div class="wrap page-hero-grid">
+    <div>
+      <nav class="crumbs" aria-label="Firimituri">
+        <a href="index.html" data-i18n-ro="Acasă" data-i18n-en="Home">Acasă</a>
+        <span class="sep">/</span>
+        <span data-i18n-ro="Coaching 1:1" data-i18n-en="1:1 coaching">Coaching 1:1</span>
+      </nav>
+      <span class="pill"><span class="dot"></span>
+        <span data-i18n-ro="Structură completă + 64 de întrebări" data-i18n-en="Full structure + 64 questions">Structură completă + 64 de întrebări</span>
+      </span>
+      <h1>
+        <span data-i18n-ro="Planul complet pentru " data-i18n-en="The complete plan for ">Planul complet pentru </span>
+        <span class="grad-text" data-i18n-ro="coaching individual" data-i18n-en="1:1 coaching">coaching individual</span>
+      </h1>
+      <p class="lead" data-i18n-ro="De la „știu teoria” la „livrez un proces profesionist”: arhitectura programului, modele de sesiune, bancă de întrebări, jurnal de ore, rubrică de evaluare și etică aplicată." data-i18n-en="From &quot;knowing the theory&quot; to &quot;delivering a professional process&quot;: programme architecture, session models, a question bank, an hours log, an evaluation rubric and applied ethics.">De la „știu teoria” la „livrez un proces profesionist”: arhitectura programului, modele de sesiune, bancă de întrebări, jurnal de ore, rubrică de evaluare și etică aplicată.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#arhitectura" data-i18n-ro="Vezi arhitectura programului" data-i18n-en="See the programme architecture">Vezi arhitectura programului</a>
+        <a class="btn btn-ghost" href="teorie.html" data-i18n-ro="Întâi teoria" data-i18n-en="Theory first">Întâi teoria</a>
+      </div>
+    </div>
+    <img class="page-hero-art" src="assets/img/hero-individual.webp?v=1.7.0" width="1600" height="679" alt="" aria-hidden="true" decoding="async" fetchpriority="high">
+  </div>
+</section>
+
+<div class="wrap">
+<div data-verify="individual"></div>
+<div class="doc-layout">
+
+  <aside class="toc" id="toc">
+    <h5 data-i18n-ro="Cuprins" data-i18n-en="Contents">Cuprins</h5>
+    <a href="#arhitectura">01 · <span data-i18n-ro="Arhitectura programului" data-i18n-en="Programme architecture">Arhitectura programului</span></a>
+    <a href="#etape">02 · <span data-i18n-ro="Cele 5 etape" data-i18n-en="The 5 stages">Cele 5 etape</span></a>
+    <a href="#structura-sesiune">03 · <span data-i18n-ro="Structura unei ședințe" data-i18n-en="Session structure">Structura unei ședințe</span></a>
+    <a href="#intrebari">04 · <span data-i18n-ro="Banca de întrebări" data-i18n-en="Question bank">Banca de întrebări</span></a>
+    <a href="#competente">05 · <span data-i18n-ro="Plan de practică pe competențe" data-i18n-en="Competency practice plan">Plan pe competențe</span></a>
+    <a href="#instrumente">06 · <span data-i18n-ro="Instrumente și fișe" data-i18n-en="Instruments &amp; worksheets">Instrumente și fișe</span></a>
+    <a href="#jurnal">07 · <span data-i18n-ro="Jurnal de practică" data-i18n-en="Practice log">Jurnal de practică</span></a>
+    <a href="#evaluare">08 · <span data-i18n-ro="Rubrică de autoevaluare" data-i18n-en="Self-evaluation rubric">Rubrică de autoevaluare</span></a>
+    <a href="#etic">09 · <span data-i18n-ro="Etică și riscuri" data-i18n-en="Ethics &amp; risks">Etică și riscuri</span></a>
+    <a href="#populat">10 · <span data-i18n-ro="Ce rămâne de populat" data-i18n-en="What's left to populate">Ce rămâne de populat</span></a>
+  </aside>
+
+  <div>
+
+  <!-- 01 ARHITECTURĂ -->
+  <section class="doc-sec" id="arhitectura">
+    <h2><span class="num">01</span><span data-i18n-ro="Arhitectura unui program 1:1" data-i18n-en="The architecture of a 1:1 programme">Arhitectura unui program 1:1</span></h2>
+    <p class="intro" data-i18n-ro="Un program serios nu este o serie de ședințe, ci un arc: are un punct de plecare, un contract, un miez de lucru și un final asumat. Mai jos este scheletul pe care îl folosesc programele profesioniste." data-i18n-en="A serious programme isn't a series of sessions but an arc: a starting point, a contract, a working core and an agreed ending. Below is the skeleton professional programmes use.">Un program serios nu este o serie de ședințe, ci un arc: are un punct de plecare, un contract, un miez de lucru și un final asumat. Mai jos este scheletul pe care îl folosesc programele profesioniste.</p>
+
+    <div class="plan-block">
+      <h3 data-i18n-ro="Parametrii standard" data-i18n-en="Standard parameters">Parametrii standard</h3>
+      <p class="intro" data-i18n-ro="Valorile de mai jos sunt reperele uzuale din piață. Pentru programul vostru, completați coloana „La noi”." data-i18n-en="The values below are the usual market references. For your programme, fill in the &quot;Ours&quot; column.">Valorile de mai jos sunt reperele uzuale din piață. Pentru programul vostru, completați coloana „La noi”.</p>
+      <table class="plan-table" aria-label="Parametrii standard — tabel">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n-ro="Parametru" data-i18n-en="Parameter">Parametru</th>
+            <th scope="col" data-i18n-ro="Repere uzuale" data-i18n-en="Usual range">Repere uzuale</th>
+            <th scope="col" data-i18n-ro="La noi" data-i18n-en="Ours">La noi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-i18n-ro="Durată proces" data-i18n-en="Programme length">Durată proces</td><td>3–6 luni</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Număr de ședințe" data-i18n-en="Number of sessions">Număr de ședințe</td><td>6–12</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Durata unei ședințe" data-i18n-en="Session length">Durata unei ședințe</td><td>45–60 minute</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Frecvență" data-i18n-en="Frequency">Frecvență</td><td data-i18n-ro="la 2–3 săptămâni" data-i18n-en="every 2–3 weeks">la 2–3 săptămâni</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Sesiune de chimie" data-i18n-en="Chemistry session">Sesiune de chimie</td><td data-i18n-ro="gratuită, 20–30 min" data-i18n-en="free, 20–30 min">gratuită, 20–30 min</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Evaluare la mijloc" data-i18n-en="Mid-point review">Evaluare la mijloc</td><td data-i18n-ro="obligatorie (ședința 4–5)" data-i18n-en="mandatory (session 4–5)">obligatorie (ședința 4–5)</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Ședință de încheiere" data-i18n-en="Closing session">Ședință de încheiere</td><td data-i18n-ro="separată, cu bilanț" data-i18n-en="separate, with a review">separată, cu bilanț</td><td class="empty">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 02 ETAPE -->
+  <section class="doc-sec" id="etape">
+    <h2><span class="num">02</span><span data-i18n-ro="Cele 5 etape ale procesului" data-i18n-en="The 5 stages of the process">Cele 5 etape ale procesului</span></h2>
+    <p class="intro" data-i18n-ro="Fiecare etapă are un scop, un livrabil și un risc specific. Când o etapă sare, costul apare mai târziu." data-i18n-en="Each stage has a purpose, an output and a specific risk. When a stage is skipped, the cost shows up later.">Fiecare etapă are un scop, un livrabil și un risc specific. Când o etapă sare, costul apare mai târziu.</p>
+
+    <div class="steps-flow">
+      <div class="step-chip">
+        <h4 data-i18n-ro="Intake &amp; chimie" data-i18n-en="Intake &amp; chemistry">Intake &amp; chimie</h4>
+        <p data-i18n-ro="Potriveală, așteptări, criterii de excludere. Livrabil: decizia de a lucra împreună." data-i18n-en="Fit, expectations, exclusion criteria. Output: the decision to work together.">Potriveală, așteptări, criterii de excludere. Livrabil: decizia de a lucra împreună.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Contractare" data-i18n-en="Contracting">Contractare</h4>
+        <p data-i18n-ro="Obiective, măsurare, reguli, confidențialitate, durată. Livrabil: acordul scris." data-i18n-en="Goals, measurement, rules, confidentiality, duration. Output: the written agreement.">Obiective, măsurare, reguli, confidențialitate, durată. Livrabil: acordul scris.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Miezul lucrului" data-i18n-en="The working core">Miezul lucrului</h4>
+        <p data-i18n-ro="Explorare, insight, acțiune, responsabilitate. Livrabil: schimbare observabilă." data-i18n-en="Exploration, insight, action, accountability. Output: observable change.">Explorare, insight, acțiune, responsabilitate. Livrabil: schimbare observabilă.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Evaluare &amp; recalibrare" data-i18n-en="Review &amp; recalibration">Evaluare &amp; recalibrare</h4>
+        <p data-i18n-ro="Ce a mers, ce ajustăm, mai merită continuat? Livrabil: decizie asumată." data-i18n-en="What worked, what we adjust, is it worth continuing? Output: an owned decision.">Ce a mers, ce ajustăm, mai merită continuat? Livrabil: decizie asumată.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Încheiere &amp; transfer" data-i18n-en="Closure &amp; transfer">Încheiere &amp; transfer</h4>
+        <p data-i18n-ro="Bilanț, ce duce clientul mai departe fără tine. Livrabil: autonomie." data-i18n-en="Review, what the client carries on without you. Output: autonomy.">Bilanț, ce duce clientul mai departe fără tine. Livrabil: autonomie.</p>
+      </div>
+    </div>
+
+        <div class="plan-block">
+      <h3 data-i18n-ro="Fișa de intake — 8 întrebări" data-i18n-en="Intake sheet — 8 questions">Fișa de intake — 8 întrebări</h3>
+      <p class="intro" data-i18n-ro="Se trimit în scris înainte de sesiunea de chimie, cu 24 de ore înainte. Răspunsurile scurte sunt suficiente; contează onestitatea, nu lungimea." data-i18n-en="Sent in writing before the chemistry session, 24 hours ahead. Short answers are enough; honesty matters, not length.">Se trimit în scris înainte de sesiunea de chimie, cu 24 de ore înainte. Răspunsurile scurte sunt suficiente; contează onestitatea, nu lungimea.</p>
+      <ol class="model-list">
+            <li><b>1.</b> <span data-i18n-ro="Ce te aduce acum la coaching — și de ce acum?" data-i18n-en="What brings you to coaching now — and why now?">Ce te aduce acum la coaching — și de ce acum?</span></li>
+            <li><b>2.</b> <span data-i18n-ro="Ce ai încercat până acum și nu a funcționat?" data-i18n-en="What have you tried so far that didn’t work?">Ce ai încercat până acum și nu a funcționat?</span></li>
+            <li><b>3.</b> <span data-i18n-ro="Ce ar trebui să se schimbe ca investiția să merite?" data-i18n-en="What would have to change for this investment to be worth it?">Ce ar trebui să se schimbe ca investiția să merite?</span></li>
+            <li><b>4.</b> <span data-i18n-ro="Cum vei ști, concret, că a mers?" data-i18n-en="How will you know, concretely, that it worked?">Cum vei ști, concret, că a mers?</span></li>
+            <li><b>5.</b> <span data-i18n-ro="Ce NU vrei să se schimbe?" data-i18n-en="What do you NOT want to change?">Ce NU vrei să se schimbe?</span></li>
+            <li><b>6.</b> <span data-i18n-ro="Ce resurse ai pentru proces: timp, energie, sprijin din jur?" data-i18n-en="What resources do you have for this: time, energy, support around you?">Ce resurse ai pentru proces: timp, energie, sprijin din jur?</span></li>
+            <li><b>7.</b> <span data-i18n-ro="Există teme de sănătate mintală, medicale sau juridice în joc?" data-i18n-en="Are there mental-health, medical or legal matters in play?">Există teme de sănătate mintală, medicale sau juridice în joc?</span></li>
+            <li><b>8.</b> <span data-i18n-ro="Cum vrei să lucrăm: frecvență, format, fel de feedback?" data-i18n-en="How do you want us to work: frequency, format, kind of feedback?">Cum vrei să lucrăm: frecvență, format, fel de feedback?</span></li>
+      </ol>
+      <div class="callout">
+        <b data-i18n-ro="Filtru de orientare:" data-i18n-en="Referral filter:">Filtru de orientare:</b>
+        <span data-i18n-ro=" dacă la întrebarea 7 răspunsul ridică o temă clinică, juridică sau de risc, coachingul se oprește aici și se face recomandarea către specialistul potrivit. Nu e o pierdere de client, e cadrul profesional." data-i18n-en=" if the answer to question 7 raises a clinical, legal or risk matter, coaching stops here and the client is referred to the right specialist. That is not a lost client, it is professional boundaries."> dacă la întrebarea 7 răspunsul ridică o temă clinică, juridică sau de risc, coachingul se oprește aici și se face recomandarea către specialistul potrivit. Nu e o pierdere de client, e cadrul profesional.</span>
+      </div>
+    </div>
+
+    <div class="plan-block">
+      <h3 data-i18n-ro="Ce intră în contract — checklist în 9 puncte" data-i18n-en="What the contract covers — a 9-point checklist">Ce intră în contract — checklist în 9 puncte</h3>
+      <ul class="bullets">
+            <li><span data-i18n-ro="Obiectivul programului și criteriul de reușită, formulate de client." data-i18n-en="The programme objective and success criterion, stated by the client.">Obiectivul programului și criteriul de reușită, formulate de client.</span></li>
+            <li><span data-i18n-ro="Ce NU intră în contract: terapie, consultanță, diagnostic medical sau juridic." data-i18n-en="What is NOT part of the contract: therapy, consulting, medical or legal diagnosis.">Ce NU intră în contract: terapie, consultanță, diagnostic medical sau juridic.</span></li>
+            <li><span data-i18n-ro="Număr de ședințe, durată, frecvență, format (online / față în față)." data-i18n-en="Number of sessions, length, frequency, format (online / in person).">Număr de ședințe, durată, frecvență, format (online / față în față).</span></li>
+            <li><span data-i18n-ro="Politica de anulare, întârziere și reprogramare, scrisă." data-i18n-en="Cancellation, lateness and rescheduling policy, in writing.">Politica de anulare, întârziere și reprogramare, scrisă.</span></li>
+            <li><span data-i18n-ro="Confidențialitate și limitele ei: supervizare, risc pentru sine sau alții, obligații legale." data-i18n-en="Confidentiality and its limits: supervision, risk to self or others, legal duties.">Confidențialitate și limitele ei: supervizare, risc pentru sine sau alții, obligații legale.</span></li>
+            <li><span data-i18n-ro="Protecția datelor: ce notițe se păstrează, unde, cât timp și cum se șterg." data-i18n-en="Data protection: what notes are kept, where, for how long and how they are deleted.">Protecția datelor: ce notițe se păstrează, unde, cât timp și cum se șterg.</span></li>
+            <li><span data-i18n-ro="Dacă se înregistrează sesiuni: acord scris, separat, revocabil oricând." data-i18n-en="If sessions are recorded: separate written consent, revocable at any time.">Dacă se înregistrează sesiuni: acord scris, separat, revocabil oricând.</span></li>
+            <li><span data-i18n-ro="Cum se măsoară progresul și când e evaluarea intermediară." data-i18n-en="How progress is measured and when the mid-point review happens.">Cum se măsoară progresul și când e evaluarea intermediară.</span></li>
+            <li><span data-i18n-ro="Cum se încheie programul și ce duce clientul cu el la final." data-i18n-en="How the programme ends and what the client takes away.">Cum se încheie programul și ce duce clientul cu el la final.</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-block">
+      <h3 data-i18n-ro="Grila de măsurare a progresului" data-i18n-en="Progress measurement grid">Grila de măsurare a progresului</h3>
+      <p class="intro" data-i18n-ro="Fără cifre comparabile, „a mers bine” rămâne o impresie de final de sesiune. Cinci indicatori sunt suficienți." data-i18n-en="Without comparable numbers, “it went well” stays a feeling at the end of a session. Five indicators are enough.">Fără cifre comparabile, „a mers bine” rămâne o impresie de final de sesiune. Cinci indicatori sunt suficienți.</p>
+      <table class="plan-table" aria-label="Grila de măsurare a progresului — tabel">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n-ro="Indicator" data-i18n-en="Indicator">Indicator</th>
+            <th scope="col" data-i18n-ro="Cum se măsoară" data-i18n-en="How it is measured">Cum se măsoară</th>
+            <th scope="col" data-i18n-ro="Când" data-i18n-en="When">Când</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span data-i18n-ro="Claritatea obiectivului" data-i18n-en="Clarity of the goal">Claritatea obiectivului</span></td><td><span data-i18n-ro="1–10, dat de client" data-i18n-en="1–10, rated by the client">1–10, dat de client</span></td><td><span data-i18n-ro="ședința 1, 4 și cea de închidere" data-i18n-en="sessions 1, 4 and the closing one">ședința 1, 4 și cea de închidere</span></td></tr>
+          <tr><td><span data-i18n-ro="Angajamente îndeplinite" data-i18n-en="Commitments delivered">Angajamente îndeplinite</span></td><td><span data-i18n-ro="% din acțiunile promise" data-i18n-en="% of promised actions">% din acțiunile promise</span></td><td><span data-i18n-ro="la fiecare 3 ședințe" data-i18n-en="every 3 sessions">la fiecare 3 ședințe</span></td></tr>
+          <tr><td><span data-i18n-ro="Cum se simte procesul" data-i18n-en="How the process feels">Cum se simte procesul</span></td><td><span data-i18n-ro="1–5, anonim, trimis după sesiune" data-i18n-en="1–5, anonymous, sent after the session">1–5, anonim, trimis după sesiune</span></td><td><span data-i18n-ro="după fiecare ședință" data-i18n-en="after every session">după fiecare ședință</span></td></tr>
+          <tr><td><span data-i18n-ro="Schimbare observabilă la muncă" data-i18n-en="Observable change at work">Schimbare observabilă la muncă</span></td><td><span data-i18n-ro="2 exemple concrete, nu impresii" data-i18n-en="2 concrete examples, not impressions">2 exemple concrete, nu impresii</span></td><td><span data-i18n-ro="la mijloc și la final" data-i18n-en="mid-point and end">la mijloc și la final</span></td></tr>
+          <tr><td><span data-i18n-ro="Criteriul de succes din contract" data-i18n-en="The success criterion from the contract">Criteriul de succes din contract</span></td><td><span data-i18n-ro="da / parțial / nu + dovezi" data-i18n-en="yes / partly / no + evidence">da / parțial / nu + dovezi</span></td><td><span data-i18n-ro="la finalul programului" data-i18n-en="at the end of the programme">la finalul programului</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="plan-block">
+      <h3 data-i18n-ro="Bilanțul de final — 5 întrebări" data-i18n-en="Closing review — 5 questions">Bilanțul de final — 5 întrebări</h3>
+      <ul class="bullets">
+            <li><span data-i18n-ro="Ce s-a schimbat, cu dovezi — nu cu impresii?" data-i18n-en="What changed, with evidence — not impressions?">Ce s-a schimbat, cu dovezi — nu cu impresii?</span></li>
+            <li><span data-i18n-ro="Ce a rămas neschimbat și de ce?" data-i18n-en="What stayed the same, and why?">Ce a rămas neschimbat și de ce?</span></li>
+            <li><span data-i18n-ro="Ce mecanism ai învățat care funcționează și fără mine?" data-i18n-en="Which mechanism have you learned that works without me?">Ce mecanism ai învățat care funcționează și fără mine?</span></li>
+            <li><span data-i18n-ro="Ce continui singur în următoarele 90 de zile?" data-i18n-en="What will you continue on your own over the next 90 days?">Ce continui singur în următoarele 90 de zile?</span></li>
+            <li><span data-i18n-ro="Unde ai nevoie de alt tip de sprijin: terapie, consultanță, mentorat?" data-i18n-en="Where do you need a different kind of support: therapy, consulting, mentoring?">Unde ai nevoie de alt tip de sprijin: terapie, consultanță, mentorat?</span></li>
+      </ul>
+    </div>
+      <span data-i18n-ro="fișa de intake (întrebări exacte), modelul de contract, grila de măsurare a progresului și forma bilanțului de final." data-i18n-en="the intake form (exact questions), the contract template, the progress-measurement grid and the final review format.">fișa de intake (întrebări exacte), modelul de contract, grila de măsurare a progresului și forma bilanțului de final.</span>
+    </div>
+  </section>
+
+  <!-- 03 STRUCTURA ȘEDINȚEI -->
+  <section class="doc-sec" id="structura-sesiune">
+    <h2><span class="num">03</span><span data-i18n-ro="Structura unei ședințe (minut cu minut)" data-i18n-en="Session structure (minute by minute)">Structura unei ședințe (minut cu minut)</span></h2>
+    <p class="intro" data-i18n-ro="Pentru o ședință de 60 de minute, împărțirea de mai jos este un punct de plecare sănătos, nu o rețetă rigidă." data-i18n-en="For a 60-minute session, the split below is a healthy starting point, not a rigid recipe.">Pentru o ședință de 60 de minute, împărțirea de mai jos este un punct de plecare sănătos, nu o rețetă rigidă.</p>
+
+    <div class="plan-block">
+      <table class="plan-table" aria-label="03Structura unei ședințe (minut cu minut) — tabel">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n-ro="Minut" data-i18n-en="Minute">Minut</th>
+            <th scope="col" data-i18n-ro="Segment" data-i18n-en="Segment">Segment</th>
+            <th scope="col" data-i18n-ro="Ce faci concret" data-i18n-en="What you actually do">Ce faci concret</th>
+            <th scope="col" data-i18n-ro="Greșeala frecventă" data-i18n-en="Common mistake">Greșeala frecventă</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>0–5</td><td data-i18n-ro="Check-in" data-i18n-en="Check-in">Check-in</td><td data-i18n-ro="Primești omul, nu agenda" data-i18n-en="Receive the person, not the agenda">Primești omul, nu agenda</td><td data-i18n-ro="sari direct la „ce lucrăm azi”" data-i18n-en="jumping straight to &quot;what are we working on&quot;">sari direct la „ce lucrăm azi”</td></tr>
+          <tr><td>5–12</td><td data-i18n-ro="Contractare" data-i18n-en="Contracting">Contractare</td><td data-i18n-ro="Clarifici subiectul și criteriul de reușită" data-i18n-en="Clarify the topic and the success criterion">Clarifici subiectul și criteriul de reușită</td><td data-i18n-ro="accepți primul subiect, fără să sapi" data-i18n-en="accepting the first topic without digging">accepți primul subiect, fără să sapi</td></tr>
+          <tr><td>12–35</td><td data-i18n-ro="Explorare" data-i18n-en="Exploration">Explorare</td><td data-i18n-ro="Asculți, reflectezi, cauți tiparul" data-i18n-en="Listen, reflect, look for the pattern">Asculți, reflectezi, cauți tiparul</td><td data-i18n-ro="întrebări în serie, fără spațiu" data-i18n-en="rapid-fire questions, no space">întrebări în serie, fără spațiu</td></tr>
+          <tr><td>35–45</td><td data-i18n-ro="Insight" data-i18n-en="Insight">Insight</td><td data-i18n-ro="Numești ce apare, verifici impactul" data-i18n-en="Name what emerges, check the impact">Numești ce apare, verifici impactul</td><td data-i18n-ro="explici în loc să lași clientul să vadă" data-i18n-en="explaining instead of letting the client see">explici în loc să lași clientul să vadă</td></tr>
+          <tr><td>45–57</td><td data-i18n-ro="Acțiune" data-i18n-en="Action">Acțiune</td><td data-i18n-ro="Angajamente datate + obstacole" data-i18n-en="Dated commitments plus obstacles">Angajamente datate + obstacole</td><td data-i18n-ro="listă vagă de intenții" data-i18n-en="a vague list of intentions">listă vagă de intenții</td></tr>
+          <tr><td>57–60</td><td data-i18n-ro="Închidere" data-i18n-en="Closing">Închidere</td><td data-i18n-ro="Rezumi, confirmi, stabilești următorul pas" data-i18n-en="Summarise, confirm, set the next step">Rezumi, confirmi, stabilești următorul pas</td><td data-i18n-ro="ședința se topește fără concluzie" data-i18n-en="the session dissolves without a conclusion">ședința se topește fără concluzie</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 04 ÎNTREBĂRI -->
+  <section class="doc-sec" id="intrebari">
+    <h2><span class="num">04</span><span data-i18n-ro="Banca de întrebări" data-i18n-en="Question bank">Banca de întrebări</span></h2>
+    <p class="intro" data-i18n-ro="Întrebările sunt instrumentul principal: 64 de întrebări în 8 categorii, câte 8 pentru fiecare moment al sesiunii — cu varianta de evitat lângă fiecare. Folosește câmpul de căutare sau filtrele de categorii." data-i18n-en="Questions are the main instrument: 64 questions in 8 categories, eight for each moment of the session — with the &quot;avoid&quot; variant next to each. Use the search box or the category filters.">Întrebările sunt instrumentul principal: 64 de întrebări în 8 categorii, câte 8 pentru fiecare moment al sesiunii — cu varianta de evitat lângă fiecare. Folosește câmpul de căutare sau filtrele de categorii.</p>
+
+    <div class="qb-toolbar">
+      <input class="search" type="search" enterkeyhint="search" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" id="qbSearch" data-search-out="#qbGrid" data-i18n-aria-ro="Caută în banca de întrebări" data-i18n-aria-en="Search the question bank" aria-label="Caută în banca de întrebări" data-i18n-ph-ro="🔎 Caută o întrebare…" data-i18n-ph-en="🔎 Search a question…" placeholder="🔎 Caută o întrebare…">
+      <span class="text-muted" style="font-size:13px">64 <span data-i18n-ro="de întrebări · 8 categorii" data-i18n-en="questions · 8 categories">de întrebări · 8 categorii</span></span>
+    </div>
+    <div class="filters" id="qbCats" data-cat="all"></div>
+    <div id="qbGrid"></div>
+
+    <div class="callout">
+      <b data-i18n-ro="Cum le folosești:" data-i18n-en="How to use them:">Cum le folosești:</b>
+      <span data-i18n-ro=" o întrebare bună e scurtă, deschisă și nu conține răspunsul. Dacă o întrebare începe cu „nu ar trebui să…”, nu e întrebare, e sfat deghizat. Folosește 2–3 întrebări pe sesiune din aceeași categorie, nu una din fiecare." data-i18n-en=" a good question is short, open and doesn't contain the answer. If a question starts with &quot;shouldn't you…&quot;, it isn't a question, it's advice in disguise. Use two or three questions per session from the same category, not one from each."> o întrebare bună e scurtă, deschisă și nu conține răspunsul. Dacă o întrebare începe cu „nu ar trebui să…”, nu e întrebare, e sfat deghizat. Folosește 2–3 întrebări pe sesiune din aceeași categorie, nu una din fiecare.</span>
+    </div>
+  </section>
+
+  <!-- 05 COMPETENȚE -->
+  <section class="doc-sec" id="competente">
+    <h2><span class="num">05</span><span data-i18n-ro="Plan de practică pe cele 8 competențe" data-i18n-en="Practice plan across the 8 competencies">Plan de practică pe cele 8 competențe</span></h2>
+    <p class="intro" data-i18n-ro="Progresul nu vine din „a face multe ore”, ci din a exersa deliberat o competență pe rând. Tabelul de mai jos este planul de antrenament: pentru fiecare competență, un exercițiu, un semn de progres și o dovadă." data-i18n-en="Progress doesn't come from &quot;logging hours&quot; but from deliberately practising one competency at a time. The table below is the training plan: for each competency, a drill, a progress signal and evidence.">Progresul nu vine din „a face multe ore”, ci din a exersa deliberat o competență pe rând. Tabelul de mai jos este planul de antrenament: pentru fiecare competență, un exercițiu, un semn de progres și o dovadă.</p>
+
+    <div class="plan-block">
+      <table class="plan-table" aria-label="05Plan de practică pe cele 8 competențe — tabel">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n-ro="Competență" data-i18n-en="Competency">Competență</th>
+            <th scope="col" data-i18n-ro="Exercițiu de practică" data-i18n-en="Practice drill">Exercițiu de practică</th>
+            <th scope="col" data-i18n-ro="Semn de progres" data-i18n-en="Progress signal">Semn de progres</th>
+            <th scope="col" data-i18n-ro="Dovadă" data-i18n-en="Evidence">Dovadă</th>
+          </tr>
+        </thead>
+                <tbody>
+          <tr><td><b>1.</b> <span data-i18n-ro="Practică etică" data-i18n-en="Ethical practice">Practică etică</span></td><td><span data-i18n-ro="Rescrie Codul Etic în 10 reguli personale, apoi trece 3 dileme reale prin patru filtre: clientul, profesia, legea, propria integritate." data-i18n-en="Rewrite the Code of Ethics as 10 personal rules, then run 3 real dilemmas through four filters: the client, the profession, the law, your own integrity.">Rescrie Codul Etic în 10 reguli personale, apoi trece 3 dileme reale prin patru filtre: clientul, profesia, legea, propria integritate.</span></td><td><span data-i18n-ro="Recunoști dilema înainte să acționezi, nu după." data-i18n-en="You spot the dilemma before acting, not after.">Recunoști dilema înainte să acționezi, nu după.</span></td><td><span data-i18n-ro="3 dileme scrise + decizia și raționamentul, cu data." data-i18n-en="3 written dilemmas + the decision and reasoning, dated.">3 dileme scrise + decizia și raționamentul, cu data.</span></td></tr>
+          <tr><td><b>2.</b> <span data-i18n-ro="Mentalitate de coaching" data-i18n-en="Coaching mindset">Mentalitate de coaching</span></td><td><span data-i18n-ro="Într-o conversație reală (nu de coaching), numără câte sfaturi dai. Următoarea conversație: doar întrebări, zero sfaturi." data-i18n-en="In a real (non-coaching) conversation, count how many pieces of advice you give. Next conversation: questions only, zero advice.">Într-o conversație reală (nu de coaching), numără câte sfaturi dai. Următoarea conversație: doar întrebări, zero sfaturi.</span></td><td><span data-i18n-ro="Sfatul devine excepție, nu reflex." data-i18n-en="Advice becomes the exception, not the reflex.">Sfatul devine excepție, nu reflex.</span></td><td><span data-i18n-ro="Jurnal pe 5 conversații: câte sfaturi, ce ai fi întrebat în schimb." data-i18n-en="Log across 5 conversations: how many advice moments, what you would have asked instead.">Jurnal pe 5 conversații: câte sfaturi, ce ai fi întrebat în schimb.</span></td></tr>
+          <tr><td><b>3.</b> <span data-i18n-ro="Acorduri clare" data-i18n-en="Agreements">Acorduri clare</span></td><td><span data-i18n-ro="Contractează în maximum 3 minute: subiectul, criteriul de succes, ce rămâne în afara scopului." data-i18n-en="Contract in three minutes max: the topic, the success criterion, what stays out of scope.">Contractează în maximum 3 minute: subiectul, criteriul de succes, ce rămâne în afara scopului.</span></td><td><span data-i18n-ro="Clientul formulează singur „asta e tema” și „aici ne oprim”." data-i18n-en="The client says the topic and the boundary themselves.">Clientul formulează singur „asta e tema” și „aici ne oprim”.</span></td><td><span data-i18n-ro="3 note de sesiune cu contractul scris de mână de client." data-i18n-en="3 session notes with the agreement written in the client’s own words.">3 note de sesiune cu contractul scris de mână de client.</span></td></tr>
+          <tr><td><b>4.</b> <span data-i18n-ro="Încredere și siguranță" data-i18n-en="Trust &amp;amp; safety">Încredere și siguranță</span></td><td><span data-i18n-ro="Exersează 10 secunde de tăcere după fiecare răspuns care atinge o zonă sensibilă." data-i18n-en="Practise 10 seconds of silence after every answer that touches something tender.">Exersează 10 secunde de tăcere după fiecare răspuns care atinge o zonă sensibilă.</span></td><td><span data-i18n-ro="Clientul aduce subiecte pe care la început le ocolea." data-i18n-en="The client brings up topics they initially avoided.">Clientul aduce subiecte pe care la început le ocolea.</span></td><td><span data-i18n-ro="Reflexie scrisă după sesiune: ce anume a crescut siguranța." data-i18n-en="A written reflection after the session: what exactly increased safety.">Reflexie scrisă după sesiune: ce anume a crescut siguranța.</span></td></tr>
+          <tr><td><b>5.</b> <span data-i18n-ro="Prezență" data-i18n-en="Presence">Prezență</span></td><td><span data-i18n-ro="Înainte de sesiune, notează 3 cuvinte despre cum ești tu acum; primele 10 minute, fără notițe." data-i18n-en="Before the session, note three words about how you are right now; first 10 minutes, no notes.">Înainte de sesiune, notează 3 cuvinte despre cum ești tu acum; primele 10 minute, fără notițe.</span></td><td><span data-i18n-ro="Nu mai pierzi firul când clientul se contrazice." data-i18n-en="You no longer lose the thread when the client contradicts themselves.">Nu mai pierzi firul când clientul se contrazice.</span></td><td><span data-i18n-ro="5 auto-observații înainte/după sesiune, cu o frază despre impact." data-i18n-en="5 before/after self-observations, each with one sentence on the impact.">5 auto-observații înainte/după sesiune, cu o frază despre impact.</span></td></tr>
+          <tr><td><b>6.</b> <span data-i18n-ro="Ascultare activă" data-i18n-en="Active listening">Ascultare activă</span></td><td><span data-i18n-ro="Înainte de următoarea întrebare, rezumă în 20 de secunde miezul a ce ai auzit." data-i18n-en="Before the next question, summarise the essence of what you heard in 20 seconds.">Înainte de următoarea întrebare, rezumă în 20 de secunde miezul a ce ai auzit.</span></td><td><span data-i18n-ro="Clientul spune „exact” fără să corecteze." data-i18n-en="The client says “exactly” without correcting you.">Clientul spune „exact” fără să corecteze.</span></td><td><span data-i18n-ro="5 rezumate notate + reacția clientului la fiecare." data-i18n-en="5 logged summaries + the client’s reaction to each.">5 rezumate notate + reacția clientului la fiecare.</span></td></tr>
+          <tr><td><b>7.</b> <span data-i18n-ro="Conștientizare provocată" data-i18n-en="Evokes awareness">Conștientizare provocată</span></td><td><span data-i18n-ro="O singură întrebare puternică pe sesiune, apoi tăcere. Interzis să explici tu." data-i18n-en="One powerful question per session, then silence. You are not allowed to explain.">O singură întrebare puternică pe sesiune, apoi tăcere. Interzis să explici tu.</span></td><td><span data-i18n-ro="Insightul vine din vocea clientului, nu din a ta." data-i18n-en="The insight comes from the client’s voice, not yours.">Insightul vine din vocea clientului, nu din a ta.</span></td><td><span data-i18n-ro="3 momente „aha” notate împreună cu întrebarea care le-a produs." data-i18n-en="3 “aha” moments logged together with the question that produced them.">3 momente „aha” notate împreună cu întrebarea care le-a produs.</span></td></tr>
+          <tr><td><b>8.</b> <span data-i18n-ro="Facilitarea creșterii" data-i18n-en="Facilitates growth">Facilitarea creșterii</span></td><td><span data-i18n-ro="Închide fiecare sesiune cu un angajament datat și un prim pas de maximum 10 minute." data-i18n-en="Close every session with a dated commitment and a first step of no more than 10 minutes.">Închide fiecare sesiune cu un angajament datat și un prim pas de maximum 10 minute.</span></td><td><span data-i18n-ro="Rata acțiunilor îndeplinite între sesiuni crește." data-i18n-en="The share of actions completed between sessions grows.">Rata acțiunilor îndeplinite între sesiuni crește.</span></td><td><span data-i18n-ro="Jurnal promis vs. realizat, pe 10 sesiuni." data-i18n-en="Promised vs. delivered log across 10 sessions.">Jurnal promis vs. realizat, pe 10 sesiuni.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 06 INSTRUMENTE -->
+  <section class="doc-sec" id="instrumente">
+    <h2><span class="num">06</span><span data-i18n-ro="Instrumente și fișe de lucru" data-i18n-en="Instruments &amp; worksheets">Instrumente și fișe de lucru</span></h2>
+    <p class="intro" data-i18n-ro="Instrumentele nu fac munca în locul coach-ului, dar oferă un punct de plecare când clientul e blocat. Le listăm aici, cu locul lor în proces." data-i18n-en="Instruments don't do the work for the coach, but they give a starting point when the client is stuck. We list them here with their place in the process.">Instrumentele nu fac munca în locul coach-ului, dar oferă un punct de plecare când clientul e blocat. Le listăm aici, cu locul lor în proces.</p>
+
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="m-name">Wheel of Life</div>
+        <h4 data-i18n-ro="Bilanț de viață" data-i18n-en="Life balance">Bilanț de viață</h4>
+        <p data-i18n-ro="8–10 domenii, scor 1–10, decalajul dintre important și satisfăcut." data-i18n-en="8–10 areas, scored 1–10, gap between importance and satisfaction.">8–10 domenii, scor 1–10, decalajul dintre important și satisfăcut.</p>
+        <ol><li data-i18n-ro="Intake" data-i18n-en="Intake">Intake</li><li data-i18n-ro="La 3 luni" data-i18n-en="At 3 months">La 3 luni</li></ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Values</div>
+        <h4 data-i18n-ro="Clarificarea valorilor" data-i18n-en="Values clarification">Clarificarea valorilor</h4>
+        <p data-i18n-ro="Sortare de cărți de valori, reducere la 5, test de decizie reală." data-i18n-en="Values card sort, reduction to five, real-decision test.">Sortare de cărți de valori, reducere la 5, test de decizie reală.</p>
+        <ol><li data-i18n-ro="Carieră" data-i18n-en="Career">Carieră</li><li data-i18n-ro="Decizii majore" data-i18n-en="Major decisions">Decizii majore</li></ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Scaling 1–10</div>
+        <h4 data-i18n-ro="Măsurare rapidă" data-i18n-en="Quick measurement">Măsurare rapidă</h4>
+        <p data-i18n-ro="Unde ești, de ce nu mai jos, ce ar face diferența de un punct." data-i18n-en="Where you are, why not lower, what would move one point.">Unde ești, de ce nu mai jos, ce ar face diferența de un punct.</p>
+        <ol><li data-i18n-ro="Orice moment" data-i18n-en="Any moment">Orice moment</li></ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Stakeholder map</div>
+        <h4 data-i18n-ro="Harta părților implicate" data-i18n-en="Stakeholder map">Harta părților implicate</h4>
+        <p data-i18n-ro="Cine contează în decizie, ce vrea fiecare, ce riscuri." data-i18n-en="Who matters in the decision, what each wants, what the risks are.">Cine contează în decizie, ce vrea fiecare, ce riscuri.</p>
+        <ol><li data-i18n-ro="Leadership" data-i18n-en="Leadership">Leadership</li></ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Energy audit</div>
+        <h4 data-i18n-ro="Audit de energie" data-i18n-en="Energy audit">Audit de energie</h4>
+        <p data-i18n-ro="Ce îți dă și ce îți ia energie, pe o săptămână." data-i18n-en="What gives and what drains energy, across a week.">Ce îți dă și ce îți ia energie, pe o săptămână.</p>
+        <ol><li>Burnout</li><li data-i18n-ro="Reconversie" data-i18n-en="Retraining">Reconversie</li></ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Future letter</div>
+        <h4 data-i18n-ro="Scrisoare din viitor" data-i18n-en="Letter from the future">Scrisoare din viitor</h4>
+        <p data-i18n-ro="Clientul își scrie din viitorul rezolvat — ancoră puternică." data-i18n-en="The client writes from the resolved future — a powerful anchor.">Clientul își scrie din viitorul rezolvat — ancoră puternică.</p>
+        <ol><li data-i18n-ro="Blocaj" data-i18n-en="Stuck">Blocaj</li><li data-i18n-ro="Viziune" data-i18n-en="Vision">Viziune</li></ol>
+      </div>
+    </div>
+
+        <div class="plan-block">
+      <h3 data-i18n-ro="Cum se administrează, cât durează și cum se citește" data-i18n-en="How to run it, how long it takes, how to read it">Cum se administrează, cât durează și cum se citește</h3>
+      <p class="intro" data-i18n-ro="Instrumentele nu sunt teste psihometrice și nu produc un diagnostic. Sunt unelte de conversație: deschid material pe care întrebarea goală nu îl scoate." data-i18n-en="These instruments are not psychometric tests and produce no diagnosis. They are conversation tools: they open material that an empty question does not reach.">Instrumentele nu sunt teste psihometrice și nu produc un diagnostic. Sunt unelte de conversație: deschid material pe care întrebarea goală nu îl scoate.</p>
+      <table class="plan-table" aria-label="Cum se administrează, cât durează și cum se citește — tabel">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n-ro="Instrument" data-i18n-en="Instrument">Instrument</th>
+            <th scope="col" data-i18n-ro="Când se folosește" data-i18n-en="When to use it">Când se folosește</th>
+            <th scope="col" data-i18n-ro="Timp" data-i18n-en="Time">Timp</th>
+            <th scope="col" data-i18n-ro="Cum se citește" data-i18n-en="How to read it">Cum se citește</th>
+            <th scope="col" data-i18n-ro="Semnale de interpretare greșită" data-i18n-en="Misreading signals">Semnale de interpretare greșită</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><b><span data-i18n-ro="Sortarea valorilor" data-i18n-en="Values sort">Sortarea valorilor</span></b></td><td><span data-i18n-ro="La început de program sau la realiniere" data-i18n-en="At the start, or when realigning">La început de program sau la realiniere</span></td><td><span data-i18n-ro="20–25 min" data-i18n-en="20–25 min">20–25 min</span></td><td><span data-i18n-ro="Nu ce alege, ci ce reapară în argumentele lui: valorile se trădează prin criteriile de decizie." data-i18n-en="Not what they pick but what reappears in their reasoning: values show up in decision criteria.">Nu ce alege, ci ce reapară în argumentele lui: valorile se trădează prin criteriile de decizie.</span></td><td><span data-i18n-ro="Accepți lista ideală fără test de decizie reală." data-i18n-en="Accepting the ideal list without a real decision test.">Accepți lista ideală fără test de decizie reală.</span></td></tr>
+          <tr><td><b><span data-i18n-ro="Scara 1–10" data-i18n-en="Scaling 1–10">Scara 1–10</span></b></td><td><span data-i18n-ro="Oricând, ca termometru" data-i18n-en="Any time, as a thermometer">Oricând, ca termometru</span></td><td><span data-i18n-ro="3–5 min" data-i18n-en="3–5 min">3–5 min</span></td><td><span data-i18n-ro="Contează diferența dintre „cum e” și „cum ar fi acceptabil”, nu cifra în sine." data-i18n-en="What matters is the gap between “how it is” and “what would be acceptable”, not the number.">Contează diferența dintre „cum e” și „cum ar fi acceptabil”, nu cifra în sine.</span></td><td><span data-i18n-ro="Folosești cifra ca verdict, în loc de punct de plecare." data-i18n-en="Using the number as a verdict instead of a starting point.">Folosești cifra ca verdict, în loc de punct de plecare.</span></td></tr>
+          <tr><td><b><span data-i18n-ro="Harta părților implicate" data-i18n-en="Stakeholder map">Harta părților implicate</span></b></td><td><span data-i18n-ro="Înainte de o decizie care îi afectează pe alții" data-i18n-en="Before a decision that affects others">Înainte de o decizie care îi afectează pe alții</span></td><td><span data-i18n-ro="15 min" data-i18n-en="15 min">15 min</span></td><td><span data-i18n-ro="Cine poate bloca, cine poate susține, ce pierde fiecare dacă lucrurile se schimbă." data-i18n-en="Who can block, who can support, what each stands to lose if things change.">Cine poate bloca, cine poate susține, ce pierde fiecare dacă lucrurile se schimbă.</span></td><td><span data-i18n-ro="Harta devine temă birocratică, fără o decizie în spate." data-i18n-en="The map becomes paperwork with no decision behind it.">Harta devine temă birocratică, fără o decizie în spate.</span></td></tr>
+          <tr><td><b><span data-i18n-ro="Auditul de energie" data-i18n-en="Energy audit">Auditul de energie</span></b></td><td><span data-i18n-ro="Burnout, priorități, „nu mai am timp”" data-i18n-en="Burnout, priorities, “I have no time”">Burnout, priorități, „nu mai am timp”</span></td><td><span data-i18n-ro="15 min + o săptămână de notat" data-i18n-en="15 min + a week of logging">15 min + o săptămână de notat</span></td><td><span data-i18n-ro="Se caută tiparul pe săptămână, nu ziua bună sau proastă." data-i18n-en="Look for the weekly pattern, not the good or bad day.">Se caută tiparul pe săptămână, nu ziua bună sau proastă.</span></td><td><span data-i18n-ro="Generalizezi dintr-o singură zi notată." data-i18n-en="Generalising from a single logged day.">Generalizezi dintr-o singură zi notată.</span></td></tr>
+          <tr><td><b><span data-i18n-ro="Scrisoarea din viitor" data-i18n-en="Letter from the future">Scrisoarea din viitor</span></b></td><td><span data-i18n-ro="Blocaj, lipsă de viziune" data-i18n-en="Stuck, lack of vision">Blocaj, lipsă de viziune</span></td><td><span data-i18n-ro="15 min de scris + citit cu voce tare" data-i18n-en="15 min writing + reading aloud">15 min de scris + citit cu voce tare</span></td><td><span data-i18n-ro="Portretul „celui de după”: ce face diferit, ce a renunțat să mai facă." data-i18n-en="The portrait of “the one after”: what they do differently, what they stopped doing.">Portretul „celui de după”: ce face diferit, ce a renunțat să mai facă.</span></td><td><span data-i18n-ro="O folosești ca promisiune de rezultat în loc de ancoră de lucru." data-i18n-en="Using it as an outcome promise instead of a working anchor.">O folosești ca promisiune de rezultat în loc de ancoră de lucru.</span></td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <b data-i18n-ro="Regulă:" data-i18n-en="Rule:">Regulă:</b>
+        <span data-i18n-ro=" maximum un instrument pe sesiune. Două instrumente într-o oră produc date, nu schimbare." data-i18n-en=" at most one instrument per session. Two instruments in an hour produce data, not change."> maximum un instrument pe sesiune. Două instrumente într-o oră produc date, nu schimbare.</span>
+      </div>
+    </div>
+      <span data-i18n-ro="fișele propriu-zise (PDF/printabile), instrucțiuni de administrare, timp estimat și semnale deInterpretare greșită." data-i18n-en="the actual worksheets (PDF/printable), administration instructions, estimated time and misreading signals.">fișele propriu-zise (PDF/printabile), instrucțiuni de administrare, timp estimat și semnale de interpretare greșită.</span>
+    </div>
+  </section>
+
+  <!-- 07 JURNAL -->
+  <section class="doc-sec" id="jurnal">
+    <h2><span class="num">07</span><span data-i18n-ro="Jurnal de practică (ore logate)" data-i18n-en="Practice log (tracked hours)">Jurnal de practică (ore logate)</span></h2>
+    <p class="intro" data-i18n-ro="Pentru certificare, ICF cere dovada orelor: client, dată, durată, tip (plătit/pro bono), temă. Structura de mai jos este modelul de jurnale care trece o verificare." data-i18n-en="For credentialing, ICF requires evidence of hours: client, date, duration, type (paid/pro bono), topic. The structure below is the log format that survives an audit.">Pentru certificare, ICF cere dovada orelor: client, dată, durată, tip (plătit/pro bono), temă. Structura de mai jos este modelul de jurnal care trece o verificare.</p>
+
+    <div class="plan-block">
+      <table class="plan-table" aria-label="07Jurnal de practică (ore logate) — tabel">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n-ro="Data" data-i18n-en="Date">Data</th>
+            <th scope="col" data-i18n-ro="Client (inițiale)" data-i18n-en="Client (initials)">Client (inițiale)</th>
+            <th scope="col" data-i18n-ro="Durată" data-i18n-en="Duration">Durată</th>
+            <th scope="col" data-i18n-ro="Tip" data-i18n-en="Type">Tip</th>
+            <th scope="col" data-i18n-ro="Cumulative" data-i18n-en="Cumulative">Cumulative</th>
+            <th scope="col" data-i18n-ro="Notă de reflecție" data-i18n-en="Reflection note">Notă de reflecție</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <b data-i18n-ro="Regula de aur a jurnalului:" data-i18n-en="The golden rule of the log:">Regula de aur a jurnalului:</b>
+      <span data-i18n-ro=" notezi în aceeași zi, nu „recuperezi” la final de lună. Un jurnal reconstruit din memorie este primul lucru care se vede la un audit." data-i18n-en=" log the same day, don't &quot;catch up&quot; at month end. A log rebuilt from memory is the first thing an audit spots."> notezi în aceeași zi, nu „recuperezi” la final de lună. Un jurnal reconstruit din memorie este primul lucru care se vede la un audit.</span>
+    </div>
+  </section>
+
+  <!-- 08 EVALUARE -->
+  <section class="doc-sec" id="evaluare">
+    <h2><span class="num">08</span><span data-i18n-ro="Rubrică de autoevaluare" data-i18n-en="Self-evaluation rubric">Rubrică de autoevaluare</span></h2>
+    <p class="intro" data-i18n-ro="După fiecare sesiune, 60 de secunde de autoevaluare fac mai mult decât 10 sesiuni fără reflecție. Scala de mai jos este adaptată după logica marcatorilor ICF." data-i18n-en="After each session, 60 seconds of self-evaluation do more than 10 sessions without reflection. The scale below adapts ICF marker logic.">După fiecare sesiune, 60 de secunde de autoevaluare fac mai mult decât 10 sesiuni fără reflecție. Scala de mai jos este adaptată după logica marcatorilor ICF.</p>
+
+    <div class="plan-block">
+      <table class="plan-table" aria-label="08Rubrică de autoevaluare — tabel">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n-ro="Dimensiune" data-i18n-en="Dimension">Dimensiune</th>
+            <th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th>
+            <th scope="col" data-i18n-ro="Observație" data-i18n-en="Note">Observație</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-i18n-ro="Am contractat clar sesiunea" data-i18n-en="I contracted the session clearly">Am contractat clar sesiunea</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Am ascultat mai mult decât am vorbit" data-i18n-en="I listened more than I spoke">Am ascultat mai mult decât am vorbit</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Am reflectat esența, nu doar cuvintele" data-i18n-en="I reflected essence, not just words">Am reflectat esența, nu doar cuvintele</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Am rezistat să dau soluții" data-i18n-en="I resisted giving solutions">Am rezistat să dau soluții</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="Clientul a plecat cu o acțiune asumată" data-i18n-en="The client left with an owned action">Clientul a plecat cu o acțiune asumată</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">·</td><td class="empty">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-muted" style="font-size:13px">
+      <span data-i18n-ro="Scala: 0 = absent · 1 = prezent, dar mecanic · 2 = competent · 3 = natural, integrat." data-i18n-en="Scale: 0 = absent · 1 = present but mechanical · 2 = competent · 3 = natural, integrated.">Scala: 0 = absent · 1 = prezent, dar mecanic · 2 = competent · 3 = natural, integrat.</span>
+    </p>
+  </section>
+
+  <!-- 09 ETICĂ -->
+  <section class="doc-sec" id="etic">
+    <h2><span class="num">09</span><span data-i18n-ro="Etică și riscuri specifice 1:1" data-i18n-en="Ethics and risks specific to 1:1">Etică și riscuri specifice 1:1</span></h2>
+    <ul class="bullets">
+      <li><b data-i18n-ro="Dubla relație." data-i18n-en="Dual relationships.">Dubla relație.</b> <span data-i18n-ro="coaching pentru prieteni, rude sau subordonați direcți — de evitat sau tratat explicit în contract." data-i18n-en="coaching friends, relatives or direct reports — avoid or handle explicitly in the contract.">coaching pentru prieteni, rude sau subordonați direcți — de evitat sau tratat explicit în contract.</span></li>
+      <li><b data-i18n-ro="Înlocuirea terapiei." data-i18n-en="Substituting therapy.">Înlocuirea terapiei.</b> <span data-i18n-ro="cel mai mare risc: clientul cu suferință clinică tratat ca „caz de dezvoltare”." data-i18n-en="the biggest risk: the client with clinical suffering treated as a development case.">cel mai mare risc: clientul cu suferință clinică tratat ca „caz de dezvoltare”.</span></li>
+      <li><b data-i18n-ro="Dependența." data-i18n-en="Dependency.">Dependența.</b> <span data-i18n-ro="prelungirea procesului fără obiective noi transformă coachingul în socializare plătită." data-i18n-en="extending the process without new goals turns coaching into paid socialising.">prelungirea procesului fără obiective noi transformă coachingul în socializare plătită.</span></li>
+      <li><b data-i18n-ro="Confidențialitatea încorporată." data-i18n-en="Corporate confidentiality.">Confidențialitatea încorporată.</b> <span data-i18n-ro="când plătește angajatorul, clarifici din prima ședință ce se raportează și ce nu." data-i18n-en="when the employer pays, clarify from session one what gets reported and what doesn't.">când plătește angajatorul, clarifici din prima ședință ce se raportează și ce nu.</span></li>
+      <li><b data-i18n-ro="Datele personale." data-i18n-en="Personal data.">Datele personale.</b> <span data-i18n-ro="notițele de sesiune sunt date cu caracter personal: stocare, termen de păstrare, drept de ștergere (GDPR)." data-i18n-en="session notes are personal data: storage, retention period, right to erasure (GDPR).">notițele de sesiune sunt date cu caracter personal: stocare, termen de păstrare, drept de ștergere (GDPR).</span></li>
+    </ul>
+  </section>
+
+  <!-- 10 DE POPULAT -->
+  <section class="doc-sec" id="populat">
+    <h2><span class="num">10</span><span data-i18n-ro="Ce rămâne de populat" data-i18n-en="What's left to populate">Ce rămâne de populat</span></h2>
+    <p class="intro" data-i18n-ro="Structura de mai sus este completă. Următoarele elemente sunt sloturi deschise — le completăm pe rând, în ordinea asta:" data-i18n-en="The structure above is complete. The following are open slots — we'll fill them one by one, in this order:">Structura de mai sus este completă. Următoarele elemente sunt sloturi deschise — le completăm pe rând, în ordinea asta:</p>
+
+    <div class="plan-block">
+      <table class="plan-table" aria-label="10Ce rămâne de populat — tabel">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" data-i18n-ro="Element" data-i18n-en="Item">Element</th>
+            <th scope="col" data-i18n-ro="Unde intră" data-i18n-en="Where it goes">Unde intră</th>
+            <th scope="col" data-i18n-ro="Stare" data-i18n-en="Status">Stare</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td data-i18n-ro="Fișă de intake (întrebări complete)" data-i18n-en="Intake form (full questions)">Fișă de intake (întrebări complete)</td><td data-i18n-ro="Etapa 1" data-i18n-en="Stage 1">Etapa 1</td><td><span class="tag tag-ok" data-i18n-ro="complet" data-i18n-en="done">complet</tr>
+          <tr><td>2</td><td data-i18n-ro="Model de contract + GDPR" data-i18n-en="Contract template + GDPR">Model de contract + GDPR</td><td data-i18n-ro="Etapa 2" data-i18n-en="Stage 2">Etapa 2</td><td><span class="tag tag-ok" data-i18n-ro="complet" data-i18n-en="done">complet</tr>
+          <tr><td>3</td><td data-i18n-ro="Banca de întrebări (8 categorii × 8)" data-i18n-en="Question bank (8 categories × 8)">Banca de întrebări (8 categorii × 8)</td><td data-i18n-ro="Secțiunea 04" data-i18n-en="Section 04">Secțiunea 04</td><td><span class="tag tag-ok" data-i18n-ro="complet" data-i18n-en="done">complet</span></td></tr>
+          <tr><td>4</td><td data-i18n-ro="Exerciții pe competențe (8 rânduri)" data-i18n-en="Competency drills (8 rows)">Exerciții pe competențe (8 rânduri)</td><td data-i18n-ro="Secțiunea 05" data-i18n-en="Section 05">Secțiunea 05</td><td><span class="tag tag-ok" data-i18n-ro="complet" data-i18n-en="done">complet</tr>
+          <tr><td>5</td><td data-i18n-ro="Fișe de lucru (PDF/printabile)" data-i18n-en="Worksheets (PDF/printable)">Fișe de lucru (PDF/printabile)</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-gray" data-i18n-ro="instrucțiuni incluse, PDF-urile urmează" data-i18n-en="instructions included, PDFs to come">instrucțiuni incluse, PDF-urile urmează</tr>
+          <tr><td>6</td><td data-i18n-ro="Model de jurnal (CSV/Excel)" data-i18n-en="Log template (CSV/Excel)">Model de jurnal (CSV/Excel)</td><td data-i18n-ro="Secțiunea 07" data-i18n-en="Section 07">Secțiunea 07</td><td><span class="tag tag-gray" data-i18n-ro="în lucru" data-i18n-en="in progress">în lucru</span></td></tr>
+          <tr><td>7</td><td data-i18n-ro="Studii de caz (sesiuni anonimizate)" data-i18n-en="Case studies (anonymised sessions)">Studii de caz (sesiuni anonimizate)</td><td data-i18n-ro="Secțiune nouă" data-i18n-en="New section">Secțiune nouă</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="doc-next">
+    <a href="teorie.html">
+      <div class="dn-k" data-i18n-ro="Înapoi" data-i18n-en="Back">Înapoi</div>
+      <div class="dn-t" data-i18n-ro="Teoria coachingului" data-i18n-en="Coaching theory">Teoria coachingului</div>
+      <div class="dn-d" data-i18n-ro="Definiții, istoric, competențe, etică, mituri." data-i18n-en="Definitions, history, competencies, ethics, myths.">Definiții, istoric, competențe, etică, mituri.</div>
+    </a>
+    <a href="echipa.html">
+      <div class="dn-k" data-i18n-ro="La fel de important" data-i18n-en="Equally important">La fel de important</div>
+      <div class="dn-t" data-i18n-ro="Coaching de echipă" data-i18n-en="Team coaching">Coaching de echipă</div>
+      <div class="dn-d" data-i18n-ro="Cealaltă disciplină: sisteme, diagnostic, intervenție la nivel de echipă." data-i18n-en="The other discipline: systems, diagnostics, intervention at team level.">Cealaltă disciplină: sisteme, diagnostic, intervenție la nivel de echipă.</div>
+    </a>
+  </div>
+
+  </div>
+</div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="logo-badge" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+            </svg>
+          </span>
+          Coaching Learning Path
+        </div>
+        <p class="disc" data-i18n-ro="Instrument educațional independent, bilingv RO/EN. Informațiile au caracter orientativ — verifică întotdeauna pe sursele oficiale." data-i18n-en="An independent, bilingual RO/EN educational tool. Information is indicative — always verify against the official sources.">Instrument educațional independent, bilingv RO/EN. Informațiile au caracter orientativ — verifică întotdeauna pe sursele oficiale.</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Pagini" data-i18n-en="Pages">Pagini</h5>
+        <a href="incepe.html" data-i18n-ro="Începe aici" data-i18n-en="Start here">Începe aici</a>
+        <a href="index.html#harta" data-i18n-ro="Harta interactivă" data-i18n-en="Interactive map">Harta interactivă</a>
+        <a href="teorie.html" data-i18n-ro="Teoria coachingului" data-i18n-en="Coaching theory">Teoria coachingului</a>
+        <a href="individual.html" data-i18n-ro="Coaching 1:1" data-i18n-en="1:1 coaching">Coaching 1:1</a>
+        <a href="echipa.html" data-i18n-ro="Coaching de echipă" data-i18n-en="Team coaching">Coaching de echipă</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Certificare" data-i18n-en="Credentials">Certificare</h5>
+        <a href="index.html#paths" data-i18n-ro="Learning paths" data-i18n-en="Learning paths">Learning paths</a>
+        <a href="index.html#credentials" data-i18n-ro="Bibliotecă de certificări" data-i18n-en="Credential library">Bibliotecă de certificări</a>
+        <a href="index.html#transitions" data-i18n-ro="Treceri între sisteme" data-i18n-en="Bridges between systems">Treceri între sisteme</a>
+        <a href="index.html#schools" data-i18n-ro="Școli din România" data-i18n-en="Schools in Romania">Școli din România</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Surse" data-i18n-en="Sources">Surse</h5>
+        <a href="index.html#sources" data-i18n-ro="Surse oficiale" data-i18n-en="Official sources">Surse oficiale</a>
+        <a href="index.html#faq" data-i18n-ro="FAQ &amp; glosar" data-i18n-en="FAQ &amp; glossary">FAQ &amp; glosar</a>
+        <a href="index.html#costs" data-i18n-ro="Costuri" data-i18n-en="Costs">Costuri</a>
+        <a href="index.html" data-i18n-ro="Acasă" data-i18n-en="Home">Acasă</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>
+        <a href="legal.html" style="color:rgba(255,255,255,.72)" data-i18n-ro="Termeni · Confidențialitate" data-i18n-en="Terms · Privacy">Termeni · Confidențialitate</a>
+        <span style="opacity:.4"> · </span>
+        <a href="legal.html#corectii" style="color:rgba(255,255,255,.72)" data-i18n-ro="Raportează o greșeală" data-i18n-en="Report an error">Raportează o greșeală</a>
+        <span style="opacity:.4"> · </span>
+        © 2026 <span data-i18n-ro="gratuit, offline, fără cont" data-i18n-en="free, offline, no account">gratuit, offline, fără cont</span>
+      </span>
+      <span data-i18n-ro="Neafiliat ICF · EMCC · ANC" data-i18n-en="Not affiliated with ICF · EMCC · ANC">Neafiliat ICF · EMCC · ANC</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="to-top" id="toTop" aria-label="Înapoi sus">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="assets/js/data.js?v=1.7.0"></script>
+<script src="assets/js/site.js?v=1.7.0"></script>
+<script src="assets/js/credibility.js?v=1.7.0"></script>
+<script src="assets/js/plan.js?v=1.7.0"></script>
+<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('#toc a'));
+  if(!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var secs = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if(a){
+          a.classList.add('active');
+          var box = document.getElementById('toc');
+          if(box && box.scrollHeight > box.clientHeight){
+            var r = a.getBoundingClientRect(), br = box.getBoundingClientRect();
+            if(r.top < br.top || r.bottom > br.bottom) a.scrollIntoView({block:'nearest'});
+          }
+        }
+      }
+    });
+  }, { rootMargin:'-25% 0px -65% 0px' });
+  secs.forEach(function(s){ io.observe(s); });
+})();
+</script>
+</body>
+</html>

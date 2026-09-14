@@ -1,0 +1,7 @@
+# Coaching Learning Path — reguli pentru roboți
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /data/
+
+Sitemap: https://ionutbaban7-bit.github.io/coaching-path/sitemap.xml
