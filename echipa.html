@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching de echipă — plan complex · Coaching Learning Path</title>
+<meta name="description" content="Plan complex de coaching de echipă: ce este, diferența față de facilitare și team building, modele de diagnostic, arhitectură de program pe 6 luni, instrumente, metrici și capcane.">
+<meta name="theme-color" content="#4b57d4">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Coaching de echipă — plan complex">
+<meta property="og:description" content="Altă disciplină decât coachingul 1:1: sisteme, diagnostic, arhitectură de intervenție, instrumente și metrici.">
+<meta property="og:image" content="assets/img/og-cover.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('cp_theme');
+    if(!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+})();
+</script>
+</head>
+
+<body data-page="team">
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Sari direct la conținut</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="index.html" aria-label="Coaching Learning Path — acasă">
+      <span class="logo-badge" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <b>Coaching Learning Path</b>
+        <span data-i18n-ro="Hartă · Teorie · Certificare" data-i18n-en="Map · Theory · Credentials">Hartă · Teorie · Certificare</span>
+      </span>
+    </a>
+    <nav class="navlinks" id="navlinks" aria-label="Navigare principală"></nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Comută tema">
+        <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>
+        </svg>
+      </button>
+      <button class="lang-btn" id="langBtn"><span class="flag" id="langFlag">🇬🇧</span><span id="langLabel">EN</span></button>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-label="Meniu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="page-hero">
+  <div class="wrap page-hero-grid">
+    <div>
+      <nav class="crumbs" aria-label="Firimituri">
+        <a href="index.html" data-i18n-ro="Acasă" data-i18n-en="Home">Acasă</a>
+        <span class="sep">/</span>
+        <span data-i18n-ro="Coaching de echipă" data-i18n-en="Team coaching">Coaching de echipă</span>
+      </nav>
+      <span class="pill"><span class="dot"></span>
+        <span data-i18n-ro="Structură complexă · gata de populat" data-i18n-en="Complex structure · ready to populate">Structură complexă · gata de populat</span>
+      </span>
+      <h1>
+        <span data-i18n-ro="Planul complet pentru " data-i18n-en="The complete plan for ">Planul complet pentru </span>
+        <span class="grad-text" data-i18n-ro="coaching de echipă" data-i18n-en="team coaching">coaching de echipă</span>
+      </h1>
+      <p class="lead" data-i18n-ro="Coachingul de echipă nu este „coaching 1:1 ținut în sală”. Clientul este echipa ca sistem, nu persoana. Aici sunt modelele, arhitectura de program, instrumentele de diagnostic, metricile și capcanele — cu locurile unde urmează să populăm conținutul vostru." data-i18n-en="Team coaching is not "1:1 coaching done in a meeting room". The client is the team as a system, not the person. Here are the models, the programme architecture, the diagnostic instruments, the metrics and the pitfalls — with the slots where your content goes next.">Coachingul de echipă nu este „coaching 1:1 ținut în sală”. Clientul este echipa ca sistem, nu persoana. Aici sunt modelele, arhitectura de program, instrumentele de diagnostic, metricile și capcanele — cu locurile unde urmează să populăm conținutul vostru.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#arhitectura" data-i18n-ro="Vezi arhitectura pe 6 luni" data-i18n-en="See the 6-month architecture">Vezi arhitectura pe 6 luni</a>
+        <a class="btn btn-ghost" href="#diferente" data-i18n-ro="Diferențele față de facilitare" data-i18n-en="How it differs from facilitation">Diferențele față de facilitare</a>
+      </div>
+    </div>
+    <img class="page-hero-art" src="assets/img/hero-echipa.png" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<div class="wrap">
+<div class="doc-layout">
+
+  <aside class="toc" id="toc">
+    <h5 data-i18n-ro="Cuprins" data-i18n-en="Contents">Cuprins</h5>
+    <a href="#ce-este">01 · <span data-i18n-ro="Ce este" data-i18n-en="What it is">Ce este</span></a>
+    <a href="#diferente">02 · <span data-i18n-ro="Diferențe" data-i18n-en="Differences">Diferențe</span></a>
+    <a href="#cand">03 · <span data-i18n-ro="Când are sens" data-i18n-en="When it makes sense">Când are sens</span></a>
+    <a href="#modele">04 · <span data-i18n-ro="Modele de bază" data-i18n-en="Core models">Modele de bază</span></a>
+    <a href="#arhitectura">05 · <span data-i18n-ro="Arhitectura programului" data-i18n-en="Programme architecture">Arhitectura</span></a>
+    <a href="#diagnostic">06 · <span data-i18n-ro="Instrumente de diagnostic" data-i18n-en="Diagnostic instruments">Diagnostic</span></a>
+    <a href="#competente">07 · <span data-i18n-ro="Competențe ACTC / ITCA" data-i18n-en="ACTC / ITCA competencies">Competențe</span></a>
+    <a href="#metrici">08 · <span data-i18n-ro="Metrici și ROI" data-i18n-en="Metrics &amp; ROI">Metrici și ROI</span></a>
+    <a href="#capcane">09 · <span data-i18n-ro="Capcane" data-i18n-en="Pitfalls">Capcane</span></a>
+    <a href="#populat">10 · <span data-i18n-ro="Ce rămâne de populat" data-i18n-en="What's left to populate">Ce rămâne de populat</span></a>
+  </aside>
+
+  <div>
+
+  <!-- 01 CE ESTE -->
+  <section class="doc-sec" id="ce-este">
+    <h2><span class="num">01</span><span data-i18n-ro="Ce este coachingul de echipă" data-i18n-en="What team coaching is">Ce este coachingul de echipă</span></h2>
+    <p class="intro" data-i18n-ro="Este un proces de dezvoltare în care clientul este echipa: scopul comun, relațiile interne, modul în care lucrează și felul în care se raportează la mediul său. Coach-ul lucrează cu sistemul, nu cu indivizii pe rând." data-i18n-en="It is a development process in which the client is the team: the shared purpose, internal relationships, how it works and how it relates to its environment. The coach works with the system, not with individuals one by one.">Este un proces de dezvoltare în care clientul este echipa: scopul comun, relațiile interne, modul în care lucrează și felul în care se raportează la mediul său. Coach-ul lucrează cu sistemul, nu cu indivizii pe rând.</p>
+
+    <div class="def-stack">
+      <div class="def-card">
+        <div class="who" data-i18n-ro="Repere ICF (ACTC)" data-i18n-en="ICF markers (ACTC)">Repere ICF (ACTC)</div>
+        <p data-i18n-ro="Advanced Certification in Team Coaching: lucrează cu echipa ca entitate, pe sistemul relațional și pe performanța colectivă, în parteneriat cu liderul și cu sponsorul." data-i18n-en="Advanced Certification in Team Coaching: working with the team as an entity, on the relational system and collective performance, in partnership with the leader and the sponsor.">Advanced Certification in Team Coaching: lucrează cu echipa ca entitate, pe sistemul relațional și pe performanța colectivă, în parteneriat cu liderul și cu sponsorul.</p>
+      </div>
+      <div class="def-card b-emcc">
+        <div class="who" data-i18n-ro="Repere EMCC (ITCA)" data-i18n-en="EMCC markers (ITCA)">Repere EMCC (ITCA)</div>
+        <p data-i18n-ro="Individual Team Coach Accreditation: niveluri Foundation → Practitioner → Senior Practitioner → Master, cu practică demonstrată cu echipe și supervizare." data-i18n-en="Individual Team Coach Accreditation: Foundation → Practitioner → Senior Practitioner → Master levels, with demonstrated team practice and supervision.">Individual Team Coach Accreditation: niveluri Foundation → Practitioner → Senior Practitioner → Master, cu practică demonstrată cu echipe și supervizare.</p>
+      </div>
+      <div class="def-card b-anc">
+        <div class="who" data-i18n-ro="În România" data-i18n-en="In Romania">În România</div>
+        <p data-i18n-ro="Nu există o ocupație separată pentru team coaching; cadrul legal rămâne COR 242412 (coach) și, pentru componenta de formare, Formator COR 242401." data-i18n-en="There is no separate occupation for team coaching; the legal frame stays COR 242412 (coach) and, for the training component, Trainer COR 242401.">Nu există o ocupație separată pentru team coaching; cadrul legal rămâne COR 242412 (coach) și, pentru componenta de formare, Formator COR 242401.</p>
+      </div>
+    </div>
+
+    <h3 data-i18n-ro="Cele trei niveluri la care lucrezi simultan" data-i18n-en="The three levels you work on at once">Cele trei niveluri la care lucrezi simultan</h3>
+    <ul class="bullets">
+      <li><b data-i18n-ro="Sarcina." data-i18n-en="Task.">Sarcina.</b> <span data-i18n-ro="scopul comun, prioritățile, deciziile, rezultatele livrate." data-i18n-en="shared purpose, priorities, decisions, delivered results.">scopul comun, prioritățile, deciziile, rezultatele livrate.</span></li>
+      <li><b data-i18n-ro="Procesul." data-i18n-en="Process.">Procesul.</b> <span data-i18n-ro="cum se iau deciziile, cum curge informația, cum se gestionează conflictul." data-i18n-en="how decisions get made, how information flows, how conflict is handled.">cum se iau deciziile, cum curge informația, cum se gestionează conflictul.</span></li>
+      <li><b data-i18n-ro="Relațiile." data-i18n-en="Relationships.">Relațiile.</b> <span data-i18n-ro="încredere, siguranță psihologică, claritatea rolurilor, apartenență." data-i18n-en="trust, psychological safety, role clarity, belonging.">încredere, siguranță psihologică, claritatea rolurilor, apartenență.</span></li>
+    </ul>
+  </section>
+
+  <!-- 02 DIFERENȚE -->
+  <section class="doc-sec" id="diferente">
+    <h2><span class="num">02</span><span data-i18n-ro="Ce NU este: facilitare, training, team building" data-i18n-en="What it is NOT: facilitation, training, team building">Ce NU este: facilitare, training, team building</span></h2>
+    <p class="intro" data-i18n-ro="Cinci intervenții sunt vândute sub aceeași umbrelă. Diferența se vede în cine deține conținutul și unde rămâne schimbarea după ce pleci din sală." data-i18n-en="Five interventions are sold under the same umbrella. The difference shows in who owns the content and where the change lives after you leave the room.">Cinci intervenții sunt vândute sub aceeași umbrelă. Diferența se vede în cine deține conținutul și unde rămâne schimbarea după ce pleci din sală.</p>
+
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th data-i18n-ro="Dimensiune" data-i18n-en="Dimension">Dimensiune</th>
+            <th class="hl" data-i18n-ro="Team coaching" data-i18n-en="Team coaching">Team coaching</th>
+            <th data-i18n-ro="Facilitare" data-i18n-en="Facilitation">Facilitare</th>
+            <th data-i18n-ro="Training" data-i18n-en="Training">Training</th>
+            <th data-i18n-ro="Team building" data-i18n-en="Team building">Team building</th>
+            <th data-i18n-ro="Coaching 1:1 în grup" data-i18n-en="1:1 coaching in a group">Coaching 1:1 în grup</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th data-i18n-ro="Clientul" data-i18n-en="The client">Clientul</th>
+            <td class="hl"><span data-i18n-ro="echipa (sistemul)" data-i18n-en="the team (the system)">echipa (sistemul)</span></td>
+            <td><span data-i18n-ro="grupul, pe o agendă dată" data-i18n-en="the group, on a given agenda">grupul, pe o agendă dată</span></td>
+            <td><span data-i18n-ro="participanții" data-i18n-en="the participants">participanții</span></td>
+            <td><span data-i18n-ro="grupul (moment)" data-i18n-en="the group (an event)">grupul (moment)</span></td>
+            <td><span data-i18n-ro="fiecare individ" data-i18n-en="each individual">fiecare individ</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Cine aduce conținutul" data-i18n-en="Who brings the content">Cine aduce conținutul</th>
+            <td class="hl"><span data-i18n-ro="echipa" data-i18n-en="the team">echipa</span></td>
+            <td><span data-i18n-ro="agenda / sponsorul" data-i18n-en="the agenda / sponsor">agenda / sponsorul</span></td>
+            <td><span data-i18n-ro="programa" data-i18n-en="the curriculum">programa</span></td>
+            <td><span data-i18n-ro="furnizorul" data-i18n-en="the provider">furnizorul</span></td>
+            <td><span data-i18n-ro="fiecare persoană" data-i18n-en="each person">fiecare persoană</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Orizont" data-i18n-en="Horizon">Orizont</th>
+            <td class="hl"><span data-i18n-ro="3–12 luni" data-i18n-en="3–12 months">3–12 luni</span></td>
+            <td><span data-i18n-ro="1–3 zile" data-i18n-en="1–3 days">1–3 zile</span></td>
+            <td><span data-i18n-ro="1–5 zile" data-i18n-en="1–5 days">1–5 zile</span></td>
+            <td><span data-i18n-ro="o zi / un weekend" data-i18n-en="a day / a weekend">o zi / un weekend</span></td>
+            <td><span data-i18n-ro="variabil" data-i18n-en="variable">variabil</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Lucrează pe conflict?" data-i18n-en="Works on conflict?">Lucrează pe conflict?</th>
+            <td class="hl"><span class="yes" data-i18n-ro="Da — e materia primă" data-i18n-en="Yes — it's the raw material">Da — e materia primă</span></td>
+            <td><span class="partial" data-i18n-ro="Îl gestionează" data-i18n-en="Manages it">Îl gestionează</span></td>
+            <td><span class="no" data-i18n-ro="Nu" data-i18n-en="No">Nu</span></td>
+            <td><span class="no" data-i18n-ro="Îl evită" data-i18n-en="Avoids it">Îl evită</span></td>
+            <td><span class="partial" data-i18n-ro="Parțial" data-i18n-en="Partly">Parțial</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Rămâne ceva după?" data-i18n-en="Does anything stick?">Rămâne ceva după?</th>
+            <td class="hl"><span data-i18n-ro="reguli de lucru + reflexe" data-i18n-en="working rules + reflexes">reguli de lucru + reflexe</span></td>
+            <td><span data-i18n-ro="decizii + document" data-i18n-en="decisions + document">decizii + document</span></td>
+            <td><span data-i18n-ro="competențe individuale" data-i18n-en="individual skills">competențe individuale</span></td>
+            <td><span data-i18n-ro="o amintire plăcută" data-i18n-en="a nice memory">o amintire plăcută</span></td>
+            <td><span data-i18n-ro="creștere individuală" data-i18n-en="individual growth">creștere individuală</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 03 CÂND -->
+  <section class="doc-sec" id="cand">
+    <h2><span class="num">03</span><span data-i18n-ro="Când are sens și când NU" data-i18n-en="When it makes sense — and when it doesn't">Când are sens și când NU</span></h2>
+    <p class="intro" data-i18n-ro="Diagnosticul diferențial este prima competență: dacă problema e de structură, de proces sau de competență, coachingul de echipă nu e răspunsul corect." data-i18n-en="Differential diagnosis is the first competence: if the problem is structural, procedural or a skills gap, team coaching isn't the right answer.">Diagnosticul diferențial este prima competență: dacă problema e de structură, de proces sau de competență, coachingul de echipă nu e răspunsul corect.</p>
+
+    <div class="grid grid-2">
+      <div class="plan-block" style="margin-bottom:0">
+        <h3 style="color:var(--ok)">✓ <span data-i18n-ro="Da, aici funcționează" data-i18n-en="Yes, it works here">Da, aici funcționează</span></h3>
+        <ul class="bullets" style="margin-top:16px;margin-bottom:0">
+          <li data-i18n-ro="Echipă nou formată sau cu lider nou." data-i18n-en="A newly formed team or a new leader.">Echipă nou formată sau cu lider nou.</li>
+          <li data-i18n-ro="Fuziuni, reorganizări, creștere rapidă." data-i18n-en="Mergers, restructures, rapid growth.">Fuziuni, reorganizări, creștere rapidă.</li>
+          <li data-i18n-ro="Conflict mocnit, discuții „pe hol”, nu în sală." data-i18n-en="Smouldering conflict, corridor rather than room conversations.">Conflict mocnit, discuții „pe hol”, nu în sală.</li>
+          <li data-i18n-ro="Decizii lente, responsabilități neclare." data-i18n-en="Slow decisions, unclear accountability.">Decizii lente, responsabilități neclare.</li>
+          <li data-i18n-ro="Performanță bună individual, slabă colectiv." data-i18n-en="Strong individual, weak collective performance.">Performanță bună individual, slabă colectiv.</li>
+          <li data-i18n-ro="Trecerea la hibrid/remote cu pierderea coeziunii." data-i18n-en="Shift to hybrid/remote with loss of cohesion.">Trecerea la hibrid/remote cu pierderea coeziunii.</li>
+        </ul>
+      </div>
+      <div class="plan-block" style="margin-bottom:0">
+        <h3 style="color:var(--danger)">✗ <span data-i18n-ro="Nu, aici NU e răspunsul" data-i18n-en="No, it's not the answer here">Nu, aici NU e răspunsul</span></h3>
+        <ul class="bullets" style="margin-top:16px;margin-bottom:0">
+          <li data-i18n-ro="Problema e de structură sau de strategie greșită." data-i18n-en="The problem is structural or a wrong strategy.">Problema e de structură sau de strategie greșită.</li>
+          <li data-i18n-ro="Liderul nu vrea, dar echipa „trebuie reparată”." data-i18n-en="The leader doesn't want it, but the team needs fixing.">Liderul nu vrea, dar echipa „trebuie reparată”.</li>
+          <li data-i18n-ro="Lipsă de competență tehnică (e nevoie de training)." data-i18n-en="Missing technical skills (training is needed).">Lipsă de competență tehnică (e nevoie de training).</li>
+          <li data-i18n-ro="O persoană toxică protejată de management." data-i18n-en="A toxic person protected by management.">O persoană toxică protejată de management.</li>
+          <li data-i18n-ro="Tăieri iminente și frică generalizată." data-i18n-en="Imminent layoffs and widespread fear.">Tăieri iminente și frică generalizată.</li>
+          <li data-i18n-ro="Se caută „o zi de team building” ca pansament." data-i18n-en="A "team building day" is wanted as a plaster.">Se caută „o zi de team building” ca pansament.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 MODELE -->
+  <section class="doc-sec" id="modele">
+    <h2><span class="num">04</span><span data-i18n-ro="Modelele de bază (harta conceptuală)" data-i18n-en="The core models (conceptual map)">Modelele de bază (harta conceptuală)</span></h2>
+    <p class="intro" data-i18n-ro="Nu ai nevoie de toate. Ai nevoie de un model pentru fiecare întrebare: unde suntem, ce ne blochează, ce construim." data-i18n-en="You don't need all of them. You need one model per question: where are we, what blocks us, what are we building.">Nu ai nevoie de toate. Ai nevoie de un model pentru fiecare întrebare: unde suntem, ce ne blochează, ce construim.</p>
+
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="m-name">Hawkins · 5 Disciplines</div>
+        <h4 data-i18n-ro="Cele 5 discipline ale echipelor performante" data-i18n-en="The 5 disciplines of high-performing teams">Cele 5 discipline ale echipelor performante</h4>
+        <p data-i18n-ro="Modelul de referință pentru coachingul de echipă: echipa privită ca sistem viu, în relație cu mediul său." data-i18n-en="The reference model for team coaching: the team as a living system in relation to its environment.">Modelul de referință pentru coachingul de echipă: echipa privită ca sistem viu, în relație cu mediul său.</p>
+        <ol>
+          <li><b>Commissioning</b> — <span data-i18n-ro="scopul și mandatul primit" data-i18n-en="purpose and mandate received">scopul și mandatul primit</span></li>
+          <li><b>Clarifying</b> — <span data-i18n-ro="claritatea rolurilor și a obiectivelor" data-i18n-en="role and goal clarity">claritatea rolurilor și a obiectivelor</span></li>
+          <li><b>Co-creating</b> — <span data-i18n-ro="cum lucrăm împreună" data-i18n-en="how we work together">cum lucrăm împreună</span></li>
+          <li><b>Connecting</b> — <span data-i18n-ro="relațiile cu stakeholderii" data-i18n-en="stakeholder relationships">relațiile cu stakeholderii</span></li>
+          <li><b>Core learning</b> — <span data-i18n-ro="învățarea continuă din practică" data-i18n-en="continuous learning from practice">învățarea continuă din practică</span></li>
+        </ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Lencioni · 5 Dysfunctions</div>
+        <h4 data-i18n-ro="Cele 5 disfuncții" data-i18n-en="The 5 dysfunctions">Cele 5 disfuncții</h4>
+        <p data-i18n-ro="Piramida care explică de ce echipe inteligente performează slab. Bun pentru diagnostic rapid." data-i18n-en="The pyramid explaining why smart teams underperform. Good for fast diagnosis.">Piramida care explică de ce echipe inteligente performează slab. Bun pentru diagnostic rapid.</p>
+        <ol>
+          <li data-i18n-ro="Absența încrederii" data-i18n-en="Absence of trust">Absența încrederii</li>
+          <li data-i18n-ro="Frica de conflict" data-i18n-en="Fear of conflict">Frica de conflict</li>
+          <li data-i18n-ro="Lipsa angajamentului" data-i18n-en="Lack of commitment">Lipsa angajamentului</li>
+          <li data-i18n-ro="Evitarea responsabilității" data-i18n-en="Avoidance of accountability">Evitarea responsabilității</li>
+          <li data-i18n-ro="Neatenția la rezultate" data-i18n-en="Inattention to results">Neatenția la rezultate</li>
+        </ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Tuckman</div>
+        <h4 data-i18n-ro="Etapele de dezvoltare" data-i18n-en="Stages of development">Etapele de dezvoltare</h4>
+        <p data-i18n-ro="Simplu și util pentru a normaliza tensiunea din faza deStorming." data-i18n-en="Simple and useful for normalising the tension of the storming phase.">Simplu și util pentru a normaliza tensiunea din faza de Storming.</p>
+        <ol><li>Forming</li><li>Storming</li><li>Norming</li><li>Performing</li><li>Adjourning</li></ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">GRPI</div>
+        <h4 data-i18n-ro="Goals · Roles · Processes · Interpersonal" data-i18n-en="Goals · Roles · Processes · Interpersonal">Goals · Roles · Processes · Interpersonal</h4>
+        <p data-i18n-ro="Cadru de diagnostic în cascadă: verifici în ordine, pentru că un nivel nerezolvat îl blochează pe următorul." data-i18n-en="A cascading diagnostic frame: check in order, because an unresolved level blocks the next.">Cadru de diagnostic în cascadă: verifici în ordine, pentru că un nivel nerezolvat îl blochează pe următorul.</p>
+        <ol><li data-i18n-ro="Obiective comune" data-i18n-en="Shared goals">Obiective comune</li><li data-i18n-ro="Roluri clare" data-i18n-en="Clear roles">Roluri clare</li><li data-i18n-ro="Procese" data-i18n-en="Processes">Procese</li><li data-i18n-ro="Relații" data-i18n-en="Relationships">Relații</li></ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Hackman</div>
+        <h4 data-i18n-ro="Condițiile eficacității" data-i18n-en="Conditions for effectiveness">Condițiile eficacității</h4>
+        <p data-i18n-ro="Cercetarea clasică: echipa reală, direcție convingătoare, structură care facilitează, context de sprijin, coaching expert." data-i18n-en="The classic research: a real team, a compelling direction, an enabling structure, a supportive context, expert coaching.">Cercetarea clasică: echipa reală, direcție convingătoare, structură care facilitează, context de sprijin, coaching expert.</p>
+        <ol>
+          <li data-i18n-ro="Echipă reală (graniță, stabilitate)" data-i18n-en="A real team (boundary, stability)">Echipă reală (graniță, stabilitate)</li>
+          <li data-i18n-ro="Direcție convingătoare" data-i18n-en="Compelling direction">Direcție convingătoare</li>
+          <li data-i18n-ro="Structură facilitatoare" data-i18n-en="Enabling structure">Structură facilitatoare</li>
+          <li data-i18n-ro="Context de sprijin" data-i18n-en="Supportive context">Context de sprijin</li>
+          <li data-i18n-ro="Coaching expert" data-i18n-en="Expert coaching">Coaching expert</li>
+        </ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">Edmondson</div>
+        <h4 data-i18n-ro="Siguranța psihologică" data-i18n-en="Psychological safety">Siguranța psihologică</h4>
+        <p data-i18n-ro="Convingerea comună că echipa e sigură pentru asumarea de riscuri interpersonale — predictorul nr. 1 al învățării în echipă." data-i18n-en="The shared belief that the team is safe for interpersonal risk-taking — the number-one predictor of team learning.">Convingerea comună că echipa e sigură pentru asumarea de riscuri interpersonale — predictorul nr. 1 al învățării în echipă.</p>
+        <ol>
+          <li data-i18n-ro="A vorbi fără teamă de consecințe" data-i18n-en="Speaking up without fear of consequences">A vorbi fără teamă de consecințe</li>
+          <li data-i18n-ro="Greșelile sunt semnalate, nu ascunse" data-i18n-en="Mistakes get surfaced, not hidden">Greșelile sunt semnalate, nu ascunse</li>
+          <li data-i18n-ro="Întrebările sunt binevenite" data-i18n-en="Questions are welcome">Întrebările sunt binevenite</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 ARHITECTURĂ -->
+  <section class="doc-sec" id="arhitectura">
+    <h2><span class="num">05</span><span data-i18n-ro="Arhitectura unui program pe 6 luni" data-i18n-en="The architecture of a 6-month programme">Arhitectura unui program pe 6 luni</span></h2>
+    <p class="intro" data-i18n-ro="Cinci faze, în ordinea corectă. Cea mai frecventă greșeală: sari la ateliere înainte de commissioning și diagnostic, iar rezultatul este o zi plăcută fără efect." data-i18n-en="Five phases, in the right order. The most common mistake: jumping to workshops before commissioning and diagnosis, which produces a pleasant day with no effect.">Cinci faze, în ordinea corectă. Cea mai frecventă greșeală: sari la ateliere înainte de commissioning și diagnostic, iar rezultatul este o zi plăcută fără efect.</p>
+
+    <div class="steps-flow">
+      <div class="step-chip">
+        <h4 data-i18n-ro="Faza 0 · Commissioning" data-i18n-en="Phase 0 · Commissioning">Faza 0 · Commissioning</h4>
+        <p data-i18n-ro="Săptămâna 1–2. Contractul triunghiular: sponsor, lider, echipă. Ce se cere, ce nu se cere, cum se măsoară." data-i18n-en="Weeks 1–2. The triangular contract: sponsor, leader, team. What's asked, what's not, how it's measured.">Săptămâna 1–2. Contractul triunghiular: sponsor, lider, echipă. Ce se cere, ce nu se cere, cum se măsoară.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Faza 1 · Diagnostic" data-i18n-en="Phase 1 · Diagnosis">Faza 1 · Diagnostic</h4>
+        <p data-i18n-ro="Săptămâna 2–5. Interviuri 1:1, observație în ședințe reale, chestionar, documente. Livrabil: oglinda echipei." data-i18n-en="Weeks 2–5. 1:1 interviews, observation in real meetings, a survey, documents. Output: the mirror held up to the team.">Săptămâna 2–5. Interviuri 1:1, observație în ședințe reale, chestionar, documente. Livrabil: oglinda echipei.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Faza 2 · Restituire &amp; design" data-i18n-en="Phase 2 · Feedback &amp; design">Faza 2 · Restituire &amp; design</h4>
+        <p data-i18n-ro="Săptămâna 5–6. Prezinți datele, echipa își asumă 2–3 teme de lucru. Nimic nu se decide pentru ei." data-i18n-en="Weeks 5–6. You present the data; the team owns two or three working themes. Nothing is decided for them.">Săptămâna 5–6. Prezinți datele, echipa își asumă 2–3 teme de lucru. Nimic nu se decide pentru ei.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Faza 3 · Intervenții" data-i18n-en="Phase 3 · Interventions">Faza 3 · Intervenții</h4>
+        <p data-i18n-ro="Luna 2–5. Ateliere + sesiuni de echipă + practică între ele. Ritmul bate intensitatea." data-i18n-en="Months 2–5. Workshops + team sessions + practice in between. Rhythm beats intensity.">Luna 2–5. Ateliere + sesiuni de echipă + practică între ele. Ritmul bate intensitatea.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Faza 4 · Consolidare" data-i18n-en="Phase 4 · Consolidation">Faza 4 · Consolidare</h4>
+        <p data-i18n-ro="Luna 5–6. Reguli de lucru asumate, ritmuri, trasabilitatea deciziilor, cine ține procesul după plecarea ta." data-i18n-en="Months 5–6. Owned working rules, rhythms, decision traceability, who holds the process after you leave.">Luna 5–6. Reguli de lucru asumate, ritmuri, trasabilitatea deciziilor, cine ține procesul după plecarea ta.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Faza 5 · Măsurare &amp; încheiere" data-i18n-en="Phase 5 · Measurement &amp; closure">Faza 5 · Măsurare &amp; încheiere</h4>
+        <p data-i18n-ro="Luna 6. Re-diagnostic, bilanț cu sponsorul, decizie: continuăm, oprim sau trecem la alt format." data-i18n-en="Month 6. Re-diagnosis, review with the sponsor, decision: continue, stop or switch format.">Luna 6. Re-diagnostic, bilanț cu sponsorul, decizie: continuăm, oprim sau trecem la alt format.</p>
+      </div>
+    </div>
+
+    <div class="plan-block">
+      <h3 data-i18n-ro="Calendar orientativ" data-i18n-en="Indicative calendar">Calendar orientativ</h3>
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th data-i18n-ro="Luna" data-i18n-en="Month">Luna</th>
+            <th data-i18n-ro="Activitate" data-i18n-en="Activity">Activitate</th>
+            <th data-i18n-ro="Durată" data-i18n-en="Duration">Durată</th>
+            <th data-i18n-ro="Participanți" data-i18n-en="Participants">Participanți</th>
+            <th data-i18n-ro="Livrabil" data-i18n-en="Output">Livrabil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-i18n-ro="Luna 1" data-i18n-en="Month 1">Luna 1</td><td data-i18n-ro="Interviuri + observație" data-i18n-en="Interviews + observation">Interviuri + observație</td><td class="empty">—</td><td data-i18n-ro="toți + sponsor" data-i18n-en="everyone + sponsor">toți + sponsor</td><td data-i18n-ro="raport de diagnostic" data-i18n-en="diagnostic report">raport de diagnostic</td></tr>
+          <tr><td data-i18n-ro="Luna 2" data-i18n-en="Month 2">Luna 2</td><td data-i18n-ro="Atelier de restituire" data-i18n-en="Feedback workshop">Atelier de restituire</td><td class="empty">—</td><td data-i18n-ro="echipa + lider" data-i18n-en="team + leader">echipa + lider</td><td data-i18n-ro="2–3 teme asumate" data-i18n-en="2–3 owned themes">2–3 teme asumate</td></tr>
+          <tr><td data-i18n-ro="Luna 3" data-i18n-en="Month 3">Luna 3</td><td data-i18n-ro="Sesiune de echipă 1" data-i18n-en="Team session 1">Sesiune de echipă 1</td><td class="empty">—</td><td data-i18n-ro="echipa" data-i18n-en="team">echipa</td><td data-i18n-ro="reguli de lucru" data-i18n-en="working rules">reguli de lucru</td></tr>
+          <tr><td data-i18n-ro="Luna 4" data-i18n-en="Month 4">Luna 4</td><td data-i18n-ro="Sesiune de echipă 2 + 1:1 lider" data-i18n-en="Team session 2 + leader 1:1">Sesiune de echipă 2 + 1:1 lider</td><td class="empty">—</td><td data-i18n-ro="echipa / lider" data-i18n-en="team / leader">echipa / lider</td><td data-i18n-ro="decizii + responsabili" data-i18n-en="decisions + owners">decizii + responsabili</td></tr>
+          <tr><td data-i18n-ro="Luna 5" data-i18n-en="Month 5">Luna 5</td><td data-i18n-ro="Sesiune de echipă 3" data-i18n-en="Team session 3">Sesiune de echipă 3</td><td class="empty">—</td><td data-i18n-ro="echipa" data-i18n-en="team">echipa</td><td data-i18n-ro="plan de menținere" data-i18n-en="maintenance plan">plan de menținere</td></tr>
+          <tr><td data-i18n-ro="Luna 6" data-i18n-en="Month 6">Luna 6</td><td data-i18n-ro="Re-diagnostic + bilanț" data-i18n-en="Re-diagnosis + review">Re-diagnostic + bilanț</td><td class="empty">—</td><td data-i18n-ro="toți + sponsor" data-i18n-en="everyone + sponsor">toți + sponsor</td><td data-i18n-ro="raport de impact" data-i18n-en="impact report">raport de impact</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 06 DIAGNOSTIC -->
+  <section class="doc-sec" id="diagnostic">
+    <h2><span class="num">06</span><span data-i18n-ro="Instrumente de diagnostic" data-i18n-en="Diagnostic instruments">Instrumente de diagnostic</span></h2>
+    <p class="intro" data-i18n-ro="Instrumentul nu înlocuiește judecata, dar o disciplinează. Alege maximum două, altfel transformi echipa într-un proiect de cercetare." data-i18n-en="An instrument doesn't replace judgement, but it disciplines it. Choose two at most, otherwise you turn the team into a research project.">Instrumentul nu înlocuiește judecata, dar o disciplinează. Alege maximum două, altfel transformi echipa într-un proiect de cercetare.</p>
+
+    <div class="slot-grid">
+      <div class="slot">
+        <span class="s-tag" data-i18n-ro="Interviu 1:1" data-i18n-en="1:1 interview">Interviu 1:1</span>
+        <h4 data-i18n-ro="Baza oricărui diagnostic" data-i18n-en="The basis of any diagnosis">Baza oricărui diagnostic</h4>
+        <p data-i18n-ro="6–8 întrebări identice pentru toți, confidențialitate garantată, teme agregate." data-i18n-en="6–8 identical questions for everyone, guaranteed confidentiality, aggregated themes.">6–8 întrebări identice pentru toți, confidențialitate garantată, teme agregate.</p>
+      </div>
+      <div class="slot">
+        <span class="s-tag" data-i18n-ro="Observație" data-i18n-en="Observation">Observație</span>
+        <h4 data-i18n-ro="Ședințe reale" data-i18n-en="Real meetings">Ședințe reale</h4>
+        <p data-i18n-ro="Cine vorbește, cine tace, cum se decide, ce nu se spune. Grilă de observație de completat." data-i18n-en="Who speaks, who stays silent, how decisions happen, what goes unsaid. Observation grid to be completed.">Cine vorbește, cine tace, cum se decide, ce nu se spune. Grilă de observație de completat.</p>
+      </div>
+      <div class="slot">
+        <span class="s-tag" data-i18n-ro="Chestionar" data-i18n-en="Survey">Chestionar</span>
+        <h4 data-i18n-ro="Măsurare cantitativă" data-i18n-en="Quantitative measurement">Măsurare cantitativă</h4>
+        <p data-i18n-ro="Scala de siguranță psihologică (Edmondson) + itemi pe încredere, claritate, conflict." data-i18n-en="Psychological safety scale (Edmondson) plus items on trust, clarity, conflict.">Scala de siguranță psihologică (Edmondson) + itemi pe încredere, claritate, conflict.</p>
+      </div>
+      <div class="slot">
+        <span class="s-tag" data-i18n-ro="Roluri" data-i18n-en="Roles">Roluri</span>
+        <h4 data-i18n-ro="Profilare de echipă" data-i18n-en="Team profiling">Profilare de echipă</h4>
+        <p data-i18n-ro="Belbin, Insights/DISC sau echivalent — utile pentru limbaj comun, nu pentru etichete." data-i18n-en="Belbin, Insights/DISC or equivalent — useful for a shared language, not for labels.">Belbin, Insights/DISC sau echivalent — utile pentru limbaj comun, nu pentru etichete.</p>
+      </div>
+      <div class="slot">
+        <span class="s-tag" data-i18n-ro="Sistem" data-i18n-en="System">Sistem</span>
+        <h4 data-i18n-ro="Harta stakeholderilor" data-i18n-en="Stakeholder map">Harta stakeholderilor</h4>
+        <p data-i18n-ro="Cine cere ce de la echipă, unde sunt așteptările contradictorii." data-i18n-en="Who asks what of the team, where expectations contradict each other.">Cine cere ce de la echipă, unde sunt așteptările contradictorii.</p>
+      </div>
+      <div class="slot">
+        <span class="s-tag" data-i18n-ro="Rezultate" data-i18n-en="Results">Rezultate</span>
+        <h4 data-i18n-ro="Date de business" data-i18n-en="Business data">Date de business</h4>
+        <p data-i18n-ro="Indicatori existenți (livrare, calitate, timp de răspuns, eNPS) — reperele obiective." data-i18n-en="Existing indicators (delivery, quality, response time, eNPS) — the objective benchmarks.">Indicatori existenți (livrare, calitate, timp de răspuns, eNPS) — reperele obiective.</p>
+      </div>
+    </div>
+
+    <div class="todo">
+      <div class="t-label">✍️ <span data-i18n-ro="De populat" data-i18n-en="To populate">De populat</span></div>
+      <span data-i18n-ro="grila de interviu completă, grila de observație, chestionarul (itemi și scale), licențele instrumentelor folosite și costurile asociate." data-i18n-en="the full interview grid, the observation grid, the questionnaire (items and scales), licences for the instruments used and their costs.">grila de interviu completă, grila de observație, chestionarul (itemi și scale), licențele instrumentelor folosite și costurile asociate.</span>
+    </div>
+  </section>
+
+  <!-- 07 COMPETENȚE -->
+  <section class="doc-sec" id="competente">
+    <h2><span class="num">07</span><span data-i18n-ro="Competențele specifice (ACTC / ITCA)" data-i18n-en="The specific competencies (ACTC / ITCA)">Competențele specifice (ACTC / ITCA)</span></h2>
+    <p class="intro" data-i18n-ro="Aceleași 8 competențe ICF, aplicate la nivel de sistem. Diferența: clientul este colectiv, iar „insightul” trebuie să aparțină echipei, nu unei persoane." data-i18n-en="The same 8 ICF competencies, applied at system level. The difference: the client is collective and the insight must belong to the team, not to one person.">Aceleași 8 competențe ICF, aplicate la nivel de sistem. Diferența: clientul este colectiv, iar „insightul” trebuie să aparțină echipei, nu unei persoane.</p>
+
+    <div class="plan-block">
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th data-i18n-ro="Competență" data-i18n-en="Competency">Competență</th>
+            <th data-i18n-ro="Ce înseamnă la nivel de echipă" data-i18n-en="What it means at team level">Ce înseamnă la nivel de echipă</th>
+            <th data-i18n-ro="Marker observabil" data-i18n-en="Observable marker">Marker observabil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><b>1.</b> <span data-i18n-ro="Etică" data-i18n-en="Ethics">Etică</span></td><td data-i18n-ro="confidențialitate într-un sistem cu mai mulți interlocutori" data-i18n-en="confidentiality in a system with several interlocutors">confidențialitate într-un sistem cu mai mulți interlocutori</td><td class="empty">—</td></tr>
+          <tr><td><b>3.</b> <span data-i18n-ro="Acorduri" data-i18n-en="Agreements">Acorduri</span></td><td data-i18n-ro="contractul triunghiular sponsor–lider–echipă" data-i18n-en="the triangular sponsor–leader–team contract">contractul triunghiular sponsor–lider–echipă</td><td class="empty">—</td></tr>
+          <tr><td><b>4.</b> <span data-i18n-ro="Încredere &amp; siguranță" data-i18n-en="Trust &amp; safety">Încredere &amp; siguranță</span></td><td data-i18n-ro="siguranță psihologică la nivel de grup, nu doar în relația 1:1" data-i18n-en="psychological safety at group level, not just in the 1:1 relationship">siguranță psihologică la nivel de grup, nu doar în relația 1:1</td><td class="empty">—</td></tr>
+          <tr><td><b>5.</b> <span data-i18n-ro="Prezență" data-i18n-en="Presence">Prezență</span></td><td data-i18n-ro="a ține tensiunea din sală fără să o rezolvi prea repede" data-i18n-en="holding the room's tension without resolving it too fast">a ține tensiunea din sală fără să o rezolvi prea repede</td><td class="empty">—</td></tr>
+          <tr><td><b>6.</b> <span data-i18n-ro="Ascultare" data-i18n-en="Listening">Ascultare</span></td><td data-i18n-ro="auzi sistemul: alianțe, tăceri, cine vorbește pentru cine" data-i18n-en="hearing the system: alliances, silences, who speaks for whom">auzi sistemul: alianțe, tăceri, cine vorbește pentru cine</td><td class="empty">—</td></tr>
+          <tr><td><b>7.</b> <span data-i18n-ro="Conștientizare" data-i18n-en="Awareness">Conștientizare</span></td><td data-i18n-ro="reflectezi tiparul colectiv, nu persoanele" data-i18n-en="reflecting the collective pattern, not individuals">reflectezi tiparul colectiv, nu persoanele</td><td class="empty">—</td></tr>
+          <tr><td><b>8.</b> <span data-i18n-ro="Creștere" data-i18n-en="Growth">Creștere</span></td><td data-i18n-ro="angajamente asumate de echipă, cu responsabili și termene" data-i18n-en="commitments owned by the team, with owners and dates">angajamente asumate de echipă, cu responsabili și termene</td><td class="empty">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 08 METRICI -->
+  <section class="doc-sec" id="metrici">
+    <h2><span class="num">08</span><span data-i18n-ro="Metrici și ROI" data-i18n-en="Metrics and ROI">Metrici și ROI</span></h2>
+    <p class="intro" data-i18n-ro="Fără măsurare, coachingul de echipă rămâne o părere. Regula: măsori la început și la final, cu aceiași indicatori, și declari dinainte ce vei considera succes." data-i18n-en="Without measurement, team coaching stays an opinion. The rule: measure at the start and at the end, with the same indicators, and declare in advance what you'll count as success.">Fără măsurare, coachingul de echipă rămâne o părere. Regula: măsori la început și la final, cu aceiași indicatori, și declari dinainte ce vei considera succes.</p>
+
+    <div class="plan-block">
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th data-i18n-ro="Nivel (Kirkpatrick)" data-i18n-en="Level (Kirkpatrick)">Nivel (Kirkpatrick)</th>
+            <th data-i18n-ro="Ce măsori" data-i18n-en="What you measure">Ce măsori</th>
+            <th data-i18n-ro="Indicator concret" data-i18n-en="Concrete indicator">Indicator concret</th>
+            <th data-i18n-ro="Baseline" data-i18n-en="Baseline">Baseline</th>
+            <th data-i18n-ro="Țintă" data-i18n-en="Target">Țintă</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-i18n-ro="1 · Reacție" data-i18n-en="1 · Reaction">1 · Reacție</td><td data-i18n-ro="utilitatea percepută" data-i18n-en="perceived usefulness">utilitatea percepută</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="2 · Învățare" data-i18n-en="2 · Learning">2 · Învățare</td><td data-i18n-ro="ce știu să facă diferit" data-i18n-en="what they can now do differently">ce știu să facă diferit</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="3 · Comportament" data-i18n-en="3 · Behaviour">3 · Comportament</td><td data-i18n-ro="ce fac efectiv diferit" data-i18n-en="what they actually do differently">ce fac efectiv diferit</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td data-i18n-ro="4 · Rezultate" data-i18n-en="4 · Results">4 · Rezultate</td><td data-i18n-ro="indicatori de business" data-i18n-en="business indicators">indicatori de business</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <b data-i18n-ro="Capcana ROI-ului:" data-i18n-en="The ROI trap:">Capcana ROI-ului:</b>
+      <span data-i18n-ro=" un program de echipă schimbă și variabile pe care nu le controlezi (piață, reorganizare, plecări). Promite indicatori de proces și comportament; pe cei de business, corelează, nu revendica." data-i18n-en=" a team programme also changes variables you don't control (market, restructure, departures). Promise process and behaviour indicators; on business ones, correlate rather than claim."> un program de echipă schimbă și variabile pe care nu le controlezi (piață, reorganizare, plecări). Promite indicatori de proces și comportament; pe cei de business, corelează, nu revendica.</span>
+    </div>
+  </section>
+
+  <!-- 09 CAPCANE -->
+  <section class="doc-sec" id="capcane">
+    <h2><span class="num">09</span><span data-i18n-ro="Capcane clasice" data-i18n-en="Classic pitfalls">Capcane clasice</span></h2>
+    <ul class="bullets">
+      <li><b data-i18n-ro="Coaching fără mandat." data-i18n-en="Coaching without a mandate.">Coaching fără mandat.</b> <span data-i18n-ro="sponsorul vrea „să le crească moralul”, echipa nu a cerut nimic. Se vede din prima ședință." data-i18n-en="the sponsor wants "morale raised", the team asked for nothing. You can see it from the first session.">sponsorul vrea „să le crească moralul”, echipa nu a cerut nimic. Se vede din prima ședință.</span></li>
+      <li><b data-i18n-ro="Confuzia cu terapia de grup." data-i18n-en="Confusion with group therapy.">Confuzia cu terapia de grup.</b> <span data-i18n-ro="deschizi răni pe care nu ești calificat să le închizi." data-i18n-en="you open wounds you're not qualified to close.">deschizi răni pe care nu ești calificat să le închizi.</span></li>
+      <li><b data-i18n-ro="Liderul ca spectator." data-i18n-en="The leader as a spectator.">Liderul ca spectator.</b> <span data-i18n-ro="dacă liderul nu e în proces, echipa nu are voie să se schimbe." data-i18n-en="if the leader isn't in the process, the team isn't allowed to change.">dacă liderul nu e în proces, echipa nu are voie să se schimbe.</span></li>
+      <li><b data-i18n-ro="Prea multe instrumente." data-i18n-en="Too many instruments.">Prea multe instrumente.</b> <span data-i18n-ro="diagnosticul devine proiect, iar energia se consumă în loc să producă schimbare." data-i18n-en="the diagnosis becomes a project and energy gets spent instead of producing change.">diagnosticul devine proiect, iar energia se consumă în loc să producă schimbare.</span></li>
+      <li><b data-i18n-ro="Fără încheiere." data-i18n-en="No ending.">Fără încheiere.</b> <span data-i18n-ro="procesul se prelungește și devine o prezență permanentă în calendar." data-i18n-en="the process drags on and becomes a permanent fixture in the calendar.">procesul se prelungește și devine o prezență permanentă în calendar.</span></li>
+      <li><b data-i18n-ro="Confidențialitate nedefinită." data-i18n-en="Undefined confidentiality.">Confidențialitate nedefinită.</b> <span data-i18n-ro="cine aude ce a zis cine — dacă nu e stabilit la început, încrederea moare la prima scurgere." data-i18n-en="who hears who said what — if it isn't settled at the start, trust dies at the first leak.">cine aude ce a zis cine — dacă nu e stabilit la început, încrederea moare la prima scurgere.</span></li>
+    </ul>
+  </section>
+
+  <!-- 10 DE POPULAT -->
+  <section class="doc-sec" id="populat">
+    <h2><span class="num">10</span><span data-i18n-ro="Ce rămâne de populat" data-i18n-en="What's left to populate">Ce rămâne de populat</span></h2>
+    <div class="plan-block">
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-i18n-ro="Element" data-i18n-en="Item">Element</th>
+            <th data-i18n-ro="Unde intră" data-i18n-en="Where it goes">Unde intră</th>
+            <th data-i18n-ro="Stare" data-i18n-en="Status">Stare</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td data-i18n-ro="Grilă de interviu 1:1 (8 întrebări)" data-i18n-en="1:1 interview grid (8 questions)">Grilă de interviu 1:1 (8 întrebări)</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+          <tr><td>2</td><td data-i18n-ro="Grilă de observație în ședințe" data-i18n-en="Meeting observation grid">Grilă de observație în ședințe</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+          <tr><td>3</td><td data-i18n-ro="Chestionar echipă (itemi + scale)" data-i18n-en="Team questionnaire (items + scales)">Chestionar echipă (itemi + scale)</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+          <tr><td>4</td><td data-i18n-ro="Design de atelier (3–4 ateliere complete)" data-i18n-en="Workshop design (3–4 full workshops)">Design de atelier (3–4 ateliere complete)</td><td data-i18n-ro="Secțiunea 05" data-i18n-en="Section 05">Secțiunea 05</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+          <tr><td>5</td><td data-i18n-ro="Markeri ACTC/ITCA (coloana 3)" data-i18n-en="ACTC/ITCA markers (column 3)">Markeri ACTC/ITCA (coloana 3)</td><td data-i18n-ro="Secțiunea 07" data-i18n-en="Section 07">Secțiunea 07</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+          <tr><td>6</td><td data-i18n-ro="Pachet de metrici și baseline" data-i18n-en="Metrics pack and baseline">Pachet de metrici și baseline</td><td data-i18n-ro="Secțiunea 08" data-i18n-en="Section 08">Secțiunea 08</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+          <tr><td>7</td><td data-i18n-ro="Studii de caz (echipe, anonimizat)" data-i18n-en="Case studies (teams, anonymised)">Studii de caz (echipe, anonimizat)</td><td data-i18n-ro="Secțiune nouă" data-i18n-en="New section">Secțiune nouă</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="doc-next">
+    <a href="individual.html">
+      <div class="dn-k" data-i18n-ro="Complementar" data-i18n-en="Complementary">Complementar</div>
+      <div class="dn-t" data-i18n-ro="Coaching individual (1:1)" data-i18n-en="Individual coaching (1:1)">Coaching individual (1:1)</div>
+      <div class="dn-d" data-i18n-ro="Banca de întrebări, planul pe competențe, jurnalul de ore." data-i18n-en="Question bank, competency plan, hours log.">Banca de întrebări, planul pe competențe, jurnalul de ore.</div>
+    </a>
+    <a href="index.html#credentials">
+      <div class="dn-k" data-i18n-ro="Certificare" data-i18n-en="Credential">Certificare</div>
+      <div class="dn-t" data-i18n-ro="ACTC și ITCA, pe larg" data-i18n-en="ACTC and ITCA, in depth">ACTC și ITCA, pe larg</div>
+      <div class="dn-d" data-i18n-ro="Cerințe, evaluare, taxe și surse oficiale pentru team coaching." data-i18n-en="Requirements, assessment, fees and official sources for team coaching.">Cerințe, evaluare, taxe și surse oficiale pentru team coaching.</div>
+    </a>
+  </div>
+
+  </div>
+</div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="logo-badge" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+            </svg>
+          </span>
+          Coaching Learning Path
+        </div>
+        <p class="disc" data-i18n-ro="Instrument educațional independent, bilingv RO/EN. Informațiile au caracter orientativ — verifică întotdeauna pe sursele oficiale." data-i18n-en="An independent, bilingual RO/EN educational tool. Information is indicative — always verify against the official sources.">Instrument educațional independent, bilingv RO/EN. Informațiile au caracter orientativ — verifică întotdeauna pe sursele oficiale.</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Pagini" data-i18n-en="Pages">Pagini</h5>
+        <a href="index.html#harta" data-i18n-ro="Harta interactivă" data-i18n-en="Interactive map">Harta interactivă</a>
+        <a href="teorie.html" data-i18n-ro="Teoria coachingului" data-i18n-en="Coaching theory">Teoria coachingului</a>
+        <a href="individual.html" data-i18n-ro="Coaching 1:1" data-i18n-en="1:1 coaching">Coaching 1:1</a>
+        <a href="echipa.html" data-i18n-ro="Coaching de echipă" data-i18n-en="Team coaching">Coaching de echipă</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Certificare" data-i18n-en="Credentials">Certificare</h5>
+        <a href="index.html#paths" data-i18n-ro="Learning paths" data-i18n-en="Learning paths">Learning paths</a>
+        <a href="index.html#credentials" data-i18n-ro="Bibliotecă de certificări" data-i18n-en="Credential library">Bibliotecă de certificări</a>
+        <a href="index.html#transitions" data-i18n-ro="Treceri între sisteme" data-i18n-en="Bridges between systems">Treceri între sisteme</a>
+        <a href="index.html#schools" data-i18n-ro="Școli din România" data-i18n-en="Schools in Romania">Școli din România</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Surse" data-i18n-en="Sources">Surse</h5>
+        <a href="index.html#sources" data-i18n-ro="Surse oficiale" data-i18n-en="Official sources">Surse oficiale</a>
+        <a href="index.html#faq" data-i18n-ro="FAQ &amp; glosar" data-i18n-en="FAQ &amp; glossary">FAQ &amp; glosar</a>
+        <a href="index.html#costs" data-i18n-ro="Costuri" data-i18n-en="Costs">Costuri</a>
+        <a href="index.html" data-i18n-ro="Acasă" data-i18n-en="Home">Acasă</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 · <span data-i18n-ro="gratuit, offline, fără cont" data-i18n-en="free, offline, no account">gratuit, offline, fără cont</span></span>
+      <span data-i18n-ro="Neafiliat ICF · EMCC · ANC" data-i18n-en="Not affiliated with ICF · EMCC · ANC">Neafiliat ICF · EMCC · ANC</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="to-top" id="toTop" aria-label="Înapoi sus">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('#toc a'));
+  if(!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var secs = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if(a){
+          a.classList.add('active');
+          var box = document.getElementById('toc');
+          if(box && box.scrollHeight > box.clientHeight){
+            var r = a.getBoundingClientRect(), br = box.getBoundingClientRect();
+            if(r.top < br.top || r.bottom > br.bottom) a.scrollIntoView({block:'nearest'});
+          }
+        }
+      }
+    });
+  }, { rootMargin:'-25% 0px -65% 0px' });
+  secs.forEach(function(s){ io.observe(s); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teoria coachingului — Coaching Learning Path</title>
+<meta name="description" content="Ce este coachingul, ce NU este, de unde vine, unde se folosește, cum arată o sesiune, competențele ICF, etică, mituri și ce spune cercetarea. Ghid complet, RO/EN.">
+<meta name="theme-color" content="#4b57d4">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Teoria coachingului — Coaching Learning Path">
+<meta property="og:description" content="Tot ce trebuie să știi înainte să cumperi sau să practici coaching. Explicații scurte, surse oficiale, fără jargon.">
+<meta property="og:image" content="assets/img/og-cover.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('cp_theme');
+    if(!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+})();
+</script>
+</head>
+
+<body data-page="theory">
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Sari direct la conținut</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="index.html" aria-label="Coaching Learning Path — acasă">
+      <span class="logo-badge" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <b>Coaching Learning Path</b>
+        <span data-i18n-ro="Hartă · Teorie · Certificare" data-i18n-en="Map · Theory · Credentials">Hartă · Teorie · Certificare</span>
+      </span>
+    </a>
+    <nav class="navlinks" id="navlinks" aria-label="Navigare principală"></nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Comută tema">
+        <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>
+        </svg>
+      </button>
+      <button class="lang-btn" id="langBtn"><span class="flag" id="langFlag">🇬🇧</span><span id="langLabel">EN</span></button>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-label="Meniu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO PAGINĂ ============ -->
+<section class="page-hero">
+  <div class="wrap page-hero-grid">
+    <div>
+      <nav class="crumbs" aria-label="Firimituri">
+        <a href="index.html" data-i18n-ro="Acasă" data-i18n-en="Home">Acasă</a>
+        <span class="sep">/</span>
+        <span data-i18n-ro="Teorie" data-i18n-en="Theory">Teorie</span>
+      </nav>
+      <span class="pill"><span class="dot"></span>
+        <span data-i18n-ro="Lectură de ~12 minute · fără jargon" data-i18n-en="~12 min read · no jargon">Lectură de ~12 minute · fără jargon</span>
+      </span>
+      <h1>
+        <span data-i18n-ro="Ce este coachingul, " data-i18n-en="What coaching is, ">Ce este coachingul, </span>
+        <span class="grad-text" data-i18n-ro="pe înțelesul tuturor" data-i18n-en="plain and simple">pe înțelesul tuturor</span>
+      </h1>
+      <p class="lead" data-i18n-ro="Dacă nu ai habar de coaching, ești în locul bun. Aici afli ce este, ce NU este, de unde a apărut, unde se folosește concret, cum arată o sesiune, ce competențe stau la baza meseriei și care sunt limitele etice — înainte să dai vreun ban sau să te înscrii la vreun curs." data-i18n-en="If you know nothing about coaching, you're in the right place. Here's what it is, what it is NOT, where it came from, where it's used, what a session looks like, the competencies behind the craft and the ethical limits — before you spend money or sign up for a course.">Dacă nu habar n-ai de coaching, ești în locul bun. Aici afli ce este, ce NU este, de unde a apărut, unde se folosește concret, cum arată o sesiune, ce competențe stau la baza meseriei și care sunt limitele etice — înainte să dai vreun ban sau să te înscrii la vreun curs.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#nu-este" data-i18n-ro="Vezi diferențele față de terapie" data-i18n-en="See how it differs from therapy">Vezi diferențele față de terapie</a>
+        <a class="btn btn-ghost" href="index.html#harta" data-i18n-ro="Înapoi la hartă" data-i18n-en="Back to the map">Înapoi la hartă</a>
+      </div>
+    </div>
+    <img class="page-hero-art" src="assets/img/hero-teorie.png" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<div class="wrap">
+<div class="doc-layout">
+
+  <!-- ============ CUPRINS ============ -->
+  <aside class="toc" id="toc">
+    <h5 data-i18n-ro="Cuprins" data-i18n-en="Contents">Cuprins</h5>
+    <a href="#ce-este">01 · <span data-i18n-ro="Ce este" data-i18n-en="What it is">Ce este</span></a>
+    <a href="#nu-este">02 · <span data-i18n-ro="Ce NU este" data-i18n-en="What it is NOT">Ce NU este</span></a>
+    <a href="#istoric">03 · <span data-i18n-ro="De unde vine" data-i18n-en="Where it comes from">De unde vine</span></a>
+    <a href="#unde">04 · <span data-i18n-ro="Unde se folosește" data-i18n-en="Where it's used">Unde se folosește</span></a>
+    <a href="#sesiune">05 · <span data-i18n-ro="Anatomia sesiunii" data-i18n-en="Session anatomy">Anatomia sesiunii</span></a>
+    <a href="#modele">06 · <span data-i18n-ro="Modele de lucru" data-i18n-en="Working models">Modele de lucru</span></a>
+    <a href="#competente">07 · <span data-i18n-ro="Competențele" data-i18n-en="Competencies">Competențele</span></a>
+    <a href="#etica">08 · <span data-i18n-ro="Etică și limite" data-i18n-en="Ethics &amp; limits">Etică și limite</span></a>
+    <a href="#mituri">09 · <span data-i18n-ro="Mituri" data-i18n-en="Myths">Mituri</span></a>
+    <a href="#cercetare">10 · <span data-i18n-ro="Ce spune cercetarea" data-i18n-en="What research says">Ce spune cercetarea</span></a>
+  </aside>
+
+  <div>
+
+  <!-- ============ 1. CE ESTE ============ -->
+  <section class="doc-sec" id="ce-este">
+    <h2><span class="num">01</span><span data-i18n-ro="Ce este coachingul" data-i18n-en="What coaching is">Ce este coachingul</span></h2>
+    <p class="intro" data-i18n-ro="Coachingul este o conversație profesională, structurată, orientată spre viitor, în care clientul își clarifică un obiectiv și își construiește propriul drum spre el. Coach-ul nu dă soluții: pune întrebări, ascultă, reflectă și ține cadrul." data-i18n-en="Coaching is a structured, future-focused professional conversation in which the client clarifies a goal and builds their own route to it. The coach doesn't give solutions: they ask, listen, reflect and hold the frame.">Coachingul este o conversație profesională, structurată, orientată spre viitor, în care clientul își clarifică un obiectiv și își construiește propriul drum spre el. Coach-ul nu dă soluții: pune întrebări, ascultă, reflectă și ține cadrul.</p>
+
+    <div class="def-stack">
+      <div class="def-card">
+        <div class="who" data-i18n-ro="Definiția ICF" data-i18n-en="ICF definition">Definiția ICF</div>
+        <p data-i18n-ro="Parteneriat cu clienții, într-un proces care provoacă gândirea și creativitatea, pentru a-i inspira să își maximizeze potențialul personal și profesional." data-i18n-en="Partnering with clients in a thought-provoking and creative process that inspires them to maximise their personal and professional potential.">Parteneriat cu clienții, într-un proces care provoacă gândirea și creativitatea, pentru a-i inspira să își maximizeze potențialul personal și profesional.</p>
+      </div>
+      <div class="def-card b-emcc">
+        <div class="who" data-i18n-ro="Perspectiva EMCC" data-i18n-en="EMCC view">Perspectiva EMCC</div>
+        <p data-i18n-ro="O relație de dezvoltare, non-directivă, în care coach-ul sprijină clientul să își găsească propriile răspunsuri; clientul deține agenda, coach-ul deține procesul. EMCC pune accent puternic pe reflecție și supervizare." data-i18n-en="A non-directive developmental relationship in which the coach supports the client to find their own answers; the client owns the agenda, the coach owns the process. EMCC puts strong emphasis on reflection and supervision.">O relație de dezvoltare, non-directivă, în care coach-ul sprijină clientul să își găsească propriile răspunsuri; clientul deține agenda, coach-ul deține procesul. EMCC pune accent puternic pe reflecție și supervizare.</p>
+      </div>
+      <div class="def-card b-anc">
+        <div class="who" data-i18n-ro="În România (ANC)" data-i18n-en="In Romania (ANC)">În România (ANC)</div>
+        <p data-i18n-ro="Coachingul este reglementat ca ocupație: Specialist în activitatea de coaching, cod COR 242412. Certificatul atestă competențe conform standardului ocupațional și se obține după un program autorizat + examen." data-i18n-en="Coaching is regulated as an occupation: Coaching Specialist, COR code 242412. The certificate attests competences against the occupational standard and is earned after an authorised programme plus exam.">Coachingul este reglementat ca ocupație: Specialist în activitatea de coaching, cod COR 242412. Certificatul atestă competențe conform standardului ocupațional și se obține după un program autorizat + examen.</p>
+      </div>
+    </div>
+
+    <h3 data-i18n-ro="Trei idei care explică tot mecanismul" data-i18n-en="Three ideas that explain the whole mechanism">Trei idei care explică tot mecanismul</h3>
+    <ul class="bullets">
+      <li><b data-i18n-ro="Clientul este expertul." data-i18n-en="The client is the expert.">Clientul este expertul.</b> <span data-i18n-ro="Tu știi contextul, valorile și constrângerile. Coach-ul este expert pe proces — pe cum se pune o întrebare bună și cum se ține un cadru." data-i18n-en="You know the context, values and constraints. The coach is the expert on process — on asking a good question and holding a frame.">Tu știi contextul, valorile și constrângerile. Coach-ul este expert pe proces — pe cum se pune o întrebare bună și cum se ține un cadru.</span></li>
+      <li><b data-i18n-ro="Prezent → viitor." data-i18n-en="Present → future.">Prezent → viitor.</b> <span data-i18n-ro="Coachingul nu repară trecutul; pornește din realitatea de azi și construiește următorul pas. Trecutul e folosit doar ca sursă de tipare, nu ca teren de tratament." data-i18n-en="Coaching doesn't repair the past; it starts from today's reality and builds the next step. The past is used only as a source of patterns, not as a treatment ground.">Coachingul nu repară trecutul; pornește din realitatea de azi și construiește următorul pas. Trecutul e folosit doar ca sursă de tipare, nu ca teren de tratament.</span></li>
+      <li><b data-i18n-ro="Responsabilitate, nu dependență." data-i18n-en="Accountability, not dependency.">Responsabilitate, nu dependență.</b> <span data-i18n-ro="Semnul unui proces bun este că la final ai nevoie mai puțin de coach, nu mai mult. De aceea există un început, un mijloc și un sfârșit asumat." data-i18n-en="The sign of a good process is that you need the coach less at the end, not more. That's why there's an agreed beginning, middle and end.">Semnul unui proces bun este că la final ai nevoie mai puțin de coach, nu mai mult. De aceea există un început, un mijloc și un sfârșit asumat.</span></li>
+    </ul>
+
+    <blockquote class="pull-quote">
+      <span data-i18n-ro="Performanța nu vine din a adăuga ceva, ci din a îndepărta ce te blochează." data-i18n-en="Performance doesn't come from adding something, but from removing what blocks you.">Performanța nu vine din a adăuga ceva, ci din a îndepărta ce te blochează.</span>
+      <cite data-i18n-ro="Ideea centrală din The Inner Game (W. Timothy Gallwey, 1974)" data-i18n-en="The core idea in The Inner Game (W. Timothy Gallwey, 1974)">Ideea centrală din The Inner Game (W. Timothy Gallwey, 1974)</cite>
+    </blockquote>
+  </section>
+
+  <!-- ============ 2. CE NU ESTE ============ -->
+  <section class="doc-sec" id="nu-este">
+    <h2><span class="num">02</span><span data-i18n-ro="Ce NU este coachingul (și de ce contează)" data-i18n-en="What coaching is NOT (and why it matters)">Ce NU este coachingul (și de ce contează)</span></h2>
+    <p class="intro" data-i18n-ro="Cinci profesii se suprapun și sunt constant confundate. Diferența nu e academică: alegerea greșită înseamnă luni pierdute și bani aruncați." data-i18n-en="Five professions overlap and are constantly confused. The difference isn't academic: choosing wrong means months lost and money wasted.">Cinci profesii se suprapun și sunt constant confundate. Diferența nu e academică: alegerea greșită înseamnă luni pierdute și bani aruncați.</p>
+
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th data-i18n-ro="Dimensiune" data-i18n-en="Dimension">Dimensiune</th>
+            <th class="hl" data-i18n-ro="Coaching" data-i18n-en="Coaching">Coaching</th>
+            <th data-i18n-ro="Terapie" data-i18n-en="Therapy">Terapie</th>
+            <th data-i18n-ro="Mentoring" data-i18n-en="Mentoring">Mentoring</th>
+            <th data-i18n-ro="Consultanță" data-i18n-en="Consulting">Consultanță</th>
+            <th data-i18n-ro="Training" data-i18n-en="Training">Training</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th data-i18n-ro="Direcția timpului" data-i18n-en="Time orientation">Direcția timpului</th>
+            <td class="hl"><span data-i18n-ro="prezent → viitor" data-i18n-en="present → future">prezent → viitor</span></td>
+            <td><span data-i18n-ro="trecut → prezent" data-i18n-en="past → present">trecut → prezent</span></td>
+            <td><span data-i18n-ro="experiență trecută" data-i18n-en="past experience">experiență trecută</span></td>
+            <td><span data-i18n-ro="viitor (soluție)" data-i18n-en="future (solution)">viitor (soluție)</span></td>
+            <td><span data-i18n-ro="viitor (competență)" data-i18n-en="future (skill)">viitor (competență)</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Cine stabilește agenda" data-i18n-en="Who sets the agenda">Cine stabilește agenda</th>
+            <td class="hl"><span data-i18n-ro="clientul" data-i18n-en="the client">clientul</span></td>
+            <td><span data-i18n-ro="cadrul clinic" data-i18n-en="the clinical frame">cadrul clinic</span></td>
+            <td><span data-i18n-ro="mentorul" data-i18n-en="the mentor">mentorul</span></td>
+            <td><span data-i18n-ro="beneficiarul" data-i18n-en="the buyer">beneficiarul</span></td>
+            <td><span data-i18n-ro=" programa" data-i18n-en="the curriculum">programa</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Oferă soluții?" data-i18n-en="Gives answers?">Oferă soluții?</th>
+            <td class="hl"><span class="no" data-i18n-ro="Nu" data-i18n-en="No">Nu</span></td>
+            <td><span class="partial" data-i18n-ro="Rar, tehnic" data-i18n-en="Rarely, technically">Rar, tehnic</span></td>
+            <td><span class="yes" data-i18n-ro="Da — din experiență" data-i18n-en="Yes — from experience">Da — din experiență</span></td>
+            <td><span class="yes" data-i18n-ro="Da — livrabil" data-i18n-en="Yes — a deliverable">Da — livrabil</span></td>
+            <td><span class="yes" data-i18n-ro="Da — conținut" data-i18n-en="Yes — content">Da — conținut</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Tratează suferință clinică?" data-i18n-en="Treats clinical suffering?">Tratează suferință clinică?</th>
+            <td class="hl"><span class="no" data-i18n-ro="Nu" data-i18n-en="No">Nu</span></td>
+            <td><span class="yes" data-i18n-ro="Da" data-i18n-en="Yes">Da</span></td>
+            <td><span class="no" data-i18n-ro="Nu" data-i18n-en="No">Nu</span></td>
+            <td><span class="no" data-i18n-ro="Nu" data-i18n-en="No">Nu</span></td>
+            <td><span class="no" data-i18n-ro="Nu" data-i18n-en="No">Nu</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Livrabilul concret" data-i18n-en="Concrete output">Livrabilul concret</th>
+            <td class="hl"><span data-i18n-ro="claritate + acțiune asumată" data-i18n-en="clarity + owned action">claritate + acțiune asumată</span></td>
+            <td><span data-i18n-ro="ameliorare / vindecare" data-i18n-en="relief / healing">ameliorare / vindecare</span></td>
+            <td><span data-i18n-ro="sfat + rețea" data-i18n-en="advice + network">sfat + rețea</span></td>
+            <td><span data-i18n-ro="analiză + recomandare" data-i18n-en="analysis + recommendation">analiză + recomandare</span></td>
+            <td><span data-i18n-ro="competență verificată" data-i18n-en="assessed competence">competență verificată</span></td>
+          </tr>
+          <tr>
+            <th data-i18n-ro="Reglementare" data-i18n-en="Regulation">Reglementare</th>
+            <td class="hl"><span data-i18n-ro="voluntară (ICF/EMCC) + ocupațională (RO)" data-i18n-en="voluntary (ICF/EMCC) + occupational (RO)">voluntară (ICF/EMCC) + ocupațională (RO)</span></td>
+            <td><span data-i18n-ro="profesie reglementată" data-i18n-en="regulated profession">profesie reglementată</span></td>
+            <td><span data-i18n-ro="nereglementat" data-i18n-en="unregulated">nereglementat</span></td>
+            <td><span data-i18n-ro="contract comercial" data-i18n-en="commercial contract">contract comercial</span></td>
+            <td><span data-i18n-ro="autorizare furnizor (RO)" data-i18n-en="provider authorisation (RO)">autorizare furnizor (RO)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <b data-i18n-ro="Regula de bun-simț:" data-i18n-en="The common-sense rule:">Regula de bun-simț:</b>
+      <span data-i18n-ro=" dacă problema e medicală sau psihiatrică (depresie, anxietate severă, traumă, dependență), răspunsul corect NU este coachingul, ci trimiterea către un specialist. Un coach profesionist spune asta din prima ședință." data-i18n-en=" if the issue is medical or psychiatric (depression, severe anxiety, trauma, addiction), the right answer is NOT coaching but referral to a specialist. A professional coach says so in the first session."> dacă problema e medicală sau psihiatrică (depresie, anxietate severă, traumă, dependență), răspunsul corect NU este coachingul, ci trimiterea către un specialist. Un coach profesionist spune asta din prima ședință.</span>
+    </div>
+  </section>
+
+  <!-- ============ 3. ISTORIC ============ -->
+  <section class="doc-sec" id="istoric">
+    <h2><span class="num">03</span><span data-i18n-ro="De unde vine coachingul" data-i18n-en="Where coaching comes from">De unde vine coachingul</span></h2>
+    <p class="intro" data-i18n-ro="Coachingul modern e o împletire de psihologie umanistă, psihologie sportivă și practică de business. Are 50 de ani — suficient cât să aibă standarde, prea puțin cât să fie uniform reglementat." data-i18n-en="Modern coaching weaves together humanistic psychology, sport psychology and business practice. It's 50 years old — long enough to have standards, too young to be uniformly regulated.">Coachingul modern e o împletire de psihologie umanistă, psihologie sportivă și practică de business. Are 50 de ani — suficient cât să aibă standarde, prea puțin cât să fie uniform reglementat.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-year">1974</span>
+        <h4 data-i18n-ro="The Inner Game" data-i18n-en="The Inner Game">The Inner Game</h4>
+        <p data-i18n-ro="W. Timothy Gallwey publică The Inner Game of Tennis și formulează ecuația care stă la baza coachingului: performanță = potențial − interferență. Ideea că adversarul din mintea ta e mai puternic decât cel de peste fileu migrează rapid din sport în business." data-i18n-en="W. Timothy Gallwey publishes The Inner Game of Tennis and formulates the equation behind coaching: performance = potential − interference. The idea that the opponent in your head is stronger than the one across the net migrates quickly from sport to business.">W. Timothy Gallwey publică The Inner Game of Tennis și formulează ecuația care stă la baza coachingului: performanță = potențial − interferență. Ideea că adversarul din mintea ta e mai puternic decât cel de peste fileu migrează rapid din sport în business.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">1992</span>
+        <h4 data-i18n-ro="GROW și primele școli" data-i18n-en="GROW and the first schools">GROW și primele școli</h4>
+        <p data-i18n-ro="John Whitmore publică Coaching for Performance și popularizează modelul GROW. În același an, Thomas Leonard fondează Coach U (prima școală mare de coaching), iar David Megginson și David Clutterbuck pun bazele EMC — viitorul EMCC." data-i18n-en="John Whitmore publishes Coaching for Performance and popularises the GROW model. The same year, Thomas Leonard founds Coach U (the first large coach training school), and David Megginson and David Clutterbuck lay the foundations of EMC — later EMCC.">John Whitmore publică Coaching for Performance și popularizează modelul GROW. În același an, Thomas Leonard fondează Coach U (prima școală mare de coaching), iar David Megginson și David Clutterbuck pun bazele EMC — viitorul EMCC.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">1995</span>
+        <h4 data-i18n-ro="Se naște ICF" data-i18n-en="ICF is born">Se naște ICF</h4>
+        <p data-i18n-ro="Thomas Leonard fondează International Coach Federation, organizația care avea să devină principalul standard global de credentialare. Azi, ICF este cel mai mare organism de profil din lume." data-i18n-en="Thomas Leonard founds the International Coach Federation, the organisation that became the main global credentialing standard. ICF is now the largest coaching body in the world.">Thomas Leonard fondează International Coach Federation, organizația care avea să devină principalul standard global de credentialare. Azi, ICF este cel mai mare organism de profil din lume.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2002</span>
+        <h4 data-i18n-ro="EMC devine EMCC" data-i18n-en="EMC becomes EMCC">EMC devine EMCC</h4>
+        <p data-i18n-ro="Organizația europeană, fondată în 1992 în jurul mentoringului, își schimbă numele în European Mentoring and Coaching Council și devine al doilea pol de credentialare, cu tradiție puternică în supervizare și practică reflexivă." data-i18n-en="The European body founded in 1992 around mentoring renames itself the European Mentoring and Coaching Council and becomes the second credentialing pole, with a strong tradition of supervision and reflective practice.">Organizația europeană, fondată în 1992 în jurul mentoringului, își schimbă numele în European Mentoring and Coaching Council și devine al doilea pol de credentialare, cu tradiție puternică în supervizare și practică reflexivă.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2013 – 2014</span>
+        <h4 data-i18n-ro="Coachingul devine ocupație în România" data-i18n-en="Coaching becomes an occupation in Romania">Coachingul devine ocupație în România</h4>
+        <p data-i18n-ro="Ocupația Specialist în activitatea de coaching este recunoscută oficial, cu cod COR 242412. Standardul ocupațional curent este valabil 2024–2034. De aici înainte, în România există și cale legală (ANC), nu doar cale profesională (ICF/EMCC)." data-i18n-en="The occupation Coaching Specialist is officially recognised under COR code 242412. The current occupational standard runs 2024–2034. From this point Romania has a legal route (ANC) as well as the professional one (ICF/EMCC).">Ocupația Specialist în activitatea de coaching este recunoscută oficial, cu cod COR 242412. Standardul ocupațional curent este valabil 2024–2034. De aici înainte, în România există și cale legală (ANC), nu doar cale profesională (ICF/EMCC).</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2019 – 2025</span>
+        <h4 data-i18n-ro="Modelul de competențe ICF" data-i18n-en="The ICF competency model">Modelul de competențe ICF</h4>
+        <p data-i18n-ro="ICF lansează modelul cu 8 competențe (2019, intrat în vigoare progresiv din 2021) și îl actualizează în 2025, împreună cu Codul etic. Modelul devine referința după care se construiesc programele și se evaluează performanța." data-i18n-en="ICF launches the 8-competency model (2019, phased in from 2021) and updates it in 2025 along with the Code of Ethics. The model becomes the reference for programme design and performance evaluation.">ICF lansează modelul cu 8 competențe (2019, intrat în vigoare progresiv din 2021) și îl actualizează în 2025, împreună cu Codul etic. Modelul devine referința după care se construiesc programele și se evaluează performanța.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2026 – 2027</span>
+        <h4 data-i18n-ro="Anii în care se schimbă regulile" data-i18n-en="The years the rules change">Anii în care se schimbă regulile</h4>
+        <p data-i18n-ro="10 noiembrie 2026: noul examen ICF PCC/MCC — 80 de itemi / 150 de minute, pe competențele și codul etic 2025 (varianta veche rămâne până la 31 martie 2027). 1 ianuarie 2027: orele noi de mentor coaching trebuie livrate de un coach cu MCS." data-i18n-en="10 November 2026: the new ICF PCC/MCC exam — 80 items / 150 minutes, based on the 2025 competencies and Code of Ethics (the old version runs until 31 March 2027). 1 January 2027: new mentor coaching hours must come from an MCS coach.">10 noiembrie 2026: noul examen ICF PCC/MCC — 80 de itemi / 150 de minute, pe competențele și codul etic 2025 (varianta veche rămâne până la 31 martie 2027). 1 ianuarie 2027: orele noi de mentor coaching trebuie livrate de un coach cu MCS.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. UNDE SE FOLOSeȘTE ============ -->
+  <section class="doc-sec" id="unde">
+    <h2><span class="num">04</span><span data-i18n-ro="Unde se folosește coachingul" data-i18n-en="Where coaching is used">Unde se folosește coachingul</span></h2>
+    <p class="intro" data-i18n-ro="Coachingul nu e o meserie, e o metodă aplicată în contexte foarte diferite. Asta explică de ce „coach” singur nu spune nimic: specializarea contează mai mult decât diploma." data-i18n-en="Coaching isn't a job, it's a method applied in very different contexts. That's why "coach" on its own says nothing: the specialisation matters more than the certificate.">Coachingul nu e o meserie, e o metodă aplicată în contexte foarte diferite. Asta explică de ce „coach” singur nu spune nimic: specializarea contează mai mult decât diploma.</p>
+
+    <div class="use-grid">
+      <div class="use-card">
+        <span class="u-ic" style="background:var(--brand-soft)">🏢</span>
+        <h4 data-i18n-ro="Executive &amp; leadership" data-i18n-en="Executive &amp; leadership">Executive &amp; leadership</h4>
+        <p data-i18n-ro="Tranziții de rol, decizii cu miză mare, prezență executivă, delegare, relația cu boardul." data-i18n-en="Role transitions, high-stakes decisions, executive presence, delegation, board relationships.">Tranziții de rol, decizii cu miză mare, prezență executivă, delegare, relația cu boardul.</p>
+        <div class="u-out"><b data-i18n-ro="Rezultat tipic:" data-i18n-en="Typical outcome:">Rezultat tipic:</b> <span data-i18n-ro="decizii mai rapide, echipă mai autonomă" data-i18n-en="faster decisions, a more autonomous team">decizii mai rapide, echipă mai autonomă</span></div>
+      </div>
+      <div class="use-card">
+        <span class="u-ic" style="background:var(--teal-soft)">🧭</span>
+        <h4 data-i18n-ro="Carieră" data-i18n-en="Career">Carieră</h4>
+        <p data-i18n-ro="Reconversie profesională, claritate, negociere, revenire după concediu sau burnout." data-i18n-en="Retraining, clarity, negotiation, return after leave or burnout.">Reconversie profesională, claritate, negociere, revenire după concediu sau burnout.</p>
+        <div class="u-out"><b data-i18n-ro="Rezultat tipic:" data-i18n-en="Typical outcome:">Rezultat tipic:</b> <span data-i18n-ro="direcție asumată, nu doar opțiuni" data-i18n-en="an owned direction, not just options">direcție asumată, nu doar opțiuni</span></div>
+      </div>
+      <div class="use-card">
+        <span class="u-ic" style="background:var(--violet-soft)">🧩</span>
+        <h4 data-i18n-ro="Echipă" data-i18n-en="Team">Echipă</h4>
+        <p data-i18n-ro="Aliniere, conflict, claritatea rolurilor, performanță colectivă, integrarea unui lider nou." data-i18n-en="Alignment, conflict, role clarity, collective performance, onboarding a new leader.">Aliniere, conflict, claritatea rolurilor, performanță colectivă, integrarea unui lider nou.</p>
+        <div class="u-out"><b data-i18n-ro="Rezultat tipic:" data-i18n-en="Typical outcome:">Rezultat tipic:</b> <span data-i18n-ro="încredere + reguli de lucru explicite" data-i18n-en="trust plus explicit working rules">încredere + reguli de lucru explicite</span></div>
+      </div>
+      <div class="use-card">
+        <span class="u-ic" style="background:var(--icf-soft)">🌱</span>
+        <h4 data-i18n-ro="Life coaching" data-i18n-en="Life coaching">Life coaching</h4>
+        <p data-i18n-ro="Relații, energie, priorități, identitate, tranziții personale. Atenție: aici apar cele mai multe practici nereglementate." data-i18n-en="Relationships, energy, priorities, identity, personal transitions. Beware: this is where most unregulated practice appears.">Relații, energie, priorități, identitate, tranziții personale. Atenție: aici apar cele mai multe practici nereglementate.</p>
+        <div class="u-out"><b data-i18n-ro="Verifică:" data-i18n-en="Check:">Verifică:</b> <span data-i18n-ro="credenciala exactă + supervizarea" data-i18n-en="exact credential + supervision">credenciala exactă + supervizarea</span></div>
+      </div>
+      <div class="use-card">
+        <span class="u-ic" style="background:var(--ok-soft)">💚</span>
+        <h4 data-i18n-ro="Sănătate &amp; wellbeing" data-i18n-en="Health &amp; wellbeing">Sănătate &amp; wellbeing</h4>
+        <p data-i18n-ro="Schimbare de stil de viață, aderență la tratament, prevenirea burnoutului — în limitele rolului, fără a înlocui medicul." data-i18n-en="Lifestyle change, treatment adherence, burnout prevention — within the role's limits, never replacing the doctor.">Schimbare de stil de viață, aderență la tratament, prevenirea burnoutului — în limitele rolului, fără a înlocui medicul.</p>
+        <div class="u-out"><b data-i18n-ro="Graniță:" data-i18n-en="Boundary:">Graniță:</b> <span data-i18n-ro="coach-ul nu diagnostichează" data-i18n-en="the coach never diagnoses">coach-ul nu diagnostichează</span></div>
+      </div>
+      <div class="use-card">
+        <span class="u-ic" style="background:var(--anc-soft)">🎓</span>
+        <h4 data-i18n-ro="Educație &amp; academic" data-i18n-en="Education &amp; academic">Educație &amp; academic</h4>
+        <p data-i18n-ro="Coaching pentru elevi/studenți, dezvoltare de carieră universitară, coaching între colegi (peer coaching)." data-i18n-en="Coaching for pupils/students, university career development, peer coaching.">Coaching pentru elevi/studenți, dezvoltare de carieră universitară, coaching între colegi (peer coaching).</p>
+        <div class="u-out"><b data-i18n-ro="Atenție:" data-i18n-en="Careful:">Atenție:</b> <span data-i18n-ro="minorii cer acord parental + cadru clar" data-i18n-en="minors require parental consent and a clear frame">minorii cer acord parental + cadru clar</span></div>
+      </div>
+      <div class="use-card">
+        <span class="u-ic" style="background:var(--amber-soft)">🏅</span>
+        <h4 data-i18n-ro="Sport" data-i18n-en="Sport">Sport</h4>
+        <p data-i18n-ro="Rădăcina istorică a metodei: pregătire mentală, concentrare, revenire după accidentare, rutine de performanță." data-i18n-en="The historical root of the method: mental preparation, focus, return from injury, performance routines.">Rădăcina istorică a metodei: pregătire mentală, concentrare, revenire după accidentare, rutine de performanță.</p>
+        <div class="u-out"><b data-i18n-ro="De reținut:" data-i18n-en="Remember:">De reținut:</b> <span data-i18n-ro="de aici vine GROW" data-i18n-en="GROW comes from here">de aici vine GROW</span></div>
+      </div>
+      <div class="use-card">
+        <span class="u-ic" style="background:var(--surface-3)">🚀</span>
+        <h4 data-i18n-ro="Antreprenoriat" data-i18n-en="Entrepreneurship">Antreprenoriat</h4>
+        <p data-i18n-ro="Claritate strategică, decizii de creștere, gestionarea singurătății fondatorului, echipă mică." data-i18n-en="Strategic clarity, growth decisions, founder loneliness, small teams.">Claritate strategică, decizii de creștere, gestionarea singurătății fondatorului, echipă mică.</p>
+        <div class="u-out"><b data-i18n-ro="Capcană:" data-i18n-en="Pitfall:">Capcană:</b> <span data-i18n-ro="confuzia cu consultanța de business" data-i18n-en="confusion with business consulting">confuzia cu consultanța de business</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. ANATOMIA SESIUNII ============ -->
+  <section class="doc-sec" id="sesiune">
+    <h2><span class="num">05</span><span data-i18n-ro="Cum arată, concret, o sesiune" data-i18n-en="What a session actually looks like">Cum arată, concret, o sesiune</span></h2>
+    <p class="intro" data-i18n-ro="O sesiune standard durează 45–60 de minute și are o structură recognoscibilă. Fără structură, o conversație plăcută rămâne doar atât." data-i18n-en="A standard session lasts 45–60 minutes and has a recognisable structure. Without structure, a pleasant conversation stays just that.">O sesiune standard durează 45–60 de minute și are o structură recognoscibilă. Fără structură, o conversație plăcută rămâne doar atât.</p>
+
+    <div class="steps-flow">
+      <div class="step-chip">
+        <h4 data-i18n-ro="Check-in" data-i18n-en="Check-in">Check-in</h4>
+        <p data-i18n-ro="Cu ce vii azi? Starea, energia, ce s-a întâmplat de la ultima întâlnire." data-i18n-en="What are you bringing today? State, energy, what happened since we last met.">Cu ce vii azi? Starea, energia, ce s-a întâmplat de la ultima întâlnire.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Contractare" data-i18n-en="Contracting">Contractare</h4>
+        <p data-i18n-ro="Stabilim subiectul și ce înseamnă „a mers” la finalul sesiunii." data-i18n-en="We set the topic and what "it worked" means by the end of the session.">Stabilim subiectul și ce înseamnă „a mers” la finalul sesiunii.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Explorare" data-i18n-en="Exploration">Explorare</h4>
+        <p data-i18n-ro="Realitatea, opțiunile, valorile, presupunerile. Coach-ul ascultă la niveluri diferite." data-i18n-en="Reality, options, values, assumptions. The coach listens at several levels.">Realitatea, opțiunile, valorile, presupunerile. Coach-ul ascultă la niveluri diferite.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Insight" data-i18n-en="Insight">Insight</h4>
+        <p data-i18n-ro="Apare noul unghi: vezi ceva ce nu vedeai înainte, inclusiv despre tine." data-i18n-en="The new angle appears: you see something you couldn't see before, including about yourself.">Apare noul unghi: vezi ceva ce nu vedeai înainte, inclusiv despre tine.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Angajament" data-i18n-en="Commitment">Angajament</h4>
+        <p data-i18n-ro="Acțiuni datate, primul pas concret, obstacole anticipate." data-i18n-en="Dated actions, a concrete first step, anticipated obstacles.">Acțiuni datate, primul pas concret, obstacole anticipate.</p>
+      </div>
+      <div class="step-chip">
+        <h4 data-i18n-ro="Follow-up" data-i18n-en="Follow-up">Follow-up</h4>
+        <p data-i18n-ro="Ședința următoare începe cu ce ai făcut — nu cu ce n-ai făcut." data-i18n-en="The next session opens with what you did — not with what you didn't.">Ședința următoare începe cu ce ai făcut — nu cu ce n-ai făcut.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b data-i18n-ro="Cum recunoști o sesiune bună:" data-i18n-en="How to spot a good session:">Cum recunoști o sesiune bună:</b>
+      <span data-i18n-ro=" pleci cu mai puțin zgomot în cap și cu o acțiune pe care o vei face marți dimineață, nu cu o listă de sfaturi de pe internet." data-i18n-en=" you leave with less noise in your head and one action you will actually take on Tuesday morning, not a list of internet advice."> pleci cu mai puțin zgomot în cap și cu o acțiune pe care o vei face marți dimineață, nu cu o listă de sfaturi de pe internet.</span>
+    </div>
+  </section>
+
+  <!-- ============ 6. MODELE ============ -->
+  <section class="doc-sec" id="modele">
+    <h2><span class="num">06</span><span data-i18n-ro="Modelele de lucru (schele, nu rețete)" data-i18n-en="Working models (scaffolding, not recipes)">Modelele de lucru (schele, nu rețete)</span></h2>
+    <p class="intro" data-i18n-ro="Modelele sunt utile începătorilor și invizibile la experți: cu cât ești mai bun, cu atât mai puțin se vede structura. Iată cele mai folosite." data-i18n-en="Models help beginners and become invisible in experts: the better you are, the less the structure shows. Here are the most used ones.">Modelele sunt utile începătorilor și invizibile la experți: cu cât ești mai bun, cu atât mai puțin se vede structura. Iată cele mai folosite.</p>
+
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="m-name">GROW</div>
+        <h4 data-i18n-ro="Cel mai cunoscut" data-i18n-en="The best known">Cel mai cunoscut</h4>
+        <p data-i18n-ro="Whitmore, din psihologia sportivă. Simplu, robust, bun pentru început." data-i18n-en="Whitmore, from sport psychology. Simple, robust, good for starters.">Whitmore, din psihologia sportivă. Simplu, robust, bun pentru început.</p>
+        <ol>
+          <li data-i18n-ro="Goal — obiectivul sesiunii" data-i18n-en="Goal — the session's objective">Goal — obiectivul sesiunii</li>
+          <li data-i18n-ro="Reality — realitatea de azi" data-i18n-en="Reality — today's reality">Reality — realitatea de azi</li>
+          <li data-i18n-ro="Options — variante, fără cenzură" data-i18n-en="Options — options, uncensored">Options — variante, fără cenzură</li>
+          <li data-i18n-ro="Will / Way forward — voință și următorul pas" data-i18n-en="Will / Way forward — will and next step">Will / Way forward — voință și următorul pas</li>
+        </ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">TGROW</div>
+        <h4 data-i18n-ro="Cu topic explicit" data-i18n-en="With an explicit topic">Cu topic explicit</h4>
+        <p data-i18n-ro="Adaugă un pas zero: alegerea subiectului, înainte de obiectiv." data-i18n-en="Adds a step zero: choosing the topic before the goal.">Adaugă un pas zero: alegerea subiectului, înainte de obiectiv.</p>
+        <ol>
+          <li>Topic</li><li>Goal</li><li>Reality</li><li>Options</li><li>Way forward</li>
+        </ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">OSCAR</div>
+        <h4 data-i18n-ro="Orientat pe soluții" data-i18n-en="Solution-oriented">Orientat pe soluții</h4>
+        <p data-i18n-ro="Bun în contexte corporate, unde clientul vine blocat pe problemă." data-i18n-en="Good in corporate settings where the client arrives stuck on the problem.">Bun în contexte corporate, unde clientul vine blocat pe problemă.</p>
+        <ol>
+          <li>Outcome</li><li>Situation</li><li>Choices &amp; consequences</li><li>Actions</li><li>Review</li>
+        </ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">CLEAR</div>
+        <h4 data-i18n-ro="Centrat pe ascultare" data-i18n-en="Listening-centred">Centrat pe ascultare</h4>
+        <p data-i18n-ro="Pune contractul și ascultarea înaintea explorării — mai aproape de etosul ICF." data-i18n-en="Puts contracting and listening before exploration — closer to the ICF ethos.">Pune contractul și ascultarea înaintea explorării — mai aproape de etosul ICF.</p>
+        <ol>
+          <li>Contract</li><li>Listen</li><li>Explore</li><li>Action</li><li>Review</li>
+        </ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name">FUEL</div>
+        <h4 data-i18n-ro="Pentru manageri" data-i18n-en="For managers">Pentru manageri</h4>
+        <p data-i18n-ro="Gândit pentru conversații scurte, integrate în munca zilnică." data-i18n-en="Designed for short conversations embedded in daily work.">Gândit pentru conversații scurte, integrate în munca zilnică.</p>
+        <ol>
+          <li>Frame</li><li>Understand</li><li>Explore</li><li>Lay out a plan</li>
+        </ol>
+      </div>
+      <div class="model-card">
+        <div class="m-name" data-i18n-ro="Co-active" data-i18n-en="Co-active">Co-active</div>
+        <h4 data-i18n-ro="Modelul co-activ" data-i18n-en="The co-active model">Modelul co-activ</h4>
+        <p data-i18n-ro="Nu e un acronim, e o filozofie: clientul este creativ, ingenios și întreg; coachingul lucrează pe agendă, valori și responsabilitate." data-i18n-en="Not an acronym but a philosophy: the client is creative, resourceful and whole; coaching works on agenda, values and accountability.">Nu e un acronim, e o filozofie: clientul este creativ, ingenios și întreg; coachingul lucrează pe agendă, valori și responsabilitate.</p>
+        <ol>
+          <li data-i18n-ro="Fondul: încredere și intimitate" data-i18n-en="Foundation: trust and intimacy">Fondul: încredere și intimitate</li>
+          <li data-i18n-ro="Ascultare profundă + întrebări directe" data-i18n-en="Deep listening + direct questions">Ascultare profundă + întrebări directe</li>
+          <li data-i18n-ro="Auto-conștientizarea coach-ului" data-i18n-en="Coach self-awareness">Auto-conștientizarea coach-ului</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. COMPETENȚE ============ -->
+  <section class="doc-sec" id="competente">
+    <h2><span class="num">07</span><span data-i18n-ro="Cele 8 competențe ICF (modelul actual)" data-i18n-en="The 8 ICF competencies (current model)">Cele 8 competențe ICF (modelul actual)</span></h2>
+    <p class="intro" data-i18n-ro="Acestea sunt criteriile după care ești evaluat la certificare și, mai important, după care se vede diferența dintre un amator simpatic și un profesionist. Le regăsești aplicat în programele de coaching individual." data-i18n-en="These are the criteria used to assess you for a credential and, more importantly, the difference between a likeable amateur and a professional. You'll find them applied in the 1:1 coaching plans.">Acestea sunt criteriile după care ești evaluat la certificare și, mai important, după care se vede diferența dintre un amator simpatic și un profesionist. Le regăsești aplicat în programele de coaching individual.</p>
+
+    <div class="comp-group" data-i18n-ro="A. Fundamentul" data-i18n-en="A. Foundation">A. Fundamentul</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <span class="cnum">1</span>
+        <h4 data-i18n-ro="Practică etică" data-i18n-en="Demonstrates Ethical Practice">Practică etică</h4>
+        <p data-i18n-ro="Cunoaște și aplică codul etic: confidențialitate, granițe, conflicte de interes, integritate în promisiuni." data-i18n-en="Knows and applies the code of ethics: confidentiality, boundaries, conflicts of interest, integrity in promises.">Cunoaște și aplică codul etic: confidențialitate, granițe, conflicte de interes, integritate în promisiuni.</p>
+      </div>
+      <div class="comp-card">
+        <span class="cnum">2</span>
+        <h4 data-i18n-ro="Mentalitate de coaching" data-i18n-en="Embodies a Coaching Mindset">Mentalitate de coaching</h4>
+        <p data-i18n-ro="Curiozitate autentică, toleranță la nesiguranță, conștientizare de sine și reflecție continuă." data-i18n-en="Genuine curiosity, tolerance for uncertainty, self-awareness and continuous reflection.">Curiozitate autentică, toleranță la nesiguranță, conștientizare de sine și reflecție continuă.</p>
+      </div>
+    </div>
+
+    <div class="comp-group" data-i18n-ro="B. Relația" data-i18n-en="B. The relationship">B. Relația</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <span class="cnum">3</span>
+        <h4 data-i18n-ro="Acorduri clare" data-i18n-en="Establishes &amp; Maintains Agreements">Acorduri clare</h4>
+        <p data-i18n-ro="Contractează parteneriatul: cadru, roluri, scop, măsurarea progresului, reguli de încheiere." data-i18n-en="Contracts the partnership: frame, roles, purpose, progress measures, ending rules.">Contractează parteneriatul: cadru, roluri, scop, măsurarea progresului, reguli de încheiere.</p>
+      </div>
+      <div class="comp-card">
+        <span class="cnum">4</span>
+        <h4 data-i18n-ro="Încredere și siguranță" data-i18n-en="Cultivates Trust &amp; Safety">Încredere și siguranță</h4>
+        <p data-i18n-ro="Creează spațiul în care clientul poate spune lucruri pe care nu le-a spus nimănui." data-i18n-en="Creates the space where the client can say things they've told no one.">Creează spațiul în care clientul poate spune lucruri pe care nu le-a spus nimănui.</p>
+      </div>
+      <div class="comp-card">
+        <span class="cnum">5</span>
+        <h4 data-i18n-ro="Prezență" data-i18n-en="Maintains Presence">Prezență</h4>
+        <p data-i18n-ro="Ești complet acolo: flexibil, atent la ce se întâmplă în sală, capabil de tăcere." data-i18n-en="Fully there: flexible, attentive to what is happening in the room, able to hold silence.">Ești complet acolo: flexibil, atent la ce se întâmplă în sală, capabil de tăcere.</p>
+      </div>
+    </div>
+
+    <div class="comp-group" data-i18n-ro="C. Comunicarea" data-i18n-en="C. Communication">C. Comunicarea</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <span class="cnum">6</span>
+        <h4 data-i18n-ro="Ascultare activă" data-i18n-en="Listens Actively">Ascultare activă</h4>
+        <p data-i18n-ro="Auzi ce spune, ce nu spune, cum spune și ce se întâmplă sub cuvinte — apoi reflectezi esența." data-i18n-en="Hears what's said, what's unsaid, how it's said and what's happening under the words — then reflects the essence back.">Auzi ce spune, ce nu spune, cum spune și ce se întâmplă sub cuvinte — apoi reflectezi esența.</p>
+      </div>
+      <div class="comp-card">
+        <span class="cnum">7</span>
+        <h4 data-i18n-ro="Conștientizare provocată" data-i18n-en="Evokes Awareness">Conștientizare provocată</h4>
+        <p data-i18n-ro="Întrebări, tăceri, metafore și observații care produc insight — nu explicații." data-i18n-en="Questions, silences, metaphors and observations that produce insight — not explanations.">Întrebări, tăceri, metafore și observații care produc insight — nu explicații.</p>
+      </div>
+    </div>
+
+    <div class="comp-group" data-i18n-ro="D. Creșterea" data-i18n-en="D. Growth">D. Creșterea</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <span class="cnum">8</span>
+        <h4 data-i18n-ro="Facilitarea creșterii" data-i18n-en="Facilitates Client Growth">Facilitarea creșterii</h4>
+        <p data-i18n-ro="Din insight se trece în acțiune: obiective, responsabilitate, învățare transferabilă și încheierea procesului." data-i18n-en="From insight to action: goals, accountability, transferable learning and closing the process.">Din insight se trece în acțiune: obiective, responsabilitate, învățare transferabilă și încheierea procesului.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. ETICĂ ============ -->
+  <section class="doc-sec" id="etica">
+    <h2><span class="num">08</span><span data-i18n-ro="Etică, confidențialitate și limite" data-i18n-en="Ethics, confidentiality and limits">Etică, confidențialitate și limite</span></h2>
+    <p class="intro" data-i18n-ro="Cadrul etic nu e birocrație: e singurul lucru care face coachingul sigur pentru cineva vulnerabil." data-i18n-en="The ethical frame isn't bureaucracy: it's the only thing that makes coaching safe for someone who is vulnerable.">Cadrul etic nu e birocrație: e singurul lucru care face coachingul sigur pentru cineva vulnerabil.</p>
+
+    <ul class="bullets">
+      <li><b data-i18n-ro="Confidențialitatea." data-i18n-en="Confidentiality.">Confidențialitatea.</b> <span data-i18n-ro="Ce se discută rămâne între voi, cu excepțiile asumate din contract (supervizare, obligație legală, risc de vătămare)." data-i18n-en="What is discussed stays between you, with the contract's agreed exceptions (supervision, legal duty, risk of harm).">Ce se discută rămâne între voi, cu excepțiile asumate din contract (supervizare, obligație legală, risc de vătămare).</span></li>
+      <li><b data-i18n-ro="Consimțământ informat." data-i18n-en="Informed consent.">Consimțământ informat.</b> <span data-i18n-ro="Clientul știe ce este coachingul, ce nu este, cât durează, cât costă și cum poate opri procesul." data-i18n-en="The client knows what coaching is, what it isn't, how long it lasts, what it costs and how to stop.">Clientul știe ce este coachingul, ce nu este, cât durează, cât costă și cum poate opri procesul.</span></li>
+      <li><b data-i18n-ro="Granița de competență." data-i18n-en="The competence boundary.">Granița de competență.</b> <span data-i18n-ro="Când problema depășește rolul (clinic, legal, financiar, medical), trimiți mai departe. Refuzul e un act profesional, nu un eșec." data-i18n-en="When the issue exceeds the role (clinical, legal, financial, medical), you refer on. Declining is a professional act, not a failure.">Când problema depășește rolul (clinic, legal, financiar, medical), trimiți mai departe. Refuzul e un act profesional, nu un eșec.</span></li>
+      <li><b data-i18n-ro="Conflicte de interes." data-i18n-en="Conflicts of interest.">Conflicte de interes.</b> <span data-i18n-ro="Când organizația plătește, clientul este persoana — dar cine are dreptul la informație trebuie lămurit din contract." data-i18n-en="When the organisation pays, the client is the person — but who is entitled to information must be settled in the contract.">Când organizația plătește, clientul este persoana — dar cine are dreptul la informație trebuie lămurit din contract.</span></li>
+      <li><b data-i18n-ro="Supervizarea." data-i18n-en="Supervision.">Supervizarea.</b> <span data-i18n-ro="Un coach serios își examinează practica periodic cu un supervizor. Nu e semn de slabiciune, e standardul profesional (obligatoriu la EMCC, recomandat ferm de ICF)." data-i18n-en="A serious coach periodically examines their practice with a supervisor. Not a weakness — the professional standard (mandatory at EMCC, strongly recommended by ICF).">Un coach serios își examinează practica periodic cu un supervizor. Nu e semn de slăbiciune, e standardul profesional (obligatoriu la EMCC, recomandat ferm de ICF).</span></li>
+    </ul>
+
+    <div class="callout warn">
+      <b data-i18n-ro="Semne că NU ai de-a face cu un profesionist:" data-i18n-en="Signs you are NOT dealing with a professional:">Semne că NU ai de-a face cu un profesionist:</b>
+      <span data-i18n-ro=" promisiuni de rezultat, pachete de 20–40 de ședințe plătite integral în avans, diagnosticare sau interpretare medicală, „metodă secretă”, lipsa unui contract scris, presiune de vânzare la prima întâlnire sau refuzul de a-ți arăta credențiala exactă." data-i18n-en=" outcome guarantees, 20–40 session packages paid fully in advance, diagnosing or medical interpretation, a "secret method", no written contract, sales pressure in the first meeting, or refusing to show the exact credential."> promisiuni de rezultat, pachete de 20–40 de ședințe plătite integral în avans, diagnosticare sau interpretare medicală, „metodă secretă”, lipsa unui contract scris, presiune de vânzare la prima întâlnire sau refuzul de a-ți arăta credențiala exactă.</span>
+    </div>
+  </section>
+
+  <!-- ============ 9. MITURI ============ -->
+  <section class="doc-sec" id="mituri">
+    <h2><span class="num">09</span><span data-i18n-ro="Mituri și realitate" data-i18n-en="Myths and reality">Mituri și realitate</span></h2>
+    <p class="intro" data-i18n-ro="Coachingul are o problemă de marketing: e vândut ca terapie ieftină, ca soluție magică sau ca hobby. Iată realitatea, pe scurt." data-i18n-en="Coaching has a marketing problem: it's sold as cheap therapy, a magic solution or a hobby. Here's reality, briefly.">Coachingul are o problemă de marketing: e vândut ca terapie ieftină, ca soluție magică sau ca hobby. Iată realitatea, pe scurt.</p>
+
+    <div class="myth-grid">
+      <div class="myth">
+        <div class="m-head">✗ <span data-i18n-ro="Coachingul este terapie pentru oameni sănătoși." data-i18n-en="Coaching is therapy for healthy people.">Coachingul este terapie pentru oameni sănătoși.</span></div>
+        <div class="m-body">✓ <span><b data-i18n-ro="Realitate:" data-i18n-en="Reality:">Realitate:</b> <span data-i18n-ro="terapia tratează suferința și disfuncția; coachingul lucrează pe obiective, performanță și claritate, la oameni funcționali." data-i18n-en="therapy treats suffering and dysfunction; coaching works on goals, performance and clarity with functioning people.">terapia tratează suferința și disfuncția; coachingul lucrează pe obiective, performanță și claritate, la oameni funcționali.</span></span></div>
+      </div>
+      <div class="myth">
+        <div class="m-head">✗ <span data-i18n-ro="Coach-ul îți spune ce să faci." data-i18n-en="The coach tells you what to do.">Coach-ul îți spune ce să faci.</span></div>
+        <div class="m-body">✓ <span><b data-i18n-ro="Realitate:" data-i18n-en="Reality:">Realitate:</b> <span data-i18n-ro="dacă îți spune, face consultanță. În coaching, decizia îți aparține — de aceea și funcționează." data-i18n-en="if they tell you, that's consulting. In coaching the decision is yours — which is exactly why it works.">dacă îți spune, face consultanță. În coaching, decizia îți aparține — de aceea și funcționează.</span></span></div>
+      </div>
+      <div class="myth">
+        <div class="m-head">✗ <span data-i18n-ro="Orice persoană empatică poate fi coach." data-i18n-en="Any empathetic person can coach.">Orice persoană empatică poate fi coach.</span></div>
+        <div class="m-body">✓ <span><b data-i18n-ro="Realitate:" data-i18n-en="Reality:">Realitate:</b> <span data-i18n-ro="empatia e materia primă, nu meseria. Ascultarea, contractarea, etica și gestionarea propriei judecăți se învață și se evaluează." data-i18n-en="empathy is the raw material, not the craft. Listening, contracting, ethics and managing your own judgement are learned and assessed.">empatia e materia primă, nu meseria. Ascultarea, contractarea, etica și gestionarea propriei judecăți se învață și se evaluează.</span></span></div>
+      </div>
+      <div class="myth">
+        <div class="m-head">✗ <span data-i18n-ro="Certificarea garantează calitatea." data-i18n-en="A credential guarantees quality.">Certificarea garantează calitatea.</span></div>
+        <div class="m-body">✓ <span><b data-i18n-ro="Realitate:" data-i18n-en="Reality:">Realitate:</b> <span data-i18n-ro="certificarea atestă un standard minim verificabil, nu talentul și nici potrivirea cu tine. De aceea există sesiunea de chimie." data-i18n-en="a credential attests a verifiable minimum standard, not talent, nor fit with you. That's why the chemistry session exists.">certificarea atestă un standard minim verificabil, nu talentul și nici potrivirea cu tine. De aceea există sesiunea de chimie.</span></span></div>
+      </div>
+      <div class="myth">
+        <div class="m-head">✗ <span data-i18n-ro="Coachingul e doar pentru manageri." data-i18n-en="Coaching is only for managers.">Coachingul e doar pentru manageri.</span></div>
+        <div class="m-body">✓ <span><b data-i18n-ro="Realitate:" data-i18n-en="Reality:">Realitate:</b> <span data-i18n-ro="e pentru oricine are o decizie de luat și mintea încărcată: studenți, antreprenori, părinți în tranziții, sportivi, oameni în reconversie." data-i18n-en="it's for anyone facing a decision with a crowded mind: students, founders, parents in transition, athletes, people retraining.">e pentru oricine are o decizie de luat și mintea încărcată: studenți, antreprenori, părinți în tranziții, sportivi, oameni în reconversie.</span></span></div>
+      </div>
+      <div class="myth">
+        <div class="m-head">✗ <span data-i18n-ro="Procesul lung e mai bun (20+ ședințe)." data-i18n-en="A long process is better (20+ sessions).">Procesul lung e mai bun (20+ ședințe).</span></div>
+        <div class="m-body">✓ <span><b data-i18n-ro="Realitate:" data-i18n-en="Reality:">Realitate:</b> <span data-i18n-ro="6–12 ședințe bine conduse livrează, de regulă, mai mult decât 40 fără direcție. Durata se contractă, nu se vinde." data-i18n-en="6–12 well-run sessions usually deliver more than 40 without direction. Duration is contracted, not sold.">6–12 ședințe bine conduse livrează, de regulă, mai mult decât 40 fără direcție. Durata se contractă, nu se vinde.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. CERCETARE ============ -->
+  <section class="doc-sec" id="cercetare">
+    <h2><span class="num">10</span><span data-i18n-ro="Ce spune cercetarea" data-i18n-en="What the research says">Ce spune cercetarea</span></h2>
+    <p class="intro" data-i18n-ro="Coachingul are evidențe solide în contexte organizaționale, cu o rezervă importantă: mare parte din studii se bazează pe auto-raportare, iar calitatea metodologică variază mult." data-i18n-en="Coaching has solid evidence in organisational settings, with one important caveat: much of it rests on self-report and methodological quality varies widely.">Coachingul are evidențe solide în contexte organizaționale, cu o rezervă importantă: mare parte din studii se bazează pe auto-raportare, iar calitatea metodologică variază mult.</p>
+
+    <ul class="bullets">
+      <li><b data-i18n-ro="Cele mai documentate efecte:" data-i18n-en="Best-documented effects:">Cele mai documentate efecte:</b> <span data-i18n-ro="performanță la locul de muncă, atingerea obiectivelor, autoreglare, încredere în sine, wellbeing și capacitatea de a face față schimbării." data-i18n-en="workplace performance, goal attainment, self-regulation, self-confidence, wellbeing and the ability to cope with change.">performanță la locul de muncă, atingerea obiectivelor, autoreglare, încredere în sine, wellbeing și capacitatea de a face față schimbării.</span></li>
+      <li><b data-i18n-ro="Ce contează mai mult decât metoda:" data-i18n-en="What matters more than the method:">Ce contează mai mult decât metoda:</b> <span data-i18n-ro="calitatea relației (alianța de lucru), claritatea contractului și angajamentul real al clientului — factori comuni tuturor abordărilor serioase." data-i18n-en="relationship quality (the working alliance), clarity of contract and the client's real commitment — factors common to all serious approaches.">calitatea relației (alianța de lucru), claritatea contractului și angajamentul real al clientului — factori comuni tuturor abordărilor serioase.</span></li>
+      <li><b data-i18n-ro="Unde dovada e mai slabă:" data-i18n-en="Where the evidence is weaker:">Unde dovada e mai slabă:</b> <span data-i18n-ro="măsurarea ROI-ului la nivel de organizație și efectele pe termen lung (peste 12 luni) — aici literatura este încă fragmentată." data-i18n-en="measuring ROI at organisational level and long-term effects (beyond 12 months) — the literature is still fragmented here.">măsurarea ROI-ului la nivel de organizație și efectele pe termen lung (peste 12 luni) — aici literatura este încă fragmentată.</span></li>
+    </ul>
+
+    <div class="plan-head">
+      <b>✍️ <span data-i18n-ro="De populat" data-i18n-en="To populate">De populat</span>:</b>
+      <span data-i18n-ro="aici intră statistici exacte cu sursă (studii ICF Global Coaching Study, meta-analize, Grant/ Jones &amp; Spooner etc.), cu an și eșantion. Structura e pregătită în tabelul următor." data-i18n-en="this is where exact statistics with sources go (ICF Global Coaching Study, meta-analyses, Grant / Jones &amp; Spooner, etc.), with year and sample. The structure is ready in the table below.">aici intră statistici exacte cu sursă (studii ICF Global Coaching Study, meta-analize, Grant/ Jones &amp; Spooner etc.), cu an și eșantion. Structura e pregătită în tabelul următor.</span>
+    </div>
+
+    <div class="plan-block">
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th data-i18n-ro="Afirmație" data-i18n-en="Claim">Afirmație</th>
+            <th data-i18n-ro="Efect / cifră" data-i18n-en="Effect / figure">Efect / cifră</th>
+            <th data-i18n-ro="Sursă (an, eșantion)" data-i18n-en="Source (year, sample)">Sursă (an, eșantion)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="empty" data-i18n-ro="— de completat —" data-i18n-en="— to be completed —">— de completat —</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td class="empty" data-i18n-ro="— de completat —" data-i18n-en="— to be completed —">— de completat —</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td class="empty" data-i18n-ro="— de completat —" data-i18n-en="— to be completed —">— de completat —</td><td class="empty">—</td><td class="empty">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <b data-i18n-ro="Cum citești orice statistică despre coaching:" data-i18n-en="How to read any coaching statistic:">Cum citești orice statistică despre coaching:</b>
+      <span data-i18n-ro=" întreabă cine a finanțat studiul, pe cine a măsurat (clienți plătitori vs. angajați trimiși de HR), față de ce comparație și după cât timp. Fără aceste trei răspunsuri, cifra e decor." data-i18n-en=" ask who funded the study, who was measured (paying clients vs employees sent by HR), against what comparison and after how long. Without those three answers, the number is decoration."> întreabă cine a finanțat studiul, pe cine a măsurat (clienți plătiți vs. angajați trimiși de HR), față de ce comparație și după cât timp. Fără aceste trei răspunsuri, cifra e decor.</span>
+    </div>
+  </section>
+
+  <!-- ============ NAVIGARE JOS ============ -->
+  <div class="doc-next">
+    <a href="individual.html">
+      <div class="dn-k" data-i18n-ro="Următorul pas" data-i18n-en="Next step">Următorul pas</div>
+      <div class="dn-t" data-i18n-ro="Coaching individual (1:1)" data-i18n-en="Individual coaching (1:1)">Coaching individual (1:1)</div>
+      <div class="dn-d" data-i18n-ro="Planul complet: modele, întrebări, practică pe competențe, jurnal de ore, evaluare." data-i18n-en="The full plan: models, questions, competency practice, hours log, evaluation.">Planul complet: modele, întrebări, practică pe competențe, jurnal de ore, evaluare.</div>
+    </a>
+    <a href="echipa.html">
+      <div class="dn-k" data-i18n-ro="În paralel" data-i18n-en="In parallel">În paralel</div>
+      <div class="dn-t" data-i18n-ro="Coaching de echipă" data-i18n-en="Team coaching">Coaching de echipă</div>
+      <div class="dn-d" data-i18n-ro="Altă disciplină: diagnostic, arhitectură de program, instrumente, metrici." data-i18n-en="A different discipline: diagnostics, programme architecture, instruments, metrics.">Altă disciplină: diagnostic, arhitectură de program, instrumente, metrici.</div>
+    </a>
+  </div>
+
+  </div>
+</div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="logo-badge" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+            </svg>
+          </span>
+          Coaching Learning Path
+        </div>
+        <p class="disc" data-i18n-ro="Instrument educațional independent, bilingv RO/EN. Informațiile au caracter orientativ — verifică întotdeauna pe sursele oficiale." data-i18n-en="An independent, bilingual RO/EN educational tool. Information is indicative — always verify against the official sources.">Instrument educațional independent, bilingv RO/EN. Informațiile au caracter orientativ — verifică întotdeauna pe sursele oficiale.</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Pagini" data-i18n-en="Pages">Pagini</h5>
+        <a href="index.html#harta" data-i18n-ro="Harta interactivă" data-i18n-en="Interactive map">Harta interactivă</a>
+        <a href="teorie.html" data-i18n-ro="Teoria coachingului" data-i18n-en="Coaching theory">Teoria coachingului</a>
+        <a href="individual.html" data-i18n-ro="Coaching 1:1" data-i18n-en="1:1 coaching">Coaching 1:1</a>
+        <a href="echipa.html" data-i18n-ro="Coaching de echipă" data-i18n-en="Team coaching">Coaching de echipă</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Certificare" data-i18n-en="Credentials">Certificare</h5>
+        <a href="index.html#paths" data-i18n-ro="Learning paths" data-i18n-en="Learning paths">Learning paths</a>
+        <a href="index.html#credentials" data-i18n-ro="Bibliotecă de certificări" data-i18n-en="Credential library">Bibliotecă de certificări</a>
+        <a href="index.html#transitions" data-i18n-ro="Treceri între sisteme" data-i18n-en="Bridges between systems">Treceri între sisteme</a>
+        <a href="index.html#schools" data-i18n-ro="Școli din România" data-i18n-en="Schools in Romania">Școli din România</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n-ro="Surse" data-i18n-en="Sources">Surse</h5>
+        <a href="index.html#sources" data-i18n-ro="Surse oficiale" data-i18n-en="Official sources">Surse oficiale</a>
+        <a href="index.html#faq" data-i18n-ro="FAQ &amp; glosar" data-i18n-en="FAQ &amp; glossary">FAQ &amp; glosar</a>
+        <a href="index.html#costs" data-i18n-ro="Costuri" data-i18n-en="Costs">Costuri</a>
+        <a href="index.html" data-i18n-ro="Acasă" data-i18n-en="Home">Acasă</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 · <span data-i18n-ro="gratuit, offline, fără cont" data-i18n-en="free, offline, no account">gratuit, offline, fără cont</span></span>
+      <span data-i18n-ro="Neafiliat ICF · EMCC · ANC" data-i18n-en="Not affiliated with ICF · EMCC · ANC">Neafiliat ICF · EMCC · ANC</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="to-top" id="toTop" aria-label="Înapoi sus">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+/* Cuprins activ la scroll — doar pe paginile de conținut */
+(function(){
+  var links = [].slice.call(document.querySelectorAll('#toc a'));
+  if(!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var secs = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if(a){
+          a.classList.add('active');
+          var box = document.getElementById('toc');
+          if(box && box.scrollHeight > box.clientHeight){
+            var r = a.getBoundingClientRect(), br = box.getBoundingClientRect();
+            if(r.top < br.top || r.bottom > br.bottom) a.scrollIntoView({block:'nearest'});
+          }
+        }
+      }
+    });
+  }, { rootMargin:'-25% 0px -65% 0px' });
+  secs.forEach(function(s){ io.observe(s); });
+})();
+</script>
+</body>
+</html>

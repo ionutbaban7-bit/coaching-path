@@ -1,44 +1,71 @@
-# Coaching Path — Learning & Certification Paths (RO/EN)
+# Coaching Learning Path
 
-Aplicație web, complet autonomă (un singur fișier: `index.html`, fără internet, fără cont),
-care hărțuiește clar certificările de coaching relevante în România:
+Aplicație web gratuită, complet autonomă (fără internet, fără cont, fără tracking), care explică
+coachingul de la zero și hărțuiește certificările relevante în România:
 
 - **ICF** — ACC, PCC, MCC, ACTC, MCS (Mentor Coach Specialization), Level 1/2/3, CCE
 - **EMCC** — EIA (Foundation, Practitioner, Senior Practitioner, Master Practitioner), ITCA, ESIA, EQA
 - **România / ANC** — Specialist în activitatea de coaching (COR 242412), Formator (COR 242401), Mentor (COR 235902)
 
-### Ce conține
-1. **Learning paths** interactive, cu pași care se bifează (progres salvat local): traseul ICF, EMCC și ANC.
-2. **Treceri între sisteme** (bridge paths): ANC → ICF ACC, ACC → PCC, PCC → MCC, ICF ↔ EMCC,
-   devenirea ca mentor coach (MCS), supervizor (ESIA), team coach (ACTC/ITCA), formator (242401).
-3. **Bibliotecă de certificări** cu cerințe, tipul evaluării, documente, taxe, durată, reînnoire.
-4. **Director de școli din România** (31 de intrări) cu badge-uri de acreditare ICF/EMCC/ANC,
-   limbă de livrare și buton de verificare live a recenziilor Google.
-5. **Exemplu concret de parcurs** (0 → PCC/MCC), **costuri orientative**, **FAQ + glosar**, **surse oficiale**.
-6. Comutator **RO / EN** (tot conținutul e tradus).
+## Ce conține
 
-### Actualizări critice incluse (stare la 14 septembrie 2026)
-- 10 nov 2026: noul examen ICF PCC/MCC — 80 itemi / 150 min, bazat pe competențele și codul etic 2025;
-  examenul actual (78 scenarii / 180 min) rămâne disponibil până la 31 mar 2027.
-- 1 ian 2027: orele noi de mentor coaching trebuie livrate de un coach cu MCS.
-- În România: Ord. 2228/3025/2023 (autorizare coordonată de MMSS / comisii județene, valabilitate 4 ani);
-  standard ocupațional coach 2024–2034, COR 242412.
+| Pagina | Ce găsești |
+|--------|------------|
+| `index.html` | **Harta interactivă** în 8 opriri pentru cine pornește de la zero, cele 3 sisteme, learning pathuri cu progres salvat, treceri între certificări, bibliotecă de credențiale, director de școli (31 de intrări), exemplu de parcurs, costuri, FAQ + glosar, surse oficiale |
+| `teorie.html` | Ce este coachingul, ce NU este (matrice de comparație), istoric pe timeline, unde se folosește, anatomia unei sesiuni, 6 modele de lucru, cele 8 competențe ICF, etică și limite, mituri, ce spune cercetarea |
+| `individual.html` | Plan complex de coaching 1:1 — arhitectura programului, etape, structura ședinței, bancă de întrebări, plan pe competențe, instrumente, jurnal de ore, rubrică de autoevaluare |
+| `echipa.html` | Plan complex de coaching de echipă — definiții, diferențe față de facilitare/training/team building, 6 modele, arhitectură pe 6 luni, diagnostic, metrici, capcane |
 
-### Deschidere
-Dublu-click pe `index.html` (merge și offline) sau servește directorul cu orice server static:
+Planurile de pe `individual.html` și `echipa.html` au **structura completă**, cu sloturi marcate
+`✍️ De populat` și câte un tabel de stare la final — conținutul detaliat se adaugă progresiv.
 
+## Cum deschizi
+
+**Simplu:** dublu-click pe `index.html`. Merge offline, în orice browser modern.
+
+**Sau cu un server local:**
 ```bash
 python3 -m http.server 8000   # apoi deschide http://localhost:8000
 ```
 
-### Publicare pe GitHub Pages
-Workflow-ul `.github/workflows/pages.yml` publică automat tot conținutul la fiecare push pe `main`.
+## Structura proiectului
+
+```
+index.html · teorie.html · individual.html · echipa.html
+assets/
+  css/tokens.css   → design tokens (culoare, spațiere, tipografie, dark mode)
+  css/app.css      → componente (nav, hartă, carduri, stepper, tabele, modal, footer)
+  css/pages.css    → pagini de conținut (cuprins, matrice, timeline, planuri, print)
+  js/data.js       → toate datele, bilingv RO/EN (organisme, pathuri, credențiale, școli)
+  js/app.js        → logica aplicației
+  js/site.js       → temă, limbă, nav, scroll-spy, animații la scroll
+  js/map.js        → harta interactivă
+  img/             → favicon, copertă socială, ilustrații
+```
+
+## Funcționalități
+
+- **Bilingv RO/EN** — 834 de texte traduse, comutare instantanee, limba se memorează.
+- **Mod întunecat** — detectează preferința sistemului, se poate comuta manual, se memorează.
+- **Progres salvat local** — pașii bifați din learning pathuri și opririle parcurse de pe hartă rămân la reîncărcare (fără cont, fără server).
+- **Căutare și filtre** — pe școli (nume, descriere, oraș), pe credențiale (organism, tip, text liber) și în glosar.
+- **Accesibil** — contrast WCAG AA/AAA, navigare cu tastatura, focus vizibil, `prefers-reduced-motion`, stiluri de print.
+
+## Publicare pe GitHub Pages
+
+`.github/workflows/pages.yml` publică tot conținutul la fiecare push pe `main`.
 Prima dată trebuie activat manual, din interfața GitHub:
 
 **Settings → Pages → Source → „GitHub Actions"**
 
-După activare, orice push pe `main` rulează workflow-ul și site-ul apare la
-`https://ionutbaban7-bit.github.io/coaching-path/`.
+După activare, site-ul apare la `https://ionutbaban7-bit.github.io/coaching-path/`.
 
-> Instrument educativ independent, neafiliat ICF/EMCC/ANC. Verifică mereu datele pe sursele oficiale
-> listate în aplicație (ICF Education Search, EMCC directory, portalul ANC/MMSS).
+## Note
+
+> Instrument educativ independent, neafiliat ICF / EMCC / ANC sau vreunei școli de coaching.
+> Datele sunt actualizate la 14 septembrie 2026 și au caracter orientativ: orele, taxele, examenele și
+> perioadele de revizuire se modifică (vezi schimbările anunțate pentru noiembrie 2026 și ianuarie–aprilie
+> 2027). Înainte de orice înscriere, verifică pe sursele oficiale listate în aplicație.
+
+Planul complet de refacere a interfeței, în 7 pași, cu problemele găsite și soluțiile aplicate:
+[`IMBUNATATIRI_7_PASI.md`](IMBUNATATIRI_7_PASI.md).
