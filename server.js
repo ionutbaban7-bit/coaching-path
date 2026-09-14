@@ -7,6 +7,13 @@
      • local                  : `node server.js` → http://localhost:3000
    Node >= 18. Nu folosește nimic din npm: n-are ce să se strice.
 
+   v1.7.0 — finisaj de produs (runda 5):
+     • text scurt și la obiect: lead-uri, subtitluri, note de subsol
+     • date structurate schema.org (WebSite, EducationalOrganization, LearningResource, Article)
+     • insigna de progres în antet (traseu / hartă) + „A fost util?" pe secțiuni
+     • buton „Printează / PDF" pe paginile de conținut
+     • căutările anunță câte rezultate au, tabelele au nume și scope, tipărirea nu rupe blocurile
+     • poartă nouă de calitate: npm run qa:polish (text, date, finisaj)
    v1.6.0 — drumul cu bicicleta + QA de producție (ITIL):
      • viewport-fit=cover + zone sigure (notch / bara de jos) în tot layoutul
      • câmpuri de 16px pe telefon (iOS nu mai face zoom la focus)

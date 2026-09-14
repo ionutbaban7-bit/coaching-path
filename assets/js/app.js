@@ -78,7 +78,7 @@ const orgMeta = k => ORGS.find(o=>o.k===k);
 const I18N = {
  updated:{ro:"Actualizat la 14 septembrie 2026 · surse oficiale verificate",en:"Updated September 14, 2026 · verified official sources"},
  heroTitle:{ro:"Harta ta clară spre certificarea de coaching",en:"Your clear map to coaching certification"},
- heroLead:{ro:"Toate certificările, cerințele și evaluările ICF, EMCC și ANC România într-un singur loc: learning pathuri interactive, treceri între sisteme (ANC → ICF, ACC → PCC, PCC → MCC), școli acreditate și verificator de recenzii.",en:"Every ICF, EMCC and Romanian ANC certification, requirement and assessment in one place: interactive learning paths, bridges between systems (ANC → ICF, ACC → PCC, PCC → MCC), accredited schools and a review checker."},
+ heroLead:{ro:"Un singur loc pentru tot: ce este coachingul, cum te certifici (ICF, EMCC, ANC), școli, costuri reale și pasul tău următor.",en:"Everything in one place: what coaching is, how you get certified (ICF, EMCC, ANC), schools, real costs and your next step."},
  qstart:{ro:"🚀 De unde pornești?",en:"🚀 Where do you start?"},
  ctaPath:{ro:"▶ Începe learning path-ul",en:"▶ Start the learning path"},
  ctaTrans:{ro:"🔀 Am deja o certificare",en:"🔀 I already have a credential"},
@@ -89,26 +89,26 @@ const I18N = {
  qSchools:{ro:"Caut o școală bună în România",en:"I'm looking for a good school in Romania"},
  systemsK:{ro:"Cele 3 sisteme",en:"The 3 systems"},
  systemsT:{ro:"Trei „lumi” ale certificării — nu le confunda",en:"Three certification 'worlds' — don't mix them up"},
- systemsS:{ro:"ICF și EMCC sunt organisme profesionale internaționale (certificare voluntară, prestigiu). ANC/MMSS este sistemul național românesc (recunoaștere legală a ocupației). Mulți coachi serioși le combină.",en:"ICF and EMCC are international professional bodies (voluntary, prestige certification). ANC/MLSS is the Romanian national system (legal recognition of the occupation). Many serious coaches combine them."},
+ systemsS:{ro:"ICF și EMCC: organisme internaționale, certificare voluntară. ANC: recunoaștere legală în România. Mulți coachi le combină.",en:"ICF and EMCC: international bodies, voluntary certification. ANC: legal recognition in Romania. Many coaches combine them."},
  newsK:{ro:"Noutăți critice",en:"Critical updates"},
  newsT:{ro:"Ce s-a schimbat în 2026 și ce se schimbă în 2027",en:"What changed in 2026 and what changes in 2027"},
  pathsT:{ro:"Parcursuri pas cu pas",en:"Step-by-step learning paths"},
- pathsS:{ro:"Click pe orice etapă pentru cerințe, tipul evaluării, costuri și recomandări. Bifează pașii parcurși — progresul se salvează pe acest dispozitiv.",en:"Click any step for requirements, assessment type, costs and recommendations. Tick completed steps — progress is saved on this device."},
+ pathsS:{ro:"Click pe o etapă: cerințe, evaluare, costuri. Bifează pașii parcurși — progresul se salvează local.",en:"Click a step: requirements, assessment, costs. Tick what you have done — progress is saved locally."},
  transT:{ro:"Trecerea între certificări — exact ce îți lipsește",en:"Bridges between credentials — exactly what you're missing"},
- transS:{ro:"Ai deja ceva formare? Aici vezi diferența exactă de ore, evaluări și documente între unde ești și unde vrei să ajungi.",en:"Already trained? Here is the exact gap in hours, assessments and documents between where you are and where you're going."},
+ transS:{ro:"Ai deja o formare? Vezi diferența exactă de ore, evaluări și documente până la obiectivul tău.",en:"Already trained? See the exact gap in hours, assessments and documents up to your goal."},
  credT:{ro:"Toate tipurile de certificări, pe rând",en:"Every certification type, one by one"},
- credS:{ro:"Coach, mentor coach, supervizor, team coach, formator — fiecare cu cerințele, evaluarea și valabilitatea ei. Click pe o carte pentru detalii complete.",en:"Coach, mentor coach, supervisor, team coach, trainer — each with its own requirements, assessment and validity. Click a card for full details."},
+ credS:{ro:"Coach, mentor, supervizor, team coach, formator: cerințe, evaluare, valabilitate. Click pe un card.",en:"Coach, mentor, supervisor, team coach, trainer: requirements, assessment, validity. Click a card."},
  schoolT:{ro:"Școli de coaching din România",en:"Coaching schools in Romania"},
- schoolS:{ro:"Bazat pe lista oficială ICF România (programe prezente și în directorul global ICF Education Search), plus furnizori ANC și școli relevante. Stelele Google se verifică live, pentru fiecare școală în parte.",en:"Based on the official ICF Romania list (programs also present in the global ICF Education Search directory), plus ANC providers and relevant schools. Google stars are checked live, per school."},
+ schoolS:{ro:"Lista oficială ICF România + furnizori ANC. Verifică acreditarea înainte să plătești.",en:"The official ICF Romania list + ANC providers. Check accreditation before you pay."},
  searchSchool:{ro:"🔎 Caută o școală…",en:"🔎 Search a school…"},
  journeyT:{ro:"Cum arată, concret, parcursul unui coach",en:"What a coach's journey actually looks like"},
- journeyS:{ro:"Exemplu realist (persoană cu job full-time, care începe de la zero și țintește PCC). Datele sunt orientative — fiecare ritm e diferit.",en:"Realistic example (full-time job, starting from zero, aiming at PCC). Indicative — everyone's pace differs."},
+ journeyS:{ro:"Exemplu realist: job full-time, pleci de la zero, țintești PCC.",en:"A realistic example: full-time job, starting from zero, aiming for PCC."},
  costT:{ro:"Cât costă și cât durează, pe șleau",en:"Costs and timelines, plainly"},
- costS:{ro:"Costuri orientative pentru România (septembrie 2026). Taxele oficiale ICF sunt în USD și se plătesc direct federației; restul variază mult în funcție de școală.",en:"Indicative costs for Romania (September 2026). Official ICF fees are in USD paid directly to the federation; everything else varies widely by school."},
+ costS:{ro:"Costuri orientative pentru România (septembrie 2026). Taxele ICF se plătesc în USD, direct la federație.",en:"Indicative costs for Romania (September 2026). ICF fees are paid in USD, directly to the federation."},
  faqT:{ro:"Întrebări frecvente și termeni esențiali",en:"FAQ and essential terminology"},
  searchGloss:{ro:"🔎 Caută un termen…",en:"🔎 Search a term…"},
  srcT:{ro:"Surse și cum verifici tu însuți orice afirmație",en:"Sources and how to verify any claim yourself"},
- srcS:{ro:"Regula de aur: nu te baza pe logo-urile de pe site-uri. Verifică fiecare program în bazele de date oficiale de mai jos.",en:"Golden rule: don't rely on website logos. Verify every program in the official databases below."},
+ srcS:{ro:"Nu te baza pe logo-uri de pe site-uri. Verifică fiecare program în bazele de date oficiale.",en:"Don't trust logos on websites. Verify every programme in the official databases."},
  foot1:{ro:"instrument educațional independent, bilingv RO/EN.",en:"independent bilingual RO/EN educational tool."},
  foot2:{ro:"Asamblat manual pe 14 septembrie 2026 din surse oficiale și publice. Nu este afiliat ICF, EMCC, ANC sau vreunei școli de coaching. Nu înlocuiește consultarea surselor oficiale; regulile se pot schimba oricând.",en:"Hand-assembled on September 14, 2026 from official and public sources. Not affiliated with ICF, EMCC, ANC or any coaching school. It doesn't replace checking official sources; rules may change anytime."}
 };
@@ -272,7 +272,7 @@ function renderCredFilters(){
  const hadFocus = !!prev && document.activeElement===prev;
  const caret = hadFocus ? prev.selectionStart : null;
  $('#credFilters').innerHTML =
-  `<input class="search" type="search" enterkeyhint="search" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" id="credSearch" aria-label="${lang==='ro'?'Caută o certificare':'Search a credential'}" placeholder="${lang==='ro'?'🔎 ACC, PCC, EIA, COR…':'🔎 Search ACC, PCC, EIA, COR…'}">`+
+  `<input class="search" type="search" enterkeyhint="search" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" id="credSearch" data-search-out="#credGrid" aria-label="${lang==='ro'?'Caută o certificare':'Search a credential'}" data-i18n-aria-ro="Caută o certificare" data-i18n-aria-en="Search a credential" placeholder="${lang==='ro'?'🔎 ACC, PCC, EIA, COR…':'🔎 Search ACC, PCC, EIA, COR…'}">`+
   chips.map(([k,v])=>`<button class="fchip ${k===credFilter?'active':''}" data-cf="${k}" aria-pressed="${k===credFilter?'true':'false'}">${v}</button>`).join('');
  const input=$('#credSearch');
  input.value=prevVal;
@@ -292,7 +292,7 @@ function renderCreds(){
  const q=$('#credSearch')?.value.trim()||'';
  const list=CREDS.filter(c=>credVisible(c,q));
  if(!list.length){
-   $('#credGrid').innerHTML=`<div class="empty-state">${lang==='ro'
+   $('#credGrid').innerHTML=`<div class="empty-state js-empty">${lang==='ro'
      ?'Nicio certificare nu se potrivește. Șterge căutarea sau alege „Toate”.'
      :'No credential matches. Clear the search or pick “All”.'}</div>`;
    return;
@@ -382,7 +382,7 @@ function renderSchools(){
        </div>
        <div style="margin-top:6px">${window.CRED?CRED.verificationLinks(s):''}</div></td>
    </tr>`;
- }).join('') || `<tr><td style="padding:20px;color:var(--muted)">${lang==='ro'?'Niciun rezultat — resetează filtrele.':'No results — reset filters.'}</td></tr>`;
+ }).join('') || `<tr class="js-empty"><td style="padding:20px;color:var(--muted)">${lang==='ro'?'Niciun rezultat — resetează filtrele.':'No results — reset filters.'}</td></tr>`;
  $('#schoolsNote').innerHTML = (lang==='ro'
   ?'Lista provine din secțiunea oficială „Cum devii coach profesionist” a ICF România (programe cu predare în limba română sau cu prezență locală), completată cu furnizori ANC. <b>Stelele Google se schimbă săptămânal</b> — butonul ⭐ deschide Google Maps cu ratingul și recenziile la zi. Verifică fiecare program ICF în <a href="'+ESS+'" target="_blank" rel="noopener">directorul ESS</a>, iar statutul ANC în autorizația furnizorului.'
   :'The list comes from ICF Romania\'s official "How to become a professional coach" section (programs taught in Romanian or with local presence), plus ANC providers. <b>Google stars change weekly</b> — the ⭐ button opens Google Maps with today\'s rating and reviews. Verify each ICF program in the <a href="'+ESS+'" target="_blank" rel="noopener">ESS directory</a>, and ANC status in the provider\'s authorisation.');
@@ -423,7 +423,7 @@ function renderGloss(){
  const hits=GLOSS.filter(g=>!q||(g.t+(typeof g.d==='string'?g.d:L(g.d))).toLowerCase().includes(q));
  $('#glossList').innerHTML = hits.map(g=>
   `<div class="gloss-item"><b>${typeof g.t==='string'?g.t:L(g.t)}</b><p>${L(g.d)}</p></div>`).join('') ||
-  `<div class="empty-state">${lang==='ro'?'Niciun termen pentru căutarea ta. Încearcă alt cuvânt.':'No term matches your search. Try another word.'}</div>`;
+  `<div class="empty-state js-empty">${lang==='ro'?'Niciun termen pentru căutarea ta. Încearcă alt cuvânt.':'No term matches your search. Try another word.'}</div>`;
 }
 
 /* ====================== SOURCES ====================== */

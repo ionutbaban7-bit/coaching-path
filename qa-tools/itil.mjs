@@ -13,7 +13,7 @@
    îmbunătățire continuă.
 
    Rulează întregul set de porți de calitate (check, qa, qa:start,
-   qa:css, qa:contrast, qa:mobile) și dă un verdict: GO / NO-GO.
+   qa:css, qa:polish, qa:contrast, qa:mobile) și dă un verdict: GO / NO-GO.
 
    Rulează: npm run qa:itil      (opțional BASE=http://host:port)
    Scrie și raportul: reports/itil-readiness.md
@@ -235,6 +235,7 @@ const GATES = [
   ['qa', ['npm', 'run', 'qa'], true],
   ['qa:start', ['npm', 'run', 'qa:start'], true],
   ['qa:css', ['npm', 'run', 'qa:css'], false],
+  ['qa:polish', ['npm', 'run', 'qa:polish'], false],
   ['qa:contrast', ['npm', 'run', 'qa:contrast'], false],
   ['qa:mobile', ['npm', 'run', 'qa:mobile'], false],
 ];
@@ -250,7 +251,7 @@ for (const [name, cmd, needsServer] of GATES) {
   }
 }
 const gatesOk = gateResults.every(g => g.ok);
-chk('Validare și testare', 'VT-01', 'Toate porțile de calitate trec (check, qa, qa:start, qa:css, qa:contrast, qa:mobile)', 'blocant',
+chk('Validare și testare', 'VT-01', 'Toate porțile de calitate trec (check, qa, qa:start, qa:css, qa:polish, qa:contrast, qa:mobile)', 'blocant',
   gatesOk, gateResults.filter(g => !g.ok).map(g => g.name).join(', ') || '6/6 verzi');
 chk('Validare și testare', 'VT-02', 'Serviciul rulează pe mediul de verificare (răspunde pe HTTP)', 'conditionat',
   reachable, reachable ? BASE + '/index.html → 200' : BASE + ' nu răspunde');

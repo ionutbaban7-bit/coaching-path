@@ -111,6 +111,154 @@
     box.innerHTML = html;
   }
 
+  /* ---------- PROGRESUL, VIZIBIL ÎN ANTET ---------- */
+  /* Un singur loc arată unde ai rămas: „🎯 Traseu 4/10”. Se actualizează
+     imediat ce bifezi ceva (evenimentul clp:progress pleacă din start.js / map.js). */
+  function readProgress(){
+    var steps = 0, map = 0, k;
+    try{
+      var st = JSON.parse(localStorage.getItem('cp_start_v2') || 'null');
+      if(st && st.done){ for(k in st.done){ if(Object.prototype.hasOwnProperty.call(st.done, k) && st.done[k]) steps++; } }
+    }catch(e){}
+    try{
+      var m = JSON.parse(localStorage.getItem('cp_map_done') || '[]');
+      if(Array.isArray(m)) map = m.length;
+    }catch(e){}
+    return { steps: Math.min(steps, 10), map: Math.min(map, 8) };
+  }
+
+  function initProgressBadge(){
+    var actions = document.querySelector('.nav-actions');
+    if(!actions) return;
+    var pill = document.createElement('a');
+    pill.className = 'nav-progress';
+    pill.id = 'navProgress';
+    pill.href = 'incepe.html#startSteps';
+    pill.setAttribute('aria-label', 'Progresul tău salvat');
+    pill.hidden = true;
+    actions.insertBefore(pill, actions.firstChild);
+
+    function render(){
+      var p = readProgress();
+      var ro = (lang === 'ro');
+      if(!p.steps && !p.map){ pill.hidden = true; return; }
+      var word = p.steps ? (ro ? 'Traseu' : 'Path') : (ro ? 'Hartă' : 'Map');
+      var num = p.steps ? p.steps : p.map;
+      var of = p.steps ? '/10' : '/8';
+      pill.innerHTML = '<span aria-hidden="true">\uD83C\uDFAF</span><b>' + num + of + '</b>' +
+                       '<span class="np-w"> ' + word + '</span>';
+      pill.setAttribute('aria-label', (ro ? 'Progresul tău salvat: ' : 'Your saved progress: ') + word + ' ' + num + of +
+        (p.steps ? (ro ? ' — duce la pasul următor' : ' — goes to the next step') : ''));
+      var here = document.body.dataset.page || 'index';
+      pill.href = p.steps
+        ? (here === 'incepe' ? '#startSteps' : 'incepe.html#startSteps')
+        : (here === 'index' ? '#harta' : 'index.html#harta');
+      pill.hidden = false;
+    }
+    render();
+    document.addEventListener('clp:lang', render);
+    document.addEventListener('clp:progress', render);
+    window.addEventListener('storage', render);
+  }
+
+  /* ---------- „A FOST UTIL?” PE SECȚIUNI ---------- */
+  /* Feedback local, fără trackere și fără server: un semnal pentru revizuire. */
+  function initFeedback(){
+    var secs = document.querySelectorAll('section.doc-sec[id]');
+    if(!secs.length) return;
+    var store = {};
+    try{ store = JSON.parse(localStorage.getItem('cp_feedback') || '{}') || {}; }catch(e){ store = {}; }
+
+    Array.prototype.forEach.call(secs, function(sec){
+      if(sec.querySelector('.fb-box')) return;
+      var id = sec.id;
+      var box = document.createElement('div');
+      box.className = 'fb-box';
+      box.innerHTML = '<span class="fb-q"></span>' +
+        '<button type="button" class="fb-btn" data-v="up"><span aria-hidden="true">\uD83D\uDC4D</span></button>' +
+        '<button type="button" class="fb-btn" data-v="down"><span aria-hidden="true">\uD83D\uDC4E</span></button>' +
+        '<span class="fb-thx" role="status" aria-live="polite"></span>';
+      sec.appendChild(box);
+
+      var q = box.querySelector('.fb-q');
+      var thx = box.querySelector('.fb-thx');
+      function paint(){
+        var ro = (lang === 'ro');
+        var v = store[id] || null;
+        q.textContent = ro ? 'A fost util?' : 'Was this useful?';
+        thx.textContent = v ? (ro ? 'Mulțumim — am notat.' : 'Thanks — noted.') : '';
+        Array.prototype.forEach.call(box.querySelectorAll('.fb-btn'), function(b){
+          var on = (v === b.dataset.v);
+          b.classList.toggle('on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          b.setAttribute('aria-label', (b.dataset.v === 'up' ? (ro ? 'Da, mi-a fost util' : 'Yes, useful')
+                                                             : (ro ? 'Nu, încă nu e clar' : 'No, not clear yet'))
+                                 + ' — ' + (ro ? 'secțiunea ' : 'section ') + id);
+        });
+      }
+      box.addEventListener('click', function(e){
+        var b = e.target.closest ? e.target.closest('.fb-btn') : null;
+        if(!b) return;
+        store[id] = (store[id] === b.dataset.v) ? null : b.dataset.v;
+        try{ localStorage.setItem('cp_feedback', JSON.stringify(store)); }catch(err){}
+        paint();
+      });
+      document.addEventListener('clp:lang', paint);
+      paint();
+    });
+  }
+
+  /* ---------- CÂTE REZULTATE ARE O CĂUTARE (citesc și cititoarele de ecran) ---------- */
+  /* Fiecare câmp de căutare are `data-search-out` (lista în care apar rezultatele).
+     După fiecare tastă numărăm ce a rămas și anunțăm: „7 rezultate” / „Niciun rezultat”. */
+  function initSearchCount(){
+    if(!document.querySelector('.search')) return;
+    var live = document.getElementById('searchLive');
+    if(!live){
+      live = document.createElement('p');
+      live.id = 'searchLive';
+      live.className = 'sr-only';
+      live.setAttribute('role', 'status');
+      live.setAttribute('aria-live', 'polite');
+      document.body.appendChild(live);
+    }
+    document.addEventListener('input', function(e){
+      var el = e.target;
+      if(!el || !el.classList || !el.classList.contains('search')) return;
+      var sel = el.getAttribute('data-search-out');
+      if(!sel) return;
+      var out = document.querySelector(sel);
+      if(!out) return;
+      var n = 0, kids = out.children;
+      for(var i=0; i<kids.length; i++){
+        var c = kids[i];
+        if(!c.classList.contains('empty-state') && !c.classList.contains('js-empty')) n++;
+      }
+      var ro = (lang === 'ro');
+      live.textContent = n
+        ? (ro ? (n === 1 ? '1 rezultat' : n + ' rezultate') : (n === 1 ? '1 result' : n + ' results'))
+        : (ro ? 'Niciun rezultat' : 'No results');
+    }, false);
+  }
+
+  /* ---------- PRINTARE / PDF, ACASĂ PE PAGINILE DE CONȚINUT ---------- */
+  /* Un buton discret, lângă CTA-urile din hero: pagina de teorie, planurile și
+     informațiile legale se citesc bine și pe hârtie. Dispare la printare. */
+  function initPrintBtn(){
+    var page = document.body.dataset.page || 'index';
+    if(page === 'index' || page === '404') return;
+    var cta = document.querySelector('.hero-cta');
+    if(!cta || cta.querySelector('.print-btn')) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'btn btn-ghost print-btn';
+    function label(){ b.textContent = (lang === 'ro') ? '\uD83D\uDDA8\uFE0F Printează / PDF' : '\uD83D\uDDA8\uFE0F Print / PDF'; }
+    b.addEventListener('click', function(){ window.print(); });
+    document.addEventListener('clp:lang', label);
+    label();
+    cta.appendChild(b);
+  }
+
   /* ---------- HEADER / SCROLL ---------- */
   function initScrollFx(){
     var header = $('.site-header');
@@ -633,6 +781,10 @@
     initTableHints();
     initLang();
     initNotices();
+    initProgressBadge();
+    initFeedback();
+    initPrintBtn();
+    initSearchCount();
     initOffline();
     // sincronizare cu schimbarea de limbă făcută de app.js
     document.addEventListener('clp:lang', function(e){

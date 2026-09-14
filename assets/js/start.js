@@ -589,7 +589,12 @@
     state.setup = SETUP.every(function(q){ return !!state.a[q.id]; });
     state.xp = xp();   /* recalculat din progres, nu din ce a rămas în localStorage */
   }
-  function save(){ state.xp = xp(); try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
+  function save(){
+    state.xp = xp();
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){}
+    /* antetul își actualizează insigna de progres imediat */
+    try{ document.dispatchEvent(new CustomEvent('clp:progress')); }catch(e){}
+  }
   function reset(){
     state = { a:{}, done:{}, quiz:{}, xp:0, open:'s1', setup:false };
     try{ localStorage.removeItem(LS_KEY); }catch(e){}

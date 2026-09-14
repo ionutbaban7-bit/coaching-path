@@ -9,6 +9,41 @@ sau [direct pe GitHub](https://github.com/ionutbaban7-bit/coaching-path/issues/n
 
 ---
 
+## [1.7.0] — 2026-09-14
+
+### Schimbat — text puțin, formulări clare (runda 5)
+- Rescrise scurt: titlul de pe prima pagină, subtitlurile tuturor secțiunilor, introducerile
+  paginilor și notele lungi. Aceeași informație, propoziții scurte, fără umplutură.
+  Bugetele sunt verificate automat: lead ≤ 240 de caractere, subtitlu de secțiune ≤ 180.
+- Textul din pagină (varianta care se vede fără JavaScript) era **diferit** de dicționarul RO
+  pe 10 locuri, inclusiv la introducerea principală — sincronizat; testul nou îl blochează
+  pe viitor, deci comutarea limbii nu mai poate schimba conținutul.
+
+### Adăugat
+- **Date structurate schema.org** (lipseau complet): `WebSite` + `EducationalOrganization` pe
+  prima pagină, `LearningResource` pe traseul începătorului, `Article` pe teorie.
+- **Insigna de progres în antet** — „🎯 4/10 Traseu” sau „🎯 3/8 Hartă”, în ambele limbi,
+  actualizată imediat ce bifezi un pas sau o oprire; pe ecrane mici rămâne doar cifra.
+- **„A fost util?” la finalul fiecărei secțiuni de conținut** — un semnal local, fără trackere
+  și fără server, salvat în browser.
+- **Buton „🖨️ Printează / PDF”** pe paginile de conținut; la tipărire dispar butonul, casetele
+  de feedback și insigna de progres.
+
+### UX și accesibilitate (verificate în QA)
+- **Căutările au nume accesibil** (director de școli, glosar, certificări, banca de întrebări) și
+  anunță câte rezultate au rămas: „7 rezultate” / „Niciun rezultat”, într-o zonă citită de
+  cititoarele de ecran.
+- **Tabelele** (18) au nume accesibil, iar cele 81 de celule de titlu au `scope` (coloană/rând).
+- **Insigna de progres** are țintă de atingere de 44px pe touch și duce exact la pasul următor
+  (`incepe.html#startSteps`), nu doar la pagina de start.
+- **Tipărirea** nu mai rupe titlurile, rândurile de tabel sau cardurile la mijloc.
+
+### Verificat
+- Poartă nouă `npm run qa:polish` (36 de verificări): bugete de text, JSON-LD valid, insigna de
+  progres în ambele limbi, feedback accesibil, declanșarea tipăririi, zero erori de script.
+- Toate porțile rămân verzi: `check`, `qa`, `qa:start` 48/48, `qa:css`, `qa:contrast`,
+  `qa:mobile` 54/54 și `qa:itil` cu verdict de producție.
+
 ## [1.6.0] — 2026-09-14
 
 ### Adăugat — harta e acum un drum cu bicicleta 🚲

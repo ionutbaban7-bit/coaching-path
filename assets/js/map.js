@@ -151,7 +151,10 @@
     try{ var v = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); return Array.isArray(v) ? v : []; }
     catch(e){ return []; }
   }
-  function saveDone(arr){ try{ localStorage.setItem(LS_KEY, JSON.stringify(arr)); }catch(e){} }
+  function saveDone(arr){
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(arr)); }catch(e){}
+    try{ document.dispatchEvent(new CustomEvent('clp:progress')); }catch(e){}
+  }
   function indexOfId(id){
     for(var i = 0; i < TOTAL; i++){ if(ROADMAP[i].id === id) return i; }
     return -1;

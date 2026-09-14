@@ -11,11 +11,14 @@ npm run qa           # toate paginile în jsdom: erori JS, randare, interacțiun
 npm run qa:start     # traseul „Începe aici”: calibrare, quiz, XP, insigne, plan, linkuri directe, bară mobilă, EN
 npm run qa:css       # clase/variabile CSS folosite dar nedefinite + id-uri cerute de JS
 npm run qa:mobile    # 54 de verificări statice de mobil (fără server): viewport, zone sigure, ținte, PWA, popup
+npm run qa:polish    # finisaj de produs: bugete de text, date structurate, insigna de progres, feedback, printare
 npm run qa:contrast  # contrast text/fundal (prag AA 4.5:1) în modul luminos
 npm run qa:itil      # punere în producție: ITIL 4 (dimensiuni, tranziție, riscuri) + GO/NO-GO
 ```
 
-`qa.mjs` verifică și drumul cu bicicleta (popup, focus, salvare, avans). `itil.mjs` dă verdictul de producție. `qa.mjs` include și o secțiune **MOBIL** (13 verificări: meniul, bara „Continuă”, notificarea de offline) (meniul: Escape / atingere în afară / derulare blocată și
+`qa.mjs` verifică și drumul cu bicicleta (popup, focus, salvare, avans). `polish.mjs` ține textul scurt și finisajele
+de produs la locul lor (JSON-LD, insigna de progres în ambele limbi, feedback accesibil, printare). `itil.mjs` dă
+verdictul de producție. `qa.mjs` include și o secțiune **MOBIL** (13 verificări: meniul, bara „Continuă”, notificarea de offline) (meniul: Escape / atingere în afară / derulare blocată și
 bara „Continuă de unde ai rămas", cu progres injectat în `localStorage`).
 
 | Fișier | Ce verifică |

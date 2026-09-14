@@ -291,7 +291,7 @@
         }).join('') + '</ol>' +
         '<div class="qb-avoid"><b>⚠ ' + L(['De evitat','Avoid']) + ':</b> ' + esc(L(c.avoid)) + '</div>' +
       '</div>';
-    }).join('') || '<p class="text-muted">' + L(['Niciun rezultat.','No results.']) + '</p>';
+    }).join('') || '<p class="text-muted js-empty">' + L(['Niciun rezultat.','No results.']) + '</p>';
   }
 
   function renderQbCats(){
