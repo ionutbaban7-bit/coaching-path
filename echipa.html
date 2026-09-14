@@ -68,7 +68,7 @@
         <span data-i18n-ro="Coaching de echipă" data-i18n-en="Team coaching">Coaching de echipă</span>
       </nav>
       <span class="pill"><span class="dot"></span>
-        <span data-i18n-ro="Structură complexă · gata de populat" data-i18n-en="Complex structure · ready to populate">Structură complexă · gata de populat</span>
+        <span data-i18n-ro="Structură completă + instrumente de diagnostic" data-i18n-en="Full structure + diagnostic instruments">Structură completă + instrumente de diagnostic</span>
       </span>
       <h1>
         <span data-i18n-ro="Planul complet pentru " data-i18n-en="The complete plan for ">Planul complet pentru </span>
@@ -346,6 +346,10 @@
         </tbody>
       </table>
     </div>
+
+    <h3 data-i18n-ro="Atelierele — design complet" data-i18n-en="The workshops — full design">Atelierele — design complet</h3>
+    <p class="intro" data-i18n-ro="Patru ateliere, câte unul pe fază, cu obiectiv, durată, pași și materiale. Între ele: practică, nu mai multe ateliere." data-i18n-en="Four workshops, one per phase, with objective, duration, steps and materials. Between them: practice, not more workshops.">Patru ateliere, câte unul pe fază, cu obiectiv, durată, pași și materiale. Între ele: practică, nu mai multe ateliere.</p>
+    <div id="workshopList"></div>
   </section>
 
   <!-- 06 DIAGNOSTIC -->
@@ -353,42 +357,22 @@
     <h2><span class="num">06</span><span data-i18n-ro="Instrumente de diagnostic" data-i18n-en="Diagnostic instruments">Instrumente de diagnostic</span></h2>
     <p class="intro" data-i18n-ro="Instrumentul nu înlocuiește judecata, dar o disciplinează. Alege maximum două, altfel transformi echipa într-un proiect de cercetare." data-i18n-en="An instrument doesn't replace judgement, but it disciplines it. Choose two at most, otherwise you turn the team into a research project.">Instrumentul nu înlocuiește judecata, dar o disciplinează. Alege maximum două, altfel transformi echipa într-un proiect de cercetare.</p>
 
-    <div class="slot-grid">
-      <div class="slot">
-        <span class="s-tag" data-i18n-ro="Interviu 1:1" data-i18n-en="1:1 interview">Interviu 1:1</span>
-        <h4 data-i18n-ro="Baza oricărui diagnostic" data-i18n-en="The basis of any diagnosis">Baza oricărui diagnostic</h4>
-        <p data-i18n-ro="6–8 întrebări identice pentru toți, confidențialitate garantată, teme agregate." data-i18n-en="6–8 identical questions for everyone, guaranteed confidentiality, aggregated themes.">6–8 întrebări identice pentru toți, confidențialitate garantată, teme agregate.</p>
-      </div>
-      <div class="slot">
-        <span class="s-tag" data-i18n-ro="Observație" data-i18n-en="Observation">Observație</span>
-        <h4 data-i18n-ro="Ședințe reale" data-i18n-en="Real meetings">Ședințe reale</h4>
-        <p data-i18n-ro="Cine vorbește, cine tace, cum se decide, ce nu se spune. Grilă de observație de completat." data-i18n-en="Who speaks, who stays silent, how decisions happen, what goes unsaid. Observation grid to be completed.">Cine vorbește, cine tace, cum se decide, ce nu se spune. Grilă de observație de completat.</p>
-      </div>
-      <div class="slot">
-        <span class="s-tag" data-i18n-ro="Chestionar" data-i18n-en="Survey">Chestionar</span>
-        <h4 data-i18n-ro="Măsurare cantitativă" data-i18n-en="Quantitative measurement">Măsurare cantitativă</h4>
-        <p data-i18n-ro="Scala de siguranță psihologică (Edmondson) + itemi pe încredere, claritate, conflict." data-i18n-en="Psychological safety scale (Edmondson) plus items on trust, clarity, conflict.">Scala de siguranță psihologică (Edmondson) + itemi pe încredere, claritate, conflict.</p>
-      </div>
-      <div class="slot">
-        <span class="s-tag" data-i18n-ro="Roluri" data-i18n-en="Roles">Roluri</span>
-        <h4 data-i18n-ro="Profilare de echipă" data-i18n-en="Team profiling">Profilare de echipă</h4>
-        <p data-i18n-ro="Belbin, Insights/DISC sau echivalent — utile pentru limbaj comun, nu pentru etichete." data-i18n-en="Belbin, Insights/DISC or equivalent — useful for a shared language, not for labels.">Belbin, Insights/DISC sau echivalent — utile pentru limbaj comun, nu pentru etichete.</p>
-      </div>
-      <div class="slot">
-        <span class="s-tag" data-i18n-ro="Sistem" data-i18n-en="System">Sistem</span>
-        <h4 data-i18n-ro="Harta stakeholderilor" data-i18n-en="Stakeholder map">Harta stakeholderilor</h4>
-        <p data-i18n-ro="Cine cere ce de la echipă, unde sunt așteptările contradictorii." data-i18n-en="Who asks what of the team, where expectations contradict each other.">Cine cere ce de la echipă, unde sunt așteptările contradictorii.</p>
-      </div>
-      <div class="slot">
-        <span class="s-tag" data-i18n-ro="Rezultate" data-i18n-en="Results">Rezultate</span>
-        <h4 data-i18n-ro="Date de business" data-i18n-en="Business data">Date de business</h4>
-        <p data-i18n-ro="Indicatori existenți (livrare, calitate, timp de răspuns, eNPS) — reperele obiective." data-i18n-en="Existing indicators (delivery, quality, response time, eNPS) — the objective benchmarks.">Indicatori existenți (livrare, calitate, timp de răspuns, eNPS) — reperele obiective.</p>
-      </div>
+    <div class="plan-block">
+      <h3 data-i18n-ro="Grilă de interviu 1:1" data-i18n-en="1:1 interview grid">Grilă de interviu 1:1</h3>
+      <p class="intro" data-i18n-ro="Baza oricărui diagnostic: aceleași întrebări pentru toți, în aceeași ordine. Se aplică individual, cu garanția confidențialității." data-i18n-en="The basis of any diagnosis: the same questions for everyone, in the same order. Administered individually, with guaranteed confidentiality.">Baza oricărui diagnostic: aceleași întrebări pentru toți, în aceeași ordine. Se aplică individual, cu garanția confidențialității.</p>
+      <div id="diagInterview"></div>
     </div>
 
-    <div class="todo">
-      <div class="t-label">✍️ <span data-i18n-ro="De populat" data-i18n-en="To populate">De populat</span></div>
-      <span data-i18n-ro="grila de interviu completă, grila de observație, chestionarul (itemi și scale), licențele instrumentelor folosite și costurile asociate." data-i18n-en="the full interview grid, the observation grid, the questionnaire (items and scales), licences for the instruments used and their costs.">grila de interviu completă, grila de observație, chestionarul (itemi și scale), licențele instrumentelor folosite și costurile asociate.</span>
+    <div class="plan-block">
+      <h3 data-i18n-ro="Chestionar de echipă (scară 1–5)" data-i18n-en="Team questionnaire (1–5 scale)">Chestionar de echipă (scară 1–5)</h3>
+      <p class="intro" data-i18n-ro="12 itemi pe 4 dimensiuni, anonim. Se aplică identic la început (baseline) și la final (măsurare)." data-i18n-en="12 items across 4 dimensions, anonymous. Administered identically at the start (baseline) and at the end (measurement).">12 itemi pe 4 dimensiuni, anonim. Se aplică identic la început (baseline) și la final (măsurare).</p>
+      <div id="diagSurvey"></div>
+    </div>
+
+    <div class="plan-block">
+      <h3 data-i18n-ro="Grilă de observație în ședințe" data-i18n-en="Meeting observation grid">Grilă de observație în ședințe</h3>
+      <p class="intro" data-i18n-ro="Cea mai subestimată sursă de date: echipa în funcțiune, nu echipa care vorbește despre ea însăși." data-i18n-en="The most underrated data source: the team in action, not the team talking about itself.">Cea mai subestimată sursă de date: echipa în funcțiune, nu echipa care vorbește despre ea însăși.</p>
+      <div id="diagObserve"></div>
     </div>
   </section>
 
@@ -477,10 +461,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td data-i18n-ro="Grilă de interviu 1:1 (8 întrebări)" data-i18n-en="1:1 interview grid (8 questions)">Grilă de interviu 1:1 (8 întrebări)</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
-          <tr><td>2</td><td data-i18n-ro="Grilă de observație în ședințe" data-i18n-en="Meeting observation grid">Grilă de observație în ședințe</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
-          <tr><td>3</td><td data-i18n-ro="Chestionar echipă (itemi + scale)" data-i18n-en="Team questionnaire (items + scales)">Chestionar echipă (itemi + scale)</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
-          <tr><td>4</td><td data-i18n-ro="Design de atelier (3–4 ateliere complete)" data-i18n-en="Workshop design (3–4 full workshops)">Design de atelier (3–4 ateliere complete)</td><td data-i18n-ro="Secțiunea 05" data-i18n-en="Section 05">Secțiunea 05</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
+          <tr><td>1</td><td data-i18n-ro="Grilă de interviu 1:1 (8 întrebări)" data-i18n-en="1:1 interview grid (8 questions)">Grilă de interviu 1:1 (8 întrebări)</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-ok" data-i18n-ro="complet" data-i18n-en="done">complet</span></td></tr>
+          <tr><td>2</td><td data-i18n-ro="Grilă de observație în ședințe" data-i18n-en="Meeting observation grid">Grilă de observație în ședințe</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-ok" data-i18n-ro="complet" data-i18n-en="done">complet</span></td></tr>
+          <tr><td>3</td><td data-i18n-ro="Chestionar echipă (12 itemi, 4 dimensiuni)" data-i18n-en="Team questionnaire (12 items, 4 dimensions)">Chestionar echipă (12 itemi, 4 dimensiuni)</td><td data-i18n-ro="Secțiunea 06" data-i18n-en="Section 06">Secțiunea 06</td><td><span class="tag tag-ok" data-i18n-ro="complet" data-i18n-en="done">complet</span></td></tr>
+          <tr><td>4</td><td data-i18n-ro="Design de atelier (4 ateliere complete)" data-i18n-en="Workshop design (4 full workshops)">Design de atelier (4 ateliere complete)</td><td data-i18n-ro="Secțiunea 05" data-i18n-en="Section 05">Secțiunea 05</td><td><span class="tag tag-ok" data-i18n-ro="complet" data-i18n-en="done">complet</span></td></tr>
           <tr><td>5</td><td data-i18n-ro="Markeri ACTC/ITCA (coloana 3)" data-i18n-en="ACTC/ITCA markers (column 3)">Markeri ACTC/ITCA (coloana 3)</td><td data-i18n-ro="Secțiunea 07" data-i18n-en="Section 07">Secțiunea 07</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
           <tr><td>6</td><td data-i18n-ro="Pachet de metrici și baseline" data-i18n-en="Metrics pack and baseline">Pachet de metrici și baseline</td><td data-i18n-ro="Secțiunea 08" data-i18n-en="Section 08">Secțiunea 08</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
           <tr><td>7</td><td data-i18n-ro="Studii de caz (echipe, anonimizat)" data-i18n-en="Case studies (teams, anonymised)">Studii de caz (echipe, anonimizat)</td><td data-i18n-ro="Secțiune nouă" data-i18n-en="New section">Secțiune nouă</td><td><span class="tag tag-amber" data-i18n-ro="de făcut" data-i18n-en="to do">de făcut</span></td></tr>
@@ -558,6 +542,7 @@
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/plan.js"></script>
 <script>
 (function(){
   var links = [].slice.call(document.querySelectorAll('#toc a'));

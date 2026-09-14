@@ -58,6 +58,10 @@
       var v = el.getAttribute('data-i18n-t-' + lang);
       if(v != null) el.setAttribute('title', v);
     });
+    $$('[data-i18n-ph-ro]').forEach(function(el){
+      var v = el.getAttribute('data-i18n-ph-' + lang);
+      if(v != null) el.placeholder = v;
+    });
     var label = $('#langLabel');
     if(label) label.textContent = (lang === 'ro' ? 'EN' : 'RO');
     var flag = $('#langFlag');

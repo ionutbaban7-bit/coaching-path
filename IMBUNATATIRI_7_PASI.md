@@ -90,11 +90,12 @@ Datele au fost extrase **mecanic**, nu rescrise: conținutul, traducerile și su
 
 **`teorie.html`** — 10 secțiuni: definiții (ICF/EMCC/ANC) · matrice de comparație pe 6 dimensiuni (coaching vs. terapie vs. mentoring vs. consultanță vs. training) · istoric pe timeline (1974 Gallwey → 1992 Whitmore/GROW & EMC → 1995 ICF → 2002 EMCC → 2013 COR 242412 → 2025 competențe → 2026/27 schimbări de examen) · 8 contexte de utilizare · anatomia sesiunii pe minute · 6 modele de lucru (GROW, TGROW, OSCAR, CLEAR, FUEL, co-activ) · cele 8 competențe ICF grupate · etică și limite · 6 mituri demontate · ce spune cercetarea (cu tabel de populat).
 
-**`individual.html`** — plan 1:1: arhitectura programului (tabel de parametri) · cele 5 etape · structura unei ședințe minut cu minut · bancă de întrebări pe 8 categorii · plan de practică pe cele 8 competențe · instrumente și fișe · jurnal de ore (format care trece un audit) · rubrică de autoevaluare 0–3 · etică și riscuri · listă cu ce rămâne de populat.
+**`individual.html`** — plan 1:1: arhitectura programului (tabel de parametri) · cele 5 etape · structura unei ședințe minut cu minut · **bancă de întrebări populată: 64 de întrebări în 8 categorii, cu căutare, filtre și varianta „de evitat”** · plan de practică pe cele 8 competențe · instrumente și fișe · jurnal de ore (format care trece un audit) · rubrică de autoevaluare 0–3 · etică și riscuri · listă de stare.
 
-**`echipa.html`** — plan de echipă: definiții și trei niveluri de lucru · diferențe față de facilitare/training/team building · când are sens și când NU (diagnostic diferențial) · 6 modele (Hawkins 5 discipline, Lencioni, Tuckman, GRPI, Hackman, Edmondson) · arhitectură pe 6 luni cu calendar · instrumente de diagnostic · competențe ACTC/ITCA · metrici pe 4 niveluri Kirkpatrick · capcane · listă de populat.
+**`echipa.html`** — plan de echipă: definiții și trei niveluri de lucru · diferențe față de facilitare/training/team building · când are sens și când NU (diagnostic diferențial) · 6 modele (Hawkins 5 discipline, Lencioni, Tuckman, GRPI, Hackman, Edmondson) · arhitectură pe 6 luni cu calendar · **4 ateliere cu design complet (obiectiv, durată, pași, materiale)** · **instrumente de diagnostic populate: grilă de interviu 1:1 (8 întrebări), chestionar 12 itemi × 4 dimensiuni, grilă de observație în 6 dimensiuni** · competențe ACTC/ITCA · metrici pe 4 niveluri Kirkpatrick · capcane · listă de stare.
 
-**Rezultat:** cele două planuri sunt schele complete, cu sloturi marcate vizual (`✍️ De populat`) și un tabel de stare — le populăm pe rând, fără să mai construim structura.
+**Rezultat:** cele două planuri nu sunt doar schele — au deja conținutul de bază populat (`assets/js/plan.js`, randat dinamic, bilingv):
+64 de întrebări de coaching, 8 întrebări de interviu pentru diagnostic de echipă, chestionar de 12 itemi pe 4 dimensiuni, grilă de observație cu 6 dimensiuni și 4 ateliere complete cu 20 de pași. Rămân sloturile marcate vizual (`✍️ De populat`) pentru fișele printabile și studiile de caz.
 
 ---
 
@@ -141,6 +142,6 @@ Datele au fost extrase **mecanic**, nu rescrise: conținutul, traducerile și su
 
 ## Rămâne de făcut (în ordinea recomandată)
 
-1. **Popularea planurilor** — întrebările din bancă, grilele de interviu, chestionarul de echipă, markerii ACTC/ITCA, studiile de caz. Structura și tabelele de stare sunt gata.
+1. **Ce a mai rămas din planuri** — fișele de lucru printabile (PDF), markerii ACTC/ITCA (coloana 3 din tabelul de competențe), exercițiile pe competențe 1:1, studiile de caz și pachetul de metrici cu baseline. Structura și tabelele de stare sunt gata.
 2. **Activare GitHub Pages** — Settings → Pages → Source → „GitHub Actions” (nu am putut face asta din linia de comandă: tokenul integrării are permisiuni limitate, `403 Resource not accessible by integration`).
 3. **Conținut** — detaliile pe care le veți aduce voi (studii de caz, prețuri actualizate, școli noi).
