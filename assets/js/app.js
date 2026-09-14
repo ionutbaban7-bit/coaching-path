@@ -334,10 +334,14 @@ function renderSchools(){
      <td style="min-width:180px">${icfBadges}${emccBadges}${ancBadge}<div style="margin-top:5px"></div></td>
      <td style="min-width:130px">${langCell}</td>
      <td style="min-width:210px">${sig}
+       <div class="school-verified">
+         🛡️ ${(lang==='ro'?'Verificat la ':'Verified on ')}${(window.CRED?CRED.verifiedRo:'14 septembrie 2026')}${s.claim?(lang==='ro'?' · ⚠ declarație proprie':' · ⚠ self-declared'):''}
+       </div>
        <div style="display:flex;gap:6px;flex-wrap:wrap">
          <a class="star-btn" href="${gmap(s.q)}" target="_blank" rel="noopener">⭐ ${lang_ro()}</a>
          <a class="btn-mini" style="margin-top:0" href="${s.url}" target="_blank" rel="noopener">www ↗</a>
-       </div></td>
+       </div>
+       <div style="margin-top:6px">${window.CRED?CRED.verificationLinks(s):''}</div></td>
    </tr>`;
  }).join('') || `<tr><td style="padding:20px;color:var(--muted)">${lang==='ro'?'Niciun rezultat — resetează filtrele.':'No results — reset filters.'}</td></tr>`;
  $('#schoolsNote').innerHTML = (lang==='ro'

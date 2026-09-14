@@ -164,6 +164,7 @@
       <h2 data-i18n="systemsT">Trei „lumi” ale certificării — nu le confunda</h2>
       <p class="sec-sub" data-i18n="systemsS">ICF și EMCC sunt organisme profesionale internaționale (certificare voluntară, prestigiu). ANC/MMSS este sistemul național românesc (recunoaștere legală a ocupației). Multi coachi serioși le combină.</p>
     </div>
+    <div data-verify="systems"></div>
     <div class="grid grid-3" id="orgCards"></div>
 
     <div class="sec-head reveal" style="margin-top:clamp(36px,5vw,64px)">
@@ -182,6 +183,7 @@
       <h2 data-i18n="pathsT">Parcursuri pas cu pas</h2>
       <p class="sec-sub" data-i18n="pathsS">Click pe orice etapă pentru cerințe, tipul evaluării, costuri și recomandări. Bifează pașii parcurși — progresul tău se salvează pe acest dispozitiv.</p>
     </div>
+    <div data-verify="paths"></div>
     <div class="tabs" id="pathTabs"></div>
     <div class="pathbox">
       <div class="path-progress-wrap">
@@ -201,6 +203,7 @@
       <h2 data-i18n="transT">Trecerea între certificări — exact ce îți lipsește</h2>
       <p class="sec-sub" data-i18n="transS">Ai deja ceva format? Aici vezi diferența exactă de ore, evaluări și documente între unde ești și unde vrei să ajungi.</p>
     </div>
+    <div data-verify="transitions"></div>
     <div class="trans-grid" id="transGrid"></div>
   </div>
 </section>
@@ -213,6 +216,7 @@
       <h2 data-i18n="credT">Toate tipurile de certificări, pe rând</h2>
       <p class="sec-sub" data-i18n="credS">Coach, mentor coach, supervizor, team coach, formator — fiecare cu cerințele, evaluarea și valabilitatea ei. Click pe o carte pentru detalii complete.</p>
     </div>
+    <div data-verify="credentials"></div>
     <div class="filters" id="credFilters"></div>
     <div class="cred-grid" id="credGrid"></div>
   </div>
@@ -226,6 +230,7 @@
       <h2 data-i18n="schoolT">Școli de coaching din România</h2>
       <p class="sec-sub" data-i18n="schoolS">Bazat pe lista oficială ICF România (programe prezente și în directorul global ICF Education Search), plus furnizori ANC și școli relevante. Stelele Google se verifică live, pentru fiecare școală în parte.</p>
     </div>
+    <div data-verify="schools"></div>
     <div class="filters" id="schoolFilters">
       <input class="search" id="schoolSearch" data-i18n-ph="searchSchool" placeholder="🔎 Caută o școală…">
     </div>
@@ -247,6 +252,7 @@
       <h2 data-i18n="journeyT">Cum arată, concret, parcursul unui coach</h2>
       <p class="sec-sub" data-i18n="journeyS">Exemplu realist (persoană cu job full-time, care începe de la zero și țintește PCC). Datele sunt orientative — fiecare ritm e diferit.</p>
     </div>
+    <div data-verify="journey"></div>
     <div class="journey" id="journeyRows"></div>
   </div>
 </section>
@@ -259,6 +265,7 @@
       <h2 data-i18n="costT">Cât costă și cât durează, pe șleau</h2>
       <p class="sec-sub" data-i18n="costS">Costuri orientative pentru România (septembrie 2026). Taxele oficiale ICF sunt în USD și se plătesc direct federației; restul variază mult în funcție de școală.</p>
     </div>
+    <div data-verify="costs"></div>
     <div class="table-wrap"><table class="table-clean" id="costTable"></table></div>
     <div class="disclaimer" id="costNote"></div>
   </div>
@@ -271,6 +278,7 @@
       <span class="sec-kicker" data-i18n-ro="FAQ &amp; terminology" data-i18n-en="FAQ &amp; terminology">FAQ &amp; terminology</span>
       <h2 data-i18n="faqT">Întrebări frecvente și termeni esențiali</h2>
     </div>
+    <div data-verify="faq"></div>
     <div class="grid grid-2">
       <div id="faqList"></div>
       <div>
@@ -381,7 +389,15 @@
 
     <div class="footer-bottom">
       <span data-i18n="foot2">Asamblat manual pe 14 septembrie 2026 din surse oficiale și publice. Nu este afiliat ICF, EMCC, ANC sau vreunei școli de coaching. Nu înlocuiește consultarea surselor oficiale; regulile se pot schimba oricând.</span>
-      <span>© 2026 · <span data-i18n-ro="gratuit, offline, fără cont" data-i18n-en="free, offline, no account">gratuit, offline, fără cont</span></span>
+      <span>
+        <a href="legal.html" style="color:rgba(255,255,255,.72)" data-i18n-ro="Termeni · Confidențialitate" data-i18n-en="Terms · Privacy">Termeni · Confidențialitate</a>
+        <span style="opacity:.4"> · </span>
+        <a href="legal.html#corectii" style="color:rgba(255,255,255,.72)" data-i18n-ro="Raportează o greșeală" data-i18n-en="Report an error">Raportează o greșeală</a>
+        <span style="opacity:.4"> · </span>
+        <a href="CHANGELOG.md" style="color:rgba(255,255,255,.72)">Changelog</a>
+        <span style="opacity:.4"> · </span>
+        © 2026 <span data-i18n-ro="gratuit, offline, fără cont" data-i18n-en="free, offline, no account">gratuit, offline, fără cont</span>
+      </span>
     </div>
   </div>
 </footer>
@@ -396,6 +412,7 @@
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/credibility.js"></script>
 <script src="assets/js/map.js"></script>
 <script src="assets/js/app.js"></script>
 </body>

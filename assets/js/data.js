@@ -10,7 +10,7 @@ const UI = {
   sources:"Surse oficiale", tips:"Recomandări", learn:"Deschide certificarea",
   close:"Închide", steps:"pași",
   fAll:"Toate certificările",
-  schoolCols:["Școală / furnizor","Acreditare (programe)","Limbă / loc","Recenzii"],
+  schoolCols:["Școală / furnizor","Acreditare (programe)","Limbă / loc","Recenzii & verificare"],
   tableHead:["Element","Cost orientativ (sept 2026)","Durată","Ce include / note"],
   months:"luni"
  },
@@ -25,7 +25,7 @@ const UI = {
   sources:"Official sources", tips:"Recommendations", learn:"Open credential",
   close:"Close", steps:"steps",
   fAll:"All credentials",
-  schoolCols:["School / provider","Accreditation (programs)","Language / location","Reviews"],
+  schoolCols:["School / provider","Accreditation (programs)","Language / location","Reviews & verification"],
   tableHead:["Item","Indicative cost (Sep 2026)","Duration","What's included / notes"],
   months:"months"
  }

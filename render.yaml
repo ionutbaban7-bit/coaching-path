@@ -1,32 +1,33 @@
 # Coaching Learning Path — configurare Render (Blueprint)
+# ------------------------------------------------------------
+# Se publică în două feluri, ambele funcționează cu acest repo:
 #
-# Site complet static: HTML + CSS + JS, fără build, fără dependențe.
+#   A) WEB SERVICE (implicit, aici)  → Build: npm install · Start: node server.js
+#      Merge garantat: repo-ul are acum package.json + server.js fără dependențe.
+#
+#   B) STATIC SITE (mai ieftin, fără spin-down)
+#      Type: Static Site · Build Command: (gol) · Publish Directory: .
+#      În acest caz server.js e ignorat — Render servește fișierele direct.
+#
 # Pe Render: New → Blueprint → selectezi repo-ul → Render citește acest fișier.
-#
-# După ce faci merge la PR-ul #1 în `main`, schimbă `branch` în `main`
-# ca să publici ramura stabilă.
+# După merge-ul PR-ului în `main`, schimbă `branch` în `main`.
 
 services:
   - type: web
     name: coaching-learning-path
-    runtime: static
+    runtime: node
     repo: https://github.com/ionutbaban7-bit/coaching-path
     branch: arena/01a09f1d-coaching-path   # ← după merge: main
-    staticPublishPath: .
+    region: frankfurt                      # cel mai aproape de România
+    plan: free
     autoDeploy: true
 
-    headers:
-      # grafica și fonturile nu se schimbă des → cache lung
-      - path: /assets/*
-        name: Cache-Control
-        value: public, max-age=604800
-      # HTML-ul se poate schimba des → revalidare
-      - path: /*
-        name: Cache-Control
-        value: public, max-age=0, must-revalidate
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
-      - path: /*
-        name: Referrer-Policy
-        value: strict-origin-when-cross-origin
+    buildCommand: npm install --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /
+
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production

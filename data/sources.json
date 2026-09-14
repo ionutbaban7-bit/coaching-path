@@ -1,0 +1,110 @@
+{
+  "version": "1.0",
+  "verified_on": "2026-09-14",
+  "note": "Registrul surselor oficiale folosite în Coaching Learning Path. Jobul 'Actualizare informații · Update Info' citește acest fișier și raportează ce a expirat. Ca să actualizezi o informație: verifici sursa, corectezi datele în assets/js/data.js, apoi pui data de azi în câmpul verified_on de aici.",
+  "sources": [
+    {
+      "id": "icf-credentialing",
+      "name": "ICF — Credentialing (cerințe, taxe, examen)",
+      "url": "https://coachingfederation.org/credentialing-landing",
+      "checks": [
+        "cerințele ACC / PCC / MCC (ore educație, ore clienți, mentor coaching)",
+        "taxele de aplicare și reînnoire",
+        "noul examen PCC/MCC din 10 noiembrie 2026 (80 itemi / 150 min)"
+      ],
+      "where": ["assets/js/data.js → CREDS", "assets/js/data.js → PATHS.icf"],
+      "cadence_days": 60
+    },
+    {
+      "id": "icf-ess",
+      "name": "ICF Education Search — directorul global de programe",
+      "url": "https://apps.coachingfederation.org/eweb/DynamicPage.aspx?webcode=ESS",
+      "checks": [
+        "fiecare școală din listă există în continuare în director",
+        "nivelul programului (Level 1 / Level 2 / Level 3)"
+      ],
+      "where": ["assets/js/data.js → SCHOOLS"],
+      "cadence_days": 90
+    },
+    {
+      "id": "icf-competencies",
+      "name": "ICF — competențe și cod etic (modelul 2025)",
+      "url": "https://coachingfederation.org/credentials-and-standards",
+      "checks": [
+        "cele 8 competențe și formularea lor",
+        "codul etic",
+        "cerințele CCE la reînnoire (40 CCE, din care 10 în etică)"
+      ],
+      "where": ["teorie.html → #competente", "assets/js/data.js → GLOSS"],
+      "cadence_days": 180
+    },
+    {
+      "id": "icf-team",
+      "name": "ICF — credentiale de team coaching (ACTC)",
+      "url": "https://coachingfederation.org/credentials-and-standards/team-coaching-credentials",
+      "checks": ["cerințele ACTC", "orele de practică cu echipe"],
+      "where": ["assets/js/data.js → CREDS", "echipa.html → #competente"],
+      "cadence_days": 180
+    },
+    {
+      "id": "emcc-eia",
+      "name": "EMCC — acreditare individuală (EIA)",
+      "url": "https://www.emccglobal.org/accreditation/eia/",
+      "checks": ["nivelurile EIA", "reînnoirea la 5 ani", "supervizarea obligatorie"],
+      "where": ["assets/js/data.js → CREDS", "assets/js/data.js → PATHS.emcc"],
+      "cadence_days": 90
+    },
+    {
+      "id": "emcc-itca",
+      "name": "EMCC — acreditare team coaching (ITCA)",
+      "url": "https://www.emccglobal.org/accreditation/itca/",
+      "checks": ["nivelurile ITCA", "practică demonstrată cu echipe"],
+      "where": ["echipa.html → #competente"],
+      "cadence_days": 180
+    },
+    {
+      "id": "emcc-ethics",
+      "name": "EMCC — codul etic",
+      "url": "https://www.emccglobal.org/ethics/",
+      "checks": ["codul etic", "politica de supervizare"],
+      "where": ["teorie.html → #etica"],
+      "cadence_days": 365
+    },
+    {
+      "id": "anc-romania",
+      "name": "ANC — autorizarea furnizorilor de formare",
+      "url": "https://www.anc.edu.ro/",
+      "checks": [
+        "lista furnizorilor autorizați pentru COR 242412",
+        "valabilitatea autorizațiilor (4 ani)",
+        "metodologia examenului de absolvire"
+      ],
+      "where": ["assets/js/data.js → PATHS.ro", "assets/js/data.js → SCHOOLS (câmpul anc)"],
+      "cadence_days": 90
+    },
+    {
+      "id": "mmss",
+      "name": "MMSS — autorizarea ocupațiilor (România)",
+      "url": "https://www.mmuncii.ro/",
+      "checks": ["autoritatea care emite autorizațiile", "comisiile județene"],
+      "where": ["assets/js/data.js → NEWS", "assets/js/data.js → PATHS.ro"],
+      "cadence_days": 180
+    },
+    {
+      "id": "cor-242412",
+      "name": "Clasificarea Ocupațiilor — COR 242412",
+      "url": "https://www.rubinian.com/cor/242412-specialist-activitatea-de-coaching",
+      "checks": ["codul ocupației", "standardul ocupațional 2024–2034"],
+      "where": ["assets/js/data.js → PATHS.ro", "assets/js/data.js → CREDS"],
+      "cadence_days": 365
+    },
+    {
+      "id": "icf-romania",
+      "name": "ICF România — programe locale",
+      "url": "https://www.coachingfederation.ro/",
+      "checks": ["lista programelor cu predare în română", "prezența locală a furnizorilor"],
+      "where": ["assets/js/data.js → SCHOOLS"],
+      "cadence_days": 90
+    }
+  ]
+}

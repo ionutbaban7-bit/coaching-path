@@ -31,16 +31,25 @@ python3 -m http.server 8000   # apoi deschide http://localhost:8000
 ## Structura proiectului
 
 ```
-index.html · teorie.html · individual.html · echipa.html
+index.html · teorie.html · individual.html · echipa.html · legal.html
 assets/
   css/tokens.css   → design tokens (culoare, spațiere, tipografie, dark mode)
-  css/app.css      → componente (nav, hartă, carduri, stepper, tabele, modal, footer)
+  css/app.css      → componente (nav, hartă, carduri, stepper, tabele, bandă de verificare, footer)
   css/pages.css    → pagini de conținut (cuprins, matrice, timeline, planuri, print)
   js/data.js       → toate datele, bilingv RO/EN (organisme, pathuri, credențiale, școli)
   js/app.js        → logica aplicației
   js/site.js       → temă, limbă, nav, scroll-spy, animații la scroll
   js/map.js        → harta interactivă
+  js/plan.js       → banca de întrebări, instrumente de echipă, ateliere
+  js/credibility.js→ banda „verificat la / surse / raportează o greșeală”
   img/             → favicon, copertă socială, ilustrații
+data/sources.json  → registrul surselor oficiale (ce se verifică, la ce interval)
+tools/update-info.mjs  → jobul de verificare a datelor (rulează manual sau lunar)
+server.js          → server static, zero dependențe (pentru Render Web Service)
+package.json       → npm start / npm run update-info
+render.yaml        → Blueprint Render (Web Service Node + instrucțiuni Static Site)
+404.html           → pagină de eroare personalizată
+CHANGELOG.md       → istoricul modificărilor
 ```
 
 ## Funcționalități
@@ -60,29 +69,84 @@ Prima dată trebuie activat manual, din interfața GitHub:
 
 După activare, site-ul apare la `https://ionutbaban7-bit.github.io/coaching-path/`.
 
-## Deploy pe Render (site static, fără build)
+## Deploy pe Render
 
-Proiectul e 100% static: HTML, CSS și JS, fără npm, fără build. Pe Render se publică direct.
+Repo-ul funcționează în **ambele** regimuri Render: Web Service și Static Site.
+`server.js` (zero dependențe) + `package.json` fac ca și varianta Web Service să pornească
+fără nicio configurare suplimentară.
 
-**Varianta 1 — Blueprint (din `render.yaml`, setările vin gata făcute)**
-1. Render → **New → Blueprint**
-2. Conectezi repo-ul `ionutbaban7-bit/coaching-path`
-3. Render citește `render.yaml` și creează serviciul automat
+După merge-ul PR-ului în `main`, schimbă `branch` în `main` în `render.yaml`.
 
-**Varianta 2 — manual**
+### Varianta A — Web Service (implicit în `render.yaml`)
+
+| Câmp | Valoare |
+|------|---------|
+| Type | **Web Service** |
+| Runtime | **Node** |
+| Repository | `ionutbaban7-bit/coaching-path` |
+| Branch | `arena/01a09f1d-coaching-path` |
+| Region | Frankfurt (cel mai aproape de România) |
+| Build Command | `npm install --omit=dev` |
+| Start Command | `node server.js` |
+| Health Check Path | `/` |
+| Auto-Deploy | **Yes** |
+
+Nu trebuie variabile de mediu, nu trebuie bază de date, nu există dependențe npm.
+
+### Varianta B — Static Site (fără server, fără spin-down)
+
 | Câmp | Valoare |
 |------|---------|
 | Type | **Static Site** |
-| Repository | `ionutbaban7-bit/coaching-path` |
-| Branch | `arena/01a09f1d-coaching-path` (după merge la PR #1 → `main`) |
+| Branch | `arena/01a09f1d-coaching-path` |
 | Build Command | *lasă gol* |
 | Publish Directory | `.` (rădăcina) |
 | Auto-Deploy | **Yes** |
 
-Pagina de eroare personalizată (`404.html`) se servește automat pe rutele inexistente.
+În această variantă `server.js` e ignorat — Render servește fișierele direct.
 
-> Notă: workflow-ul pentru **GitHub Pages** (`.github/workflows/pages.yml`) rămâne configurat
-> și nu interferează cu Render — poți folosi oricare dintre ele, sau ambele.
+### Rute disponibile
+
+`/` · `/teorie.html` · `/individual.html` · `/echipa.html` · `/legal.html`
+Plus variantele scurte: `/teorie` · `/individual` · `/echipa` · `/legal` (când rulezi prin `server.js`).
+
+Paginile personalizate de eroare (`404.html`) se servesc automat pe rutele inexistente.
+
+> Workflow-ul pentru **GitHub Pages** (`.github/workflows/pages.yml`) rămâne configurat
+> și nu interferează cu Render — le poți folosi pe oricare, sau pe ambele.
+
+## Jobul „Actualizare informații · Update Info”
+
+Când vrei să verifici dacă datele mai sunt de actualitate, rulezi jobul din GitHub:
+
+**Actions → „Actualizare informații · Update Info” → Run workflow**
+
+| Opțiune | Ce face |
+|---------|---------|
+| `mode = report` | inventar + validări + expirări (fără apeluri pe net) |
+| `mode = full` | ca mai sus, plus verificarea linkurilor |
+| `check_links` | bifezi dacă vrei neapărat testul de linkuri |
+| `days` | pragul de expirare, în zile (implicit 60) |
+
+Jobul nu modifică nimic de unul singur. Produce:
+
+- un **sumar direct în pagina rulării** (îl vezi imediat);
+- un artefact `update-info-report` cu `update-info-report.md` și `summary.json`;
+- (la rularea automată lunară) un **issue** etichetat `actualizare-informatii`, dacă a expirat ceva.
+
+Îl poți rula și local: `node tools/update-info.mjs --links`.
+
+### Cum actualizezi informațiile, pas cu pas
+
+1. Vezi în raport ce e marcat 🔴 (sursă expirată) sau ⚠️ (eveniment depășit).
+2. Deschizi sursa oficială din `data/sources.json` și verifici informația.
+3. Corectezi datele în fișierul indicat în coloana „Unde” (de regulă `assets/js/data.js`).
+4. Pui data de azi în `data/sources.json` → `verified_on` și în `assets/js/credibility.js` → `VERIFIED`.
+5. Adaugi o linie în [`CHANGELOG.md`](CHANGELOG.md).
+6. Rulezi din nou jobul: trebuie să iasă 🟢.
+
+Registrul complet al surselor, cu ce se verifică în fiecare și la ce interval:
+[`data/sources.json`](data/sources.json).
 
 ## Note
 
