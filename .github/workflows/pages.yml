@@ -34,14 +34,42 @@ jobs:
       - name: Verifică site-ul
         run: node tools/check-site.mjs
 
-      # enablement: dacă Pages nu e pornit încă în setările repo-ului, îl pornește
-      # automat cu sursa „GitHub Actions” (altfel pasul cade cu „Get Pages site failed”)
-      - uses: actions/configure-pages@v5
+      # Pages poate fi pornit automat doar de un token cu drepturi de administrare.
+      # Cu tokenul de Actions (pages: write) încercăm oricum `enablement`, iar dacă
+      # repository-ul nu are Pages activat, sărim peste publicare și spunem exact
+      # ce e de făcut — în loc să lăsăm un job roșu la fiecare push în main.
+      - id: pages
+        uses: actions/configure-pages@v5
+        continue-on-error: true
         with:
           enablement: true
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Pages nu e pornit încă — ce e de făcut
+        if: steps.pages.outcome != 'success'
+        run: |
+          echo "::warning title=GitHub Pages nu este activat::Settings → Pages → Build and deployment → Source: GitHub Actions (o singură dată), apoi rulează din nou acest workflow."
+          {
+            echo "### ⚠️ GitHub Pages nu este activat pentru acest repository"
+            echo ""
+            echo "Site-ul este verificat și gata de publicare, dar Pages nu este pornit, iar tokenul"
+            echo "acestui workflow nu are drept de administrare ca să îl pornească singur."
+            echo ""
+            echo "**Un singur pas (o dată):** Settings → Pages → Build and deployment →"
+            echo "Source: **GitHub Actions**."
+            echo ""
+            echo "După asta, fiecare push în \`main\` publică automat."
+            echo ""
+            echo "Alternativ, site-ul e static: se poate publica identic pe Render (\`render.yaml\`)"
+            echo "sau pe orice server de fișiere."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Pregătește artefactul
+        if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - id: deployment
+
+      - name: Publică
+        if: steps.pages.outcome == 'success'
+        id: deployment
         uses: actions/deploy-pages@v4
