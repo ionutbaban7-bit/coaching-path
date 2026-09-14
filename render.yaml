@@ -1,0 +1,32 @@
+# Coaching Learning Path — configurare Render (Blueprint)
+#
+# Site complet static: HTML + CSS + JS, fără build, fără dependențe.
+# Pe Render: New → Blueprint → selectezi repo-ul → Render citește acest fișier.
+#
+# După ce faci merge la PR-ul #1 în `main`, schimbă `branch` în `main`
+# ca să publici ramura stabilă.
+
+services:
+  - type: web
+    name: coaching-learning-path
+    runtime: static
+    repo: https://github.com/ionutbaban7-bit/coaching-path
+    branch: arena/01a09f1d-coaching-path   # ← după merge: main
+    staticPublishPath: .
+    autoDeploy: true
+
+    headers:
+      # grafica și fonturile nu se schimbă des → cache lung
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800
+      # HTML-ul se poate schimba des → revalidare
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin

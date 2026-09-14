@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagina nu a fost găsită — Coaching Learning Path</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#4b57d4">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('cp_theme');
+    if(!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+})();
+</script>
+<style>
+.err-wrap{min-height:100vh;display:grid;place-items:center;text-align:center;padding:40px 20px}
+.err-code{
+  font-size:clamp(4rem,14vw,8rem);font-weight:800;line-height:1;
+  letter-spacing:-.05em;background:var(--grad-text);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.err-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.err-alt{margin-top:36px;font-size:13px;color:var(--muted)}
+.err-alt a{display:inline-block;margin:0 8px}
+</style>
+</head>
+<body>
+<div class="err-wrap">
+  <div>
+    <div class="err-code">404</div>
+    <h1 style="font-size:clamp(1.4rem,3vw,2rem);margin:16px 0 10px">
+      <span data-i18n-ro="Pagina asta nu există (încă)" data-i18n-en="This page doesn't exist (yet)">Pagina asta nu există (încă)</span>
+    </h1>
+    <p class="lead" style="margin:0 auto">
+      <span data-i18n-ro="Poate a fost mutată sau poate n-a fost scrisă încă — avem destule secțiuni marcate „de populat”." data-i18n-en="It may have moved, or it may not be written yet — we have plenty of sections marked “to populate”.">Poate a fost mutată sau poate n-a fost scrisă încă — avem destule secțiuni marcate „de populat”.</span>
+    </p>
+    <div class="err-links">
+      <a class="btn btn-primary" href="index.html">
+        <span data-i18n-ro="Înapoi la hartă" data-i18n-en="Back to the map">Înapoi la hartă</span>
+      </a>
+      <a class="btn btn-ghost" href="teorie.html">
+        <span data-i18n-ro="Citește teoria" data-i18n-en="Read the theory">Citește teoria</span>
+      </a>
+    </div>
+    <div class="err-alt">
+      <a href="index.html" data-i18n-ro="Acasă" data-i18n-en="Home">Acasă</a>·
+      <a href="teorie.html" data-i18n-ro="Teorie" data-i18n-en="Theory">Teorie</a>·
+      <a href="individual.html" data-i18n-ro="Coaching 1:1" data-i18n-en="1:1 coaching">Coaching 1:1</a>·
+      <a href="echipa.html" data-i18n-ro="Coaching de echipă" data-i18n-en="Team coaching">Coaching de echipă</a>
+    </div>
+  </div>
+</div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

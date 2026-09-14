@@ -60,6 +60,30 @@ Prima dată trebuie activat manual, din interfața GitHub:
 
 După activare, site-ul apare la `https://ionutbaban7-bit.github.io/coaching-path/`.
 
+## Deploy pe Render (site static, fără build)
+
+Proiectul e 100% static: HTML, CSS și JS, fără npm, fără build. Pe Render se publică direct.
+
+**Varianta 1 — Blueprint (din `render.yaml`, setările vin gata făcute)**
+1. Render → **New → Blueprint**
+2. Conectezi repo-ul `ionutbaban7-bit/coaching-path`
+3. Render citește `render.yaml` și creează serviciul automat
+
+**Varianta 2 — manual**
+| Câmp | Valoare |
+|------|---------|
+| Type | **Static Site** |
+| Repository | `ionutbaban7-bit/coaching-path` |
+| Branch | `arena/01a09f1d-coaching-path` (după merge la PR #1 → `main`) |
+| Build Command | *lasă gol* |
+| Publish Directory | `.` (rădăcina) |
+| Auto-Deploy | **Yes** |
+
+Pagina de eroare personalizată (`404.html`) se servește automat pe rutele inexistente.
+
+> Notă: workflow-ul pentru **GitHub Pages** (`.github/workflows/pages.yml`) rămâne configurat
+> și nu interferează cu Render — poți folosi oricare dintre ele, sau ambele.
+
 ## Note
 
 > Instrument educativ independent, neafiliat ICF / EMCC / ANC sau vreunei școli de coaching.
