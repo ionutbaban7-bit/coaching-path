@@ -25,7 +25,20 @@ care hărțuiește clar certificările de coaching relevante în România:
   standard ocupațional coach 2024–2034, COR 242412.
 
 ### Deschidere
-Dublu-click pe `index.html` (merge și offline) sau servește directorul cu orice server static.
+Dublu-click pe `index.html` (merge și offline) sau servește directorul cu orice server static:
+
+```bash
+python3 -m http.server 8000   # apoi deschide http://localhost:8000
+```
+
+### Publicare pe GitHub Pages
+Workflow-ul `.github/workflows/pages.yml` publică automat tot conținutul la fiecare push pe `main`.
+Prima dată trebuie activat manual, din interfața GitHub:
+
+**Settings → Pages → Source → „GitHub Actions"**
+
+După activare, orice push pe `main` rulează workflow-ul și site-ul apare la
+`https://ionutbaban7-bit.github.io/coaching-path/`.
 
 > Instrument educativ independent, neafiliat ICF/EMCC/ANC. Verifică mereu datele pe sursele oficiale
 > listate în aplicație (ICF Education Search, EMCC directory, portalul ANC/MMSS).
