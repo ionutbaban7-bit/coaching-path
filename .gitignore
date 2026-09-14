@@ -2,3 +2,6 @@
 *.log
 .cache/
 *.zip
+
+# rapoarte generate de jobul de actualizare (se produc la fiecare rulare)
+reports/
