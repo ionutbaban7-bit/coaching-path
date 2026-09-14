@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Path — Learning & Certification Paths (ICF · EMCC · ANC)</title>
+<meta name="description" content="Hartă clară a certificărilor de coaching: ICF (ACC, PCC, MCC), EMCC (EIA, ITCA, ESIA) și ANC România (COR 242412). Pathuri interactive, cerințe, evaluări, școli și recenzii.">
+<style>
+:root{
+  --bg:#f6f8fc; --surface:#ffffff; --ink:#0f172a; --muted:#5b6b83; --line:#e4e9f2;
+  --brand:#2d5be3; --brand-d:#1e3fa8; --brand-soft:#eaf0fe;
+  --icf:#e0245a; --icf-soft:#fdeaf1;
+  --emcc:#0d9488; --emcc-soft:#e2f6f3;
+  --anc:#1d4ed8; --anc-soft:#e7eefd; --anc-amber:#d97706;
+  --ok:#16a34a; --ok-soft:#e7f7ee; --warn:#d97706; --warn-soft:#fdf3e3;
+  --shadow:0 1px 2px rgba(15,23,42,.05),0 8px 24px -12px rgba(15,23,42,.12);
+  --shadow-lg:0 24px 60px -20px rgba(15,23,42,.30);
+  --r:16px; --r-s:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:15px}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+section:nth-child(even){background:var(--surface)}
+h1,h2,h3,h4{line-height:1.2;font-weight:800;letter-spacing:-.02em}
+h2{font-size:30px;margin-bottom:6px}
+h3{font-size:19px}
+.sec-head{margin-bottom:28px;max-width:780px}
+.sec-kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+.sec-sub{color:var(--muted);font-size:15.5px}
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:18px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:16.5px;color:var(--ink);white-space:nowrap}
+.logo:hover{text-decoration:none}
+.logo-badge{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--brand),#6d8dff);display:grid;place-items:center;color:#fff;flex:none}
+.navlinks{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{padding:8px 11px;border-radius:8px;font-size:13.5px;font-weight:650;color:#3a4a63;white-space:nowrap}
+.navlinks a:hover{background:var(--brand-soft);color:var(--brand-d);text-decoration:none}
+.lang-btn{flex:none;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-weight:750;font-size:13px;cursor:pointer;color:var(--ink)}
+.lang-btn:hover{border-color:var(--brand);color:var(--brand)}
+/* ---------- Hero ---------- */
+.hero{background:radial-gradient(1200px 480px at 80% -10%,#dde7ff 0%,transparent 60%),linear-gradient(180deg,#fbfcff,#f6f8fc);padding-top:64px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero h1{font-size:42px;margin:14px 0 14px}
+.hero p.lead{font-size:17px;color:var(--muted);max-width:560px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:650;color:#33415c;box-shadow:var(--shadow)}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 18px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:11px;padding:12px 20px;font-weight:750;font-size:14.5px;cursor:pointer;border:1.5px solid transparent;transition:.15s}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-d);text-decoration:none}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand);text-decoration:none}
+.hero-mini{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.hero-mini b{color:var(--ink)}
+.hero-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-lg);padding:22px}
+.hero-card h4{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
+.qstart-item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:9px;cursor:pointer;font:inherit;font-size:14px;font-weight:650;color:var(--ink)}
+.qstart-item:hover{border-color:var(--brand);background:var(--brand-soft)}
+.qstart-item .qi-ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none;font-size:15px}
+/* ---------- News ---------- */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.news-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:12px;padding:16px 16px 14px;box-shadow:var(--shadow)}
+.news-card .n-date{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--warn)}
+.news-card h4{font-size:14.5px;margin:5px 0 5px}
+.news-card p{font-size:13px;color:var(--muted)}
+.news-card.neutral{border-left-color:var(--brand)}
+.news-card.neutral .n-date{color:var(--brand)}
+.news-card.ok{border-left-color:var(--ok)} .news-card.ok .n-date{color:var(--ok)}
+/* ---------- Generic cards ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.org-card{border:1px solid var(--line);border-radius:var(--r);padding:22px;background:#fff;box-shadow:var(--shadow);transition:.15s;display:flex;flex-direction:column;gap:10px}
+.org-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.org-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:22px;flex:none}
+.org-card ul{list-style:none;margin-top:4px}
+.org-card li{font-size:13.5px;color:var(--muted);padding:4px 0 4px 22px;position:relative}
+.org-card li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:900}
+.tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:750;letter-spacing:.02em}
+.tag-icf{background:var(--icf-soft);color:var(--icf)}
+.tag-emcc{background:var(--emcc-soft);color:var(--emcc)}
+.tag-anc{background:var(--anc-soft);color:var(--anc)}
+.tag-gray{background:#f1f5f9;color:#475569}
+.tag-amber{background:var(--warn-soft);color:var(--warn)}
+.tag-ok{background:var(--ok-soft);color:var(--ok)}
+/* ---------- Path tabs & stepper ---------- */
+.tabs{display:flex;gap:6px;background:#eef2f9;padding:5px;border-radius:12px;width:fit-content;margin-bottom:24px;flex-wrap:wrap}
+.tab{border:0;background:transparent;padding:9px 16px;border-radius:9px;font:inherit;font-weight:750;font-size:13.5px;color:#4b5b75;cursor:pointer;display:flex;align-items:center;gap:7px}
+.tab.active{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
+.tab .dot-t{width:9px;height:9px;border-radius:50%}
+.pathbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:26px}
+.path-progress-wrap{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.pbar{flex:1;height:10px;background:#eef2f9;border-radius:99px;overflow:hidden}
+.pbar > div{height:100%;background:linear-gradient(90deg,var(--brand),#6d8dff);border-radius:99px;width:0%;transition:width .4s}
+.pbar-label{font-size:12.5px;font-weight:750;color:var(--muted);white-space:nowrap}
+.stepper{listribe:none;list-style:none}
+.step{position:relative;padding:0 0 14px 52px}
+.step:before{content:"";position:absolute;left:19px;top:40px;bottom:0;width:2px;background:var(--line)}
+.step:last-child:before{display:none}
+.step-head{display:flex;align-items:flex-start;gap:12px;cursor:pointer;background:#fafbfe;border:1px solid var(--line);border-radius:12px;padding:13px 15px;width:100%;text-align:left;font:inherit}
+.step-head:hover{border-color:var(--brand)}
+.step-num{width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-weight:800;font-size:14px;flex:none;margin-left:-47px;position:relative;z-index:2;color:var(--muted)}
+.step.done .step-num{background:var(--ok);border-color:var(--ok);color:#fff}
+.step-title{flex:1}
+.step-title b{display:block;font-size:14.5px}
+.step-title span{font-size:12.5px;color:var(--muted)}
+.step-check{margin-top:6px}
+.step-check input{width:17px;height:17px;accent-color:var(--ok);cursor:pointer}
+.chev{transition:.2s;color:#94a3b8;margin-top:8px}
+.step.open .chev{transform:rotate(180deg)}
+.step-body{display:none;padding:14px 4px 4px 0}
+.step.open .step-body{display:block}
+.kv{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+.kv .kv-item{background:#f8faff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kv .k{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.kv .v{font-size:13.5px;font-weight:700;margin-top:2px}
+.step-body ul{margin:8px 0 4px 18px}
+.step-body li{font-size:13.5px;color:#33415c;margin:4px 0}
+.rec{background:var(--ok-soft);border-radius:10px;padding:10px 13px;font-size:13px;margin-top:8px}
+.rec b{color:#15803d}
+.warnbox{background:var(--warn-soft);border-radius:10px;padding:10px 13px;font-size:13px;margin-top:8px}
+.warnbox b{color:#b45309}
+.btn-mini{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12.5px;font-weight:750;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--brand)}
+.btn-mini:hover{border-color:var(--brand)}
+/* ---------- Transitions ---------- */
+.trans-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.trans-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:.15s}
+.trans-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--brand)}
+.trans-flow{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:10px 0 8px}
+.chip-node{padding:6px 12px;border-radius:10px;font-size:12.5px;font-weight:800;background:#f1f5f9;color:#33415c}
+.arrow{color:var(--brand);font-size:18px;font-weight:900}
+.trans-card h3{font-size:15.5px;margin-bottom:4px}
+.trans-card p{font-size:13px;color:var(--muted)}
+/* ---------- Modal ---------- */
+.modal-bg{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:18px;max-width:820px;width:100%;box-shadow:var(--shadow-lg);animation:pop .18s ease}
+@keyframes pop{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.modal-head{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start;position:sticky;top:0;background:#fff;border-radius:18px 18px 0 0;z-index:2}
+.modal-close{margin-left:auto;border:0;background:#f1f5f9;width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:17px;flex:none}
+.modal-close:hover{background:#e2e8f0}
+.modal-body{padding:22px 24px 26px}
+.modal h4.sblock{font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:18px 0 8px}
+.modal h4.sblock:first-child{margin-top:0}
+.modal p,.modal li{font-size:14px;color:#33415c}
+.modal ul{margin-left:18px}.modal li{margin:4px 0}
+.reqgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.reqcell{background:#f8faff;border:1px solid var(--line);border-radius:11px;padding:12px}
+.reqcell .big{font-size:20px;font-weight:900;letter-spacing:-.02em}
+.reqcell .lbl{font-size:11.5px;color:var(--muted);font-weight:650;margin-top:2px}
+.src-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.src-links a{font-size:12.5px;background:var(--brand-soft);color:var(--brand-d);padding:6px 11px;border-radius:8px;font-weight:700}
+.src-links a:hover{text-decoration:none;background:#dbe5fd}
+/* ---------- Credential cards ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.fchip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 15px;font:inherit;font-size:13px;font-weight:700;color:#475569;cursor:pointer}
+.fchip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.search{flex:1;min-width:200px;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-size:13.5px;background:#fff}
+.cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cred-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:var(--shadow);cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:8px}
+.cred-card:hover{transform:translateY(-2px);border-color:var(--brand);box-shadow:var(--shadow-lg)}
+.cred-card .cc-top{display:flex;align-items:center;gap:10px}
+.cred-card .cc-ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-weight:900;font-size:14px;flex:none}
+.cred-card h3{font-size:15px}
+.cred-card .cc-en{font-size:11.5px;color:var(--muted);font-weight:600}
+.cred-card p{font-size:12.8px;color:var(--muted);flex:1}
+.cred-meta{display:flex;gap:6px;flex-wrap:wrap}
+.mini-stat{font-size:11.5px;background:#f6f8fc;border:1px solid var(--line);border-radius:7px;padding:3px 8px;font-weight:700;color:#33415c}
+/* ---------- Schools ---------- */
+.school-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.school-row{background:#fff;box-shadow:var(--shadow);border-radius:13px;cursor:pointer}
+.school-row:hover{box-shadow:var(--shadow-lg)}
+.school-row td{padding:13px 14px;font-size:13.3px;vertical-align:middle}
+.school-row td:first-child{border-radius:13px 0 0 13px;font-weight:750}
+.school-row td:last-child{border-radius:0 13px 13px 0}
+.school-name .sub{font-weight:500;color:var(--muted);font-size:11.8px;display:block;margin-top:2px}
+.badge{display:inline-block;font-size:10.8px;font-weight:800;padding:2.5px 7px;border-radius:6px;margin:1.5px}
+.b-icf{background:var(--icf-soft);color:var(--icf)}
+.b-emcc{background:var(--emcc-soft);color:var(--emcc)}
+.b-anc{background:var(--anc-soft);color:var(--anc)}
+.b-non{background:#f1f5f9;color:#94a3b8;text-decoration:line-through}
+.star-btn{white-space:nowrap;font-size:12px;font-weight:750;color:#b45309;background:var(--warn-soft);padding:6px 10px;border-radius:8px;display:inline-flex;gap:5px;align-items:center}
+.star-btn:hover{text-decoration:none;background:#fae6c8}
+.table-wrap{overflow-x:auto}
+.note-strip{font-size:12.5px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:10px;padding:11px 14px;margin-top:14px}
+/* ---------- Journey ---------- */
+.journey{position:relative;padding-left:6px}
+.jrow{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:0 0 22px;position:relative}
+.jrow:before{content:"";position:absolute;left:137px;top:26px;bottom:-6px;width:2px;background:linear-gradient(var(--brand),#c7d5ff)}
+.jrow:last-child:before{display:none}
+.jwhen{font-size:12.5px;font-weight:800;color:var(--brand-d);text-align:right;padding-top:2px}
+.jwhat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);position:relative}
+.jwhat:before{content:"";position:absolute;left:-27px;top:16px;width:12px;height:12px;border-radius:50%;background:var(--brand);border:3px solid #fff;box-shadow:0 0 0 2px var(--brand)}
+.jwhat h4{font-size:14.5px;margin-bottom:4px}
+.jwhat p{font-size:13px;color:var(--muted)}
+/* ---------- Costs table ---------- */
+.table-clean{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:13.5px}
+.table-clean th,.table-clean td{padding:12px 15px;text-align:left;border-bottom:1px solid var(--line)}
+.table-clean th{background:#f3f6fc;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.table-clean tr:last-child td{border-bottom:0}
+/* ---------- FAQ / glossary ---------- */
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:9px;overflow:hidden}
+.faq-q{width:100%;text-align:left;background:none;border:0;font:inherit;font-weight:750;font-size:14.5px;padding:15px 18px;cursor:pointer;display:flex;gap:12px;align-items:center}
+.faq-q .pls{color:var(--brand);font-size:19px;flex:none;width:18px;text-align:center;transition:.2s}
+.faq-item.open .faq-q .pls{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 18px 15px 48px;font-size:13.6px;color:var(--muted)}
+.faq-item.open .faq-a{display:block}
+.gloss-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.gloss-item{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+.gloss-item b{font-size:13.5px}
+.gloss-item p{font-size:12.7px;color:var(--muted);margin-top:3px}
+/* ---------- Sources / footer ---------- */
+.src-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.src-card{display:flex;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 15px;font-size:13.3px}
+.src-card .fav{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none;font-weight:900;font-size:12px;color:#fff}
+footer{background:#0c1733;color:#aeb9d4;padding:40px 0 30px;font-size:13px}
+footer a{color:#cdd8f5}
+footer .wrap{display:grid;gap:10px}
+.disclaimer{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;padding:13px 16px;font-size:12.8px;margin-top:18px}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:11px 20px;border-radius:999px;font-size:13px;font-weight:650;z-index:200;transition:.3s;box-shadow:var(--shadow-lg)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}.hero h1{font-size:31px}
+  .grid-3,.cred-grid,.news-grid,.reqgrid{grid-template-columns:1fr}
+  .grid-2,.trans-grid,.src-grid,.gloss-grid,.kv{grid-template-columns:1fr}
+  .navlinks{display:none}
+  .jrow{grid-template-columns:88px 1fr}.jrow:before{left:105px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <span class="logo-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+      </span>
+      <span>Coaching&nbsp;Path</span>
+    </a>
+    <nav class="navlinks" id="navlinks"></nav>
+    <button class="lang-btn" id="langBtn">🌐 <span id="langLabel">EN</span></button>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span class="dot"></span> <span data-i18n="updated">Actualizat la 14 septembrie 2026 · surse oficiale verificate</span></span>
+      <h1 data-i18n="heroTitle">Harta ta clară spre certificarea de coaching</h1>
+      <p class="lead" data-i18n="heroLead">Toate certificările, cerințele și evaluările ICF, EMCC și ANC România într-un singur loc: learning pathuri interactive, treceri între sisteme (ANC → ICF, ACC → PCC, PCC → MCC), școli acreditate și verificator de recenzii.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#paths" data-i18n="ctaPath">▶ Începe learning path-ul</a>
+        <a class="btn btn-ghost" href="#transitions" data-i18n="ctaTrans">🔀 Am deja o certificare</a>
+      </div>
+      <div class="hero-mini">
+        <span>✅ <b>ICF</b> ACC · PCC · MCC · ACTC</span>
+        <span>✅ <b>EMCC</b> EIA · ITCA · ESIA</span>
+        <span>✅ <b>ANC</b> COR 242412 · Formator · Mentor</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h4 data-i18n="qstart">🚀 De unde pornești?</h4>
+      <button class="qstart-item" data-go="zero"><span class="qi-ic" style="background:#eef2ff">🌱</span><span data-i18n="qZero">Sunt la început — nu am nicio certificare</span></button>
+      <button class="qstart-item" data-go="anc"><span class="qi-ic" style="background:var(--anc-soft)">🇷🇴</span><span data-i18n="qAnc">Am certificare ANC (COR 242412) și vreau ICF/EMCC</span></button>
+      <button class="qstart-item" data-go="acc"><span class="qi-ic" style="background:var(--icf-soft)">⬆️</span><span data-i18n="qAcc">Sunt ACC și vreau PCC</span></button>
+      <button class="qstart-item" data-go="pcc"><span class="qi-ic" style="background:var(--icf-soft)">🏆</span><span data-i18n="qPcc">Sunt PCC și vreau MCC / supervizare / mentorat</span></button>
+      <button class="qstart-item" data-go="schools"><span class="qi-ic" style="background:var(--emcc-soft)">🏫</span><span data-i18n="qSchools">Caut o școală bună în România</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ORGS + NEWS -->
+<section id="home">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker" data-i18n="systemsK">Cele 3 sisteme</span>
+      <h2 data-i18n="systemsT">Trei „lumi” ale certificării — nu le confunda</h2>
+      <p class="sec-sub" data-i18n="systemsS">ICF și EMCC sunt organisme profesionale internaționale (certificare voluntară, prestigiu). ANC/MMSS este sistemul național românesc (recunoaștere legală a ocupației). Multi coachi serioși le combină.</p>
+    </div>
+    <div class="grid-3" id="orgCards"></div>
+
+    <div class="sec-head" style="margin-top:44px">
+      <span class="sec-kicker" style="color:var(--warn)" data-i18n="newsK">Noutăți critice</span>
+      <h2 data-i18n="newsT">Ce s-a schimbat în 2026 și ce se schimbă în 2027</h2>
+    </div>
+    <div class="news-grid" id="newsGrid"></div>
+  </div>
+</section>
+
+<!-- PATHS -->
+<section id="paths">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Learning paths</span>
+      <h2 data-i18n="pathsT">Parcursuri pas cu pas</h2>
+      <p class="sec-sub" data-i18n="pathsS">Click pe orice etapă pentru cerințe, tipul evaluării, costuri și recomandări. Bifează pașii parcurși — progresul tău se salvează pe acest dispozitiv.</p>
+    </div>
+    <div class="tabs" id="pathTabs"></div>
+    <div class="pathbox">
+      <div class="path-progress-wrap">
+        <div class="pbar"><div id="pbarFill"></div></div>
+        <div class="pbar-label" id="pbarLabel"></div>
+      </div>
+      <ul class="stepper" id="stepper"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITIONS -->
+<section id="transitions">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker" style="color:var(--icf)">Bridge paths</span>
+      <h2 data-i18n="transT">Trecerea între certificări — exact ce îți lipsește</h2>
+      <p class="sec-sub" data-i18n="transS">Ai deja ceva format? Aici vezi diferența exactă de ore, evaluări și documente între unde ești și unde vrei să ajungi.</p>
+    </div>
+    <div class="trans-grid" id="transGrid"></div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Certification library</span>
+      <h2 data-i18n="credT">Toate tipurile de certificări, pe rând</h2>
+      <p class="sec-sub" data-i18n="credS">Coach, mentor coach, supervizor, team coach, formator — fiecare cu cerințele, evaluarea și valabilitatea ei. Click pe o carte pentru detalii complete.</p>
+    </div>
+    <div class="filters" id="credFilters"></div>
+    <div class="cred-grid" id="credGrid"></div>
+  </div>
+</section>
+
+<!-- SCHOOLS -->
+<section id="schools">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker" style="color:var(--emcc)">Romania directory</span>
+      <h2 data-i18n="schoolT">Școli de coaching din România</h2>
+      <p class="sec-sub" data-i18n="schoolS">Bazat pe lista oficială ICF România (programe prezente și în directorul global ICF Education Search), plus furnizori ANC și școli relevante. Stelele Google se verifică live, pentru fiecare școală în parte.</p>
+    </div>
+    <div class="filters" id="schoolFilters">
+      <input class="search" id="schoolSearch" data-i18n-ph="searchSchool" placeholder="🔎 Caută o școală…">
+    </div>
+    <div class="table-wrap">
+      <table class="school-table">
+        <thead id="schoolHead"></thead>
+        <tbody id="schoolRows"></tbody>
+      </table>
+    </div>
+    <div class="note-strip" id="schoolsNote"></div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Real example</span>
+      <h2 data-i18n="journeyT">Cum arată, concret, parcursul unui coach</h2>
+      <p class="sec-sub" data-i18n="journeyS">Exemplu realist (persoană cu job full-time, care începe de la zero și țintește PCC). Datele sunt orientative — fiecare ritm e diferit.</p>
+    </div>
+    <div class="journey" id="journeyRows"></div>
+  </div>
+</section>
+
+<!-- COSTS -->
+<section id="costs">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Money & time</span>
+      <h2 data-i18n="costT">Cât costă și cât durează, pe șleau</h2>
+      <p class="sec-sub" data-i18n="costS">Costuri orientative pentru România (septembrie 2026). Taxele oficiale ICF sunt în USD și se plătesc direct federației; restul variază mult în funcție de școală.</p>
+    </div>
+    <div class="table-wrap"><table class="table-clean" id="costTable"></table></div>
+    <div class="disclaimer" id="costNote"></div>
+  </div>
+</section>
+
+<!-- FAQ + GLOSSARY -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">FAQ & terminology</span>
+      <h2 data-i18n="faqT">Întrebări frecvente și termeni esențiali</h2>
+    </div>
+    <div class="grid-2">
+      <div id="faqList"></div>
+      <div>
+        <input class="search" id="glossSearch" data-i18n-ph="searchGloss" placeholder="🔎 Caută un termen…" style="margin-bottom:10px;width:100%">
+        <div class="gloss-grid" id="glossList" style="grid-template-columns:1fr"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Official sources</span>
+      <h2 data-i18n="srcT">Surse și cum verifici tu însuți orice afirmație</h2>
+      <p class="sec-sub" data-i18n="srcS">Regula de aur: nu te baza pe logo-urile de pe site-uri. Verifică fiecare program în bazele de date oficiale de mai jos.</p>
+    </div>
+    <div class="src-grid" id="srcGrid"></div>
+    <div class="disclaimer" id="discText"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b style="color:#fff">Coaching Path</b> — <span data-i18n="foot1">instrument educațional independent, bilingv RO/EN.</span></div>
+    <div data-i18n="foot2">Asamblat manual pe 14 septembrie 2026 din surse oficiale și publice. Nu este afiliat ICF, EMCC, ANC sau vreunei școli de coaching. Nu înlocuiește consultarea surselor oficiale; regulile se pot schimba oricând.</div>
+  </div>
+</footer>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modalBox"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ====================== UI STRINGS ====================== */
+const UI = {
+ ro:{
+  nav:[["home","Sisteme"],["paths","Pathuri"],["transitions","Treceri"],["credentials","Certificări"],["schools","Școli"],["journey","Exemplu"],["costs","Costuri"],["faq","FAQ"],["sources","Surse"]],
+  lang:"EN",
+  paths:{"icf":"ICF — traseul ACC → PCC → MCC","emcc":"EMCC — traseul EIA","ro":"România — traseul ANC + poduri"},
+  done:"gata", progress:"Progres",
+  filters:{all:"Toate",icf:"ICF",emcc:"EMCC",anc:"ANC (RO)",coach:"Coach",mentor:"Mentor / Supervizor",team:"Team coaching",trainer:"Trainer / Formator"},
+  sf:{all:"Toate",icf:"Doar ICF",emcc:"Doar EMCC",anc:"Doar ANC",ro:"Livrate în română",claim:"⚠ Conform site-ului propriu"},
+  reqs:"Cerințe rapide", eval:"Cum ești evaluat", docs:"Documente & dosar", fees:"Costuri și taxe", renew:"Valabilitate și reînnoire", prereq:"Condiție prealabilă",
+  sources:"Surse oficiale", tips:"Recomandări", learn:"Deschide certificarea",
+  close:"Închide", steps:"pași",
+  fAll:"Toate certificările",
+  schoolCols:["Școală / furnizor","Acreditare (programe)","Limbă / loc","Recenzii"],
+  tableHead:["Element","Cost orientativ (sept 2026)","Durată","Ce include / note"],
+  months:"luni"
+ },
+ en:{
+  nav:[["home","Systems"],["paths","Paths"],["transitions","Bridges"],["credentials","Credentials"],["schools","Schools"],["journey","Example"],["costs","Costs"],["faq","FAQ"],["sources","Sources"]],
+  lang:"RO",
+  paths:{"icf":"ICF — ACC → PCC → MCC route","emcc":"EMCC — EIA route","ro":"Romania — ANC route + bridges"},
+  done:"done", progress:"Progress",
+  filters:{all:"All",icf:"ICF",emcc:"EMCC",anc:"ANC (RO)",coach:"Coach",mentor:"Mentor / Supervisor",team:"Team coaching",trainer:"Trainer"},
+  sf:{all:"All",icf:"ICF only",emcc:"EMCC only",anc:"ANC only",ro:"Delivered in Romanian",claim:"⚠ Per own website"},
+  reqs:"Quick requirements", eval:"How you're assessed", docs:"Documents & file", fees:"Costs & fees", renew:"Validity & renewal", prereq:"Prerequisite",
+  sources:"Official sources", tips:"Recommendations", learn:"Open credential",
+  close:"Close", steps:"steps",
+  fAll:"All credentials",
+  schoolCols:["School / provider","Accreditation (programs)","Language / location","Reviews"],
+  tableHead:["Item","Indicative cost (Sep 2026)","Duration","What's included / notes"],
+  months:"months"
+ }
+};
+
+/* ====================== ORGANISATIONS ====================== */
+const ORGS = [
+ {k:'icf', cls:'b-icf', bg:'var(--icf-soft)', color:'var(--icf)', abbr:'ICF',
+  name:{ro:"ICF — International Coaching Federation",en:"ICF — International Coaching Federation"},
+  desc:{ro:"Cel mai mare organism global de coaching; standardul „de aur” cerut de multe corporații. Capitulația din România (ICF Romania, charter din 2014) promovează profesia, dar NU acreditează școli — acreditarea o face ICF Global.",
+        en:"The largest global coaching body; the de-facto 'gold standard' requested by many corporations. The Romanian chapter (charter since 2014) promotes the profession but does NOT accredit schools — ICF Global does."},
+  pts:{ro:[["Acreditare școală","Level 1 / 2 / 3 (programe)"],["Certificare persoană","ACC, PCC, MCC, ACTC"],["Reînnoire","la 3 ani, prin ore CCE"],["Extra","Mentor Coach Specialization (MCS) din 2027"]],
+       en:[["School accreditation","Level 1 / 2 / 3 (programs)"],["Personal credential","ACC, PCC, MCC, ACTC"],["Renewal","every 3 years via CCE hours"],["Extra","Mentor Coach Specialization (MCS) from 2027"]]},
+  url:"https://coachingfederation.org/"},
+ {k:'emcc', cls:'b-emcc', bg:'var(--emcc-soft)', color:'var(--emcc)', abbr:'EMCC',
+  name:{ro:"EMCC — European Mentoring & Coaching Council",en:"EMCC — European Mentoring & Coaching Council"},
+  desc:{ro:"Standardul dominant în Europa, sectorul public și în programele organizaționale. Pune accent deosebit pe supervizare, practică reflexivă și mentorat. EMCC România este asociația profesională locală; acreditările individuale se obțin prin EMCC Global.",
+        en:"The dominant standard in Europe, the public sector and organisational programs. Strong emphasis on supervision, reflective practice and mentoring. EMCC Romania is the local professional association; individual accreditations are awarded by EMCC Global."},
+  pts:{ro:[["Acreditare programe","EQA / ESQA / TCQA / PMQA"],["Certificare persoană","EIA (4 niveluri), ITCA, ESIA"],["Reînnoire","la 5 ani (CPD + supervizare)"],["Specific","recunoaște mentoratul, nu doar coachingul"]],
+       en:[["Program accreditation","EQA / ESQA / TCQA / PMQA"],["Personal credential","EIA (4 levels), ITCA, ESIA"],["Renewal","every 5 years (CPD + supervision)"],["Specific","recognises mentoring, not only coaching"]]},
+  url:"https://www.emccglobal.org/"},
+ {k:'anc', cls:'b-anc', bg:'var(--anc-soft)', color:'var(--anc)', abbr:'ANC',
+  name:{ro:"Sistemul național românesc — ANC / MMSS / ME",en:"Romanian national system — ANC / MLSS / MoE"},
+  desc:{ro:"Recunoașterea legală a ocupației în România. Furnizorii autorizați de comisiile județene (sub coordonarea Ministerului Muncii din 2023) eliberează certificate de absolvire sub egida MMSS și Ministerului Educației. Ocupația: „Specialist în activitatea de coaching”, COR 242412.",
+        en:"The legal recognition of the occupation in Romania. Providers authorised by county commissions (coordinated by the Labour Ministry since 2023) issue certificates under both the Labour and Education ministries. The occupation: 'Coaching Specialist', COR code 242412."},
+  pts:{ro:[["Ocupație coach","COR 242412 (din 2013/2014)"],["Certificat","de absolvire + supliment descriptiv"],["Acces","studii superioare cu licență"],["Alte ocupații","Formator 242401 · Mentor 235902 (învățământ)"]],
+       en:[["Coach occupation","COR 242412 (since 2013/2014)"],["Certificate","completion certificate + descriptive supplement"],["Access","university degree (bachelor's)"],["Other roles","Trainer 242401 · Mentor 235902 (education)"]]},
+  url:"https://www.anc.edu.ro/"}
+];
+
+/* ====================== NEWS ====================== */
+const NEWS = [
+ {cls:'',date:{ro:"10 nov 2026",en:"Nov 10, 2026"},
+  t:{ro:"Noul examen ICF PCC/MCC",en:"New ICF PCC/MCC exam"},
+  d:{ro:"Pe 10 noiembrie 2026 se lansează noul examen: 80 de itemi (44 scenarii + 36 cunoștințe), 150 minute, bazat pe Competențele ICF 2025 și Codul Etic 2025. Examenul actual (78 scenarii, 180 min) poate fi dat până la 31 martie 2027 — în perioada de tranziție alegi varianta.",
+     en:"On Nov 10, 2026 the new exam launches: 80 items (44 situational-judgment + 36 knowledge MCQ), 150 minutes, based on the 2025 ICF Core Competencies and 2025 Code of Ethics. The current exam (78 scenarios, 180 min) remains available until March 31, 2027 — candidates choose during the transition."}},
+ {cls:'',date:{ro:"1 ian 2027",en:"Jan 1, 2027"},
+  t:{ro:"MCS devine obligatorie pentru mentor coaching",en:"MCS becomes mandatory for mentor coaching"},
+  d:{ro:"Din 1 ianuarie 2027, orice ore NOI de mentor coaching care contează pentru ACC/PCC/MCC trebuie livrate de un coach cu Mentor Coach Specialization (MCS — fostul MCQ) la nivelul corespunzător. Orele făcute înainte, cu mentor eligibil conform regulilor vechi, rămân valabile.",
+     en:"From Jan 1, 2027, any NEW mentor coaching hours counting toward ACC/PCC/MCC must come from a coach holding the Mentor Coach Specialization (MCS, formerly MCQ) at the matching level. Hours completed earlier under the old rules remain valid."}},
+ {cls:'neutral',date:{ro:"2025 → 2027",en:"2025 → 2027"},
+  t:{ro:"Standarde noi de competențe și etică ICF",en:"New ICF competency & ethics standards"},
+  d:{ro:"ICF a publicat versiunea actualizată a Competențelor-cheie și a Codului de etică (2025), pe care se bazează noul examen. De la 1 aprilie 2027, evaluarea performanței ACC prin înregistrare (ruta portfolio) este înlocuită de mentor coaching extins — verifică pagina oficială înainte de aplicare.",
+     en:"ICF published updated Core Competencies and Code of Ethics (2025) underpinning the new exam. From April 1, 2027, the ACC portfolio recording performance evaluation is replaced by enhanced mentor coaching — check the official page before applying."}},
+ {cls:'neutral',date:{ro:"În vigoare",en:"In force"},
+  t:{ro:"România: autorizarea mutată la MMSS",en:"Romania: authorisation moved to Labour Ministry"},
+  d:{ro:"Ordinul 2228/3025/2023: coordonarea autorizării furnizorilor de formare nu mai aparține direct ANC, ci Ministerului Muncii, prin comisii județene (secretariate la agențiile APIS). Autorizația se acordă pe 4 ani, inclusiv pentru programe online. Standardul ocupațional pentru coach e valabil 2024–2034.",
+     en:"Order 2228/3025/2023: authorisation of training providers is coordinated by the Labour Ministry (via county commissions hosted by APIS agencies), not directly by ANC. Authorisation lasts 4 years and covers online programs. The coach occupational standard is valid 2024–2034."}},
+ {cls:'ok',date:{ro:"Permanent",en:"Ongoing"},
+  t:{ro:"EIA EMCC: 5 ani, supervizare obligatorie",en:"EMCC EIA: 5 years, supervision required"},
+  d:{ro:"Acreditarea individuală EMCC se reînnoiește la 5 ani cu jurnal de practică (50–100 ore), CPD (50–100 ore la 5 ani) și dovezi de supervizare (minim 1 oră/trimestru, sau 1 oră la 35 ore practică la nivelurile senior).",
+     en:"The EMCC individual accreditation renews every 5 years with a practice log (50–100 hours), CPD (50–100 hours over 5 years) and supervision evidence (at least 1 hour/quarter, or 1 hour per 35 practice hours at senior levels)."}},
+ {cls:'ok',date:{ro:"Verifică în director",en:"Check the directory"},
+  t:{ro:"Școlile „cu ICF/EMCC” se verifică, nu se iau pe încredere",en:"'ICF/EMCC accredited' claims must be verified"},
+  d:{ro:"ICF Education Search (ESS) este singurul loc unde o acreditare Level 1/2/3 este reală. La EMCC există directorul EQA. Lista de școli din această aplicație este preluată de pe pagina oficială ICF România (actualizată în 2024–2026).",
+     en:"ICF's Education Search (ESS) is the only place where a Level 1/2/3 accreditation is real; EMCC has its EQA directory. The school list in this app comes from the official ICF Romania page (updated 2024–2026)."}}
+];
+
+/* ====================== LEARNING PATHS ====================== */
+const PATHS = {
+ icf:{org:'icf',
+  steps:[
+   {id:'i1', t:{ro:"Lămurește-ți ținta și alege școala",en:"Get clear on your goal & pick a school"},
+    s:{ro:"~1–3 săptămâni",en:"~1–3 weeks"},
+    kv:[["Level 1 → ACC","60–124 ore"],["Level 2 → PCC","125–175 ore"],["Level 3 → MCC","+75 ore"]],
+    b:{ro:["Verifică programul în directorul ICF Education Search (ESS) — dacă nu e acolo, nu există acreditare reală.","Întreabă dacă prețul include cele 10 ore de mentor coaching și evaluarea performanței (multe școli le vând separat).","În România, ideal este un program dublu: ICF + certificat ANC (COR 242412)."],
+       en:["Verify the program in the ICF Education Search (ESS) directory — if it's not there, the accreditation isn't real.","Ask whether the fee includes the 10 mentor coaching hours and the performance evaluation (many schools sell them separately).","In Romania, ideal is a dual program: ICF + ANC certificate (COR 242412)."]},
+    tip:{ro:"Nivelul „Level” este acreditarea ȘCOLII. ACC/PCC/MCC este certificarea TA. A nu se confunda.",en:"'Level' is the SCHOOL's accreditation. ACC/PCC/MCC is YOUR credential. Don't confuse them."},
+    cred:null},
+   {id:'i2', t:{ro:"Finalizează un program ICF Level 1 (60+ ore)",en:"Complete an ICF Level 1 program (60+ hrs)"},
+    s:{ro:"de regulă 4–8 luni",en:"typically 4–8 months"},
+    kv:[["Ore formare","60–124 h"],["Practică ghidată","inclusă"],["Mentor coaching","10 h incluse în programele bune"]],
+    b:{ro:["Înveți cele 8 competențe-cheie ICF și Codul etic; exersezi în triade și cu feedback.","Programele bune din România au 110–190 ore efective (peste minimul de 60).","Poți începe să aduni ore de coaching cu clienți reali chiar din timpul formării — orele contează doar de la începerea educației de coaching."],
+       en:["You learn the 8 ICF Core Competencies and the Code of Ethics; practice in triads with feedback.","Strong Romanian programs deliver 110–190 actual hours (above the 60 minimum).","You can start logging real client hours during training — hours only count from the start of your coach education."]},
+    cred:null},
+   {id:'i3', t:{ro:"100 ore practică + 10 ore mentor coaching (în paralel)",en:"100 client hours + 10 mentor coaching hours (in parallel)"},
+    s:{ro:"3–9 luni, peste ≥3 luni calendaristice",en:"3–9 months, spread over ≥3 calendar months"},
+    kv:[["Ore clienți","100 (minim 75 plătite)"],["Clienți diferiți","minim 8"],["Mentor coaching","10 h (≥3 h 1-la-1, grup max. 10)"],["Recență","≥25 ore în ultimele 18 luni"]],
+    b:{ro:["Ține un jurnal de coaching: dată, inițiale client, durată, plătit/pro bono.","Mentor coaching-ul se întinde pe minim 3 luni (12 săptămâni) — nu se poate face comasat!","Mentorul trebuie să fie PCC/MCC (sau ACC reînnoit măcar o dată); din 2027 trebuie să dețină MCS.","Schimbul de valoare (exchange of value) contează ca „plătit”."],
+       en:["Keep a coaching log: date, client initials, duration, paid/pro bono.","Mentor coaching must span at least 3 months (12 weeks) — it cannot be crammed.","Mentor must be PCC/MCC (or a once-renewed ACC); from 2027 they must hold the MCS.","Exchange-of-value counts as paid."]},
+    cred:'icf_acc'},
+   {id:'i4', t:{ro:"Examenul + evaluarea performanței → obții ACC",en:"Exam + performance evaluation → earn ACC"},
+    s:{ro:"proces ICF ~4 săptămâni (ruta program)",en:"ICF review ~4 weeks (program path)"},
+    kv:[["Examen ACC","60 întrebări · 90 min · notă de trecere 460/600"],["Evaluare","1 sesiune observată (în program) sau 1 înregistrare + transcript (portfolio)"],["Taxă","$175 membru / $325 nemembru · portfolio $475/$625"]],
+    b:{ro:["Ruta Level 1: evaluarea performanței o face școala în timpul programului, iar tu mai depui doar dosarul și dai examenul.","Ruta Portfolio: trimiți tu 1 înregistrare cu transcript; revizuire ~14 săptămâni și taxă mai mare.","Examenul se susține online supravegheat (Pearson OnVUE) sau în centru Pearson VUE."],
+       en:["Level 1 path: the school runs your performance evaluation during the program; you submit the file and take the exam.","Portfolio path: you submit 1 recording with transcript; ~14-week review and higher fee.","The exam is online proctored (Pearson OnVUE) or at a Pearson VUE center."]},
+    cred:'icf_acc',
+    tip:{ro:"ACC nu este obligatoriu pentru PCC — poți aplica direct la PCC dacă ai 125h formare și 500h practică.",en:"ACC is not mandatory for PCC — you can apply directly to PCC with 125 training hrs and 500 client hours."}},
+   {id:'i5', t:{ro:"De la ACC la PCC: 500 ore + diferența de formare",en:"ACC to PCC: 500 hours + training top-up"},
+    s:{ro:"în mod realist 2–4 ani de practică",en:"realistically 2–4 years of practice"},
+    kv:[["Ore clienți","500 (450 plătite, 25 clienți)"],["Formare","125 h total (program de completare Level 2)"],["Mentor coaching","10 h NOI la nivel PCC"],["Evaluare","2 sesiuni înregistrate + transcrieri"]],
+    b:{ro:["Orele de la ACC se păstrează — ajungi de la 100 la 500.","Un program „top-up” de Level 2 acoperă diferența de la 60 la 125 de ore; unele includ mentor PCC și evaluarea.","Cele 10 ore mentor coaching pentru PCC sunt noi, nu se reutilizează cele de la ACC.","Examen PCC: test situațional (SJT) — 78 de scenarii, 180 min, 460/600 (până în martie 2027)."],
+       en:["ACC hours carry over — you go from 100 to 500.","A Level 2 top-up covers the 60→125 training-hour gap; some include PCC mentoring and evaluation.","The 10 PCC mentor hours are new — ACC mentor hours cannot be reused.","PCC exam: situational judgment — 78 scenarios, 180 min, 460/600 (until March 2027)."]},
+    cred:'icf_pcc'},
+   {id:'i6', t:{ro:"De la PCC la MCC: 2.500 de ore și măiestria",en:"PCC to MCC: 2,500 hours and mastery"},
+    s:{ro:"de regulă 5–10 ani după PCC",en:"typically 5–10 years after PCC"},
+    kv:[["Condiție","să deții / să fi deținut PCC"],["Ore clienți","2.500 (2.250 plătite, 35 clienți)"],["Formare","200 h (Level 3 = +75 h)"],["Mentor","10 h cu un MCC + 2 înregistrări, examen"]],
+    b:{ro:["MCC ține de calitate, nu cantitate: competențele trebuie integrate, „fără efort”, prezență profundă.","Examenul este același ca la PCC; ce diferă masiv este evaluarea înregistrărilor pe markerii MCC (rata de respingere e mare la prima încercare).","Taxă: $675 membru / $825 nemembru; revizuire ~18 săptămâni."],
+       en:["MCC is about quality, not quantity: competencies must be integrated and effortless, with deep presence.","The exam is the same as PCC's; what differs sharply is the recording review against MCC markers (first-attempt pass is hard).","Fee: $675 member / $825 non-member; ~18-week review."]},
+    cred:'icf_mcc'},
+   {id:'i7', t:{ro:"Reînnoirea la 3 ani: 40 CCE + (la ACC) 10 h mentorat",en:"Renew every 3 years: 40 CCE + (ACC) 10 mentoring hrs"},
+    s:{ro:"ciclu de 3 ani",en:"3-year cycle"},
+    kv:[["CCE totale","40 (minim 24 pe competențe, din care 3 de etică)"],["ACC","+ 10 h mentor coaching la fiecare reînnoire"],["PCC / MCC","mentoratul e recomandat, nu obligatoriu"],["Grație","2 luni după expirare"]],
+    b:{ro:["Orele de mentor coaching/supervizare (date sau primite) pot intra până la 10+10 în cele 40 CCE.","Dacă lași să treacă peste 1 an de la expirare, trebuie să reaplici ca nou.","Specializări: ACTC (team coaching) se reînnoiește cu 20 CCE specifice la 3 ani."],
+       en:["Mentor coaching/supervision hours (given or received) can count up to 10+10 of the 40 CCE.","More than a year after expiry means a brand-new application.","Specialisations: ACTC (team coaching) renews with 20 team-specific CCE every 3 years."]},
+    cred:null}
+  ]},
+ emcc:{org:'emcc',
+  steps:[
+   {id:'e0', t:{ro:"Alege un program cu acreditare EQA",en:"Choose an EQA-accredited program"},
+    s:{ro:"4–8 luni",en:"4–8 months"},
+    kv:[["EQA = acreditarea programului","nivel Foundation / Practitioner / SP / MP"],["Rulare rapidă","aplici EIA prin furnizor"],["Alternativă","aplicare directă cu portofoliu (RPL)"]],
+    b:{ro:["Absolvirea unui program EQA la nivelul țintă îți simplifică mult acreditarea individuală — furnizorul te recomandă.","Verifică EQA în directorul EMCC Global, nu doar pe site-ul școlii.","Programe cu dublă acreditare ICF + EMCC există (ex. SolutionsAcademy, în română)."],
+       en:["Graduating an EQA program at your target level greatly simplifies individual accreditation — the provider recommends you.","Verify EQA in the EMCC Global directory, not only on the school's site.","Dual ICF + EMCC programs exist (e.g. SolutionsAcademy, in Romanian)."]},
+    cred:null},
+   {id:'e1', t:{ro:"EIA Foundation — primul nivel",en:"EIA Foundation — first level"},
+    s:{ro:"minim 1 an de practică",en:"at least 1 year of practice"},
+    kv:[["Ore clienți","50"],["Clienți","5"],["CPD","16 h/an"],["Supervizare","1 h/trimestru (individuală)"]],
+    b:{ro:["Ai nevoie de: formare EQA Foundation (sau echivalent), 5 feedback-uri de la clienți în ultimele 12 luni, 5 reflecții scrise, apartenență la un organism profesional.","Dovada se mapează pe Cadrul de Competențe EMCC (8 categorii).","Valabil 5 ani; taxă orientativă ~120 € (variază în funcție de țară/rută)."],
+       en:["You need: EQA Foundation training (or equivalent), 5 client feedbacks in the last 12 months, 5 written reflections, membership of a professional body.","Evidence is mapped to the EMCC Competency Framework (8 categories).","Valid 5 years; indicative fee ~€120 (varies by country/route)."]},
+    cred:'emcc_f'},
+   {id:'e2', t:{ro:"EIA Practitioner — coach-ul „care lucrează”",en:"EIA Practitioner — the working coach"},
+    s:{ro:"minim 3 ani de practică",en:"at least 3 years of practice"},
+    kv:[["Ore clienți","100"],["Clienți","10"],["CPD","16 h/an"],["Supervizare","1 h/trimestru"]],
+    b:{ro:["Portofoliu consistent + posibil dialog profesional cu un verificator.","Ruta EQA: școala completează Assessment Report Form (ARF) printr-un „learning dialogue” + o declarație de practică de ~500 cuvinte.","Taxă orientativă ~205 €."],
+       en:["Substantial portfolio + possible professional dialogue with a verifier.","EQA route: the school completes an Assessment Report Form via a learning dialogue + a ~500-word statement of practice.","Indicative fee ~€205."]},
+    cred:'emcc_p'},
+   {id:'e3', t:{ro:"EIA Senior Practitioner — autonomie și complexitate",en:"EIA Senior Practitioner — autonomy & complexity"},
+    s:{ro:"minim 5 ani de practică",en:"at least 5 years of practice"},
+    kv:[["Ore clienți","250"],["Clienți","20"],["CPD","32 h/an"],["Supervizare","1 h la 35 ore practică (minim trimestrial)"]],
+    b:{ro:["Dovezi pe contexte variate, studii de caz, reflexivitate profundă.","Este nivelul cerut în multe programe publice/europene și pentru a te îndrepta spre supervizare.","Taxă orientativă ~245 €."],
+       en:["Evidence across varied contexts, case studies, deep reflectivity.","This is the level required in many public/European programs and the gateway to supervision.","Indicative fee ~€245."]},
+    cred:'emcc_sp'},
+   {id:'e4', t:{ro:"EIA Master Practitioner — contribuția la profesie",en:"EIA Master Practitioner — contribution to the profession"},
+    s:{ro:"minim 7 ani de practică",en:"at least 7 years of practice"},
+    kv:[["Ore clienți","500"],["Clienți","40"],["CPD","48 h/an"],["Obligatoriu","dialog profesional + contribuție la profesie"]],
+    b:{ro:["Pe lângă ore: predare, publicare, cercetare, dezvoltare de metode, roluri în organisme profesionale.","Aplicarea este bazată pe un dialog profesional cu assessori EMCC.","Taxă orientativă ~450 €."],
+       en:["Beyond hours: teaching, publishing, research, method development, roles in professional bodies.","The application is based on a professional dialogue with EMCC assessors.","Indicative fee ~€450."]},
+    cred:'emcc_mp'},
+   {id:'e5', t:{ro:"Specializări: supervizor (ESIA) și team coach (ITCA)",en:"Specialisations: supervisor (ESIA) & team coach (ITCA)"},
+    s:{ro:"după EIA Senior Practitioner",en:"after EIA Senior Practitioner"},
+    kv:[["ESIA","EIA SP + program ESQA + 120 h supervizare (10 supervisați)"],["ITCA","programe TCQA; niveluri Foundation→Master"],["Reînnoire EIA","la 5 ani: practică + CPD + supervizare"]],
+    b:{ro:["ESIA este etalonul european pentru supervizorii în coaching/mentoring.","ITCA cere practică demonstrată cu echipe (la Senior: ~120 h cu mai multe echipe + supervizare).","EMCC cere supervizare 1-la-1, nu de grup, pentru acreditare."],
+       en:["ESIA is the European gold standard for coaching/mentoring supervisors.","ITCA requires demonstrated team practice (at Senior: ~120 hrs with several teams + supervision).","EMCC requires one-to-one (not group) supervision for accreditation."]},
+    cred:'emcc_esia'}
+  ]},
+ ro:{org:'anc',
+  steps:[
+   {id:'r1', t:{ro:"Verifică-ți accesul și pregătește actele",en:"Check eligibility & prepare documents"},
+    s:{ro:"câteva zile",en:"a few days"},
+    kv:[["Studii","superioare cu diplomă de licență"],["Experiență","minim 3 ani muncă/voluntariat (standard)"],["Acte","CI, certificat naștere/căsătorie, diplomă"]],
+    b:{ro:["Ocupația oficială: „Specialist în activitatea de coaching”, cod COR 242412 (recunoscută în COR din 2013/2014).","Standardul ocupațional curent e valabil 2024–2034.","Fără licență, unele programe de calificare nu te pot înscrie la examen."],
+       en:["The official occupation is 'Coaching Specialist', COR code 242412 (in the classification since 2013/2014).","The current occupational standard is valid 2024–2034.","Without a bachelor's degree some programs cannot register you for the exam."]},
+    cred:'anc_coach'},
+   {id:'r2', t:{ro:"Alege un furnizor AUTORIZAT (nu doar „acreditat” în marketing)",en:"Choose an AUTHORISED provider (not just marketing-'accredited')"},
+    s:{ro:"1–2 săptămâni research",en:"1–2 weeks of research"},
+    kv:[["Autorizație","eliberată de comisia județeană pe 4 ani"],["Verificare","cere seria/numărul autorizației și ocupația 242412"],["Formă","fizic sau online (ambele autorizabile)"]],
+    b:{ro:["Doar persoane juridice cu CAEN 8559 (sau asociații/fundații) pot fi furnizori autorizați.","Universitatea Româno-Americană este singura universitate din RO cu acest program autorizat; există și numeroși furnizori privați.","Certificatul nu poate fi emis de persoana fizică care ține cursul."],
+       en:["Only legal entities with CAEN 8559 (or associations/foundations) can be authorised providers.","The Romanian-American University is the only university with this authorised program; many private providers also exist.","The certificate cannot be issued by the individual trainer."]},
+    cred:'anc_coach'},
+   {id:'r3', t:{ro:"Parcurgi programul și practica",en:"Complete the program and practice"},
+    s:{ro:"uzual 180–360 ore, 2–6 luni",en:"usually 180–360 hrs, 2–6 months"},
+    kv:[["Teorie + practică","prezență ridicată (ex. minim 90%)"],["Practică","minim 5 sesiuni cu persoane din afara grupului (la majoritatea programelor)"],["Pregătire pedagogică","formatori cu certificat de Formator (242401)"]],
+    b:{ro:["Multe programe afișează 180 ore de curs; standardul include și activitate individuală până la ~360 ore.","Primești suport de curs, proiect individual și sesiuni de practică asistată."],
+       en:["Many programs show 180 course hours; the standard also includes individual work up to ~360 hours.","You get course materials, an individual project and supervised practice."]},
+    cred:'anc_coach'},
+   {id:'r4', t:{ro:"Examenul de absolvire în fața comisiei mixte",en:"The certification exam before a mixed commission"},
+    s:{ro:"la final de program",en:"at program end"},
+    kv:[["Proba teoretică","test grilă"],["Proba practică","sesiune demonstrativă / proiect evaluat"],["Comisia","președinte + specialist independent + secretar furnizor"]],
+    b:{ro:["Comisia este aprobată de comisia de autorizare județeană și include un membru independent de specialitate.","Dacă pici, se reprogramează o altă sesiune conform metodologiei."],
+       en:["The commission is approved by the county authorisation commission and includes an independent specialist member.","If you fail, a new session is scheduled per the official methodology."]},
+    cred:'anc_coach'},
+   {id:'r5', t:{ro:"Primești certificatul și poți profesa legal",en:"Receive the certificate and practice legally"},
+    s:{ro:"imediat după examen",en:"right after the exam"},
+    kv:[["Acte","Certificat de absolvire + supliment descriptiv (model Europass)"],["Credite","12 ECTS la multe programe"],["Recunoaștere","națională + UE (apostilă/supliment)"],["Valabilitate","nelimitată, fără reînnoire"]],
+    b:{ro:["Poți fi angajat cu codul COR 242412 (inclusiv în REVISAL), deschide PFA cu acest obiect sau participa în proiecte/licitații.","Certificatul se înregistrează în Registrul certificatelor eliberate al furnizorului.","ATENȚIE: certificatul ANC nu este o certificare ICF/EMCC — nu e același nivel de recunoaștere internațională."],
+       en:["You can be employed under COR 242412 (registered in REVISAL), open a PFA for this activity, or join public tenders.","The certificate is entered in the provider's register of issued certificates.","NOTE: an ANC certificate is NOT an ICF/EMCC credential — the international recognition differs."]},
+    cred:'anc_coach'},
+   {id:'r6', t:{ro:"Podul spre internațional: ICF portfolio / EMCC RPL",en:"The international bridge: ICF portfolio / EMCC RPL"},
+    s:{ro:"în paralel sau după",en:"in parallel or afterwards"},
+    kv:[["Rută","Portfolio (ICF) / self-guided (EMCC)"],["Ore formare","trebuie demonstrate pe competențele ICF/EMCC"],["Recomandat","program de integrare/RPL la școală acreditată"]],
+    b:{ro:["ICF acceptă și educație non-acreditată pe ruta Portfolio, dar trimiți curricula ca să demonstrezi alinierea — multe cursuri ANC nu acoperă integral competențele ICF.","Soluție frecventă: program de „integrare/onboarding” RPL la o școală Level 1/2 care îți recunoaște ce știi și îți dă certificatul necesar (ex. SolutionsAcademy, școli locale).","EMCC recunoaște explicit învățarea anterioară, indiferent de furnizor — orele de practică deja logate contează."],
+       en:["ICF accepts non-accredited education via the Portfolio path, but you submit the curriculum to prove alignment — many ANC courses don't fully cover ICF competencies.","Common solution: an RPL 'integration/onboarding' program at a Level 1/2 school that recognises prior learning and issues the needed certificate.","EMCC explicitly recognises prior learning regardless of provider — practice hours already logged count."]},
+    tip:{ro:"Dacă țintești ICF din timp, alege un curs ANC care este în același timp program ICF Level — cost similar, două acte.",en:"If you aim for ICF eventually, pick an ANC course that is simultaneously an ICF Level program — similar cost, two certificates."},
+    cred:null}
+  ]}
+};
+
+/* ====================== TRANSITIONS ====================== */
+const TRANS = [
+ {id:'t-ancacc', org:'anc', icon:'🇷🇴➡️🎯',
+  t:{ro:"Am ANC și vreau ICF ACC",en:"I have ANC and want ICF ACC"},
+  short:{ro:"Certificatul național poate fi punctul de pornire, dar nu echivalează automat.",en:"The national certificate can be a starting point but isn't an automatic equivalent."},
+  have:{ro:["Certificat de absolvire COR 242412 (program autorizat MMSS/ME)","Cunoștințe de bază și ceva practică"],
+        en:["COR 242412 completion certificate (authorised MLSS/MoE program)","Foundational knowledge and some practice"]},
+  need:{ro:["60+ ore educație de coaching aliniată competențelor ICF — demonstrate prin curricula programa (ruta Portfolio), SAU certificat Level 1","100 ore clienți (75 plătite, 8 clienți; ≥25 ore în ultimele 18 luni)","10 ore mentor coaching (≥3 luni, ≥3 h individuale)","Examen ACC (60 întrebări/90 min)","Evaluare performanță: 1 sesiune (în program Level 1) sau 1 înregistrare + transcript (portfolio)"],
+        en:["60+ coaching-education hours aligned to ICF competencies — proven via curriculum (Portfolio), OR a Level 1 certificate","100 client hours (75 paid, 8 clients; ≥25 in the last 18 months)","10 mentor coaching hours (≥3 months, ≥3 one-to-one)","ACC exam (60 questions/90 min)","Performance evaluation: 1 session (Level 1 program) or 1 recording + transcript (portfolio)"]},
+  routes:{ro:["Ruta rapidă și sigură: program de tip „integrare/onboarding” RPL la furnizor Level 1 (îți recunoaște orele, parcurgi diferența, primești certificatul Level 1 cu evaluarea inclusă).","Ruta ieftină, dar lentă: rămâi pe Portfolio, strângi documente de curs (curricula, programa, ore), găsești mentor PCC/MCC și trimiți înregistrarea (~14 săptămâni, taxă $475/$625)."],
+          en:["Fast/safe route: an RPL 'integration/onboarding' with a Level 1 provider (recognises your hours, you cover the gap, get the Level 1 certificate with evaluation included).","Cheap/slow route: stay on Portfolio, gather course documents (curriculum, syllabus, hours), find a PCC/MCC mentor and submit a recording (~14 weeks, fee $475/$625)."]},
+  tip:{ro:"Cere școlii ANC programa analitică încă de la înscriere — fără ea, ruta Portfolio e foarte greoaie.",en:"Ask the ANC school for the detailed syllabus at enrollment — without it, the Portfolio path is painful."},
+  src:[["ICF — apply for credential","https://coachingfederation.org/credentialing/apply-for-credential/"],["Exemplu de integrare RPL","https://www.solutionsacademy.com/ro/coach-training/curs-de-integrare-icf"]]},
+ {id:'t-accpcc', org:'icf', icon:'⬆️',
+  t:{ro:"Din ACC în PCC",en:"From ACC to PCC"},
+  short:{ro:"Nu repeți formarea de la zero: completezi diferența și sari de la 100 la 500 de ore.",en:"You don't restart training: you top it up and go from 100 to 500 hours."},
+  have:{ro:["Credențială ACC activă","60+ ore formare și 100 ore practică"],en:["Active ACC credential","60+ training hours and 100 practice hours"]},
+  need:{ro:["125 ore formare în total (de regulă un program de completare Level 2)","500 ore clienți (450 plătite, minim 25 clienți; ≥50 ore în ultimele 18 luni)","10 ore NOI de mentor coaching la nivel PCC, ≥3 luni, ≥3 h 1-la-1","Evaluare performanță PCC: 2 sesiuni înregistrate + transcrieri (sau evaluare inclusă în Level 2)","Examenul ICF Credentialing (78 scenarii/180 min până la 31 mar 2027)"],
+        en:["125 total training hours (usually a Level 2 top-up program)","500 client hours (450 paid, min. 25 clients; ≥50 in last 18 months)","10 NEW PCC-level mentor coaching hours, ≥3 months, ≥3 one-to-one","PCC performance evaluation: 2 recorded sessions + transcripts (or included in Level 2)","ICF Credentialing Exam (78 scenarios/180 min until Mar 31, 2027)"]},
+  routes:{ro:["Ruta Level 2 (recomandată): intri într-un program Level 2 care include orele lipsă, mentor PCC și evaluarea — dosar mai simplu, ~4 săptămâni review.","Ruta Portfolio: aduni tu 125 ore din surse CCE/non-acreditate, 2 înregistrări; review ~18 săptămâni, taxă $750/$900."],
+          en:["Level 2 route (recommended): join a Level 2 program including the missing hours, PCC mentoring and evaluation — simpler file, ~4-week review.","Portfolio route: assemble 125 hours from CCE/non-accredited sources, 2 recordings; ~18-week review, fee $750/$900."]},
+  tip:{ro:"Nu se reutilizează mentor coaching-ul de la ACC: PCC cere 10 ore noi, cu mentor PCC+ (din 2027, MCS-PCC).",en:"ACC mentor coaching can't be reused: PCC needs 10 new hours with a PCC+ mentor (MCS-PCC from 2027)."},
+  src:[["ICF — credential paths","https://coachingfederation.org/credentialing/apply-for-credential/"]]},
+ {id:'t-pccmcc', org:'icf', icon:'🏆',
+  t:{ro:"Din PCC în MCC",en:"From PCC to MCC"},
+  short:{ro:"Cantitatea nu e problema — e saltul calitativ către măiestrie.",en:"Quantity isn't the issue — it's the qualitative leap to mastery."},
+  have:{ro:["PCC deținut acum sau în trecut (obligatoriu)"],en:["PCC held now or previously (mandatory)"]},
+  need:{ro:["200 ore formare (program Level 3 = +75 ore)","2.500 ore clienți (2.250 plătite, minim 35 clienți)","10 ore mentor coaching cu un MCC (≥3 luni, ≥3 h 1-la-1)","2 sesiuni înregistrate evaluate pe markerii MCC","Examenul ICF Credentialing; taxă $675/$825, review ~18 săptămâni"],
+        en:["200 training hours (Level 3 program = +75 hours)","2,500 client hours (2,250 paid, min. 35 clients)","10 mentor coaching hours with an MCC (≥3 months, ≥3 one-to-one)","2 recorded sessions assessed against MCC markers","ICF Credentialing Exam; fee $675/$825, ~18-week review"]},
+  routes:{ro:["Level 3: programe specializate de tip Masterclass (ex. SolutionsAcademy, Erickson Level 3), de regulă internaționale/online.","Pregătește înregistrările cu mult timp: cea mai comună cauză de respingere e stilul „PCC corect”, dar nu încă MCC (parteneriat profund, tăceri, învățare emergentă)."],
+          en:["Level 3: specialised Masterclass programs (e.g. SolutionsAcademy, Erickson Level 3), usually international/online.","Prepare recordings well ahead: the most common reason for rejection is 'correct PCC' style that isn't yet MCC (deep partnership, silence, emergent learning)."]},
+  tip:{ro:"Lucrează cu un mentor MCC și cere simulări de evaluare pe bareme MCC înainte de trimitere.",en:"Work with an MCC mentor and request mock assessments against MCC markers before submitting."},
+  src:[["ICF MCC requirements","https://coachingfederation.org/credentialing/apply-for-credential/"]]},
+ {id:'t-icfemcc', org:'emcc', icon:'🔄',
+  t:{ro:"Trecerea între ICF și EMCC (în ambele sensuri)",en:"Moving between ICF and EMCC (both ways)"},
+  short:{ro:"Orele de practică sunt ale tale — ambele sisteme recunosc practica reală, chiar dacă nu și diploma.",en:"Practice hours are yours — both systems accept real practice even when the diploma isn't recognised."},
+  have:{ro:["Ore de coaching deja logate, supervizare, CPD"],en:["Already-logged coaching hours, supervision, CPD"]},
+  need:{ro:["Spre EMCC: aplicație EIA self-guided cu portofoliu (sau rapid prin furnizor EQA) — pregătește jurnalul de ore, 5 feedback-uri clienți, 5 reflecții, dovezi de supervizare.","Spre ICF: ruta Portfolio la nivelul țintă (60/125/200 ore formare demonstrate pe competențele ICF, mentor coaching, înregistrări, examen).","Codul global de etică este comun (ICF + EMCC + AC) — semnarea lui e compatibilă."],
+        en:["Toward EMCC: self-guided EIA application with portfolio (or fast-track via an EQA provider) — prepare your hour log, 5 client feedbacks, 5 reflections, supervision evidence.","Toward ICF: the Portfolio path at target level (60/125/200 training hours demonstrated against ICF competencies, mentor coaching, recordings, exam).","The Global Code of Ethics is shared (ICF + EMCC + AC) — signing one is compatible."]},
+  routes:{ro:["Programele cu dublă acreditare (ICF Level + EMCC EQA) te lasă să ieși cu ambele credențiale din același efort — ex. SolutionsAcademy (livrat în română), TPC Leadership.","EMCC pune accent pe supervizare; ICF pe evaluare de performanță — fă-ți de la început ambele obișnuințe."],
+          en:["Dual-accredited programs (ICF Level + EMCC EQA) let you earn both credentials with the same effort — e.g. SolutionsAcademy (delivered in Romanian), TPC Leadership.","EMCC stresses supervision; ICF stresses performance evaluation — build both habits from day one."]},
+  tip:{ro:"Păstrează un singur jurnal de practică compatibil cu ambele: dată, client, durată, plătit/voluntar, context, teme.",en:"Keep one practice log compatible with both: date, client, duration, paid/pro bono, context, themes."},
+  src:[["EMCC EIA","https://emccglobal.org/home/accreditation/eia/"],["ICF portfolio path","https://coachingfederation.org/credentialing/apply-for-credential/"]]},
+ {id:'t-mentor', org:'icf', icon:'🧭',
+  t:{ro:"Vreau să devin MENTOR coach (ICF MCS)",en:"I want to become a mentor coach (ICF MCS)"},
+  short:{ro:"Din 2027, mentorul candidaților ICF trebuie să fie specializat oficial.",en:"From 2027, ICF candidates' mentors must hold an official specialization."},
+  have:{ro:["Experiență ca și coach; vreau să girez dezvoltarea altor coachi"],en:["Coach experience; I want to guide other coaches' development"]},
+  need:{ro:["Credențială ICF activă la nivelul țintă: MCS-ACC cere PCC/MCC (sau ACC reînnoit); MCS-PCC cere PCC/MCC; MCS-MCC cere MCC.","Ruta standard: minim 41 ore educație pe competențele de mentor coaching (din care ≥50% sincron).","Ruta experiență (CPL): 10 ore educație + dovezi că ai mentorat minim 5 coachi care au obținut credențiala în ultimii 3 ani (sau scrisoare de atestare de la un furnizor ICF).","Training de evaluare specific nivelului: ACC BARS / PCC Markers / MCC BARS."],
+        en:["Active ICF credential at target level: MCS-ACC needs PCC/MCC (or renewed ACC); MCS-PCC needs PCC/MCC; MCS-MCC needs MCC.","Standard route: at least 41 hours education on mentor coaching competencies (≥50% synchronous).","Experience route (CPL): 10 hours education + evidence of mentoring 5+ coaches who earned the credential in the past 3 years (or attestation letter from an ICF provider).","Level-specific evaluation training: ACC BARS / PCC Markers / MCC BARS."]},
+  routes:{ro:["Programele acreditate ICF „Advanced Accreditation in Mentor Coaching (AAMC)” livrează cele 41 ore.","Mentor coaching-ul pentru candidați: 10 ore / persoană, ≥3 luni, ≥3 ore individuale, grupuri de maxim 10."],
+          en:["ICF 'Advanced Accreditation in Mentor Coaching (AAMC)' programs deliver the 41 hours.","Mentor coaching for candidates: 10 hrs/person, ≥3 months, ≥3 one-to-one, max 10 in a group."]},
+  tip:{ro:"Un „mentor” din COR 235902 (învățământ) este cu totul altceva — nu-l confunda cu mentor coach-ul ICF.",en:"A COR 235902 education 'mentor' is a completely different role — don't confuse it with an ICF mentor coach."},
+  src:[["ICF Mentor Coaching","https://coachingfederation.org/education-professional-development/find-professional-development/mentor-coaching/"]]},
+ {id:'t-super', org:'emcc', icon:'🪞',
+  t:{ro:"Vreau să devin SUPERVIZOR (EMCC ESIA)",en:"I want to become a supervisor (EMCC ESIA)"},
+  short:{ro:"Supervizarea e pentru practica coach-ului, nu pentru performanța la certificare.",en:"Supervision serves the coach's practice, not certification performance."},
+  have:{ro:["Practică solidă ca și coach/mentor (nivel înalt)"],en:["Solid senior coach/mentor practice"]},
+  need:{ro:["Acreditare EMCC EIA la nivel Senior Practitioner sau mai sus (sau echivalent demonstrat prin RPL)","Program de formare în supervizare cu acreditare ESQA (sau echivalent)","Minim 120 ore practică de supervizare cu minim 10 supervisați","Angajament pentru: supervizarea supervizării tale, CPD, jurnal de practică și reflecție; conformitate cu codul etic și diversitate"],
+        en:["EMCC EIA at Senior Practitioner level or above (or proven equivalent via RPL)","ESQA-accredited supervisor training (or equivalent)","At least 120 hours supervision practice with at least 10 supervisees","Commitment to supervision-of-supervision, CPD, practice & reflective logs; ethics and diversity compliance"]},
+  routes:{ro:["Programe ESQA există și în regiune/online (ex. SolutionsAcademy, Coaching Constellations, CMI).","La ICF nu există o credențială separată de supervizor; orele de supervizare contează ca CCE și sunt obligatorii la ACTC (5 ore)."],
+          en:["ESQA programs exist regionally/online (e.g. SolutionsAcademy, Coaching Constellations, CMI).","ICF has no separate supervisor credential; supervision hours count as CCE and are mandatory for ACTC (5 hours)."]},
+  tip:{ro:"EMCC recomandă minim 4 ore supervizare individuală/an și raportul 1:35 (o oră la 35 ore practică).",en:"EMCC recommends at least 4 individual supervision hours/year and a 1:35 ratio (one hour per 35 practice hours)."},
+  src:[["EMCC supervision guidelines","https://www.emccglobal.org/leadership-development/supervision/guidelines/"]]},
+ {id:'t-team', org:'emcc', icon:'👥',
+  t:{ro:"Vreau să fac TEAM COACHING (ACTC / ITCA)",en:"I want to do TEAM COACHING (ACTC / ITCA)"},
+  short:{ro:"Coachingul de echipă este o disciplină separată, cu propriile certificări.",en:"Team coaching is a separate discipline with its own certifications."},
+  have:{ro:["O credențială de coach individual (ICF ACC+ sau EIA)"],en:["An individual coach credential (ICF ACC+ or EIA)"]},
+  need:{ro:["ICF ACTC: credențială ICF activă + 60 ore educație de team coaching (sau program AATC, sau 30 ore pe ruta experiență) + 5 angajamente de echipă (10 pe ruta CPL) + 5 ore supervizare + examen specific; taxe $200–350.","EMCC ITCA: program acreditat TCQA + aplicare individuală; 4 niveluri; la Senior Practitioner se cere ~120 ore cu mai multe echipe și supervizare 1-la-1.","Reînnoire: ACTC 20 CCE de team coaching la 3 ani; ITCA pe ciclul EMCC."],
+        en:["ICF ACTC: active ICF credential + 60 hrs team coaching education (or AATC program, or 30 hrs experience route) + 5 team engagements (10 on CPL route) + 5 supervision hours + dedicated exam; fees $200–350.","EMCC ITCA: TCQA-accredited program + individual application; 4 levels; Senior Practitioner requires ~120 hrs with several teams and one-to-one supervision.","Renewal: ACTC 20 team CCE every 3 years; ITCA on the EMCC cycle."]},
+  routes:{ro:["Furnizori prezenți în România: Coaching Partners, One 2 Coach, Metasysteme, SolutionsAcademy (AATC/TCQA).","Dacă lucrezi preponderent cu echipe de leadership în corporații, ACTC + ITCA împreună sunt cea mai puternică combinație."],
+          en:["Providers active in Romania: Coaching Partners, One 2 Coach, Metasysteme, SolutionsAcademy (AATC/TCQA).","If you mainly coach corporate leadership teams, ACTC + ITCA together is the strongest combination."]},
+  tip:{ro:"Experiența ca coach individual nu te face automat team coach — dinamica de sistem e complet diferită.",en:"Individual coaching experience doesn't automatically make you a team coach — system dynamics are entirely different."},
+  src:[["ICF ACTC","https://coachingfederation.org/credentialing/apply-for-credential/"],["EMCC Romania — team coaching","https://www.emccromania.net/team-coaching"]]},
+ {id:'t-trainer', org:'anc', icon:'🎓',
+  t:{ro:"Vreau să fiu TRAINER / formator (să predau)",en:"I want to be a TRAINER (to teach)"},
+  short:{ro:"În România, ca să predai adulților în programe autorizate îți trebuie certificatul de Formator.",en:"In Romania, teaching adults in authorised programs requires a Trainer certificate."},
+  have:{ro:["Expertiză în domeniu; poate deja certificare de coach"],en:["Domain expertise; possibly already a coach certificate"]},
+  need:{ro:["Studii superioare cu licență","Curs de Formator — COR 242401: uzual ~180 ore (variante intensive 5–6 zile), proiect individual + test grilă","Certificat de absolvire MMSS/ME + supliment descriptiv (18 competențe)","Pentru a preda ÎN programele ANC: pregătire pedagogică specifică adulților (exact ce certifică acest curs) + specializarea de specialitate"],
+        en:["University degree (bachelor's)","Trainer course — COR 242401: usually ~180 hours (intensive 5–6 day variants), individual project + written test","MLSS/MoE completion certificate + supplement (18 competencies)","To teach IN ANC programs: adult-education pedagogical training (exactly what this course certifies) plus domain specialization"]},
+  routes:{ro:["Costuri uzuale: 300–1.200 RON; foarte mulți furnizori naționali.","Dacă vrei să predai coaching: Formator (242401) + propriul nivel ICF/EMCC înalt (de regulă PCC+, ideal MCS pentru nivelul tău).","Internațional, școlile ICF te pot acredita ca trainer/facilitator doar după propriile procese (faculty)."],
+          en:["Typical cost: 300–1,200 RON; many national providers.","To teach coaching: Trainer certificate (242401) + your own high ICF/EMCC level (usually PCC+, ideally MCS for your level).","Internationally, ICF schools accredit you as faculty only through their own processes."]},
+  tip:{ro:"„Trainer” (formator) nu e „mentor” și nici „supervizor” — sunt trei roluri distincte cu certificări diferite.",en:"'Trainer' is neither 'mentor' nor 'supervisor' — three distinct roles with different certifications."},
+  src:[["Exemplu curs Formator COR 242401","https://e-calificare.ro/"]]}
+];
+
+/* ====================== CREDENTIALS ====================== */
+const CREDS = [
+ {id:'anc_coach',org:'anc',grp:'coach',badge:'COR 242412',
+  name:{ro:"Specialist în activitatea de coaching (ANC)",en:"Coaching Specialist (national ANC)"},
+  short:{ro:"Certificatul național românesc care îți dă dreptul legal de a profesa ca coach în RO (PFA, angajare).",en:"The Romanian national certificate giving legal right to practise as a coach in RO (sole trader, employment)."},
+  stats:[{v:"180–360 h",l:{ro:"program",en:"program"}},{v:"licență",l:{ro:"acces",en:"access"}},{v:"nelimitat",l:{ro:"valabilitate",en:"validity"}}],
+  prereq:{ro:"Studii superioare cu diplomă de licență + minim 3 ani experiență de muncă/voluntariat (conform standardului); vârsta și actele standard (CI, certificat naștere/căsătorie).",
+          en:"University degree + at least 3 years' work/volunteer experience (per standard); standard ID and civil documents."},
+  eval:[{ro:"Proba teoretică: test grilă din materia programului.",en:"Theory: multiple-choice test on the curriculum."},
+        {ro:"Proba practică: sesiune demonstrativă de coaching / proiect, în fața comisiei mixte de examinare.",en:"Practical: demonstration coaching session / project before a mixed examination commission."},
+        {ro:"Comisia are președinte, un specialist independent și un secretar din partea furnizorului.",en:"The commission has a chair, an independent specialist and a provider secretary."}],
+  docs:[{ro:"Diplomă de licență + CI + certificate naștere/căsătorie",en:"Bachelor's diploma + ID + birth/marriage certificates"},
+        {ro:"Prezență la program (uzual min. 80–90%) și practica (minim 5 sesiuni cu persoane din afara grupului la majoritatea cursurilor)",en:"Program attendance (usually 80–90% min.) and practice (at least 5 sessions with people outside the group on most courses)"},
+        {ro:"Proiect individual / portofoliu de practică",en:"Individual project / practice portfolio"}],
+  fees:{ro:"Cursuri tipice: ~750–2.500 RON (ex. 1.200–1.450 RON online). Examenul este inclus în taxa furnizorului; nu există taxă anuală.",
+        en:"Typical courses: ~750–2,500 RON (e.g. 1,200–1,450 RON online). The exam is included in the provider fee; no annual fee."},
+  time:{ro:"2–6 luni (program de specializare/perfecționare); 12 credite ECTS la multe programe.",en:"2–6 months (specialisation/up-skilling program); many programs award 12 ECTS credits."},
+  renew:{ro:"Nu se reînnoiește. Certificat de absolvire + supliment descriptiv tip Europass, recunoaștere națională și UE (prin apostilă).",
+         en:"No renewal. Completion certificate + Europass-style descriptive supplement; national and EU recognition (via apostille)."},
+  tips:{ro:"Profesia există în COR din 2013/2014. Standardul ocupațional curent: 2024–2034. Nu te opri aici dacă vrei piață corporativă — ACCT-ul nu înlocuiește ICF/EMCC.",
+        en:"The occupation has existed in COR since 2013/2014. Current occupational standard: 2024–2034. Don't stop here for the corporate market — ANC doesn't replace ICF/EMCC."},
+  src:[["Standardul ocupațional (PDF, ANC)","http://intern.anc.edu.ro/virtualanc/crud/standarde/standarde_ocupationale_2014_prezent/brain/upload/Specialist%20in%20activitatea%20de%20coaching.pdf"],["Exemplu furnizor (RAU)","https://www.rau.ro/seria-a-vii-a-program-de-formare-tip-specializare-pentru-ocupatia-specialist-in-activitatea-de-coaching/"]]},
+ {id:'formator',org:'anc',grp:'trainer',badge:'COR 242401',
+  name:{ro:"Formator (trainer de adulți)",en:"Adult Trainer"},
+  short:{ro:"Certificatul care îți permite să predai în programe de formare profesională a adulților, inclusiv în școlile de coaching autorizate ANC.",en:"The certificate allowing you to teach in adult vocational programs, including ANC-authorised coaching schools."},
+  stats:[{v:"~180 h",l:{ro:"program",en:"program"}},{v:"licență",l:{ro:"acces",en:"access"}},{v:"nelimitat",l:{ro:"valabilitate",en:"validity"}}],
+  prereq:{ro:"Studii superioare cu licență (fără licență există varianta Instructor/preparator formare, COR 333309).",en:"University degree (without one, the lower Instructor route is COR 333309)."},
+  eval:[{ro:"Test grilă + evaluarea proiectului individual de formare.",en:"Multiple-choice test + assessment of an individual training project."},
+        {ro:"Programul acoperă 18 competențe (pregătirea programului, metode de instruire a adulților, evaluarea participanților etc.).",en:"The program covers 18 competencies (program design, adult training methods, learner evaluation, etc.)."}],
+  docs:[{ro:"Acte personale + diplomă de licență",en:"Personal documents + bachelor's diploma"},{ro:"Proiect individual întocmit pe parcurs",en:"Individual project built during the course"}],
+  fees:{ro:"~300–1.200 RON (variații 5–6 zile intensive sau serii de weekend).",en:"~300–1,200 RON (5–6 day intensive or weekend series)."},
+  time:{ro:"5–10 zile de curs (uzual ~180 ore cu studiu individual).",en:"5–10 course days (usually ~180 hrs incl. individual study)."},
+  renew:{ro:"Fără reînnoire; certificat de absolvire MMSS/ME.",en:"No renewal; MLSS/MoE completion certificate."},
+  tips:{ro:"Ca să fii formator într-o școală de coaching cu acte naționale ai nevoie de 242401 + specializare în coaching (242412 și/sau ICF/EMCC).",en:"To teach at a nationally authorised coaching school you need 242401 + coaching specialization (242412 and/or ICF/EMCC)."},
+  src:[["Exemplu curs Formator","https://e-calificare.ro/formator-cod-cor-242401-instructor-formare-cor-333309-Arad-2890"]]},
+ {id:'mentor_ro',org:'anc',grp:'mentor',badge:'COR 235902',
+  name:{ro:"Mentor (învățământ / carieră didactică)",en:"Mentor (education / teaching career)"},
+  short:{ro:"Ocupație din sistemul de învățământ — ghidează profesori debutanți. NU este „mentor coach” de coaching.",en:"An education-system occupation — mentors beginning teachers. It is NOT a coaching 'mentor coach'."},
+  stats:[{v:"CNC 6",l:{ro:"nivel calificare",en:"qualification level"}},{v:"specifice",l:{ro:"studii",en:"studies"}},{v:"—",l:{ro:"reînnoire",en:"renewal"}}],
+  prereq:{ro:"Studii superioare de specialitate și experiență didactică relevantă (mentorat de carieră didactică, corpul național de profesori mentori).",en:"Specialised higher education and relevant teaching experience (national teacher-mentor register)."},
+  eval:[{ro:"Conform programelor de mentorat didactic / caselor corpului didactic.",en:"Per teacher-mentoring programs / county teaching resource centres."}],
+  docs:[{ro:"Specifice contextului didactic.",en:"Specific to the teaching context."}],
+  fees:{ro:"Programe de regulă scurte (ex. 2 zile), ~300 RON unde sunt contra-cost.",en:"Usually short programs (e.g. 2 days), ~300 RON where charged."},
+  time:{ro:"Zile până la câteva săptămâni.",en:"Days to a few weeks."},
+  renew:{ro:"Depinde de registrul profesional didactic.",en:"Depends on the teaching professional register."},
+  tips:{ro:"Pentru coaching, rolul de mentor este definit de ICF (MCS din 2027) și EMCC — nu de acest cod COR.",en:"In coaching, the mentor role is defined by ICF (MCS from 2027) and EMCC — not by this COR code."},
+  src:[["COR 235902 Mentor","https://www.rubinian.com/cor/235902-mentor"]]},
+
+ {id:'icf_acc',org:'icf',grp:'coach',badge:'ACC',
+  name:{ro:"ACC — Associate Certified Coach",en:"ACC — Associate Certified Coach"},
+  short:{ro:"Prima treaptă ICF. Demonstrează că stăpânești bazele și ai practică reală cu clienți plătitori.",en:"First ICF tier. Shows you master the fundamentals with real paying-client practice."},
+  stats:[{v:"60+ h",l:{ro:"formare",en:"training"}},{v:"100 h",l:{ro:"practică (75 plătite)",en:"practice (75 paid)"}},{v:"3 ani",l:{ro:"valabilitate",en:"validity"}}],
+  prereq:{ro:"Nicio credențială anterioară. Nu se cere diplomă universitară.",en:"No prior credential. No university degree required."},
+  eval:[{ro:"Evaluare de performanță: 1 sesiune. Pe ruta Level 1/2 este făcută de școală în program; pe ruta Portfolio trimiți 1 înregistrare audio/video + transcript integral.",en:"Performance evaluation: 1 session. On Level 1/2 path the school does it in-program; on Portfolio you submit 1 recording + verbatim transcript."},
+        {ro:"Examen ACC: 60 de întrebări cu variante (cunoștințe), 90 minute, notă de trecere 460/600, prin Pearson VUE (online supravegheat sau centru).",en:"ACC exam: 60 multiple-choice knowledge questions, 90 minutes, passing score 460/600, via Pearson VUE (online proctored or test center)."},
+        {ro:"Mentor coaching: 10 ore pe ≥3 luni, dintre care ≥3 ore 1-la-1; grupuri max. 10 participanți.",en:"Mentor coaching: 10 hours over ≥3 months, ≥3 one-to-one; groups max. 10."}],
+  docs:[{ro:"Certificat Level 1/2 SAU dovezi ale celor 60+ ore (curricula pentru Portfolio)",en:"Level 1/2 certificate OR evidence of 60+ hours (curriculum for Portfolio)"},
+        {ro:"Jurnalul de coaching: 100 ore, 75 plătite, minim 8 clienți, ≥25 ore în ultimele 18 luni",en:"Coaching log: 100 hours, 75 paid, at least 8 clients, ≥25 hours in the last 18 months"},
+        {ro:"Dovada celor 10 ore de mentor coaching",en:"Proof of the 10 mentor coaching hours"}],
+  fees:{ro:"Ruta program: 175 $ membru / 325 $ nemembru. Ruta Portfolio: 475 $ / 625 $. Review ~4 săpt. (program) sau ~14 săpt. (portfolio).",
+        en:"Program path: $175 member / $325 non-member. Portfolio: $475 / $625. Review ~4 wks (program) or ~14 wks (portfolio)."},
+  time:{ro:"Realist 8–14 luni de la prima zi de curs până la credențială.",en:"Realistically 8–14 months from first class to credential."},
+  renew:{ro:"La 3 ani: 40 CCE (minim 24 pe competențe, din care 3 de etică) + 10 ore noi de mentor coaching.",en:"Every 3 years: 40 CCE (min. 24 core competencies, incl. 3 ethics) + 10 new mentor coaching hours."},
+  tips:{ro:"ACC e perfect ca start, dar multe companii cer deja PCC ca standard de achiziție.",en:"ACC is a fine start, but many companies already require PCC as procurement standard."},
+  src:[["ICF — apply for credential","https://coachingfederation.org/credentialing/apply-for-credential/"],["ICF România — cum devii coach","https://coachingfederation.ro/cum-devii-coach-profesionist/"]]},
+ {id:'icf_pcc',org:'icf',grp:'coach',badge:'PCC',
+  name:{ro:"PCC — Professional Certified Coach",en:"PCC — Professional Certified Coach"},
+  short:{ro:"Standardul de profesionalism cerut de piața corporativă. Nivelul „working coach” serios.",en:"The professionalism standard the corporate market demands; the serious working-coach level."},
+  stats:[{v:"125+ h",l:{ro:"formare",en:"training"}},{v:"500 h",l:{ro:"practică (450 plătite)",en:"practice (450 paid)"}},{v:"3 ani",l:{ro:"valabilitate",en:"validity"}}],
+  prereq:{ro:"Poți aplica direct la PCC fără ACC, dacă ai 125 ore formare + 500 ore practică.",en:"You can apply directly for PCC without ACC if you have 125 training + 500 practice hours."},
+  eval:[{ro:"Evaluare de performanță: 2 sesiuni înregistrate cu transcrieri, notate pe markerii PCC (sau inclusă în programul Level 2).",en:"Performance evaluation: 2 recorded sessions with transcripts, scored against PCC Markers (or included in a Level 2 program)."},
+        {ro:"Examen ICF Credentialing (PCC/MCC): 78 itemi situaționali (cel mai bun / cel mai prost răspuns), 180 min, trecere 460/600 — până la 31 mar 2027; apoi noul format de 80 itemi / 150 min.",en:"ICF Credentialing Exam (PCC/MCC): 78 situational-judgment items (best/worst response), 180 min, 460/600 — until Mar 31, 2027; then the new 80-item / 150-min format."},
+        {ro:"Mentor coaching: 10 ore noi la nivel PCC cu PCC/MCC, ≥3 luni, ≥3 h individuale.",en:"Mentor coaching: 10 new PCC-level hours with a PCC/MCC, ≥3 months, ≥3 one-to-one."}],
+  docs:[{ro:"Certificat Level 2 (sau 125+ ore demonstrate pe ruta Portfolio)",en:"Level 2 certificate (or 125+ demonstrated hours via Portfolio)"},
+        {ro:"Jurnal: 500 ore, 450 plătite, minim 25 clienți, ≥50 ore în ultimele 18 luni",en:"Log: 500 hours, 450 paid, min. 25 clients, ≥50 hours in the last 18 months"},
+        {ro:"Două înregistrări audio/video + transcrieri integrale (dacă nu e ruta Level 2)",en:"Two recordings + verbatim transcripts (unless Level 2 path)"}],
+  fees:{ro:"Ruta Level 2: 375 $ membru / 525 $ nemembru. Portfolio: 750 $ / 900 $. Review ~4 săpt. / ~18 săpt.",en:"Level 2 path: $375 member / $525 non-member. Portfolio: $750 / $900. Review ~4 / ~18 weeks."},
+  time:{ro:"În mod realist 2–4 ani de practică de la zero.",en:"Realistically 2–4 years of practice from scratch."},
+  renew:{ro:"La 3 ani: 40 CCE (minim 24 competențe, 3 etică). Mentor coaching recomandat, nu obligatoriu.",en:"Every 3 years: 40 CCE (min. 24 core, 3 ethics). Mentor coaching recommended, not mandatory."},
+  tips:{ro:"Markerii PCC se învață explicit — majoritatea respingerilor vin din întrebări conducătoare/sfaturi.",en:"PCC Markers must be learned explicitly — most failures come from leading questions/advice-giving."},
+  src:[["ICF — apply for credential","https://coachingfederation.org/credentialing/apply-for-credential/"]]},
+ {id:'icf_mcc',org:'icf',grp:'coach',badge:'MCC',
+  name:{ro:"MCC — Master Certified Coach",en:"MCC — Master Certified Coach"},
+  short:{ro:"Cel mai înalt nivel ICF — sub 5% dintre coachii certificați. Competențe integrate, prezență profundă.",en:"Highest ICF level — under 5% of credentialed coaches. Integrated competencies, deep presence."},
+  stats:[{v:"200 h",l:{ro:"formare",en:"training"}},{v:"2.500 h",l:{ro:"practică (2.250 plătite)",en:"practice (2,250 paid)"}},{v:"3 ani",l:{ro:"valabilitate",en:"validity"}}],
+  prereq:{ro:"Trebuie să deții sau să fi deținut PCC — nu se poate sări peste.",en:"You must hold or have held PCC — it cannot be skipped."},
+  eval:[{ro:"Două sesiuni înregistrate evaluate pe markerii/standardele MCC — cea mai dificilă poartă a procesului.",en:"Two recorded sessions assessed against MCC markers/standards — the hardest gate."},
+        {ro:"Examenul ICF Credentialing (același ca la PCC).",en:"ICF Credentialing Exam (same as PCC)."},
+        {ro:"10 ore mentor coaching exclusiv cu un MCC.",en:"10 mentor coaching hours exclusively with an MCC."}],
+  docs:[{ro:"Certificat Level 3 (sau 200+ ore pe Portfolio)",en:"Level 3 certificate (or 200+ hours via Portfolio)"},
+        {ro:"Jurnal: 2.500 ore, 2.250 plătite, minim 35 clienți",en:"Log: 2,500 hours, 2,250 paid, min. 35 clients"},
+        {ro:"Două înregistrări + transcrieri; dovezi mentor MCC",en:"Two recordings + transcripts; MCC mentor evidence"}],
+  fees:{ro:"675 $ membru / 825 $ nemembru (același pentru ambele rute); review ~18 săptămâni.",en:"$675 member / $825 non-member (same for both paths); ~18-week review."},
+  time:{ro:"De regulă 7–12+ ani de la începutul practicii.",en:"Usually 7–12+ years from starting practice."},
+  renew:{ro:"La 3 ani: 40 CCE (minim 24 competențe, 3 etică).",en:"Every 3 years: 40 CCE (min. 24 core, 3 ethics)."},
+  tips:{ro:"Level 3 în structura nouă = 75 ore de învățare care se adaugă peste Level 2.",en:"Level 3 in the new structure = 75 learning hours added on top of Level 2."},
+  src:[["ICF — apply for credential","https://coachingfederation.org/credentialing/apply-for-credential/"]]},
+ {id:'icf_actc',org:'icf',grp:'team',badge:'ACTC',
+  name:{ro:"ACTC — Advanced Certification in Team Coaching",en:"ACTC — Advanced Certification in Team Coaching"},
+  short:{ro:"Specializarea ICF pentru coaching de echipă, adăugată peste ACC/PCC/MCC.",en:"ICF's team coaching specialisation, added on top of ACC/PCC/MCC."},
+  stats:[{v:"60 h",l:{ro:"educație team",en:"team education"}},{v:"5",l:{ro:"angajamente echipă",en:"team engagements"}},{v:"3 ani",l:{ro:"valabilitate",en:"validity"}}],
+  prereq:{ro:"O credențială ICF activă (ACC, PCC sau MCC).",en:"An active ICF credential (ACC, PCC or MCC)."},
+  eval:[{ro:"Examen specific ICF Team Coaching Certification.",en:"Dedicated ICF Team Coaching Certification exam."},
+        {ro:"Rute: 60 h educație + 5 angajamente + 5 h supervizare; SAU program AATC (evaluare inclusă); SAU 30 h + 10 angajamente + 10 h supervizare (experiență).",en:"Routes: 60 hrs education + 5 engagements + 5 supervision hrs; OR an AATC program; OR 30 hrs + 10 engagements + 10 supervision hrs (experience)."}],
+  docs:[{ro:"Dovezi educație de team coaching, angajamente și supervizare.",en:"Evidence of team education, engagements and supervision."}],
+  fees:{ro:"200–350 $ în funcție de rută și statutul de membru.",en:"$200–350 depending on route and membership."},
+  time:{ro:"Câteva luni până la 1–2 ani, în funcție de practica cu echipe.",en:"A few months to 1–2 years depending on team practice."},
+  renew:{ro:"La 3 ani: 20 CCE de team coaching (minim 16 pe competențele de team coaching), pe lângă credențiala de bază.",en:"Every 3 years: 20 team coaching CCE (min. 16 team core), on top of the base credential."},
+  tips:{ro:"Echivalentul EMCC este ITCA — mulți fac ambele.",en:"The EMCC equivalent is ITCA — many do both."},
+  src:[["ICF — ACTC paths","https://coachingfederation.org/credentialing/apply-for-credential/"]]},
+ {id:'icf_mcs',org:'icf',grp:'mentor',badge:'MCS',
+  name:{ro:"MCS — Mentor Coach Specialization",en:"MCS — Mentor Coach Specialization"},
+  short:{ro:"Noua specializare ICF pentru coachii care fac mentor coaching candidaților. Obligatorie pentru ore noi din 1 ian 2027.",en:"The new ICF specialization for coaches mentoring credential candidates. Mandatory for new hours from Jan 1, 2027."},
+  stats:[{v:"41 h",l:{ro:"ruta standard",en:"standard route"}},{v:"10 h",l:{ro:"ruta experiență (CPL)",en:"experience route (CPL)"}},{v:"3 niveluri",l:{ro:"ACC/PCC/MCC",en:"ACC/PCC/MCC"}}],
+  prereq:{ro:"Credențială activă la/peste nivelul țintă: PCC/MCC (sau ACC reînnoit) pentru MCS-ACC; PCC/MCC pentru MCS-PCC; MCC pentru MCS-MCC.",en:"Active credential at/above target level: PCC/MCC (or renewed ACC) for MCS-ACC; PCC/MCC for MCS-PCC; MCC for MCS-MCC."},
+  eval:[{ro:"Training de evaluare pe fiecare nivel: ACC BARS, PCC Markers sau MCC BARS (5 unități, înregistrări de notat).",en:"Evaluation training per level: ACC BARS, PCC Markers or MCC BARS."},
+        {ro:"Ruta CPL: scrisoare de atestare de la un furnizor ICF că ai mentorat 5+ studenți în ultimii 3 ani (sau 5 mentorați certificați).",en:"CPL route: attestation letter from an ICF provider confirming 5+ mentees in 3 years (or 5 credentialed mentees)."}],
+  docs:[{ro:"Ore de educație pe competențele de mentor coaching + training BARS/Markers; dovezi de practică pe ruta CPL.",en:"Mentor coaching education hours + BARS/Markers training; practice evidence on CPL route."}],
+  fees:{ro:"Taxă unică ICF pentru aplicare (toate nivelurile simultan); trainingul de evaluare se plătește per nivel. Verifică ghidul curent ICF.",en:"One ICF application fee (all levels at once); evaluation training paid per level. Check the current ICF guide."},
+  time:{ro:"Săptămâni–luni pe ruta CPL; programe complete AAMC pentru ruta standard.",en:"Weeks–months on CPL route; full AAMC programs on standard route."},
+  renew:{ro:"Legat de ciclul tău de reînnoire ICF; urmărește comunicările ICF.",en:"Linked to your ICF renewal cycle; watch ICF communications."},
+  tips:{ro:"Dacă ești mentorat pentru o aplicare în 2027, alege-ți de acum un mentor cu MCS.",en:"If you'll be mentored for a 2027 application, choose an MCS mentor now."},
+  src:[["ICF Mentor Coaching","https://coachingfederation.org/education-professional-development/find-professional-development/mentor-coaching/"]]},
+
+ {id:'emcc_f',org:'emcc',grp:'coach',badge:'EIA F',
+  name:{ro:"EMCC EIA Foundation",en:"EMCC EIA Foundation"},
+  short:{ro:"Nivelul de intrare: practică inițială, dovezi de reflecție și supervizare.",en:"Entry level: initial practice with reflection and supervision evidence."},
+  stats:[{v:"1 an",l:{ro:"experiență",en:"experience"}},{v:"50 h",l:{ro:"clienți (5)",en:"client hours (5)"}},{v:"5 ani",l:{ro:"valabilitate",en:"validity"}}],
+  prereq:{ro:"Formare la nivel EQA Foundation (sau echivalent prin aplicare directă) + membru al unui organism profesional.",en:"EQA Foundation training (or equivalent via direct application) + professional body membership."},
+  eval:[{ro:"Portofoliu de dovezi mapat pe Cadrul de Competențe EMCC, verificat de un verificator acreditat; posibil dialog profesional.",en:"Evidence portfolio mapped to the EMCC Competency Framework, reviewed by an accredited verifier; possible professional dialogue."},
+        {ro:"5 feedback-uri clienți (ultimele 12 luni), 5 reflecții de practică, jurnal de supervizare (1 h/trimestru).",en:"5 client feedbacks (last 12 months), 5 practice reflections, supervision log (1 hr/quarter)."}],
+  docs:[{ro:"Dovada formării EQA, jurnal ore clienți, CPD 16 h/an, dovezi supervizare, reflecții.",en:"EQA training proof, client log, CPD 16 hrs/yr, supervision evidence, reflections."}],
+  fees:{ro:"Orientativ ~120 € (prin diferite țări/rute; plus cotizația de membru). Ruta prin furnizorul EQA e adesea inclusă în taxa cursului.",en:"Indicative ~€120 (varies by country/route; plus membership). Via an EQA provider it's often bundled into the course fee."},
+  time:{ro:"Minim 1 an de practică de la primul client.",en:"At least 1 year in practice from the first client."},
+  renew:{ro:"La 5 ani: minim 50 ore practică, 50 h CPD, supervizare continuă.",en:"Every 5 years: min. 50 practice hours, 50 CPD hrs, ongoing supervision."},
+  tips:{ro:"Ruta EQA (prin școală) e mult mai simplă decât aplicarea individuală.",en:"The EQA (school) route is much simpler than individual application."},
+  src:[["EMCC EIA","https://emccglobal.org/home/accreditation/eia/"]]},
+ {id:'emcc_p',org:'emcc',grp:'coach',badge:'EIA P',
+  name:{ro:"EMCC EIA Practitioner",en:"EMCC EIA Practitioner"},
+  short:{ro:"Coach care practică autonom, cu bază de clienți în dezvoltare — nivelul „working”.",en:"Autonomous coach with a developing client base — the working level."},
+  stats:[{v:"3 ani",l:{ro:"experiență",en:"experience"}},{v:"100 h",l:{ro:"clienți (10)",en:"client hours (10)"}},{v:"5 ani",l:{ro:"valabilitate",en:"validity"}}],
+  prereq:{ro:"Formare EQA Practitioner (sau echivalent); membru profesional.",en:"EQA Practitioner training (or equivalent); professional membership."},
+  eval:[{ro:"Portofoliu + ARF (Assessment Report Form) completat într-un „learning dialogue” cu coach-mentor supervizorul, contrasemnat intern; sau aplicare directă cu verificator.",en:"Portfolio + ARF completed in a learning dialogue with the coach-mentor supervisor; or direct application with a verifier."},
+        {ro:"Supervizare 1 h/trimestru, CPD 16 h/an, 5 feedback-uri, 5 reflecții.",en:"Supervision 1 hr/quarter, CPD 16 hrs/yr, 5 feedbacks, 5 reflections."}],
+  docs:[{ro:"Jurnal 100 ore / 10 clienți, dovezi CPD și supervizare, studii de caz mapate pe competențe.",en:"Log of 100 hours / 10 clients, CPD & supervision evidence, competency-mapped case studies."}],
+  fees:{ro:"Orientativ ~205 € (+ membru); adesea inclus la programele EQA.",en:"Indicative ~€205 (+ membership); often bundled with EQA programs."},
+  time:{ro:"Minim 3 ani de practică.",en:"At least 3 years in practice."},
+  renew:{ro:"La 5 ani: minim 100 ore practică + 100 h CPD + supervizare.",en:"Every 5 years: min. 100 practice hours + 100 CPD + supervision."},
+  tips:{ro:"Echivalent ca greutate cu PCC-ul ICF în percepția angajatorilor europeni.",en:"Roughly PCC-equivalent in European employers' perception."},
+  src:[["EMCC EIA","https://emccglobal.org/home/accreditation/eia/"]]},
+ {id:'emcc_sp',org:'emcc',grp:'coach',badge:'EIA SP',
+  name:{ro:"EMCC EIA Senior Practitioner",en:"EMCC EIA Senior Practitioner"},
+  short:{ro:"Coach experimentat, autonom, cu contexte variate și practică supervizată consistent.",en:"Experienced, autonomous coach across varied contexts with consistent supervised practice."},
+  stats:[{v:"5 ani",l:{ro:"experiență",en:"experience"}},{v:"250 h",l:{ro:"clienți (20)",en:"client hours (20)"}},{v:"32 h/an",l:{ro:"CPD",en:"CPD/year"}}],
+  prereq:{ro:"Formare EQA de nivel superior (sau echivalent); membru profesional.",en:"Senior-level EQA training (or equivalent); professional membership."},
+  eval:[{ro:"Portofoliu amplu cu studii de caz pe contexte variate, posibil dialog profesional.",en:"Extensive portfolio with multi-context case studies, possible professional dialogue."},
+        {ro:"Supervizare: minim 1 oră la 35 ore practică, cel puțin trimestrial; CPD 32 h/an.",en:"Supervision: at least 1 hr per 35 practice hours, at least quarterly; CPD 32 hrs/yr."}],
+  docs:[{ro:"Jurnal 250 ore / 20 clienți, dovezi pe 5 ani, reflecții, feedback, CPD, supervizare 1-la-1.",en:"Log of 250 hrs / 20 clients, 5-year evidence, reflections, feedback, CPD, one-to-one supervision."}],
+  fees:{ro:"Orientativ ~245 € (+ membru).",en:"Indicative ~€245 (+ membership)."},
+  time:{ro:"Minim 5 ani de practică.",en:"At least 5 years in practice."},
+  renew:{ro:"La 5 ani: 100 ore practică, 100 h CPD, supervizare conform raportului 1:35.",en:"Every 5 years: 100 practice hours, 100 CPD, supervision at 1:35 ratio."},
+  tips:{ro:"Este și poarta către ESIA (supervizor).",en:"It is also the gateway to ESIA (supervisor)."},
+  src:[["EMCC EIA","https://emccglobal.org/home/accreditation/eia/"]]},
+ {id:'emcc_mp',org:'emcc',grp:'coach',badge:'EIA MP',
+  name:{ro:"EMCC EIA Master Practitioner",en:"EMCC EIA Master Practitioner"},
+  short:{ro:"Nivelul maxim: practică extinsă și contribuție demonstrată la dezvoltarea profesiei.",en:"Top level: extensive practice plus demonstrated contribution to developing the profession."},
+  stats:[{v:"7 ani",l:{ro:"experiență",en:"experience"}},{v:"500 h",l:{ro:"clienți (40)",en:"client hours (40)"}},{v:"48 h/an",l:{ro:"CPD",en:"CPD/year"}}],
+  prereq:{ro:"Membru profesional + contribuție la profesie (predare, publicare, cercetare, roluri în organisme).",en:"Professional membership + contribution to the profession (teaching, publishing, research, board roles)."},
+  eval:[{ro:"Aplicarea este centrată pe un dialog profesional riguros cu assessorii EMCC, pe lângă portofoliu.",en:"The application centers on a rigorous professional dialogue with EMCC assessors, alongside the portfolio."},
+        {ro:"Supervizare 1:35, CPD 48 h/an.",en:"1:35 supervision, 48 CPD hrs/yr."}],
+  docs:[{ro:"Jurnal 500 ore / 40 clienți, dovezi de contribuție la profesie, tot setul de reflecții/feedback/supervizare.",en:"Log of 500 hrs / 40 clients, contribution evidence, full reflection/feedback/supervision set."}],
+  fees:{ro:"Orientativ ~450 € (+ membru).",en:"Indicative ~€450 (+ membership)."},
+  time:{ro:"Minim 7 ani de practică.",en:"At least 7 years in practice."},
+  renew:{ro:"La 5 ani, același regim Senior, cu contribuție continuă.",en:"Every 5 years, same Senior regime with ongoing contribution."},
+  tips:{ro:"Echivalentul de profil al MCC, cu praguri de ore mai mici dar accent mai mare pe reflecție/supervizare.",en:"Profile-equivalent to MCC, with lower hour thresholds but heavier reflection/supervision emphasis."},
+  src:[["EMCC EIA","https://emccglobal.org/home/accreditation/eia/"]]},
+ {id:'emcc_esia',org:'emcc',grp:'mentor',badge:'ESIA',
+  name:{ro:"ESIA — European Supervision Individual Accreditation",en:"ESIA — European Supervision Individual Accreditation"},
+  short:{ro:"Acreditarea individuală de supervizor în coaching/mentoring.",en:"The individual accreditation for coaching/mentoring supervisors."},
+  stats:[{v:"EIA SP+",l:{ro:"condiție",en:"prerequisite"}},{v:"120 h",l:{ro:"supervizare (10 pers.)",en:"supervision (10 people)"}},{v:"ESQA",l:{ro:"formare",en:"training"}},],
+  prereq:{ro:"EIA Senior Practitioner sau Master Practitioner (sau echivalent RPL).",en:"EIA Senior or Master Practitioner (or RPL equivalent)."},
+  eval:[{ro:"Program de supervizare acreditat ESQA (sau echivalent) + dosar cu 120 ore practică de supervizare.",en:"ESQA-accredited supervision training (or equivalent) + file showing 120 supervision hours."},
+        {ro:"Angajament pentru supervizarea propriei supervizări și patru jurnale: clienți, CPD, reflecție, supervizare.",en:"Commitment to supervision of supervision and four logs: clients, CPD, reflection, supervision."}],
+  docs:[{ro:"Jurnalul celor 120 ore cu minim 10 supervisați, dovada ESQA, CPD, etică și diversitate.",en:"Log of 120 hours with min. 10 supervisees, ESQA proof, CPD, ethics & diversity statements."}],
+  fees:{ro:"Conform ghidului EMCC Global (taxă de aplicare + membru).",en:"Per EMCC Global guide (application fee + membership)."},
+  time:{ro:"Luni–ani, în funcție de acumularea orelor de supervizare.",en:"Months–years depending on supervision-hour accumulation."},
+  renew:{ro:"Pe ciclul EMCC, cu practică și CPD continue.",en:"On the EMCC cycle with ongoing practice and CPD."},
+  tips:{ro:"EMCC recomandă minim 4 h/an supervizare individuală pentru practicanții experimentați.",en:"EMCC recommends at least 4 individual supervision hrs/yr for experienced practitioners."},
+  src:[["EMCC supervision guidelines","https://www.emccglobal.org/leadership-development/supervision/guidelines/"]]},
+ {id:'emcc_itca',org:'emcc',grp:'team',badge:'ITCA',
+  name:{ro:"ITCA — Individual Team Coaching Accreditation",en:"ITCA — Individual Team Coaching Accreditation"},
+  short:{ro:"Acreditarea individuală EMCC pentru team coaching (4 niveluri), după un program TCQA.",en:"EMCC's individual team coaching accreditation (4 levels) after a TCQA program."},
+  stats:[{v:"4",l:{ro:"niveluri F→MP",en:"F→MP levels"}},{v:"~120 h",l:{ro:"la Senior (cu echipe)",en:"at Senior (teams)"}},{v:"TCQA",l:{ro:"program necesar",en:"required program"}}],
+  prereq:{ro:"Absolvirea unui program acreditat TCQA (sau echivalent prin RPL); acces propriu la echipe.",en:"Graduating a TCQA-accredited program (or RPL equivalent); own access to teams."},
+  eval:[{ro:"Portofoliu cu angajamente de echipă, studii de caz longitudinale, supervizare specifică (la Senior ~1 h la 30 h team coaching).",en:"Portfolio with team engagements, longitudinal case studies, dedicated supervision (Senior ~1 hr per 30 team hrs)."},
+        {ro:"La Senior: ~120 ore cu minim 3 echipe, contexte multiculturale/sistemice.",en:"At Senior: ~120 hrs with min. 3 teams, multicultural/systemic contexts."}],
+  docs:[{ro:"Jurnal de practică cu echipe, dovezi TCQA, supervizare, CPD.",en:"Team practice log, TCQA proof, supervision, CPD."}],
+  fees:{ro:"Conform EMCC Global / furnizorului TCQA.",en:"Per EMCC Global / the TCQA provider."},
+  time:{ro:"De la câteva luni (Foundation/Practitioner) la câțiva ani (Senior+).",en:"From months (Foundation/Practitioner) to years (Senior+)."},
+  renew:{ro:"Pe ciclul EMCC (5 ani) cu CPD și practică.",en:"On the 5-year EMCC cycle with CPD and practice."},
+  tips:{ro:"EMCC a fost primul organism cu standard de team coaching (2020) — puternic în Europa.",en:"EMCC had the first team coaching standard (2020) — strong in Europe."},
+  src:[["EMCC Romania — team coaching","https://www.emccromania.net/team-coaching"]]}
+];
+
+/* ====================== SCHOOLS ====================== */
+const gmap = q => "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const ESS = "https://apps.coachingfederation.org/eweb/DynamicPage.aspx?webcode=ESS";
+const SCHOOLS = [
+ {n:"Școala de Coaching Pleiade (Pleiade Education System)",sub:"una dintre cele mai vechi școli locale; grupe mici (~15)",city:"București / online",url:"https://scoalapleiade.ro/",icf:["L1","L2"],emcc:[],anc:false,ro:true,claim:false,
+  sig:{ro:"Facebook: 100% recomandări (11 recenzii) — verifică live mai jos",en:"Facebook: 100% recommendations (11 reviews) — verify live below"},q:"Școala de Coaching Pleiade București"},
+ {n:"Centrul de Excelență Leader Coach",sub:"dr. Maria E. Cușută; coaching transformațional; dosar ICF asistat",city:"București / online",url:"https://leadercoach.ro/",icf:["L1","L2"],emcc:[],anc:false,ro:true,claim:false,q:"Centrul de Excelență Leader Coach București"},
+ {n:"Coaching Partners",sub:"prima școală de coaching din România; programe și team coaching",city:"București",url:"https://www.coachingpartners.ro/",icf:["L2","AATC","CCE"],emcc:[],anc:false,ro:true,claim:false,
+  sig:{ro:"Facebook: 4,4k aprecieri; pagină încă fără rating mediu (4 recenzii)",en:"Facebook: 4.4k likes; no average rating yet (4 reviews)"},q:"Coaching Partners București coaching"},
+ {n:"One 2 Coach",sub:"Being Coach(ed) — fondație și avansare; și team coaching",city:"România / online",url:"https://www.one2coach.com/",icf:["L1","L2","AATC"],emcc:[],anc:false,ro:true,claim:false,q:"One 2 Coach coaching România"},
+ {n:"Mind Learners",sub:"coaching transformațional/dezvoltare verticală; atenție: pauză/sabbatical până la finalul 2025 — verifică reluarea grupelor",city:"București / online",url:"https://www.mindlearners.ro/",icf:["L2"],emcc:[],anc:false,ro:true,claim:false,q:"Mind Learners coaching București"},
+ {n:"CoachingDipity",sub:"programul BECOACH! (Level 2)",city:"România / online",url:"https://coachingdipity.ro/",icf:["L2"],emcc:[],anc:false,ro:true,claim:false,q:"CoachingDipity"},
+ {n:"GROW Yourself Space (WeGrow Academy)",sub:"programul From A to B to Coach",city:"România / online",url:"https://wegrow.academy/",icf:["L2"],emcc:[],anc:false,ro:true,claim:false,q:"WeGrow Academy coaching România"},
+ {n:"Ethys Scientific",sub:"leadership coaching bazat pe respect/profonde",city:"România / online",url:"https://ethys.ro/",icf:["L1"],emcc:[],anc:false,ro:true,claim:false,q:"Ethys Scientific coaching"},
+ {n:"Erickson Coaching România (prin C-Team Group)",sub:"franciza Erickson International: Art & Science of Coaching L1–L3",city:"România / online",url:"https://www.cteamgroup.ro/en/erickson-coaching/",icf:["L1","L2","L3"],emcc:[],anc:false,ro:true,claim:false,q:"Erickson Coaching România C-Team"},
+ {n:"Metasysteme Coaching (Alain Cardon)",sub:"coaching sistemic individual, de echipă și organizațional",city:"Internațional (livrări în RO/EN)",url:"https://www.metasysteme-coaching.eu/english/",icf:["L2","AATC"],emcc:[],anc:false,ro:true,claim:false,q:"Metasysteme Coaching"},
+ {n:"SolutionsAcademy (Kirsten Dierolf)",sub:"dublă acreditare ICF (L1–L3, AATC) + EMCC EQA/TCQA; programe în limba română; rută de integrare RPL",city:"Germania / online (RO)",url:"https://www.solutionsacademy.com/ro/home",icf:["L1","L2","L3","AATC"],emcc:["EQA","TCQA","ESQA"],anc:false,ro:true,claim:false,q:"SolutionsAcademy coaching"},
+ {n:"TPC Leadership",sub:"Coach Practitioner Programme; dublu ICF + EMCC EQA (rețea globală)",city:"Internațional (livrare RO)",url:"https://www.tpcleadership.com/",icf:["L1"],emcc:["EQA"],anc:false,ro:true,claim:false,q:"TPC Leadership coaching"},
+ {n:"CoachVille (Center for Coaching Mastery)",sub:"programe Level 1 și Level 2",city:"Internațional / online (RO)",url:"https://coachville.com/",icf:["L1","L2"],emcc:[],anc:false,ro:true,claim:false,q:"CoachVille coaching"},
+ {n:"Elite Coaching Center",sub:"Certified Professional Coach Program (CPCP)",city:"Internațional / online (RO)",url:"https://elitecoachingcenter.com/",icf:["L1"],emcc:[],anc:false,ro:true,claim:false,q:"Elite Coaching Center coach program"},
+ {n:"Radiant Coaches Academy",sub:"Holistic Coach Certification L1–L3",city:"Internațional / online (RO)",url:"https://www.radiantcoachesacademy.com/",icf:["L1","L2","L3"],emcc:[],anc:false,ro:true,claim:false,q:"Radiant Coaches Academy"},
+ {n:"SolutionSurfers",sub:"Brief Coaching — Pure/Plus/Pro (soluție focalizată)",city:"Elveția / online (RO)",url:"https://www.solutionsurfers.com/",icf:["L1","L2"],emcc:[],anc:false,ro:true,claim:false,q:"SolutionSurfers coaching"},
+ {n:"Academy of Executive Coaching (AoEC)",sub:"Practitioner Diploma in Executive Coaching",city:"Marea Britanie / online (RO)",url:"https://www.aoec.com/",icf:["L2"],emcc:["EQA"],anc:false,ro:true,claim:false,q:"Academy of Executive Coaching AoEC"},
+ {n:"Coach Masters Academy",sub:"Transformational Coaching Program",city:"Internațional / online (RO)",url:"https://www.coachmastersacademy.com/",icf:["L2"],emcc:[],anc:false,ro:true,claim:false,q:"Coach Masters Academy"},
+ {n:"Center for Executive Coaching (Keystone)",sub:"Certified Executive Coach",city:"SUA / online (RO)",url:"https://centerforexecutivecoaching.com/",icf:["L2"],emcc:[],anc:false,ro:true,claim:false,q:"Center for Executive Coaching"},
+ {n:"Coaching and Leadership International",sub:"Certified Power Coach®",city:"Internațional / online (RO)",url:"https://www.coachingandleadership.com/",icf:["L2"],emcc:[],anc:false,ro:true,claim:false,q:"Coaching and Leadership International Power Coach"},
+ {n:"Success Unlimited Network (SUN)",sub:"SUN Coach Training & Certification",city:"Internațional / online (RO)",url:"http://www.successunlimitednet.com/",icf:["L2"],emcc:[],anc:false,ro:true,claim:false,q:"Success Unlimited Network coaching"},
+ {n:"Mind Architect",sub:"NU este școală de coach: oferă module CCE (neuroștiințe, învățare, stres)",city:"București / online",url:"https://www.mindarchitect.ro/",icf:["CCE"],emcc:[],anc:false,ro:true,claim:false,q:"Mind Architect București"},
+ {n:"Ada Chindea Coaching",sub:"modul CCE „Clarifying the How of Credentialing” (sprijin dosar)",city:"România / online",url:"https://adachindea.ro/",icf:["CCE"],emcc:[],anc:false,ro:true,claim:false,q:"Ada Chindea coaching"},
+ {n:"Clutterbuck Coaching & Mentoring Intl.",sub:"mentorat/executiv/team — module CCE; David Clutterbuck",city:"Internațional (RO)",url:"https://clutterbuck-cmi.com/",icf:["CCE"],emcc:[],anc:false,ro:true,claim:false,q:"Clutterbuck Coaching Mentoring International"},
+ {n:"Bright Goals (Anca Al Kebsi)",sub:"conform site-ului propriu: ICF Level 1 (186 h, mentor MCS inclus, ~2.500 €) + ANC (MMSS) din 2024 — verifică în ESS și în autorizație",city:"România / online",url:"https://brightgoals.ro/curs-coaching/",icf:["L1"],emcc:[],anc:true,ro:true,claim:true,q:"Bright Goals coaching România"},
+ {n:"EXEC-EDU — divizia Coaching",sub:"brand nou (2026): anunță coaching executiv acreditat ICF și EMCC — verifică în ESS/directorul EMCC înainte de înscriere",city:"București / online",url:"https://exec-edu.ro/",icf:[],emcc:[],anc:false,ro:true,claim:true,q:"EXEC-EDU București coaching"},
+ {n:"Universitatea Româno-Americană",sub:"singura universitate din RO furnizor autorizat pentru COR 242412 (program de specializare)",city:"București",url:"https://www.rau.ro/program-de-formare-specializare-pentru-ocupatia-specialist-in-activitatea-de-coaching-2/",icf:[],emcc:[],anc:true,ro:true,claim:false,q:"Universitatea Româno-Americană coaching"},
+ {n:"Magic Coaching",sub:"curs ANC pentru COR 242412, organizat cu o universitate",city:"România / online",url:"https://magic-coaching.ro/curs-coaching-acreditat-anc/",icf:[],emcc:[],anc:true,ro:true,claim:false,q:"Magic Coaching România"},
+ {n:"Soft Skills Training (traininguri.ro)",sub:"curs autorizat ANC „Specialist în activitatea de coaching” (~180 h, licență) + inspre for performance",city:"București / online",url:"https://www.traininguri.ro/curs-coaching/",icf:[],emcc:[],anc:true,ro:true,claim:false,q:"traininguri.ro curs coaching"},
+ {n:"AMA Leadership Academy",sub:"AMAzing Coach Certification, ANC/APIS, standard 2024–2034, COR 242412",city:"România / online",url:"https://leadershipacademy.ro/amazing-life-coaching-certification/",icf:[],emcc:[],anc:true,ro:true,claim:false,q:"AMA Leadership Academy coaching"},
+ {n:"BestCor / Eurodeal / Centrul Athena",sub:"exemple de furnizori naționali de cursuri online autorizate ANC pentru 242412 (~1.200–1.500 RON) — verificați autorizația fiecăruia",city:"Național / online",url:"https://bestcor.ro/curs-specialist-in-activitatea-de-coaching/",icf:[],emcc:[],anc:true,ro:true,claim:false,q:"curs specialist în activitatea de coaching ANC"}
+];
+
+/* ====================== JOURNEY ====================== */
+const JOURNEY = [
+ {w:{ro:"Luna 0",en:"Month 0"},t:{ro:"Decizie + verificare",en:"Decision + verification"},
+  d:{ro:"Alege un program ICF Level 1 care livrează și în română și are, ideal, și autorizație ANC (242412). Verifică școala în ESS. Prețuri de referință: 2.500–3.500 €; doar ANC: 750–2.500 RON.",
+     en:"Pick an ICF Level 1 program delivered in Romanian, ideally also ANC-authorized (242412). Verify the school in ESS. Reference prices: €2,500–3,500; ANC-only: 750–2,500 RON."}},
+ {w:{ro:"Lunile 1–7",en:"Months 1–7"},t:{ro:"Formarea (peste 60 h)",en:"Training (60+ hrs)"},
+  d:{ro:"Module, practică în triade, cod etic, cele 8 competențe. Programul include (sau îi adaugi) cele 10 h de mentor coaching, care încep cât mai devreme — trebuie întinse pe minim 3 luni.",
+     en:"Modules, triad practice, ethics code, the 8 competencies. The program includes (or you add) the 10 mentor coaching hours, started early — they must span at least 3 months."}},
+ {w:{ro:"Lunile 2–10",en:"Months 2–10"},t:{ro:"Ore cu clienți reali",en:"Real client hours"},
+  d:{ro:"Începe cu tarif redus/pro bono, apoi plătit (schimbul de valoare contează ca plătit). Ținte: 100 ore, 75 plătite, 8 clienți, minim 25 ore în ultimele 18 luni. Deschide un jurnal de ore din prima zi.",
+     en:"Start low-fee/pro bono, then paid (exchange of value counts as paid). Targets: 100 hours, 75 paid, 8 clients, min. 25 hours in the last 18 months. Open an hour log on day one."}},
+ {w:{ro:"Luna ~8",en:"~Month 8"},t:{ro:"Examenul ACC",en:"ACC exam"},
+  d:{ro:"60 întrebări / 90 min prin Pearson VUE (acasă, supravegheat video, sau centru). Trecere 460/600. Dacă școala face evaluarea performanței în program, nu mai trimiți înregistrare.",
+     en:"60 questions / 90 min via Pearson VUE (home with online proctoring, or a center). Pass 460/600. If the school does the performance evaluation in-program, you don't submit a recording."}},
+ {w:{ro:"Luna ~10–12",en:"~Month 10–12"},t:{ro:"Depui dosarul → ACC",en:"Submit the file → ACC"},
+  d:{ro:"Taxă 175–325 $ pe ruta program (sau 475–625 $ pe portfolio). Review ~4 săptămâni. În paralel, dacă programul a inclus ANC, ai deja certificatul național COR 242412.",
+     en:"Fee $175–325 on program path (or $475–625 portfolio). Review ~4 weeks. In parallel, if the program included ANC, you already hold the national COR 242412 certificate."}},
+ {w:{ro:"Anul 1–3",en:"Years 1–3"},t:{ro:"Construiește practica spre PCC",en:"Build the practice toward PCC"},
+  d:{ro:"Aduni ore până la 500 (450 plătite, 25 clienți). Faci un top-up Level 2 (de la 60 la 125 ore), 10 ore noi de mentor PCC și două înregistrări pregătite pe markerii PCC. Mulți aleg și EMCC Practitioner/Senior pe aceeași practică.",
+     en:"Accumulate toward 500 hours (450 paid, 25 clients). Do a Level 2 top-up (60→125 hours), 10 new PCC mentor hours and two recordings prepared against PCC markers. Many also take EMCC Practitioner/Senior on the same practice."}},
+ {w:{ro:"Anul ~3–4",en:"~Year 3–4"},t:{ro:"Obții PCC",en:"Earn PCC"},
+  d:{ro:"Examenul situațional PCC (78 scenarii până în martie 2027, apoi noul format) + evaluarea celor două sesiuni. PCC este pragul cerut de majoritatea programelor de coaching din corporații.",
+     en:"The PCC situational exam (78 scenarios until March 2027, then the new format) + the two-session evaluation. PCC is the threshold most corporate coaching programs require."}},
+ {w:{ro:"Anul 5+",en:"Year 5+"},t:{ro:"Specializări și MCC",en:"Specialisations and MCC"},
+  d:{ro:"Team coaching (ACTC/ITCA), supervizare (ESIA), mentor coaching (MCS), iar după 2.500 ore și Level 3 (+75 h) poți aplica la MCC cu doi mentori/evaluări MCC. Reînnoirea la 3 ani devine rutină: 40 CCE.",
+     en:"Team coaching (ACTC/ITCA), supervision (ESIA), mentor coaching (MCS); after 2,500 hours and Level 3 (+75 hrs) you can apply for MCC with MCC mentors/assessments. The 3-year renewal becomes routine: 40 CCE."}}
+];
+
+/* ====================== COSTS ====================== */
+const COSTS = [
+ {a:{ro:"Curs ANC doar național (242412)",en:"National ANC-only course (242412)"},c:"750–2.500 RON",d:{ro:"2–6 luni",en:"2–6 months"},n:{ro:"180–360 h, examen comisie, certificat + supliment; exemple 1.200–1.450 RON online",en:"180–360 hrs, commission exam, certificate + supplement; e.g. 1,200–1,450 RON online"}},
+ {a:{ro:"Program ICF Level 1 (pregătire ACC)",en:"ICF Level 1 program (ACC prep)"},c:"~2.500–3.500 €",d:{ro:"4–8 luni",en:"4–8 months"},n:{ro:"școli din RO/Europa care livrează română; verifică dacă includ mentor coaching și evaluarea",en:"RO/European schools delivering in Romanian; check mentoring & evaluation inclusion"}},
+ {a:{ro:"Level 2 / top-up până la PCC",en:"Level 2 / top-up to PCC"},c:"~2.900–5.000 €",d:{ro:"6–12 luni",en:"6–12 months"},n:{ro:"unele programe pornesc de la diploma Level 1 și costă mai puțin ca top-up",en:"some programs start from a Level 1 diploma and cost less as a top-up"}},
+ {a:{ro:"Mentor coaching (dacă nu e inclus)",en:"Mentor coaching (if not included)"},c:"~1.000–1.500 € / pachet",d:{ro:"≥3 luni",en:"≥3 months"},n:{ro:"10 h (7 grup + 3 individuale); din 2027 cu MCS; individual ~100–200 €/h",en:"10 hrs (7 group + 3 one-to-one); MCS from 2027; individual ~€100–200/hr"}},
+ {a:{ro:"Taxe ICF — ACC",en:"ICF fees — ACC"},c:"175–625 $",d:{ro:"review 4–14 săpt.",en:"review 4–14 wks"},n:{ro:"cel mai mic = membru, rută program; cel mai mare = nemembru, portfolio",en:"lowest = member, program path; highest = non-member, portfolio"}},
+ {a:{ro:"Taxe ICF — PCC",en:"ICF fees — PCC"},c:"375–900 $",d:{ro:"review 4–18 săpt.",en:"review 4–18 wks"},n:{ro:"similar: membru/program vs nemembru/portfolio",en:"same: member/program vs non-member/portfolio"}},
+ {a:{ro:"Taxe ICF — MCC",en:"ICF fees — MCC"},c:"675 / 825 $",d:{ro:"review ~18 săpt.",en:"review ~18 wks"},n:{ro:"membru / nemembru",en:"member / non-member"}},
+ {a:{ro:"EMCC EIA (individual)",en:"EMCC EIA (individual)"},c:"~120 / 205 / 245 / 450 €",d:{ro:"F / P / SP / MP",en:"F / P / SP / MP"},n:{ro:"orientativ 2026, variază cu țara; adesea inclus prin ruta furnizorului EQA + cotizație ~90 €/an",en:"indicative 2026, varies by country; often bundled via EQA provider + ~€90/yr membership"}},
+ {a:{ro:"Formator COR 242401",en:"Trainer COR 242401"},c:"300–1.200 RON",d:{ro:"5–10 zile",en:"5–10 days"},n:{ro:"necesar dacă vrei să predai în programe autorizate",en:"needed to teach in authorised programs"}},
+ {a:{ro:"CCE pentru reînnoire (ciclu 3 ani)",en:"Renewal CCE (3-year cycle)"},c:"variabil (multe gratuite)",d:{ro:"3 ani",en:"3 years"},n:{ro:"40 CCE (minim 24 competențe, 3 etică); evenimentele ICF/EMCC România dau credite",en:"40 CCE (min. 24 core, 3 ethics); ICF/EMCC Romania events award credits"}}
+];
+
+/* ====================== GLOSSARY ====================== */
+const GLOSS = [
+ {t:{ro:"Acreditare vs Certificare",en:"Accreditation vs Certification"},d:{ro:"Acreditarea este pentru ȘCOALĂ/program (Level 1/2/3, EQA). Certificarea/credențiala este pentru PERSOANĂ (ACC/PCC/MCC, EIA).",en:"Accreditation is for the SCHOOL/program (Level 1/2/3, EQA). Certification/credential is for the PERSON (ACC/PCC/MCC, EIA)."}},
+ {t:"CCE (Continuing Coach Education)",d:{ro:"Ore de educație continuă aprobate de ICF; necesare la reînnoirea credențialelor (40 la 3 ani).",en:"ICF-approved continuing education hours; needed for credential renewal (40 every 3 years)."}},
+ {t:"CPD",d:{ro:"Continuing Professional Development — echivalentul EMCC al educației continue (16/32/48 h pe an după nivel).",en:"EMCC's continuing professional development (16/32/48 hrs per year by level)."}},
+ {t:"EQA",d:{ro:"European Quality Award — acreditarea EMCC pentru programele de formare (Foundation→Master).",en:"European Quality Award — EMCC accreditation for training programs (Foundation→Master)."}},
+ {t:"EIA",d:{ro:"European Individual Accreditation — certificarea individuală EMCC pentru coach/mentor.",en:"EMCC's individual accreditation for coaches/mentors."}},
+ {t:"ESQA / ESIA",d:{ro:"ESQA = acreditarea programelor de formare în supervizare; ESIA = acreditarea individuală de supervizor.",en:"ESQA = supervision training program accreditation; ESIA = individual supervisor accreditation."}},
+ {t:"TCQA / ITCA",d:{ro:"Standardul EMCC pentru programe (TCQA), respectiv persoane (ITCA) în team coaching.",en:"EMCC standards for team coaching programs (TCQA) and individuals (ITCA)."}},
+ {t:"Level 1 / 2 / 3",d:{ro:"Noile denumiri ICF (din 2022) pentru programe: Level 1 → ACC (60–124 h), Level 2 → PCC (125–175 h), Level 3 → MCC (+75 h). Vechile nume: ACSTH/ACTP.",en:"ICF's program names since 2022: Level 1 → ACC (60–124 hrs), Level 2 → PCC (125–175 hrs), Level 3 → MCC (+75 hrs). Old names: ACSTH/ACTP."}},
+ {t:"Mentor coaching",d:{ro:"10 ore de feedback pe propria practică, după baremul ICF, întinse pe minim 3 luni (≥3 h 1-la-1). Nu e consultanță, nu e supervizare.",en:"10 hours of feedback on your own practice against ICF markers, over ≥3 months (≥3 one-to-one). Not consulting, not supervision."}},
+ {t:"MCS (fostul MCQ)",d:{ro:"Mentor Coach Specialization — specializarea ICF pentru mentorii candidaților; obligatorie pentru ore noi de la 1 ian 2027.",en:"Mentor Coach Specialization for candidate mentors; mandatory for new hours from Jan 1, 2027."}},
+ {t:"Supervizare",d:{ro:"Spațiu reflexiv pe practică, cazuri și cine ești ca practician. EMCC o cere (1 h/trimestru sau 1:35); ICF o cere explicit doar la ACTC (5 h).",en:"Reflective space on practice, cases and who you are as a practitioner. EMCC requires it (1 hr/quarter or 1:35); ICF explicitly only for ACTC (5 hrs)."}},
+ {t:"PCC Markers / BARS",d:{ro:"Baremele comportamentale după care sunt notate înregistrările candidaților (PCC Markers; BARS la ACC și MCC).",en:"Behavioral markers used to score candidate recordings (PCC Markers; BARS for ACC and MCC)."}},
+ {t:"Ruta Portfolio",d:{ro:"Aplicare fără program ICF: ore din educație non-acreditată/CCE + curricula demonstrată + înregistrări trimise de tine; taxe mai mari, review mai lung.",en:"Applying without an ICF program: non-accredited/CCE education + demonstrated curriculum + self-submitted recordings; higher fees, longer review."}},
+ {t:"RPL / Onboarding / Integrare",d:{ro:"Recunoașterea învățării anterioare: programe care îți echivalează ce ai făcut (inclusiv ANC) și îți dau certificatul de program acreditat.",en:"Recognition of prior learning: programs that credit what you've done (including ANC) and issue the accredited program certificate."}},
+ {t:"COR",d:{ro:"Clasificarea Ocupațiilor din România. Coach = 242412, Formator = 242401, Mentor (învățământ) = 235902.",en:"Romanian Occupation Classification. Coach = 242412, Trainer = 242401, Mentor (education) = 235902."}},
+ {t:"ANC / MMSS / ME / APIS",d:{ro:"Autoritatea Națională pentru Calificări (standardele), Ministerul Muncii și Solidarității Sociale + Ministerul Educației (certificatele), Agențiile pentru Plăți și Inspecție Socială (secretariatele comisiilor de autorizare).",en:"National Qualifications Authority (standards), Labour and Education ministries (certificates), Payment & Social Inspection Agencies (authorisation commission secretariats)."}},
+ {t:"ESS",d:{ro:"Education Search Service — directorul oficial ICF în care verifici dacă un program este chiar acreditat.",en:"ICF's official directory to verify whether a program is really accredited."}},
+ {t:"Pearson VUE / OnVUE",d:{ro:"Partenerul care administrează examenele ICF — în centru de testare sau online cu proctoring video.",en:"ICF's exam administrator — test center or online with video proctoring."}},
+ {t:"Exchange of value",d:{ro:"Orice contraprestație (bani, barter, abonament) califică ora drept „plătită” la ICF.",en:"Any consideration (money, barter, subscription) qualifies a session as 'paid' at ICF."}},
+ {t:"Global Code of Ethics",d:{ro:"Cod etic comun ICF + EMCC + Association for Coaching; 3 ore de etică sunt obligatorii la reînnoirea ICF.",en:"Shared ethics code of ICF + EMCC + Association for Coaching; 3 ethics hours are mandatory for ICF renewal."}}
+];
+
+/* ====================== FAQ ====================== */
+const FAQ = [
+ {q:{ro:"Este coaching-ul reglementat prin lege în România?",en:"Is coaching legally regulated in Romania?"},
+  a:{ro:"Nu există o profesie reglementată printr-o lege specială, ca la psihologi sau medici. Există însă ocupația „Specialist în activitatea de coaching” (COR 242412): un certificat de absolvire de la un furnizor autorizat îți dă dreptul legal de a profesa ca angajat/PFA și e util pentru clienți instituționali. ICF și EMCC rămân certificări profesionale voluntare, dar sunt standardul de prestigiu cerut de piață.",
+     en:"There is no specially regulated profession like psychologists or doctors. But the occupation 'Coaching Specialist' (COR 242412) exists: a completion certificate from an authorised provider gives the legal right to practise as employee/sole trader and matters for institutional clients. ICF and EMCC remain voluntary professional certifications, yet they are the prestigious market standard."}},
+ {q:{ro:"Pot să profesez doar cu certificatul ANC?",en:"Can I practise with only the ANC certificate?"},
+  a:{ro:"Da, legal, pe teritoriul României (angajare cu cod COR, PFA). În practică, companiile mari și programele de coaching intern/extern cer aproape mereu ICF (adesea PCC) sau EMCC. Combinația cea mai frecventă la coachii serioși din RO: ANC (la început, legal) + ICF/EMCC (pe parcurs, recunoaștere).",
+     en:"Yes, legally, on Romanian territory (employment under the COR code, sole trader). In practice, large companies and internal/external coaching panels almost always ask for ICF (often PCC) or EMCC. The typical combo for serious RO coaches: ANC first (legal) + ICF/EMCC over time (recognition)."}},
+ {q:{ro:"Pot să sar direct la PCC fără ACC?",en:"Can I go straight to PCC without ACC?"},
+  a:{ro:"Da. Dacă ai 125 de ore de formare (de regulă printr-un program Level 2) și 500 ore de practică, poți aplica direct la PCC. Majoritatea încep cu ACC pentru că se potrivește cu experiența timpurie și îți validează mai repede practica. La MCC în schimb nu se poate sări peste PCC.",
+     en:"Yes. With 125 training hours (usually via a Level 2 program) and 500 practice hours you can apply directly for PCC. Most start with ACC because it matches early experience and validates practice sooner. MCC, however, requires prior PCC."}},
+ {q:{ro:"Orele de la o școală neacreditată chiar nu contează deloc la ICF?",en:"Do hours from a non-accredited school really not count at ICF?"},
+  a:{ro:"Ba da, dar doar pe ruta Portfolio: trimiți programa și dovezile de ore, iar ICF verifică alinierea la competențe. Este mai lent (14–18 săptămâni), mai scump și incert — multe cursuri scurte nu acoperă integral standardul. De aceea regula de aur e să începi direct într-un program acreditat verificat în ESS.",
+     en:"They can, but only via the Portfolio path: you submit the syllabus and hour evidence, and ICF checks competency alignment. It's slower (14–18 weeks), more expensive and uncertain — many short courses don't fully cover the standard. Hence the golden rule: start directly in an ESS-verified accredited program."}},
+ {q:{ro:"Mentor coaching, mentoring, supervizare — care e diferența?",en:"Mentor coaching, mentoring, supervision — what's the difference?"},
+  a:{ro:"Mentor coaching (ICF, 10 h obligatorii): feedback structurat pe înregistrările tale, după baremele ICF, ca să treci nivelul. Mentoring: îndrumare de carieră/experiență, mai larg. Supervizare (puternică la EMCC): reflecție pe cazuri, etică și reacțiile tale ca practician — continuă, nu legată de examen. În română, „mentor” ca ocupație COR 235902 se referă doar la învățământ.",
+     en:"Mentor coaching (ICF, mandatory 10 hrs): structured feedback on your recordings against ICF markers to pass the level. Mentoring: broader career/experience guidance. Supervision (strong at EMCC): ongoing reflection on cases, ethics and your reactions as a practitioner — not exam-linked. The COR 235902 occupation 'mentor' refers only to education."}},
+ {q:{ro:"Ce se întâmplă dacă picu examenul sau evaluarea?",en:"What if I fail the exam or evaluation?"},
+  a:{ro:"Examenele ICF se pot re-susține (contra unei taxe reduse); evaluările de performanță la înregistrări pot fi reluate, de obicei cu feedback scris pe markeri — cele mai multe reușesc după o nouă rundă de mentor coaching. La ANC, comisia reprogramează proba. Cel mai bun predictor al succesului rămâne practica înregistrată și ascultată.",
+     en:"ICF exams can be retaken (for a reduced fee); recording evaluations can be retaken, usually with written marker feedback — most succeed after another round of mentor coaching. ANC commissions reschedule the exam. Recorded practice that gets listened to remains the best success predictor."}},
+ {q:{ro:"Cât durează în total de la zero la a trăi din coaching?",en:"How long from zero to making a living from coaching?"},
+  a:{ro:"Credențiala ACC: 8–14 luni. Un portofoliu care susține un venit consistent cere de regulă 2–4 ani. PCC-ul, care deschide bugetele corporate serioase, vine în jurul anului 3–4 dacă practici constant. Investiția până la ACC+ANC este de regulă 3.000–5.000 € (curs, mentorat, taxe, timp).",
+     en:"The ACC credential: 8–14 months. A portfolio supporting a solid income usually takes 2–4 years. PCC, which opens serious corporate budgets, arrives around year 3–4 with consistent practice. Investment to ACC+ANC is typically €3,000–5,000 (course, mentoring, fees, time)."}},
+ {q:{ro:"ICF sau EMCC — pe care să aleg?",en:"ICF or EMCC — which should I choose?"},
+  a:{ro:"ICF e dominant în America, Asia și în achizițiile multinaționalelor din RO; EMCC e dominant în Europa și sectorul public și pune mai mult accent pe supervizare. Programele cu dublă acreditare și practica comună îți permit să iei ambele acreditări din același efort — inclusiv în limba română.",
+     en:"ICF dominates in the Americas, Asia and multinational procurement in RO; EMCC dominates Europe and the public sector and stresses supervision more. Dual-accredited programs and shared practice let you earn both from the same effort — including in Romanian."}},
+ {q:{ro:"Cum verific că o școală este chiar acreditată?",en:"How do I verify a school is really accredited?"},
+  a:{ro:"ICF: caută programul exact (nu doar școala) în Education Search Service de pe coachingfederation.org și notează nivelul Level și data de valabilitate. EMCC: directorul EQA de pe emccglobal.org. ANC: cere numărul autorizației și verifică furnizorul la comisia de autorizare județeană / portalul ANC; „colaborăm cu ICF” sau „suntem în proces” nu înseamnă acreditat.",
+     en:"ICF: search the exact program (not just the school) in the Education Search Service on coachingfederation.org and note the Level and validity date. EMCC: the EQA directory on emccglobal.org. ANC: ask for the authorisation number and check the provider with the county commission / ANC portal; 'we collaborate with ICF' or 'in process' is not accreditation."}},
+ {q:{ro:"Am deja certificatul ANC. Ce comandă de pași are sens?",en:"I already have the ANC certificate. What order makes sense?"},
+  a:{ro:"1) Verifică programa ta: câte ore acoperă competențele ICF? 2) Fă o evaluare cu un coach PCC/MCC (adesea contra-cost mic) ca să știi unde ești. 3) Alege: integrare RPL/onboarding într-un program Level 1/2 (rapid, cu diplomă de program) sau ruta Portfolio (mai ieftină, mai lungă). 4) Deschide jurnalul de ore și începe devreme cele 3 luni de mentor coaching.",
+     en:"1) Check your syllabus: how many hours cover ICF competencies? 2) Get assessed by a PCC/MCC coach (often cheap) to see where you stand. 3) Choose: RPL onboarding into a Level 1/2 program (fast, with program certificate) or Portfolio (cheaper, longer). 4) Open your hour log and start the 3 months of mentor coaching early."}},
+ {q:{ro:"Ce se schimbă exact în 2026–2027?",en:"What exactly changes in 2026–2027?"},
+  a:{ro:"(1) 10 nov 2026: noul examen PCC/MCC — 80 itemi (44 scenarii + 36 cunoștințe), 150 min, pe competențele și etica din 2025; examenul vechi (78 scenarii, 180 min) mai poate fi dat până la 31 mar 2027. (2) 1 ian 2027: orele noi de mentor coaching trebuie făcute cu un mentor cu MCS. (3) 1 apr 2027: pentru ACC ruta portfolio, înregistrarea e înlocuită de mentor coaching extins. (4) În RO: autorizarea furnizorilor e coordonată de MMSS din 2023, pe 4 ani.",
+     en:"(1) Nov 10, 2026: new PCC/MCC exam — 80 items (44 scenarios + 36 knowledge), 150 min, on the 2025 competencies/ethics; the old exam (78 scenarios, 180 min) is available until Mar 31, 2027. (2) Jan 1, 2027: new mentor coaching hours require an MCS mentor. (3) Apr 1, 2027: ACC portfolio recording replaced by enhanced mentor coaching. (4) In RO: provider authorisation coordinated by the Labour Ministry since 2023, valid 4 years."}},
+ {q:{ro:"Am nevoie de o diplomă universitară pentru ICF/EMCC?",en:"Do I need a university degree for ICF/EMCC?"},
+  a:{ro:"Nu. Nici ICF, nici EMCC nu cer diplomă. În schimb, cursurile naționale ANC (242412 și 242401) cer studii superioare cu licență.",
+     en:"No. Neither ICF nor EMCC requires a degree. However the national ANC courses (242412 and 242401) require a bachelor's degree."}}
+];
+
+/* ====================== SOURCES ====================== */
+const SOURCES = [
+ {f:"ICF",c:"var(--icf)",n:{ro:"ICF Global — cum aplici pentru credențială (cerințe și taxe oficiale)",en:"ICF Global — apply for a credential (official requirements & fees)"},u:"https://coachingfederation.org/credentialing/apply-for-credential/"},
+ {f:"ICF",c:"var(--icf)",n:{ro:"ICF România — programe acreditate și parcursul profesional",en:"ICF Romania — accredited programs & professional journey"},u:"https://coachingfederation.ro/cum-devii-coach-profesionist/"},
+ {f:"ICF",c:"var(--icf)",n:{ro:"Directorul oficial ICF Education Search (verificare programe Level 1/2/3)",en:"ICF Education Search directory (verify Level 1/2/3 programs)"},u:ESS},
+ {f:"ICF",c:"var(--icf)",n:{ro:"Ghid ICF de reînnoire a credențialelor (CCE), ediția 2025",en:"ICF credential renewal guide (CCE), 2025 edition"},u:"https://coachingfederation.org/wp-content/uploads/2024/12/icf-cs-credential-renewal-candidate-guide.pdf"},
+ {f:"ICF",c:"var(--icf)",n:{ro:"Mentor coaching și noua MCS (regula din 1 ian 2027)",en:"Mentor coaching and the new MCS (Jan 1, 2027 rule)"},u:"https://coachingfederation.org/education-professional-development/find-professional-development/mentor-coaching/"},
+ {f:"EMCC",c:"var(--emcc)",n:{ro:"EMCC Global — acreditarea individuală EIA",en:"EMCC Global — EIA individual accreditation"},u:"https://emccglobal.org/home/accreditation/eia/"},
+ {f:"EMCC",c:"var(--emcc)",n:{ro:"EMCC — ghid de supervizare și criteriile ESIA",en:"EMCC — supervision guidelines & ESIA criteria"},u:"https://www.emccglobal.org/leadership-development/supervision/guidelines/"},
+ {f:"EMCC",c:"var(--emcc)",n:{ro:"EMCC România — team coaching, competențe, comunitate locală",en:"EMCC Romania — team coaching, competencies, local community"},u:"https://www.emccromania.net/"},
+ {f:"ANC",c:"var(--anc)",n:{ro:"Standardul ocupațional „Specialist în activitatea de coaching” (PDF oficial ANC)",en:"Official 'Coaching Specialist' occupational standard (ANC PDF)"},u:"http://intern.anc.edu.ro/virtualanc/crud/standarde/standarde_ocupationale_2014_prezent/brain/upload/Specialist%20in%20activitatea%20de%20coaching.pdf"},
+ {f:"ANC",c:"var(--anc)",n:{ro:"Ordinul 2228/3025/2023 — metodologia de autorizare a furnizorilor (MMSS)",en:"Order 2228/3025/2023 — provider authorisation methodology (Labour Ministry)"},u:"https://blog.ilegis.ro/9-actualitate/805-metodologia-de-autorizare-a-furnizorilor-de-formare-profesionala-a-adultilor-a-fost-modificata"},
+ {f:"ANC",c:"var(--anc)",n:{ro:"Clasificarea Ocupațiilor — Mentor 235902 (exemplu de nomenclator în vigoare)",en:"Occupation Classification — Mentor 235902 (live nomenclature example)"},u:"https://www.rubinian.com/cor/235902-mentor"},
+ {f:"RO",c:"var(--anc-amber)",n:{ro:"Exemplu: program universitar autorizat ANC (Universitatea Româno-Americană)",en:"Example: university ANC-authorized program (Romanian-American University)"},u:"https://www.rau.ro/seria-a-vii-a-program-de-formare-tip-specializare-pentru-ocupatia-specialist-in-activitatea-de-coaching/"}
+];
+/* ====================== STATE & HELPERS ====================== */
+let lang = localStorage.getItem('cp_lang') || 'ro';
+let currentPath = 'icf';
+let credFilter = 'all';
+let schoolFilter = 'all';
+const progress = JSON.parse(localStorage.getItem('cp_progress')||'{}');
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const L = v => (v==null?'':(typeof v==='string'?v:(v[lang]||v.ro||'')));
+const KV_TR = {
+ "60–124 ore":"60–124 hrs","125–175 ore":"125–175 hrs","+75 ore":"+75 hrs",
+ "Ore formare":"Training hrs","Practică ghidată":"Guided practice","inclusă":"included",
+ "10 h incluse în programele bune":"10 hrs included in good programs","Ore clienți":"Client hours",
+ "100 (minim 75 plătite)":"100 (75 paid min.)","Clienți diferiți":"Different clients","minim 8":"min. 8",
+ "10 h (≥3 h 1-la-1, grup max. 10)":"10 hrs (≥3 one-to-one, group max. 10)","Recență":"Recency",
+ "≥25 ore în ultimele 18 luni":"≥25 hrs in the last 18 months","Examen ACC":"ACC exam",
+ "60 întrebări · 90 min · notă de trecere 460/600":"60 questions · 90 min · passing score 460/600","Evaluare":"Assessment",
+ "1 sesiune observată (în program) sau 1 înregistrare + transcript (portfolio)":"1 observed session (in-program) or 1 recording + transcript (portfolio)",
+ "Taxă":"Fee","$175 membru / $325 nemembru · portfolio $475/$625":"$175 member / $325 non-member · portfolio $475/$625",
+ "500 (450 plătite, 25 clienți)":"500 (450 paid, 25 clients)","Formare":"Training",
+ "125 h total (program de completare Level 2)":"125 hrs total (Level 2 top-up)","10 h NOI la nivel PCC":"10 NEW hrs at PCC level",
+ "2 sesiuni înregistrate + transcrieri":"2 recorded sessions + transcripts","Condiție":"Prerequisite",
+ "să deții / să fi deținut PCC":"you hold or have held PCC","2.500 (2.250 plătite, 35 clienți)":"2,500 (2,250 paid, 35 clients)",
+ "200 h (Level 3 = +75 h)":"200 hrs (Level 3 = +75 hrs)","Mentor":"Mentor",
+ "10 h cu un MCC + 2 înregistrări, examen":"10 hrs with an MCC + 2 recordings, exam","CCE totale":"Total CCE",
+ "40 (minim 24 pe competențe, din care 3 de etică)":"40 (min. 24 core, incl. 3 ethics)",
+ "+ 10 h mentor coaching la fiecare reînnoire":"+ 10 mentor coaching hrs each renewal",
+ "mentoratul e recomandat, nu obligatoriu":"mentoring recommended, not required","Grație":"Grace period",
+ "2 luni după expirare":"2 months after expiry","EQA = acreditarea programului":"EQA = program accreditation",
+ "nivel Foundation / Practitioner / SP / MP":"Foundation / Practitioner / SP / MP level","Rulare rapidă":"Fast track",
+ "aplici EIA prin furnizor":"apply for EIA via the provider","Alternativă":"Alternative",
+ "aplicare directă cu portofoliu (RPL)":"direct application with portfolio (RPL)","Clienți":"Clients",
+ "16 h/an":"16 hrs/yr","Supervizare":"Supervision","1 h/trimestru (individuală)":"1 hr/quarter (one-to-one)",
+ "1 h/trimestru":"1 hr/quarter","32 h/an":"32 hrs/yr","1 h la 35 ore practică (minim trimestrial)":"1 hr per 35 practice hrs (at least quarterly)",
+ "48 h/an":"48 hrs/yr","Obligatoriu":"Mandatory","dialog profesional + contribuție la profesie":"professional dialogue + contribution to the profession",
+ "EIA SP + program ESQA + 120 h supervizare (10 supervisați)":"EIA SP + ESQA program + 120 supervision hrs (10 supervisees)",
+ "programe TCQA; niveluri Foundation→Master":"TCQA programs; Foundation→Master levels","Reînnoire EIA":"EIA renewal",
+ "la 5 ani: practică + CPD + supervizare":"every 5 yrs: practice + CPD + supervision","Studii":"Education",
+ "superioare cu diplomă de licență":"university degree (bachelor's)","Experiență":"Experience",
+ "minim 3 ani muncă/voluntariat (standard)":"min. 3 yrs work/volunteering (standard)","Acte":"Documents",
+ "CI, certificat naștere/căsătorie, diplomă":"ID, birth/marriage certificate, diploma","Autorizație":"Authorisation",
+ "eliberată de comisia județeană pe 4 ani":"issued by the county commission for 4 years","Verificare":"Verification",
+ "cere seria/numărul autorizației și ocupația 242412":"ask for authorisation series/number and occupation 242412",
+ "Formă":"Format","fizic sau online (ambele autorizabile)":"in-person or online (both authorisable)",
+ "Teorie + practică":"Theory + practice","prezență ridicată (ex. minim 90%)":"high attendance (e.g. min. 90%)","Practică":"Practice",
+ "minim 5 sesiuni cu persoane din afara grupului (la majoritatea programelor)":"min. 5 sessions with people outside the group (most programs)",
+ "Pregătire pedagogică":"Pedagogical qualification","formatori cu certificat de Formator (242401)":"trainers holding Trainer certificate (242401)",
+ "Proba teoretică":"Theory test","test grilă":"multiple-choice test","Proba practică":"Practical test",
+ "sesiune demonstrativă / proiect evaluat":"demo session / assessed project","Comisia":"Commission",
+ "președinte + specialist independent + secretar furnizor":"chair + independent specialist + provider secretary",
+ "Certificat de absolvire + supliment descriptiv (model Europass)":"Completion certificate + descriptive supplement (Europass)",
+ "Credite":"Credits","12 ECTS la multe programe":"12 ECTS on many programs","Recunoaștere":"Recognition",
+ "națională + UE (apostilă/supliment)":"national + EU (apostille/supplement)","Valabilitate":"Validity",
+ "nelimitată, fără reînnoire":"unlimited, no renewal","Rută":"Route",
+ "trebuie demonstrate pe competențele ICF/EMCC":"must be demonstrated against ICF/EMCC competencies","Recomandat":"Recommended",
+ "program de integrare/RPL la școală acreditată":"RPL integration program at an accredited school"
+};
+const kvt = s => lang==='en' ? (KV_TR[s]||s) : s;
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const orgMeta = k => ORGS.find(o=>o.k===k);
+
+const I18N = {
+ updated:{ro:"Actualizat la 14 septembrie 2026 · surse oficiale verificate",en:"Updated September 14, 2026 · verified official sources"},
+ heroTitle:{ro:"Harta ta clară spre certificarea de coaching",en:"Your clear map to coaching certification"},
+ heroLead:{ro:"Toate certificările, cerințele și evaluările ICF, EMCC și ANC România într-un singur loc: learning pathuri interactive, treceri între sisteme (ANC → ICF, ACC → PCC, PCC → MCC), școli acreditate și verificator de recenzii.",en:"Every ICF, EMCC and Romanian ANC certification, requirement and assessment in one place: interactive learning paths, bridges between systems (ANC → ICF, ACC → PCC, PCC → MCC), accredited schools and a review checker."},
+ ctaPath:{ro:"▶ Începe learning path-ul",en:"▶ Start the learning path"},
+ ctaTrans:{ro:"🔀 Am deja o certificare",en:"🔀 I already have a credential"},
+ qZero:{ro:"Sunt la început — nu am nicio certificare",en:"I'm starting out — no credential yet"},
+ qAnc:{ro:"Am certificare ANC (COR 242412) și vreau ICF/EMCC",en:"I have ANC (COR 242412) and want ICF/EMCC"},
+ qAcc:{ro:"Sunt ACC și vreau PCC",en:"I'm ACC and want PCC"},
+ qPcc:{ro:"Sunt PCC și vreau MCC / supervizare / mentorat",en:"I'm PCC and want MCC / supervision / mentoring"},
+ qSchools:{ro:"Caut o școală bună în România",en:"I'm looking for a good school in Romania"},
+ systemsK:{ro:"Cele 3 sisteme",en:"The 3 systems"},
+ systemsT:{ro:"Trei „lumi” ale certificării — nu le confunda",en:"Three certification 'worlds' — don't mix them up"},
+ systemsS:{ro:"ICF și EMCC sunt organisme profesionale internaționale (certificare voluntară, prestigiu). ANC/MMSS este sistemul național românesc (recunoaștere legală a ocupației). Mulți coachi serioși le combină.",en:"ICF and EMCC are international professional bodies (voluntary, prestige certification). ANC/MLSS is the Romanian national system (legal recognition of the occupation). Many serious coaches combine them."},
+ newsK:{ro:"Noutăți critice",en:"Critical updates"},
+ newsT:{ro:"Ce s-a schimbat în 2026 și ce se schimbă în 2027",en:"What changed in 2026 and what changes in 2027"},
+ pathsT:{ro:"Parcursuri pas cu pas",en:"Step-by-step learning paths"},
+ pathsS:{ro:"Click pe orice etapă pentru cerințe, tipul evaluării, costuri și recomandări. Bifează pașii parcurși — progresul se salvează pe acest dispozitiv.",en:"Click any step for requirements, assessment type, costs and recommendations. Tick completed steps — progress is saved on this device."},
+ transT:{ro:"Trecerea între certificări — exact ce îți lipsește",en:"Bridges between credentials — exactly what you're missing"},
+ transS:{ro:"Ai deja ceva formare? Aici vezi diferența exactă de ore, evaluări și documente între unde ești și unde vrei să ajungi.",en:"Already trained? Here is the exact gap in hours, assessments and documents between where you are and where you're going."},
+ credT:{ro:"Toate tipurile de certificări, pe rând",en:"Every certification type, one by one"},
+ credS:{ro:"Coach, mentor coach, supervizor, team coach, formator — fiecare cu cerințele, evaluarea și valabilitatea ei. Click pe o carte pentru detalii complete.",en:"Coach, mentor coach, supervisor, team coach, trainer — each with its own requirements, assessment and validity. Click a card for full details."},
+ schoolT:{ro:"Școli de coaching din România",en:"Coaching schools in Romania"},
+ schoolS:{ro:"Bazat pe lista oficială ICF România (programe prezente și în directorul global ICF Education Search), plus furnizori ANC și școli relevante. Stelele Google se verifică live, pentru fiecare școală în parte.",en:"Based on the official ICF Romania list (programs also present in the global ICF Education Search directory), plus ANC providers and relevant schools. Google stars are checked live, per school."},
+ searchSchool:{ro:"🔎 Caută o școală…",en:"🔎 Search a school…"},
+ journeyT:{ro:"Cum arată, concret, parcursul unui coach",en:"What a coach's journey actually looks like"},
+ journeyS:{ro:"Exemplu realist (persoană cu job full-time, care începe de la zero și țintește PCC). Datele sunt orientative — fiecare ritm e diferit.",en:"Realistic example (full-time job, starting from zero, aiming at PCC). Indicative — everyone's pace differs."},
+ costT:{ro:"Cât costă și cât durează, pe șleau",en:"Costs and timelines, plainly"},
+ costS:{ro:"Costuri orientative pentru România (septembrie 2026). Taxele oficiale ICF sunt în USD și se plătesc direct federației; restul variază mult în funcție de școală.",en:"Indicative costs for Romania (September 2026). Official ICF fees are in USD paid directly to the federation; everything else varies widely by school."},
+ faqT:{ro:"Întrebări frecvente și termeni esențiali",en:"FAQ and essential terminology"},
+ searchGloss:{ro:"🔎 Caută un termen…",en:"🔎 Search a term…"},
+ srcT:{ro:"Surse și cum verifici tu însuți orice afirmație",en:"Sources and how to verify any claim yourself"},
+ srcS:{ro:"Regula de aur: nu te baza pe logo-urile de pe site-uri. Verifică fiecare program în bazele de date oficiale de mai jos.",en:"Golden rule: don't rely on website logos. Verify every program in the official databases below."},
+ foot1:{ro:"instrument educațional independent, bilingv RO/EN.",en:"independent bilingual RO/EN educational tool."},
+ foot2:{ro:"Asamblat manual pe 14 septembrie 2026 din surse oficiale și publice. Nu este afiliat ICF, EMCC, ANC sau vreunei școli de coaching. Nu înlocuiește consultarea surselor oficiale; regulile se pot schimba oricând.",en:"Hand-assembled on September 14, 2026 from official and public sources. Not affiliated with ICF, EMCC, ANC or any coaching school. It doesn't replace checking official sources; rules may change anytime."}
+};
+
+function applyI18n(){
+ document.documentElement.lang = lang;
+ $('#langLabel').textContent = UI[lang].lang;
+ $$('[data-i18n]').forEach(e=>{ const k=e.getAttribute('data-i18n'); if(I18N[k]) e.textContent=L(I18N[k]); });
+ $$('[data-i18n-ph]').forEach(e=>{ const k=e.getAttribute('data-i18n-ph'); if(I18N[k]) e.placeholder=L(I18N[k]); });
+}
+
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+
+/* ====================== NAV ====================== */
+function renderNav(){
+ $('#navlinks').innerHTML = UI[lang].nav.map(([id,label])=>`<a href="#${id}">${label}</a>`).join('');
+}
+
+/* ====================== ORGS ====================== */
+function renderOrgs(){
+ $('#orgCards').innerHTML = ORGS.map(o=>`
+  <div class="org-card">
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="org-ic" style="background:${o.bg};color:${o.color}">${o.abbr}</div>
+      <div><h3 style="font-size:15.5px">${L(o.name)}</h3></div>
+    </div>
+    <p style="font-size:13px;color:var(--muted)">${L(o.desc)}</p>
+    <ul>${o.pts[lang].map(p=>`<li><b style="color:var(--ink)">${p[0]}:</b> ${p[1]}</li>`).join('')}</ul>
+    <a class="btn-mini" style="margin-top:auto" href="${o.url}" target="_blank" rel="noopener">${o.abbr} official ↗</a>
+  </div>`).join('');
+}
+
+/* ====================== NEWS ====================== */
+function renderNews(){
+ $('#newsGrid').innerHTML = NEWS.map(n=>`
+  <div class="news-card ${n.cls}">
+    <div class="n-date">${L(n.date)}</div>
+    <h4>${L(n.t)}</h4><p>${L(n.d)}</p>
+  </div>`).join('');
+}
+
+/* ====================== PATHS ====================== */
+function renderPathTabs(){
+ const meta={icf:['ICF','var(--icf)'],emcc:['EMCC','var(--emcc)'],ro:['ANC RO','var(--anc)']};
+ $('#pathTabs').innerHTML = Object.keys(PATHS).map(k=>`
+  <button class="tab ${k===currentPath?'active':''}" data-tab="${k}">
+    <span class="dot-t" style="background:${meta[k][1]}"></span>${meta[k][0]} · ${UI[lang].paths[k]}
+  </button>`).join('');
+ $$('#pathTabs .tab').forEach(b=>b.onclick=()=>{currentPath=b.dataset.tab;renderPathTabs();renderStepper();});
+}
+function renderStepper(){
+ const p = PATHS[currentPath];
+ const key = 'path_'+currentPath;
+ const done = progress[key]||[];
+ $('#stepper').innerHTML = p.steps.map((s,i)=>`
+  <li class="step ${done.includes(s.id)?'done':''}" data-step="${s.id}">
+    <div class="step-head">
+      <span class="step-num">${done.includes(s.id)?'✓':i+1}</span>
+      <span class="step-title"><b>${L(s.t)}</b><span>${L(s.s)}</span></span>
+      <label class="step-check" title="${lang==='ro'?'Marchează gata':'Mark done'}"><input type="checkbox" ${done.includes(s.id)?'checked':''}></label>
+      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <div class="kv">${s.kv.map(([k,v])=>`<div class="kv-item"><div class="k">${kvt(k)}</div><div class="v">${kvt(v)}</div></div>`).join('')}</div>
+      <ul>${s.b[lang].map(x=>`<li>${x}</li>`).join('')}</ul>
+      ${s.tip?`<div class="rec"><b>💡 ${lang==='ro'?'Recomandare':'Tip'}:</b> ${L(s.tip)}</div>`:''}
+      ${s.cred?`<button class="btn-mini" data-cred="${s.cred}">📋 ${UI[lang].learn} →</button>`:''}
+    </div>
+  </li>`).join('');
+ updateBar();
+ $$('#stepper .step-head').forEach(h=>{
+   h.onclick=(ev)=>{
+     if(ev.target.tagName==='INPUT') return;
+     h.parentElement.classList.toggle('open');
+   };
+ });
+ $$('#stepper input[type=checkbox]').forEach(c=>c.onchange=ev=>{
+   ev.stopPropagation();
+   const li=c.closest('.step'), id=li.dataset.step;
+   const d=progress[key]||[];
+   if(c.checked){ if(!d.includes(id))d.push(id);} else { const i=d.indexOf(id); if(i>-1)d.splice(i,1);}
+   progress[key]=d; localStorage.setItem('cp_progress',JSON.stringify(progress));
+   renderStepper();
+ });
+ $$('#stepper [data-cred]').forEach(b=>b.onclick=()=>openCred(b.dataset.cred));
+}
+function updateBar(){
+ const p=PATHS[currentPath], d=progress['path_'+currentPath]||[];
+ const pct=Math.round(d.length/p.steps.length*100);
+ $('#pbarFill').style.width=pct+'%';
+ $('#pbarLabel').textContent=`${d.length}/${p.steps.length} ${UI[lang].steps} · ${pct}%`;
+}
+
+/* ====================== TRANSITIONS ====================== */
+const TRANS_FLOW = {
+ 't-ancacc':{ro:['ANC 242412','ICF ACC'],en:['ANC 242412','ICF ACC'],c:['var(--anc-soft)|var(--anc)','var(--icf-soft)|var(--icf)']},
+ 't-accpcc':{ro:['ACC','PCC'],en:['ACC','PCC'],c:['var(--icf-soft)|var(--icf)','var(--icf-soft)|var(--icf)']},
+ 't-pccmcc':{ro:['PCC','MCC'],en:['PCC','MCC'],c:['var(--icf-soft)|var(--icf)','var(--icf-soft)|var(--icf)']},
+ 't-icfemcc':{ro:['ICF','EMCC ↔'],en:['ICF','EMCC ↔'],c:['var(--icf-soft)|var(--icf)','var(--emcc-soft)|var(--emcc)']},
+ 't-mentor':{ro:['Coach certificat','MCS — mentor coach'],en:['Certified coach','MCS — mentor coach'],c:['var(--icf-soft)|var(--icf)','var(--icf-soft)|var(--icf)']},
+ 't-super':{ro:['EIA Senior Practitioner','ESIA — supervizor'],en:['EIA Senior Practitioner','ESIA — supervisor'],c:['var(--emcc-soft)|var(--emcc)','var(--emcc-soft)|var(--emcc)']},
+ 't-team':{ro:['Coach individual','ACTC / ITCA'],en:['Individual coach','ACTC / ITCA'],c:['var(--icf-soft)|var(--icf)','var(--emcc-soft)|var(--emcc)']},
+ 't-trainer':{ro:['Expert în domeniu','Formator 242401'],en:['Domain expert','Trainer 242401'],c:['var(--anc-soft)|var(--anc)','var(--anc-soft)|var(--anc)']}
+};
+function renderTransitions(){
+ $('#transGrid').innerHTML = TRANS.map(tr=>{
+   const f=TRANS_FLOW[tr.id];
+   const chips=f[lang].map((t,i)=>{const [bg,col]=f.c[i].split('|');return `<span class="chip-node" style="background:${bg};color:${col}">${t}</span>`;}).join('<span class="arrow">→</span>');
+   return `<div class="trans-card" data-trans="${tr.id}">
+     <div class="trans-flow">${chips}</div>
+     <h3>${L(tr.t)}</h3><p>${L(tr.short)}</p>
+   </div>`;
+ }).join('');
+ $$('#transGrid .trans-card').forEach(c=>c.onclick=()=>openTrans(c.dataset.trans));
+}
+function openTrans(id){
+ const tr=TRANS.find(x=>x.id===id), o=orgMeta(tr.org);
+ const li=arr=>arr[lang].map(x=>`<li>${x}</li>`).join('');
+ modal(`
+  <span class="tag tag-${o.k}" style="align-self:center">${o.abbr}</span>
+  <div style="flex:1"><h3>${L(tr.t)}</h3><div class="cc-en" style="margin-top:2px">${L(tr.short)}</div></div>`,
+  `<h4 class="sblock">✅ ${lang==='ro'?'Ce ai deja':'What you already have'}</h4><ul>${li(tr.have)}</ul>
+   <h4 class="sblock">🎯 ${lang==='ro'?'Ce îți lipsește exact':'Exactly what you still need'}</h4><ul>${li(tr.need)}</ul>
+   <h4 class="sblock">🛣️ ${lang==='ro'?'Rute posibile':'Possible routes'}</h4><ul>${li(tr.routes)}</ul>
+   <div class="rec"><b>💡 ${lang==='ro'?'Recomandare':'Recommendation'}:</b> ${L(tr.tip)}</div>
+   <h4 class="sblock">🔗 ${UI[lang].sources}</h4>
+   <div class="src-links">${tr.src.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join('')}</div>`);
+}
+
+/* ====================== CREDENTIALS ====================== */
+function renderCredFilters(){
+ const f=UI[lang].filters;
+ const chips=[['all',f.all],['icf','ICF'],['emcc','EMCC'],['anc','ANC'],['coach',f.coach],['mentor',f.mentor],['team',f.team],['trainer',f.trainer]];
+ const prevVal=$('#credSearch')?.value||'';
+ $('#credFilters').innerHTML =
+  `<input class="search" id="credSearch" placeholder="${lang==='ro'?'🔎 ACC, PCC, EIA, COR…':'🔎 Search ACC, PCC, EIA, COR…'}">`+
+  chips.map(([k,v])=>`<button class="fchip ${k===credFilter?'active':''}" data-cf="${k}">${v}</button>`).join('');
+ $('#credSearch').value=prevVal;
+ $$('#credFilters [data-cf]').forEach(b=>b.onclick=()=>{credFilter=b.dataset.cf;renderCredFilters();renderCreds();});
+ $('#credSearch').oninput=renderCreds;
+}
+function credVisible(c,q){
+ if(credFilter==='icf'&&c.org!=='icf')return false;
+ if(credFilter==='emcc'&&c.org!=='emcc')return false;
+ if(credFilter==='anc'&&c.org!=='anc')return false;
+ if(['coach','mentor','team','trainer'].includes(credFilter)&&c.grp!==credFilter)return false;
+ if(q && !(L(c.name)+' '+c.badge+' '+L(c.short)).toLowerCase().includes(q.toLowerCase()))return false;
+ return true;
+}
+function renderCreds(){
+ const q=$('#credSearch')?.value.trim()||'';
+ $('#credGrid').innerHTML = CREDS.filter(c=>credVisible(c,q)).map(c=>{
+   const o=orgMeta(c.org);
+   return `<div class="cred-card" data-cred="${c.id}">
+     <div class="cc-top">
+       <div class="cc-ic" style="background:${o.bg};color:${o.color}">${c.badge}</div>
+       <div><h3>${L(c.name)}</h3></div>
+     </div>
+     <p>${L(c.short)}</p>
+     <div class="cred-meta">${c.stats.map(s=>`<span class="mini-stat">${s.v} · ${L(s.l)}</span>`).join('')}</div>
+   </div>`;
+ }).join('');
+ $$('#credGrid .cred-card').forEach(c=>c.onclick=()=>openCred(c.dataset.cred));
+}
+function openCred(id){
+ const c=CREDS.find(x=>x.id===id), o=orgMeta(c.org);
+ modal(`
+  <div class="cc-ic" style="background:${o.bg};color:${o.color};width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-weight:900;flex:none">${c.badge}</div>
+  <div style="flex:1"><h3>${L(c.name)}</h3><div style="margin-top:3px"><span class="tag tag-${o.k}">${o.abbr}</span></div></div>`,
+  `<p style="margin-bottom:12px">${L(c.short)}</p>
+   <h4 class="sblock">📊 ${UI[lang].reqs}</h4>
+   <div class="reqgrid">${c.stats.map(s=>`<div class="reqcell"><div class="big">${s.v}</div><div class="lbl">${L(s.l)}</div></div>`).join('')}</div>
+   <h4 class="sblock">🔑 ${UI[lang].prereq}</h4><p>${L(c.prereq)}</p>
+   <h4 class="sblock">🧐 ${UI[lang].eval}</h4><ul>${c.eval.map(e=>`<li>${L(e)}</li>`).join('')}</ul>
+   <h4 class="sblock">📂 ${UI[lang].docs}</h4><ul>${c.docs.map(e=>`<li>${L(e)}</li>`).join('')}</ul>
+   <div class="kv" style="grid-template-columns:1fr">
+     <div class="kv-item"><div class="k">💰 ${UI[lang].fees}</div><div class="v" style="font-weight:600;font-size:13px">${L(c.fees)}</div></div>
+     <div class="kv-item"><div class="k">⏱️ ${lang==='ro'?'Durată':'Duration'}</div><div class="v" style="font-weight:600;font-size:13px">${L(c.time)}</div></div>
+     <div class="kv-item"><div class="k">🔄 ${UI[lang].renew}</div><div class="v" style="font-weight:600;font-size:13px">${L(c.renew)}</div></div>
+   </div>
+   <div class="rec"><b>💡 ${lang==='ro'?'Recomandare':'Tip'}:</b> ${L(c.tips)}</div>
+   <h4 class="sblock">🔗 ${UI[lang].sources}</h4>
+   <div class="src-links">${c.src.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join('')}</div>`);
+}
+
+/* ====================== SCHOOLS ====================== */
+function renderSchoolFilters(){
+ const sf=UI[lang].sf;
+ const chips=[['all',sf.all],['icf',sf.icf],['emcc',sf.emcc],['anc',sf.anc],['ro',sf.ro],['claim',sf.claim]];
+ $('#schoolFilters').querySelectorAll('#sfChips').forEach(n=>n.remove());
+ const wrap=document.createElement('span');
+ wrap.id='sfChips';
+ wrap.style.display='contents';
+ wrap.innerHTML=chips.map(([k,v])=>`<button class="fchip ${k===schoolFilter?'active':''}" data-sf="${k}" style="white-space:nowrap">${v}</button>`).join('');
+ $('#schoolFilters').appendChild(wrap);
+ $$('#schoolFilters [data-sf]').forEach(b=>b.onclick=()=>{schoolFilter=b.dataset.sf;renderSchoolFilters();renderSchools();});
+ $('#schoolSearch').oninput=renderSchools;
+}
+function schoolVisible(s,q){
+ if(schoolFilter==='icf'&&!s.icf.length)return false;
+ if(schoolFilter==='emcc'&&!s.emcc.length)return false;
+ if(schoolFilter==='anc'&&!s.anc)return false;
+ if(schoolFilter==='ro'&&!s.ro)return false;
+ if(schoolFilter==='claim'&&!s.claim)return false;
+ if(q && !(s.n+' '+s.sub+' '+s.city).toLowerCase().includes(q.toLowerCase()))return false;
+ return true;
+}
+function renderSchools(){
+ const cols=UI[lang].schoolCols;
+ $('#schoolHead').innerHTML=`<tr style="box-shadow:none">${cols.map(c=>`<th style="font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:6px 14px">${c}</th>`).join('')}</tr>`;
+ const q=$('#schoolSearch').value.trim();
+ const rows=SCHOOLS.filter(s=>schoolVisible(s,q));
+ $('#schoolRows').innerHTML=rows.map(s=>{
+   const icfBadges=s.icf.map(b=>`<span class="badge b-icf">ICF ${b}</span>`).join('');
+   const emccBadges=s.emcc.map(b=>`<span class="badge b-emcc">${b}</span>`).join('');
+   const ancBadge=s.anc?'<span class="badge b-anc">ANC 242412</span>':'<span class="badge b-non">ANC</span>';
+   const claim=s.claim?'<br><span class="tag tag-amber" style="margin-top:5px">⚠ '+(lang==='ro'?'conform site-ului propriu — verifică':'per own site — verify')+'</span>':'';
+   const langCell=`<span class="tag ${s.ro?'tag-ok':'tag-gray'}">${s.ro?'🇷🇴 RO':'🌐 EN'}</span><br><span style="font-size:11.5px;color:var(--muted)">${esc(s.city)}</span>`;
+   const sig=s.sig?`<div style="font-size:11.3px;color:var(--muted);margin:5px 0">${L(s.sig)}</div>`:'';
+   return `<tr class="school-row">
+     <td style="min-width:210px"><a href="${s.url}" target="_blank" rel="noopener" style="color:var(--ink)">${esc(s.n)}</a><span class="sub">${esc(s.sub)}</span>${claim}</td>
+     <td style="min-width:180px">${icfBadges}${emccBadges}${ancBadge}<div style="margin-top:5px"></div></td>
+     <td style="min-width:130px">${langCell}</td>
+     <td style="min-width:210px">${sig}
+       <div style="display:flex;gap:6px;flex-wrap:wrap">
+         <a class="star-btn" href="${gmap(s.q)}" target="_blank" rel="noopener">⭐ ${lang_ro()}</a>
+         <a class="btn-mini" style="margin-top:0" href="${s.url}" target="_blank" rel="noopener">www ↗</a>
+       </div></td>
+   </tr>`;
+ }).join('') || `<tr><td style="padding:20px;color:var(--muted)">${lang==='ro'?'Niciun rezultat — resetează filtrele.':'No results — reset filters.'}</td></tr>`;
+ $('#schoolsNote').innerHTML = (lang==='ro'
+  ?'Lista provine din secțiunea oficială „Cum devii coach profesionist” a ICF România (programe cu predare în limba română sau cu prezență locală), completată cu furnizori ANC. <b>Stelele Google se schimbă săptămânal</b> — butonul ⭐ deschide Google Maps cu ratingul și recenziile la zi. Verifică fiecare program ICF în <a href="'+ESS+'" target="_blank">directorul ESS</a>, iar statutul ANC în autorizația furnizorului.'
+  :'The list comes from ICF Romania\'s official "How to become a professional coach" section (programs taught in Romanian or with local presence), plus ANC providers. <b>Google stars change weekly</b> — the ⭐ button opens Google Maps with today\'s rating and reviews. Verify each ICF program in the <a href="'+ESS+'" target="_blank">ESS directory</a>, and ANC status in the provider\'s authorisation.');
+}
+function lang_ro(){ return lang==='ro'?'Google recenzii':'Google reviews'; }
+
+/* ====================== JOURNEY ====================== */
+function renderJourney(){
+ $('#journeyRows').innerHTML=JOURNEY.map(j=>`
+  <div class="jrow"><div class="jwhen">${L(j.w)}</div>
+   <div class="jwhat"><h4>${L(j.t)}</h4><p>${L(j.d)}</p></div></div>`).join('');
+}
+
+/* ====================== COSTS ====================== */
+function renderCosts(){
+ $('#costTable').innerHTML=
+  `<tr>${UI[lang].tableHead.map(h=>`<th>${h}</th>`).join('')}</tr>`+
+  COSTS.map(r=>`<tr><td><b>${L(r.a)}</b></td><td>${r.c}</td><td>${L(r.d)}</td><td style="color:var(--muted)">${L(r.n)}</td></tr>`).join('');
+ $('#costNote').innerHTML = lang==='ro'
+  ? '<b>Important:</b> prețurile școlilor sunt orientative (septembrie 2026) și se schimbă des; cere mereu oferta scrisă și clarifică dacă taxa include mentor coaching-ul, evaluarea și (unde există) certificatul ANC. Taxele ICF în USD nu includ cotizația de membru; membri ICF plătesc taxe de aplicare mai mici.'
+  : '<b>Important:</b> school prices are indicative (September 2026) and change often; always ask for a written quote clarifying whether the fee includes mentor coaching, evaluation and (where applicable) the ANC certificate. USD ICF fees exclude membership dues; ICF members pay lower application fees.';
+}
+
+/* ====================== FAQ + GLOSSARY ====================== */
+function renderFaq(){
+ $('#faqList').innerHTML = FAQ.map((f,i)=>`
+  <div class="faq-item">
+    <button class="faq-q"><span class="pls">+</span><span>${L(f.q)}</span></button>
+    <div class="faq-a">${L(f.a)}</div>
+  </div>`).join('');
+ $$('#faqList .faq-q').forEach(q=>q.onclick=()=>q.parentElement.classList.toggle('open'));
+}
+function renderGloss(){
+ const q=($('#glossSearch').value||'').toLowerCase();
+ $('#glossList').innerHTML = GLOSS.filter(g=>!q||(g.t+(typeof g.d==='string'?g.d:L(g.d))).toLowerCase().includes(q)).map(g=>
+  `<div class="gloss-item"><b>${typeof g.t==='string'?g.t:L(g.t)}</b><p>${L(g.d)}</p></div>`).join('');
+}
+
+/* ====================== SOURCES ====================== */
+function renderSources(){
+ $('#srcGrid').innerHTML=SOURCES.map(s=>`
+  <div class="src-card">
+    <div class="fav" style="background:${s.c}">${s.f}</div>
+    <div><a href="${s.u}" target="_blank" rel="noopener">${L(s.n)} ↗</a></div>
+  </div>`).join('');
+ $('#discText').innerHTML = lang==='ro'
+  ? '<b>Disclaimer:</b> aplicația este un instrument de orientare asamblat din informații publice la data de 14 septembrie 2026. Orele, taxele, examenele și perioadele de revizuire se modifică (vezi schimbările anunțate pentru nov 2026 / ian–apr 2027). Înainte de orice înscriere sau aplicare, verifică direct pe coachingfederation.org, emccglobal.org, coachingfederation.ro, emccromania.net și portalul autorităților române.'
+  : '<b>Disclaimer:</b> this is an orientation tool assembled from public information as of September 14, 2026. Hours, fees, exams and review times change (see the announced Nov 2026 / Jan–Apr 2027 changes). Before enrolling or applying, verify directly on coachingfederation.org, emccglobal.org, coachingfederation.ro, emccromania.net and the Romanian authorities\' portal.';
+}
+
+/* ====================== MODAL ====================== */
+function modal(head,body){
+ $('#modalBox').innerHTML=`
+  <div class="modal-head">${head}<button class="modal-close" id="mClose">✕</button></div>
+  <div class="modal-body">${body}</div>`;
+ $('#modalBg').classList.add('open');
+ $('#mClose').onclick=closeModal;
+ document.body.style.overflow='hidden';
+}
+function closeModal(){$('#modalBg').classList.remove('open');document.body.style.overflow='';}
+$('#modalBg').addEventListener('click',e=>{if(e.target.id==='modalBg')closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* ====================== QUICK START ====================== */
+$$('.qstart-item').forEach(b=>b.onclick=()=>{
+ const g=b.dataset.go;
+ if(g==='zero'){currentPath='icf';renderPathTabs();renderStepper();location.hash='#paths';}
+ if(g==='anc'){location.hash='#transitions';setTimeout(()=>openTrans('t-ancacc'),350);}
+ if(g==='acc'){location.hash='#transitions';setTimeout(()=>openTrans('t-accpcc'),350);}
+ if(g==='pcc'){location.hash='#transitions';setTimeout(()=>openTrans('t-pccmcc'),350);}
+ if(g==='schools'){location.hash='#schools';}
+});
+
+/* ====================== INIT ====================== */
+function renderAll(){
+ applyI18n(); renderNav(); renderOrgs(); renderNews();
+ renderPathTabs(); renderStepper(); renderTransitions();
+ renderCredFilters(); renderCreds(); renderSchoolFilters(); renderSchools();
+ renderJourney(); renderCosts(); renderFaq(); renderGloss(); renderSources();
+}
+$('#langBtn').onclick=()=>{lang=(lang==='ro'?'en':'ro');localStorage.setItem('cp_lang',lang);renderAll();toast(lang==='ro'?'Română activată':'English on');};
+$('#glossSearch').addEventListener('input',renderGloss);
+renderAll();
+
+</script>
+</body>
+</html>
