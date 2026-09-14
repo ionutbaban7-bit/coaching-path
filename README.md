@@ -148,6 +148,12 @@ Jobul nu modifică nimic de unul singur. Produce:
 Registrul complet al surselor, cu ce se verifică în fiecare și la ce interval:
 [`data/sources.json`](data/sources.json).
 
+### Audit complet (fără npm, fără dependențe)
+
+`python3 tools/audit.py` verifică dintr-o singură mișcare: structura HTML a tuturor paginilor,
+legăturile și resursele lipsă, ID-urile duplicate, paritatea traducerilor RO/EN, benziile de
+verificare, scripturile incluse, sintaxa JS și fișierele de deploy.
+
 ## Note
 
 > Instrument educativ independent, neafiliat ICF / EMCC / ANC sau vreunei școli de coaching.
