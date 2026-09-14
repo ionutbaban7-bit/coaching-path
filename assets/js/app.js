@@ -487,17 +487,14 @@ function goTo(sel){
  const el=document.querySelector(sel);
  if(!el) return;
  try{ history.replaceState(null,'',sel); }catch(e){}
- el.scrollIntoView({behavior:'smooth',block:'start'});
+ el.scrollIntoView({behavior:(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'start'});
 }
 $$('.qstart-item').forEach(b=>b.onclick=()=>{
  const g=b.dataset.go;
  if(g==='zero'){
-   currentPath='icf';renderPathTabs();renderStepper();
-   goTo('#harta');
-   setTimeout(()=>{
-     const first=document.querySelector('.rm-node');
-     if(first){ window.Roadmap && window.Roadmap.open ? window.Roadmap.open(first.dataset.id) : first.click(); }
-   },420);
+   /* Cine nu știe nimic despre coaching nu are ce căuta într-o hartă de
+      certificări: îl trimitem pe traseul ghidat, pas cu pas. */
+   location.href='incepe.html';
    return;
  }
  if(g==='anc'){ goTo('#transitions'); setTimeout(()=>openTrans('t-ancacc'),450); return; }

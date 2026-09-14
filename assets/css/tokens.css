@@ -45,6 +45,10 @@
   /* ---------- Stări ---------- */
   --ok:#12855c;
   --ok-soft:#e3f6ee;
+  /* variante pentru TEXT mic pe fundal pastel — trec pragul AA de 4.5:1 */
+  --amber-ink:#8a5207; --teal-ink:#0b6f65; --ok-ink:#0d6b4a;
+  --icf-ink:#b02a5b; --emcc-ink:#0b6f65; --anc-ink:#2847a8;
+  --warn-ink:#8a5207; --violet-ink:#6a3fc0;
   --warn:#c2760c;
   --warn-soft:#fdf3e0;
   --danger:#c62a3f;
@@ -136,6 +140,9 @@
   --anc-amber:#f0b64f;
 
   --ok:#4bd6a4; --ok-soft:#0d2a20;
+  --amber-ink:#f0b64f; --teal-ink:#3ecfb9; --ok-ink:#4bd6a4;
+  --icf-ink:#ff5d8f; --emcc-ink:#3ecfb9; --anc-ink:#6b9bff;
+  --warn-ink:#f0b64f; --violet-ink:#b295f5;
   --warn:#f0b64f; --warn-soft:#2e2312;
   --danger:#ff7a8a; --danger-soft:#33151a;
 
@@ -273,8 +280,15 @@ section:nth-of-type(even of .band){background:var(--surface)}
 /* ============================================================
    MIȘCARE — reveal la scroll (JS adaugă .in)
    ============================================================ */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity var(--dur-4) var(--ease-out),transform var(--dur-4) var(--ease-out)}
-.reveal.in{opacity:1;transform:none}
+/* Ascundem doar dacă JavaScriptul chiar rulează: clasa `js` e pusă de scriptul
+   inline din <head>, înainte de primul paint. Fără JS (sau cu JS blocat) conținutul
+   rămâne vizibil — nu ascundem niciodată text de citit. */
+.reveal{transition:opacity var(--dur-4) var(--ease-out),transform var(--dur-4) var(--ease-out)}
+html.js .reveal{opacity:0;transform:translateY(16px)}
+html.js .reveal.in{opacity:1;transform:none}
+@media (scripting: none){
+  .reveal{opacity:1;transform:none}
+}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}

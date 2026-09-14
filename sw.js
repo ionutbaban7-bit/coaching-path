@@ -12,13 +12,14 @@
    ============================================================ */
 'use strict';
 
-var CACHE_VERSION = 'clp-v1.3.0';
+var CACHE_VERSION = 'clp-v1.4.0';
 var HTML_CACHE = CACHE_VERSION + '-html';
 var ASSET_CACHE = CACHE_VERSION + '-assets';
 
 var CORE = [
   './',
   'index.html',
+  'incepe.html',
   'teorie.html',
   'individual.html',
   'echipa.html',
@@ -34,6 +35,7 @@ var CORE = [
   'assets/js/map.js',
   'assets/js/plan.js',
   'assets/js/app.js',
+  'assets/js/start.js',
   'assets/fonts/inter-latin-wght-normal.woff2',
   'assets/fonts/inter-latin-ext-wght-normal.woff2',
   'assets/img/favicon.svg',

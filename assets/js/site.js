@@ -12,6 +12,7 @@
 
   /* ---------- PAGINI (linkuri externe în nav) ---------- */
   var PAGES = [
+    { id:'start',   href:'incepe.html',   label:{ ro:'Începe aici', en:'Start here' } },
     { id:'theory', href:'teorie.html',    label:{ ro:'Teorie',            en:'Theory' } },
     { id:'individual', href:'individual.html', label:{ ro:'Coaching 1:1', en:'1:1 Coaching' } },
     { id:'team',    href:'echipa.html',   label:{ ro:'Coaching de echipă', en:'Team Coaching' } }

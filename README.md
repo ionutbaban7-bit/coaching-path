@@ -11,6 +11,7 @@ coachingul de la zero și hărțuiește certificările relevante în România:
 
 | Pagina | Ce găsești |
 |--------|------------|
+| `incepe.html` | **Traseu ghidat, gamificat** pentru cine nu a auzit niciodată de coaching: calibrare în 3 întrebări → 10 pași cu verificare la fiecare (ce este coachingul, unde se aplică, cum arată o sesiune, competențe și etică, ICF/EMCC/ANC, procesul ICF pas cu pas, mentor coaching și supervizare, cum alegi școala, cum devii trainer/mentor/supervizor, bibliotecă de cărți + studii + coachi de renume) → XP, insigne, plan personal pe 12 luni, salvat local |
 | `index.html` | **Harta interactivă** în 8 opriri pentru cine pornește de la zero, cele 3 sisteme, learning pathuri cu progres salvat, treceri între certificări, bibliotecă de credențiale, director de școli (31 de intrări), exemplu de parcurs, costuri, FAQ + glosar, surse oficiale |
 | `teorie.html` | Ce este coachingul, ce NU este (matrice de comparație), istoric pe timeline, unde se folosește, anatomia unei sesiuni, 6 modele de lucru, cele 8 competențe ICF, etică și limite, mituri, ce spune cercetarea |
 | `individual.html` | Plan complex de coaching 1:1 — arhitectura programului, etape, structura ședinței, bancă de întrebări, plan pe competențe, instrumente, jurnal de ore, rubrică de autoevaluare |
@@ -35,10 +36,19 @@ python3 -m http.server 8000   # → http://localhost:8000
 npm run check                 # sintaxă JS, referințe locale, paritate RO/EN, versiuni
 ```
 
+**Verificări de calitate (QA, opționale — au nevoie de `npm install` și de serverul pornit):**
+```bash
+npm start                     # pornește serverul pe http://localhost:3000
+npm run qa                    # încarcă toate paginile în jsdom: erori, randare, interacțiuni
+npm run qa:start              # 41 de verificări pentru traseul „Începe aici” (quiz, XP, plan)
+npm run qa:css                # clase/variabile CSS folosite dar nedefinite, id-uri lipsă
+npm run qa:contrast           # contrast text/fundal în ambele teme (prag AA 4.5:1)
+```
+
 ## Structura proiectului
 
 ```
-index.html · teorie.html · individual.html · echipa.html · legal.html
+index.html · incepe.html · teorie.html · individual.html · echipa.html · legal.html
 assets/
   css/fonts.css    → @font-face pentru Inter Variable, găzduit local (fără Google Fonts)
   css/tokens.css   → design tokens (culoare, spațiere, tipografie, dark mode)
@@ -48,6 +58,7 @@ assets/
   js/app.js        → logica aplicației
   js/site.js       → temă, limbă, nav, scroll-spy, animații la scroll
   js/map.js        → harta interactivă
+  js/start.js      → traseul ghidat „Începe aici” (pași, quiz, XP, insigne, plan pe 12 luni)
   js/plan.js       → banca de întrebări, instrumente de echipă, ateliere
   js/credibility.js→ banda „verificat la / surse / raportează o greșeală”
   fonts/           → Inter Variable (2 subseturi WOFF2 + licența OFL)
@@ -55,9 +66,9 @@ assets/
 data/sources.json  → registrul surselor oficiale (ce se verifică, la ce interval)
 manifest.webmanifest · robots.txt · sitemap.xml  → instalare, indexare, SEO
 sw.js              → service worker: site-ul merge și offline, a doua vizită e instant
-data/sources.json  → registrul surselor oficiale (ce se verifică, la ce interval)
 tools/update-info.mjs  → jobul de verificare a datelor (rulează manual sau lunar)
 tools/check-site.mjs   → verificare înainte de publicare (npm run check)
+qa-tools/              → verificări de calitate (npm run qa / qa:start / qa:css / qa:contrast)
 server.js          → server static, zero dependențe (pentru Render Web Service)
 package.json       → npm start / npm run update-info
 render.yaml        → Blueprint Render (Static Site implicit + Web Service Node comentat)
@@ -125,8 +136,8 @@ de securitate (CSP, `frame-ancestors`, `Permissions-Policy`). Blocul e pregătit
 
 ### Rute disponibile (cu server.js sau cu rewrite-urile din render.yaml)
 
-`/` · `/teorie` · `/individual` · `/echipa` · `/legal`
-plus variantele clasice: `/teorie.html`, `/individual.html`, `/echipa.html`, `/legal.html`.
+`/` · `/incepe` · `/teorie` · `/individual` · `/echipa` · `/legal`
+plus variantele clasice: `/incepe.html`, `/teorie.html`, `/individual.html`, `/echipa.html`, `/legal.html`.
 `404.html` se servește automat pe rutele inexistente.
 
 > Workflow-ul pentru **GitHub Pages** (`.github/workflows/pages.yml`) rulează verificarea

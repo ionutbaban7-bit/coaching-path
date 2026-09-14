@@ -7,7 +7,7 @@
      • local                  : `node server.js` → http://localhost:3000
    Node >= 18. Nu folosește nimic din npm: n-are ce să se strice.
 
-   v1.3.0 — ce s-a reparat aici:
+   v1.4.0 — ce s-a reparat aici:
      • compresie gzip/brotli (HTML-ul scădea de la ~70 KB la ~15 KB)
      • cache corect: active versionate (?v=) = imutabile, HTML mereu proaspăt
      • rute curate și cu slash final: /teorie/, /index, /legal
@@ -51,6 +51,7 @@ const MIME = {
 /* rute scurte → fișier */
 const CLEAN = {
   '/teorie': 'teorie.html',
+  '/incepe': 'incepe.html',
   '/individual': 'individual.html',
   '/echipa': 'echipa.html',
   '/legal': 'legal.html',

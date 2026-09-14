@@ -9,6 +9,58 @@ sau [direct pe GitHub](https://github.com/ionutbaban7-bit/coaching-path/issues/n
 
 ---
 
+## [1.4.0] — 2026-09-14
+
+### Adăugat — pagina „Începe aici” (`incepe.html`)
+- **Traseu ghidat, gamificat, pentru cine nu a auzit niciodată de coaching.** Nu e un articol, e un
+  drum: calibrare în 3 întrebări (cine ești, cât timp ai, ce buget) → **10 pași** în ordinea firească
+  → plan personal pe 12 luni.
+- Cei 10 pași acoperă exact ce se cere ca să înțelegi meseria: ce este coachingul și ce nu este,
+  unde se aplică și cât de mare e piața, cum arată concret o sesiune (fazele + GROW), competențele
+  și etica, cele trei sisteme (ICF / EMCC / ANC), procesul ICF de certificare pas cu pas cu
+  cerințele ACC/PCC/MCC și calendarul 2026–2027, mentor coaching vs supervizare „by the book”,
+  cum alegi școala în 30 de minute, cele trei trasee profesionale (mentor coach / supervizor /
+  trainer) și o bibliotecă de 12 cărți, 6 studii, 14 coachi de renume și 4 comunități.
+- **Mecanica de joc, fără trucuri ieftine**: 10 XP per pas + 5 XP pentru răspuns corect, 6 insigne,
+  6 niveluri (de la „Curios la început” la „Coach informat”), bară de progres cu `role="progressbar"`,
+  puncte de navigare directă între pași, timp estimat pe pas. Fără streak-uri, fără timere, fără
+  presiune — progresul e doar al tău, salvat local (`cp_start_v2`), șterge-l oricând cu un buton.
+- **Verificare în loc de încredere**: fiecare pas are un quiz cu 3 variante și explicația
+  răspunsului (inclusiv de ce varianta greșită e greșită); conținutul trimite la sursele oficiale.
+- **Plan final personalizat** (12 luni, buget, școală, mentor coaching, primii clienți) cu butoane de
+  copiere și tipărire; la print se tipărește doar planul, curat.
+- Pagina e bilingvă RO/EN, complet offline, fără cont; e legată în navigația tuturor paginilor,
+  în hero-ul de pe `index.html` și în footer.
+
+### Reparat — accesibilitate și finisaje (audit de design)
+- **Contrast AA pe tot site-ul**: textul mic de pe fundaluri pastelate (etichete ICF/EMCC/ANC,
+  insigne, pastile de pas, linkuri de raportare) folosește acum variante de culoare închise
+  (`--amber-ink`, `--teal-ink`, `--ok-ink`, `--icf-ink`, `--emcc-ink`, `--anc-ink`, `--warn-ink`,
+  `--violet-ink`), toate peste 4.5:1 — în ambele teme. Verificat cu `qa-tools/contrast.mjs`.
+- **Mișcare redusă respectată peste tot**: derularea lină la schimbarea pasului/quizului
+  (`start.js`) și la navigarea din hartă (`app.js`) devine instantanee când utilizatorul are
+  `prefers-reduced-motion: reduce`.
+- **Fără JavaScript conținutul nu mai dispare**: blocurile `.reveal` sunt ascunse doar dacă JS-ul
+  chiar rulează (clasa `js` se pune în `<head>`, înainte de primul paint) — fără JS textul rămâne
+  vizibil. `incepe.html` are în plus un `<noscript>` care explică ce se pierde și oferă linkuri
+  directe către teorie și hartă.
+- **XP imposibil de „dezlipit”**: punctele sunt calculate din progresul real (pași bifați + quizuri
+  corecte), nu dintr-un contor care putea rămâne în urmă; bonusul se anunță doar când se acordă.
+- **Quizul spune ce s-a întâmplat, și pentru cititorul de ecran**: variantele au `aria-pressed`,
+  explicația răspunsului e legată prin `aria-describedby`, iar schimbarea pasului e anunțată
+  în regiunea `aria-live`.
+
+### Modificat
+- Versiunea activelor urcă la `?v=1.4.0` (toate paginile + `package.json` + cache-ul service worker).
+- Meta sociale complete pe toate paginile (`og:type`, `og:url`, `og:site_name`, `og:locale`),
+  `canonical` și pe `legal.html`; `404.html` rămâne `noindex`.
+- `sitemap.xml` are acum 6 URL-uri (prioritate 1.0 pentru „Începe aici”).
+- `render.yaml` și `server.js` adaugă ruta scurtă `/incepe`.
+- **Uneltele de QA sunt acum în repo** (`qa-tools/`): `npm run qa` (toate paginile în jsdom),
+  `npm run qa:start` (41 de verificări pe traseul ghidat), `npm run qa:css` (clase/variabile CSS și
+  id-uri), `npm run qa:contrast` (prag AA pe perechile text/fundal). Necesită `npm install` (jsdom),
+  nu afectează site-ul publicat — `npm run check` rămâne fără nicio dependență.
+
 ## [1.3.0] — 2026-09-14
 
 ### Reparat — deploy

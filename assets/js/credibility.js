@@ -64,6 +64,15 @@
     faq: {
       src:[['ICF — întrebări frecvente', 'https://coachingfederation.org/']]
     },
+    start: {
+      src:[
+        ['ICF — credențializare', 'https://coachingfederation.org/credentialing/'],
+        ['ICF — mentor coaching', 'https://coachingfederation.org/education-professional-development/find-professional-development/mentor-coaching/'],
+        ['ICF — specializări (MCS, CSS)', 'https://coachingfederation.org/blog/introducing-the-mentor-coach-specialization/'],
+        ['EMCC — ghid de supervizare', 'https://www.emccglobal.org/leadership-development/supervision/guidelines/'],
+        ['ICF — standarde de acreditare a școlilor', 'https://coachingfederation.org/for-coach-educators/icf-accreditation/accreditation-standards/']
+      ]
+    },
     theory: {
       src:[
         ['ICF — definiția coachingului', 'https://coachingfederation.org/about-icf'],
