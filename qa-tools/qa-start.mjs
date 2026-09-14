@@ -115,6 +115,32 @@ check('conținutul se traduce în engleză', doc.body.textContent.includes('Ment
 check('planul se traduce', $('#startPlan')?.textContent.includes('MY PLAN'));
 check('progresul se păstrează după schimbarea limbii', JSON.parse(window.localStorage.getItem('cp_start_v2')).done.s1 === true);
 
+/* 6b. link direct către un pas + bara de progres de pe telefon */
+window.history.replaceState(null, '', '#s3');
+window.dispatchEvent(new window.Event('hashchange'));
+await new Promise((r) => setTimeout(r, 200));
+check('linkul direct (#s3) deschide pasul', $('#step-s3')?.classList.contains('open'),
+  $$('.start-step.open').map((e) => e.id).join(',') || 'niciunul');
+const shareBtn = $('#step-s3 .start-share');
+check('pasul are buton „Link către pas”', !!shareBtn);
+if (shareBtn) {
+  click(shareBtn);
+  await new Promise((r) => setTimeout(r, 150));
+  check('copierea linkului confirmă printr-un mesaj', ($('#toast')?.textContent || '').length > 0, $('#toast')?.textContent || '');
+}
+const dock = $('#startBar');
+check('bara de progres de pe telefon există în pagină', !!dock);
+check('bara arată progresul și pasul următor', !!dock && dock.hidden === false && !!dock.querySelector('.sb-go[data-goto]'),
+  dock ? dock.textContent.replace(/\s+/g, ' ').trim().slice(0, 70) : 'lipsă');
+const goBtn = dock && dock.querySelector('.sb-go');
+if (goBtn) {
+  const target = goBtn.getAttribute('data-goto');
+  click(goBtn);
+  await new Promise((r) => setTimeout(r, 200));
+  check('butonul din bară deschide pasul următor', $('#step-' + target)?.classList.contains('open'), target);
+  check('adresa urmărește pasul deschis', window.location.hash === '#' + target, window.location.hash);
+}
+
 /* 7. reset */
 click($('#startReset'));
 const st2 = JSON.parse(window.localStorage.getItem('cp_start_v2') || '{}');

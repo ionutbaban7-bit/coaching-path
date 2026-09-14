@@ -272,7 +272,7 @@ function renderCredFilters(){
  const hadFocus = !!prev && document.activeElement===prev;
  const caret = hadFocus ? prev.selectionStart : null;
  $('#credFilters').innerHTML =
-  `<input class="search" id="credSearch" aria-label="${lang==='ro'?'Caută o certificare':'Search a credential'}" placeholder="${lang==='ro'?'🔎 ACC, PCC, EIA, COR…':'🔎 Search ACC, PCC, EIA, COR…'}">`+
+  `<input class="search" type="search" enterkeyhint="search" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" id="credSearch" aria-label="${lang==='ro'?'Caută o certificare':'Search a credential'}" placeholder="${lang==='ro'?'🔎 ACC, PCC, EIA, COR…':'🔎 Search ACC, PCC, EIA, COR…'}">`+
   chips.map(([k,v])=>`<button class="fchip ${k===credFilter?'active':''}" data-cf="${k}" aria-pressed="${k===credFilter?'true':'false'}">${v}</button>`).join('');
  const input=$('#credSearch');
  input.value=prevVal;
@@ -420,8 +420,10 @@ function renderFaq(){
 }
 function renderGloss(){
  const q=($('#glossSearch').value||'').toLowerCase();
- $('#glossList').innerHTML = GLOSS.filter(g=>!q||(g.t+(typeof g.d==='string'?g.d:L(g.d))).toLowerCase().includes(q)).map(g=>
-  `<div class="gloss-item"><b>${typeof g.t==='string'?g.t:L(g.t)}</b><p>${L(g.d)}</p></div>`).join('');
+ const hits=GLOSS.filter(g=>!q||(g.t+(typeof g.d==='string'?g.d:L(g.d))).toLowerCase().includes(q));
+ $('#glossList').innerHTML = hits.map(g=>
+  `<div class="gloss-item"><b>${typeof g.t==='string'?g.t:L(g.t)}</b><p>${L(g.d)}</p></div>`).join('') ||
+  `<div class="empty-state">${lang==='ro'?'Niciun termen pentru căutarea ta. Încearcă alt cuvânt.':'No term matches your search. Try another word.'}</div>`;
 }
 
 /* ====================== SOURCES ====================== */

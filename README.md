@@ -40,9 +40,10 @@ npm run check                 # sintaxă JS, referințe locale, paritate RO/EN, 
 ```bash
 npm start                     # pornește serverul pe http://localhost:3000
 npm run qa                    # încarcă toate paginile în jsdom: erori, randare, interacțiuni
-npm run qa:start              # 41 de verificări pentru traseul „Începe aici” (quiz, XP, plan)
+npm run qa:start              # 48 de verificări pentru traseul „Începe aici” (quiz, XP, linkuri directe, bară mobilă)
 npm run qa:css                # clase/variabile CSS folosite dar nedefinite, id-uri lipsă
 npm run qa:contrast           # contrast text/fundal în ambele teme (prag AA 4.5:1)
+npm run qa:mobile             # audit mobil: viewport, zone sigure, ținte de atingere, meniu, PWA
 ```
 
 ## Structura proiectului
@@ -68,7 +69,7 @@ manifest.webmanifest · robots.txt · sitemap.xml  → instalare, indexare, SEO
 sw.js              → service worker: site-ul merge și offline, a doua vizită e instant
 tools/update-info.mjs  → jobul de verificare a datelor (rulează manual sau lunar)
 tools/check-site.mjs   → verificare înainte de publicare (npm run check)
-qa-tools/              → verificări de calitate (npm run qa / qa:start / qa:css / qa:contrast)
+qa-tools/              → verificări de calitate (npm run qa / qa:start / qa:css / qa:contrast / qa:mobile)
 server.js          → server static, zero dependențe (pentru Render Web Service)
 package.json       → npm start / npm run update-info
 render.yaml        → Blueprint Render (Static Site implicit + Web Service Node comentat)
@@ -85,6 +86,13 @@ CHANGELOG.md       → istoricul modificărilor
 - **Font propriu, fără internet** — Inter Variable, găzduit în `assets/fonts/`: același text pe orice dispozitiv, fără cereri către Google Fonts.
 - **Offline după prima vizită** — un service worker (`sw.js`) păstrează paginile și activele în cache: a doua vizită se încarcă instant, iar fără rețea site-ul se deschide în continuare.
 - **Cuprins care te urmărește** — pagina de conținut marchează secțiunea în care ești, iar navigarea nu mai sare la derulare.
+- **Gândit pentru telefon (Android + iOS)** — ținte de atingere de minim 44px, câmpuri de 16px (iOS nu mai face zoom la focus), zone sigure pentru notch / bara de jos (`viewport-fit=cover` + `env(safe-area-inset-*)`), `100dvh` în loc de `100vh`, feedback la apăsare în loc de „hover lipicios”, meniu care blochează derularea paginii și se închide cu Escape sau la atingere în afară.
+- **Continuă de unde ai rămas** — pe telefon apare o bară sub antet cu următorul pas concret (traseul „Începe aici”, harta sau planul), citită din progresul salvat local; se închide cu un tap și nu reapare pentru același pas.
+- **Link direct către orice pas** — pașii din traseu se scriu în adresă (`incepe.html#s7`), deci linkul poate fi trimis mai departe, iar butoanele Back/Forward merg; fiecare pas are un buton „🔗 Link către pas”.
+- **Bară de progres pe telefon** — în josul ecranului stă „Pasul X din 10” cu bara de progres și butonul către pasul următor (dispariție pe desktop, nu acoperă finalul paginii).
+- **Tabele late, citibile pe telefon** — derulare laterală cu inerție, umbră pe muchia din dreapta, indiciu „↔ glisează”, iar prima coloană rămâne lipită la derulare.
+- **Anunțuri de aplicație** — „Ești offline” când dispare rețeaua, „Ai revenit online” când revine, și „versiune nouă — Reîncarcă” când service worker-ul aduce o actualizare.
+- **Instalare ca aplicație (PWA)** — pe Android/Chrome se oferă instalarea direct din pagină (`beforeinstallprompt`), pe iPhone Safari apare instrucțiunea „Partajează → Adaugă la ecranul principal”. Site-ul pornește apoi fără bara browserului, cu iconiță proprie.
 - **Accesibil** — contrast WCAG AA/AAA, navigare cu tastatura, focus vizibil, `prefers-reduced-motion`, stiluri de print.
 
 ## Publicare pe GitHub Pages

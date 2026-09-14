@@ -2,11 +2,16 @@
 <html lang="ro" data-title-en="Start here: from zero to coach in 10 steps — Coaching Learning Path" data-desc-en="A guided, gamified journey for anyone who knows nothing about coaching: what it is, where it is used, how you get certified, how long it takes and what it costs, mentor coaching and supervision by the book, how to become a trainer or mentor, plus books, studies and renowned coaches.">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Începe aici: de la zero la coach în 10 pași — Coaching Learning Path</title>
 <meta name="description" content="Traseu ghidat pentru cine nu știe nimic despre coaching: ce este, unde se aplică, cum te certifici, cât durează, mentor coaching și supervizare by the book, cum devii trainer sau mentor, cărți, studii și coachi de renume. Progres salvat local.">
 <meta name="theme-color" content="#4b57d4">
 <meta name="color-scheme" content="light dark">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Coaching Path">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-capable" content="yes">
 <meta property="og:title" content="Începe aici: de la zero la coach în 10 pași — Coaching Learning Path">
 <meta property="og:description" content="Dacă nu știi nimic despre coaching, începe de aici. Zece pași, cu verificare la fiecare, până la un plan personal pe 12 luni.">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,13 +31,14 @@
   <meta name="theme-color" content="#4b57d4" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0a0e18" media="(prefers-color-scheme: dark)">
   <link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/inter-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=1.4.0">
-<link rel="stylesheet" href="assets/css/tokens.css?v=1.4.0">
-<link rel="stylesheet" href="assets/css/app.css?v=1.4.0">
-<link rel="stylesheet" href="assets/css/pages.css?v=1.4.0">
+<link rel="stylesheet" href="assets/css/fonts.css?v=1.5.0">
+<link rel="stylesheet" href="assets/css/tokens.css?v=1.5.0">
+<link rel="stylesheet" href="assets/css/app.css?v=1.5.0">
+<link rel="stylesheet" href="assets/css/pages.css?v=1.5.0">
 <script>
 (function(){
   try{
@@ -200,14 +206,17 @@
   </div>
 </footer>
 
+<!-- Bară fixă doar pe telefon: progres + pasul următor -->
+<div class="start-dock" id="startBar" aria-label="Progres" hidden></div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <button class="to-top" id="toTop" aria-label="Înapoi sus">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="assets/js/data.js?v=1.4.0"></script>
-<script src="assets/js/site.js?v=1.4.0"></script>
-<script src="assets/js/credibility.js?v=1.4.0"></script>
-<script src="assets/js/start.js?v=1.4.0"></script>
+<script src="assets/js/data.js?v=1.5.0"></script>
+<script src="assets/js/site.js?v=1.5.0"></script>
+<script src="assets/js/credibility.js?v=1.5.0"></script>
+<script src="assets/js/start.js?v=1.5.0"></script>
 </body>
 </html>

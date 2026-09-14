@@ -1,6 +1,6 @@
 {
   "name": "coaching-learning-path",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "private": true,
   "description": "Coaching Learning Path — hartă interactivă, teorie, traseu ghidat pentru începători și planuri de coaching 1:1 / echipă. Site static, zero dependențe la rulare (jsdom doar pentru testele locale), fonturi găzduite local, merge offline.",
   "main": "server.js",
@@ -17,7 +17,8 @@
     "qa": "node qa-tools/qa.mjs",
     "qa:start": "node qa-tools/qa-start.mjs",
     "qa:css": "node qa-tools/crosscheck.mjs",
-    "qa:contrast": "node qa-tools/contrast.mjs"
+    "qa:contrast": "node qa-tools/contrast.mjs",
+    "qa:mobile": "node qa-tools/mobile.mjs"
   },
   "devDependencies": {
     "jsdom": "^30.0.1"

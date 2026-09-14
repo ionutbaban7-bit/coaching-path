@@ -233,21 +233,264 @@
     });
   }
 
-  /* ---------- MENIU MOBIL ---------- */
+  /* ---------- MENIU MOBIL (Android + iOS) ---------- */
   function initMobileNav(){
     var btn = $('.nav-toggle');
     var nav = $('#navlinks');
     if(!btn || !nav) return;
-    btn.addEventListener('click', function(){
-      var open = nav.classList.toggle('open');
+    var root = document.documentElement;
+    btn.setAttribute('aria-controls','navlinks');
+    btn.setAttribute('aria-haspopup','true');
+
+    function isOpen(){ return nav.classList.contains('open'); }
+    /* focus: 'first' = deschis de la tastatură | 'back' = la închidere | null = atingere */
+    function setOpen(open, focus){
+      nav.classList.toggle('open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      /* fără asta, pe iOS pagina de dedesubt se derulează în timp ce meniul e deschis */
+      root.classList.toggle('nav-open', open);
+      if(open && focus === 'first'){
+        var first = nav.querySelector('a');
+        if(first){ try{ first.focus({preventScroll:true}); }catch(e){ first.focus(); } }
+      }else if(!open && focus === 'back'){
+        try{ btn.focus({preventScroll:true}); }catch(e){ btn.focus(); }
+      }
+    }
+    btn.addEventListener('click', function(e){
+      /* e.detail === 0 înseamnă Enter/Spațiu, nu deget */
+      setOpen(!isOpen(), e.detail === 0 ? 'first' : null);
     });
     nav.addEventListener('click', function(e){
-      if(e.target.tagName === 'A'){
-        nav.classList.remove('open');
-        btn.setAttribute('aria-expanded','false');
-      }
+      if(e.target.tagName === 'A' && isOpen()) setOpen(false);
     });
+    /* atingerea în afara meniului îl închide (ca într-o aplicație) */
+    document.addEventListener('click', function(e){
+      if(!isOpen()) return;
+      if(nav.contains(e.target) || btn.contains(e.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener('keydown', function(e){
+      if((e.key === 'Escape' || e.key === 'Esc') && isOpen()) setOpen(false, 'back');
+    });
+    /* rotirea telefonului sau o fereastră mai lată închid meniul */
+    function closeIfWide(){ if(window.innerWidth > 1080 && isOpen()) setOpen(false); }
+    window.addEventListener('resize', closeIfWide);
+    window.addEventListener('orientationchange', closeIfWide);
+  }
+
+  var refreshTableHints = function(){};
+
+  /* ---------- TABELE LATE PE TELEFON: indicator de derulare ----------
+     Tabelele cu multe coloane (școli, costuri, credențiale) se derulează pe
+     orizontală pe telefon, dar fără un semn utilizatorul crede că e tăiat.
+     Punem un indiciu discret deasupra și o umbră pe muchia din dreapta. */
+  function initTableHints(){
+    var SEL = '.table-wrap,.start-table-wrap';
+    function label(){
+      return (lang === 'ro') ? '↔ glisează pentru restul coloanelor' : '↔ swipe for the other columns';
+    }
+    function atEnd(box){
+      if(!box.classList.contains('is-scrollable')) return;
+      box.classList.toggle('at-end', box.scrollLeft + box.clientWidth >= box.scrollWidth - 8);
+    }
+    function sync(){
+      $$(SEL).forEach(function(box){
+        var scrollable = (box.scrollWidth - box.clientWidth) > 8;
+        box.classList.toggle('is-scrollable', scrollable);
+        var prev = box.previousElementSibling;
+        var hint = (prev && prev.classList && prev.classList.contains('scroll-hint')) ? prev : null;
+        if(scrollable && !hint){
+          hint = document.createElement('p');
+          hint.className = 'scroll-hint';
+          hint.setAttribute('aria-hidden','true');
+          hint.textContent = label();
+          box.parentNode.insertBefore(hint, box);
+        }else if(hint){
+          if(hint.textContent !== label()) hint.textContent = label();
+          if(!scrollable) hint.remove();
+        }
+        atEnd(box);
+      });
+    }
+    var t = null;
+    function later(){ if(t) clearTimeout(t); t = setTimeout(sync, 120); }
+    document.addEventListener('scroll', function(e){
+      if(e.target && e.target.classList && e.target.classList.contains('is-scrollable')) atEnd(e.target);
+    }, true);
+    if(window.MutationObserver) new MutationObserver(later).observe(document.body, { childList:true, subtree:true });
+    window.addEventListener('resize', later);
+    window.addEventListener('orientationchange', later);
+    document.addEventListener('clp:lang', later);
+    refreshTableHints = sync;
+    sync();
+  }
+
+  /* ---------- „CONTINUĂ DE UNDE AI RĂMAS” + INSTALARE (PWA) ---------- */
+  function initResume(){
+    var deferred = null;                 /* evenimentul de instalare (Chrome/Edge/Android) */
+    var bar = null;
+    var page = document.body.dataset.page || 'index';
+
+    function T(ro, en){ return (lang === 'ro') ? ro : en; }
+    function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+    function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+    function lsJson(k, dflt){
+      try{
+        var v = localStorage.getItem(k);
+        if(!v) return dflt;
+        var o = JSON.parse(v);
+        return (o && typeof o === 'object') ? o : dflt;
+      }catch(e){ return dflt; }
+    }
+    function countDone(o){
+      var n = 0, k;
+      if(!o || typeof o !== 'object') return 0;
+      for(k in o){ if(Object.prototype.hasOwnProperty.call(o,k) && o[k]) n++; }
+      return n;
+    }
+    function isStandalone(){
+      try{ if(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) return true; }catch(e){}
+      return window.navigator.standalone === true;
+    }
+    function isIOS(){
+      var ua = navigator.userAgent || '';
+      if(/iPhone|iPad|iPod/.test(ua)) return true;
+      return (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    }
+    function installReady(){
+      if(lsGet('cp_install_hidden')) return false;
+      if(isStandalone()) return false;
+      return !!deferred || isIOS();
+    }
+
+    /* Următorul pas concret al vizitatorului, din progresul salvat local. */
+    function nextStep(){
+      var st = lsJson('cp_start_v2', null);
+      var done = st ? countDone(st.done) : 0;
+      if(page !== 'start' && done > 0 && done < 10){
+        return { sig:'start:' + done, ico:'\u25B6',
+          title:T('Continuă traseul „Începe aici”','Continue the \u201EStart here\u201D path'),
+          sub:T('Ai ajuns la pasul ' + (done + 1) + ' din 10','You reached step ' + (done + 1) + ' of 10'),
+          href:'incepe.html', label:T('Continuă','Continue') };
+      }
+      var map = lsJson('cp_map_done', []);
+      var nodes = Array.isArray(map) ? map.length : 0;
+      if(page !== 'index' && nodes > 0){
+        return { sig:'map:' + nodes, ico:'\uD83D\uDDFA',
+          title:T('Continuă harta coachingului','Continue the coaching map'),
+          sub:T(nodes + ' noduri parcurse', nodes + ' nodes explored'),
+          href:'index.html#harta', label:T('Deschide harta','Open the map') };
+      }
+      var prog = lsJson('cp_progress', null);
+      var steps = 0, k;
+      if(prog){
+        for(k in prog){ if(Object.prototype.hasOwnProperty.call(prog,k) && Array.isArray(prog[k])) steps += prog[k].length; }
+      }
+      if(page !== 'index' && steps > 0){
+        return { sig:'plan:' + steps, ico:'\u2713',
+          title:T('Continuă planul tău','Continue your plan'),
+          sub:T(steps + ' pași bifați', steps + ' steps ticked'),
+          href:'index.html#paths', label:T('Continuă','Continue') };
+      }
+      return null;
+    }
+
+    function build(){
+      bar = document.createElement('div');
+      bar.className = 'resume-bar';
+      bar.id = 'resumeBar';
+      bar.innerHTML =
+        '<div class="wrap resume-in">' +
+          '<span class="resume-ico" aria-hidden="true"></span>' +
+          '<span class="resume-txt"><b></b><span></span></span>' +
+          '<button class="resume-go" id="resumeGo" type="button"></button>' +
+          '<button class="resume-x" id="resumeX" type="button">\u2715</button>' +
+        '</div>';
+      bar.hidden = true;
+      var header = $('.site-header');
+      if(!header || !header.parentNode) return false;
+      header.parentNode.insertBefore(bar, header.nextSibling);
+      bar.querySelector('#resumeX').addEventListener('click', function(){
+        lsSet('cp_resume_hidden', bar.dataset.sig || 'all');
+        if(bar.dataset.mode === 'install') lsSet('cp_install_hidden','1');
+        hide();
+      });
+      bar.querySelector('#resumeGo').addEventListener('click', function(){
+        if(bar.dataset.mode === 'install'){ doInstall(); return; }
+        if(bar.dataset.href) location.href = bar.dataset.href;
+      });
+      return true;
+    }
+    function hide(){
+      if(bar) bar.hidden = true;
+      document.documentElement.classList.remove('has-resume');
+    }
+    function doInstall(){
+      if(!deferred) return;
+      deferred.prompt();
+      if(deferred.userChoice && deferred.userChoice.then){
+        deferred.userChoice.then(function(res){
+          deferred = null;
+          if(res && res.outcome === 'accepted') toast(T('Aplicația a fost instalată','App installed'));
+          else lsSet('cp_install_hidden','1');
+          render();
+        });
+      }else{
+        deferred = null; render();
+      }
+    }
+    function render(){
+      var p = nextStep();
+      var inst = installReady();
+      var mode = p ? 'progress' : (inst ? 'install' : null);
+      if(!mode){ hide(); return; }
+      var sig = p ? p.sig : (deferred ? 'install:prompt' : 'install:ios');
+      if(lsGet('cp_resume_hidden') === sig){ hide(); return; }
+      /* bara se construiește abia când are ceva de spus — fără noduri inutile în pagină */
+      if(!bar && !build()) return;
+      bar.dataset.sig = sig;
+      bar.dataset.mode = mode;
+      var ico = bar.querySelector('.resume-ico');
+      var ttl = bar.querySelector('.resume-txt b');
+      var sub = bar.querySelector('.resume-txt span');
+      var go  = bar.querySelector('#resumeGo');
+      if(mode === 'progress'){
+        ico.textContent = p.ico;
+        ttl.textContent = p.title;
+        sub.textContent = inst ? p.sub + ' \u00B7 ' + T('poți instala aplicația','you can install the app') : p.sub;
+        go.textContent = p.label;
+        go.hidden = false;
+        bar.dataset.href = p.href;
+      }else{
+        ico.textContent = '\u2B07';
+        ttl.textContent = T('Instalează Coaching Path','Install Coaching Path');
+        sub.textContent = deferred
+          ? T('Se deschide ca o aplicație, fără bara browserului.','Opens like an app, without the browser bar.')
+          : T('Partajează \u2192 Adaugă la ecranul principal.','Share \u2192 Add to Home Screen.');
+        go.textContent = T('Instalează','Install');
+        go.hidden = !deferred;          /* pe iOS nu există prompt programatic */
+        delete bar.dataset.href;
+      }
+      bar.querySelector('#resumeX').setAttribute('aria-label', T('Ascunde bara','Hide this bar'));
+      bar.hidden = false;
+      document.documentElement.classList.add('has-resume');
+    }
+
+    window.addEventListener('beforeinstallprompt', function(e){
+      e.preventDefault();
+      deferred = e;
+      render();
+    });
+    window.addEventListener('appinstalled', function(){
+      deferred = null;
+      lsSet('cp_install_hidden','1');
+      render();
+    });
+    document.addEventListener('clp:lang', function(e){
+      lang = (e.detail && e.detail.lang) ? e.detail.lang : lang;
+      render();
+    });
+    render();
   }
 
   /* ---------- LIMBĂ: buton (doar paginile fără app.js) ---------- */
@@ -283,8 +526,72 @@
     applyI18n: applyI18n,
     renderNav: renderNav,
     toast: toast,
+    refreshTableHints: function(){ refreshTableHints(); },
     pages: PAGES
   };
+
+  /* ---------- NOTIFICĂRI DISCRETE (offline / versiune nouă) ----------
+     Un singur „pill” în josul ecranului, construit doar când are ceva de spus. */
+  function pick(ro, en){ return (lang === 'ro') ? ro : en; }
+  var note = (function(){
+    var el = null, timer = null, kind = null;
+    function ensure(){
+      if(el) return el;
+      el = document.createElement('div');
+      el.className = 'app-note';
+      el.setAttribute('role','status');
+      el.hidden = true;
+      el.innerHTML = '<span class="an-txt"></span>' +
+                     '<button class="an-act" type="button" hidden></button>' +
+                     '<button class="an-x" type="button" aria-label="' + pick('Închide','Close') + '">\u2715</button>';
+      el.querySelector('.an-x').addEventListener('click', hide);
+      document.body.appendChild(el);
+      return el;
+    }
+    function hide(){
+      if(timer){ clearTimeout(timer); timer = null; }
+      if(!el) return;
+      el.hidden = true;
+      kind = null;
+      document.documentElement.classList.remove('has-note');
+    }
+    function show(k, text, actionLabel, onAction, autoHideMs){
+      var node = ensure();
+      kind = k;
+      node.dataset.kind = k;
+      node.querySelector('.an-txt').textContent = text;
+      var act = node.querySelector('.an-act');
+      if(actionLabel){
+        act.hidden = false;
+        act.textContent = actionLabel;
+        act.onclick = function(){ hide(); if(onAction) onAction(); };
+      }else{
+        act.hidden = true;
+        act.onclick = null;
+      }
+      node.hidden = false;
+      document.documentElement.classList.add('has-note');
+      if(timer){ clearTimeout(timer); timer = null; }
+      if(autoHideMs) timer = setTimeout(hide, autoHideMs);
+    }
+    return { show: show, hide: hide, current: function(){ return kind; } };
+  })();
+
+  function initNotices(){
+    window.addEventListener('offline', function(){
+      note.show('offline', pick('Ești offline — paginile deja vizitate merg din cache.',
+                                'You are offline — pages you already visited load from cache.'));
+    });
+    window.addEventListener('online', function(){
+      if(note.current() === 'offline'){
+        note.show('online', pick('Ai revenit online.', 'Back online.'), null, null, 2600);
+      }
+    });
+    if(navigator.onLine === false){
+      note.show('offline', pick('Ești offline — paginile deja vizitate merg din cache.',
+                                'You are offline — pages you already visited load from cache.'));
+    }
+  }
 
   /* ---------- OFFLINE / VITEZĂ LA REVIZITARE ---------- */
   /* Site-ul se declară „fără internet”; un service worker minimal face
@@ -295,7 +602,20 @@
     if(!('serviceWorker' in navigator)) return;
     if(location.protocol !== 'http:' && location.protocol !== 'https:') return;
     window.addEventListener('load', function(){
-      navigator.serviceWorker.register('sw.js').catch(function(){/* fără offline, site-ul merge la fel */});
+      function offerUpdate(){
+        note.show('update', pick('Există o versiune nouă a platformei.', 'A new version of the platform is ready.'),
+                  pick('Reîncarcă', 'Reload'), function(){ location.reload(); });
+      }
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        if(reg.waiting && navigator.serviceWorker.controller) offerUpdate();
+        reg.addEventListener('updatefound', function(){
+          var w = reg.installing;
+          if(!w) return;
+          w.addEventListener('statechange', function(){
+            if(w.state === 'installed' && navigator.serviceWorker.controller) offerUpdate();
+          });
+        });
+      }).catch(function(){/* fără offline, site-ul merge la fel */});
     });
   }
 
@@ -309,7 +629,10 @@
     initToc();
     initReveal();
     initMobileNav();
+    initResume();
+    initTableHints();
     initLang();
+    initNotices();
     initOffline();
     // sincronizare cu schimbarea de limbă făcută de app.js
     document.addEventListener('clp:lang', function(e){

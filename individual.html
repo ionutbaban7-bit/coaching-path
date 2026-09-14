@@ -2,11 +2,16 @@
 <html lang="ro" data-title-en="Individual coaching (1:1) — full plan · Coaching Learning Path" data-desc-en="A complete 1:1 coaching programme: architecture, session models, a question bank, a competency practice plan, an hours log and a self-evaluation rubric.">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Coaching individual (1:1) — plan complet · Coaching Learning Path</title>
 <meta name="description" content="Plan complex de coaching individual: anatomia unui program 1:1, modele de sesiune, bancă de întrebări, plan de practică pe cele 8 competențe ICF, jurnal de ore și rubrică de autoevaluare.">
 <meta name="theme-color" content="#4b57d4">
 <meta name="color-scheme" content="light dark">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Coaching Path">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-capable" content="yes">
 <meta property="og:title" content="Coaching individual (1:1) — plan complet">
 <meta property="og:description" content="Structura completă a unui program de coaching 1:1, gata de populat cu conținutul vostru.">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,13 +31,14 @@
   <meta name="theme-color" content="#4b57d4" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0a0e18" media="(prefers-color-scheme: dark)">
   <link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/inter-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=1.4.0">
-<link rel="stylesheet" href="assets/css/tokens.css?v=1.4.0">
-<link rel="stylesheet" href="assets/css/app.css?v=1.4.0">
-<link rel="stylesheet" href="assets/css/pages.css?v=1.4.0">
+<link rel="stylesheet" href="assets/css/fonts.css?v=1.5.0">
+<link rel="stylesheet" href="assets/css/tokens.css?v=1.5.0">
+<link rel="stylesheet" href="assets/css/app.css?v=1.5.0">
+<link rel="stylesheet" href="assets/css/pages.css?v=1.5.0">
 <script>
 (function(){
   try{
@@ -283,7 +289,7 @@
     <p class="intro" data-i18n-ro="Întrebările sunt instrumentul principal: 64 de întrebări în 8 categorii, câte 8 pentru fiecare moment al sesiunii — cu varianta de evitat lângă fiecare. Folosește câmpul de căutare sau filtrele de categorii." data-i18n-en="Questions are the main instrument: 64 questions in 8 categories, eight for each moment of the session — with the &quot;avoid&quot; variant next to each. Use the search box or the category filters.">Întrebările sunt instrumentul principal: 64 de întrebări în 8 categorii, câte 8 pentru fiecare moment al sesiunii — cu varianta de evitat lângă fiecare. Folosește câmpul de căutare sau filtrele de categorii.</p>
 
     <div class="qb-toolbar">
-      <input class="search" id="qbSearch" data-i18n-ph-ro="🔎 Caută o întrebare…" data-i18n-ph-en="🔎 Search a question…" placeholder="🔎 Caută o întrebare…">
+      <input class="search" type="search" enterkeyhint="search" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" id="qbSearch" data-i18n-ph-ro="🔎 Caută o întrebare…" data-i18n-ph-en="🔎 Search a question…" placeholder="🔎 Caută o întrebare…">
       <span class="text-muted" style="font-size:13px">64 <span data-i18n-ro="de întrebări · 8 categorii" data-i18n-en="questions · 8 categories">de întrebări · 8 categorii</span></span>
     </div>
     <div class="filters" id="qbCats" data-cat="all"></div>
@@ -569,10 +575,10 @@
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="assets/js/data.js?v=1.4.0"></script>
-<script src="assets/js/site.js?v=1.4.0"></script>
-<script src="assets/js/credibility.js?v=1.4.0"></script>
-<script src="assets/js/plan.js?v=1.4.0"></script>
+<script src="assets/js/data.js?v=1.5.0"></script>
+<script src="assets/js/site.js?v=1.5.0"></script>
+<script src="assets/js/credibility.js?v=1.5.0"></script>
+<script src="assets/js/plan.js?v=1.5.0"></script>
 <script>
 (function(){
   var links = [].slice.call(document.querySelectorAll('#toc a'));

@@ -50,6 +50,7 @@
    ============================================================ */
 .site-header{
   position:sticky;top:0;z-index:70;
+  padding-top:var(--safe-t);
   background:color-mix(in srgb,var(--surface) 88%,transparent);
   backdrop-filter:saturate(180%) blur(16px);
   -webkit-backdrop-filter:saturate(180%) blur(16px);
@@ -59,7 +60,7 @@
 .site-header.scrolled{box-shadow:var(--sh-2);border-color:var(--line-strong)}
 @supports not (backdrop-filter:blur(1px)){.site-header{background:var(--surface)}}
 
-.nav{display:flex;align-items:center;gap:var(--s4);height:var(--nav-h)}
+.nav{display:flex;align-items:center;gap:var(--s4);height:var(--nav-h-base);min-width:0}
 
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:var(--fs-16);color:var(--ink);white-space:nowrap;letter-spacing:-.02em}
 .logo:hover{text-decoration:none;color:var(--ink)}
@@ -92,7 +93,7 @@
 .nav-actions{display:flex;align-items:center;gap:var(--s2);flex:none}
 
 .icon-btn{
-  width:36px;height:36px;border-radius:var(--r-sm);
+  width:44px;height:44px;border-radius:var(--r-sm);
   display:grid;place-items:center;
   border:1px solid var(--line);background:var(--surface);
   color:var(--ink-2);
@@ -102,7 +103,7 @@
 .lang-btn{
   display:flex;align-items:center;gap:6px;
   border:1px solid var(--line);background:var(--surface);
-  border-radius:var(--r-full);padding:7px 13px;
+  border-radius:var(--r-full);padding:7px 13px;min-height:44px;
   font-weight:750;font-size:var(--fs-12);color:var(--ink);
   transition:var(--t-ui);
 }
@@ -122,8 +123,8 @@
     transition:max-height var(--dur-3) var(--ease),opacity var(--dur-2) var(--ease),padding var(--dur-3) var(--ease);
     box-shadow:var(--sh-3);
   }
-  .navlinks.open{max-height:calc(100vh - var(--nav-h));opacity:1;pointer-events:auto;overflow-y:auto}
-  .navlinks a{padding:12px 14px;font-size:var(--fs-15)}
+  .navlinks.open{max-height:calc(100vh - var(--nav-h));max-height:calc(100dvh - var(--nav-h));opacity:1;pointer-events:auto;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:calc(var(--s4) + var(--safe-b))}
+  .navlinks a{display:flex;align-items:center;min-height:48px;padding:13px 15px;font-size:var(--fs-15)}
   .nav-sep{display:none}
 }
 
@@ -375,7 +376,7 @@
 
 .search{
   border:1px solid var(--line-strong);background:var(--surface);
-  border-radius:var(--r-sm);padding:10px 14px;
+  border-radius:var(--r-sm);padding:11px 14px;
   font-size:var(--fs-14);min-width:240px;
   transition:border-color var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease);
 }
@@ -430,8 +431,8 @@
 .step-title{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
 .step-title b{font-size:var(--fs-15);font-weight:700;letter-spacing:-.015em;color:var(--ink)}
 .step-title span{font-size:var(--fs-12);color:var(--muted)}
-.step-check{display:flex;align-items:center;flex:none}
-.step-check input{width:19px;height:19px;accent-color:var(--ok);cursor:pointer}
+.step-check{display:flex;align-items:center;flex:none;padding:12px;margin:-12px}
+.step-check input{width:22px;height:22px;accent-color:var(--ok);cursor:pointer}
 .chev{flex:none;color:var(--muted-2);transition:transform var(--dur-2) var(--ease)}
 .step.open .chev{transform:rotate(180deg);color:var(--brand)}
 
@@ -535,6 +536,7 @@
 .table-wrap{
   background:var(--surface);border:1px solid var(--line);
   border-radius:var(--r-lg);overflow-x:auto;box-shadow:var(--sh-1);
+  overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;
 }
 table.table-clean,table.school-table{width:100%;border-collapse:separate;border-spacing:0}
 .table-clean th,.school-table th{
@@ -665,7 +667,8 @@ table.table-clean,table.school-table{width:100%;border-collapse:separate;border-
   background:rgba(9,13,24,.55);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   display:none;align-items:flex-start;justify-content:center;
-  padding:clamp(16px,5vh,64px) 16px;overflow-y:auto;
+  padding:calc(clamp(16px,5vh,64px) + var(--safe-t)) calc(16px + var(--safe-r)) calc(clamp(16px,5vh,64px) + var(--safe-b)) calc(16px + var(--safe-l));
+  overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
 }
 .modal-bg.open{display:flex;animation:fadeIn var(--dur-2) var(--ease)}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -683,7 +686,7 @@ table.table-clean,table.school-table{width:100%;border-collapse:separate;border-
 }
 .modal-head h3{font-size:var(--fs-18)}
 .modal-close{
-  margin-left:auto;flex:none;width:32px;height:32px;border-radius:var(--r-xs);
+  margin-left:auto;flex:none;width:44px;height:44px;border-radius:var(--r-xs);
   display:grid;place-items:center;color:var(--muted);font-size:15px;
   border:1px solid var(--line);background:var(--surface-2);
   transition:var(--t-ui);
@@ -696,7 +699,8 @@ table.table-clean,table.school-table{width:100%;border-collapse:separate;border-
 .modal-body p{font-size:var(--fs-14);color:var(--ink-2)}
 
 .toast{
-  position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(14px);
+  position:fixed;bottom:calc(24px + var(--safe-b));left:50%;transform:translateX(-50%) translateY(14px);
+  max-width:min(560px,calc(100vw - 32px));text-align:center;
   background:var(--ink);color:var(--bg);
   padding:11px 20px;border-radius:var(--r-full);
   font-size:var(--fs-13);font-weight:700;
@@ -742,15 +746,15 @@ table.table-clean,table.school-table{width:100%;border-collapse:separate;border-
    16. UTILITARE
    ============================================================ */
 .skip-link{
-  position:absolute;left:12px;top:-48px;z-index:200;
+  position:absolute;left:calc(12px + var(--safe-l));top:calc(-48px + var(--safe-t));z-index:200;
   background:var(--brand);color:#fff;padding:10px 16px;border-radius:var(--r-sm);
   font-weight:700;font-size:var(--fs-13);transition:top var(--dur-2) var(--ease);
 }
-.skip-link:focus{top:12px;color:#fff}
+.skip-link:focus{top:calc(12px + var(--safe-t));color:#fff}
 
 .to-top{
-  position:fixed;right:20px;bottom:20px;z-index:60;
-  width:42px;height:42px;border-radius:50%;
+  position:fixed;right:calc(18px + var(--safe-r));bottom:calc(18px + var(--safe-b));z-index:60;
+  width:48px;height:48px;border-radius:50%;
   background:var(--surface);border:1px solid var(--line-strong);
   color:var(--ink-2);box-shadow:var(--sh-2);
   display:grid;place-items:center;
@@ -920,3 +924,159 @@ table.table-clean,table.school-table{width:100%;border-collapse:separate;border-
   .site-header{background:var(--surface);backdrop-filter:none;-webkit-backdrop-filter:none}
   .modal-bg{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(9,13,24,.78)}
 }
+
+/* ============================================================
+   18. MOBIL — ANDROID + iOS (v1.5.0)
+   Zoom la focus, ținte de atingere, feedback la apăsare,
+   „hover lipicios” pe touch, zone sigure, bară „Continuă”.
+   ============================================================ */
+
+/* iOS: un câmp sub 16px declanșează zoom automat la focus și strică layoutul */
+@media (max-width:640px){
+  input,select,textarea{font-size:16px}
+  .search{font-size:16px;min-width:0}
+}
+
+/* Ținte de atingere confortabile (recomandarea Apple/Google: minim ~44px) */
+@media (max-width:640px){
+  .vlink{display:inline-flex;align-items:center;min-height:44px;padding:10px 12px;font-size:var(--fs-12)}
+  .fchip,.tab{min-height:40px}
+  .report-link{display:inline-flex;align-items:center;min-height:40px}
+}
+
+/* Feedback imediat la atingere — pe touch nu există hover, deci apăsarea trebuie să se vadă */
+.btn-primary:active{transform:translateY(0) scale(.985);box-shadow:var(--sh-1)}
+.btn-ghost:active,.btn-quiet:active{transform:none;background:var(--surface-3)}
+.icon-btn:active,.lang-btn:active{background:var(--brand-soft);border-color:var(--brand);color:var(--brand);transform:scale(.95)}
+.navlinks a:active{background:var(--surface-3)}
+.fchip:active,.tab:active{transform:scale(.97)}
+.modal-close:active{background:var(--danger-soft);color:var(--danger);border-color:var(--danger)}
+.vlink:active{background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
+.to-top:active{transform:scale(.94)}
+.report-link:active{background:var(--warn);color:#fff}
+.step-head:active{background:var(--surface-2)}
+
+/* Pe ecrane fără hover real, efectele de „ridicare” nu trebuie să rămână lipite */
+@media (hover:none){
+  .btn-primary:hover,.btn-ghost:hover,.btn-mini:hover,.qstart-item:hover,.card:hover,
+  .org-card:hover,.news-card:hover,.tab:hover,.trans-card:hover,.cred-card:hover,
+  .src-card:hover,.page-card:hover,.comp-card:hover,.use-card:hover,.doc-next a:hover,
+  .cta-band .btn-primary:hover{transform:none}
+  .card:hover,.org-card:hover,.news-card:hover,.trans-card:hover,.cred-card:hover,
+  .src-card:hover,.page-card:hover,.comp-card:hover,.use-card:hover{box-shadow:var(--sh-1)}
+  .arrow-link:hover svg{transform:none}
+}
+
+/* Meniul mobil deschis blochează derularea paginii de dedesubt */
+html.nav-open,html.nav-open body{overflow:hidden}
+
+/* Antet compact pe telefoane mici: fără depășire orizontală */
+@media (max-width:560px){
+  .logo{min-width:0}
+  .logo-text{min-width:0}
+  .logo-text span{display:none}
+  .logo-text b{font-size:var(--fs-14);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+@media (max-width:420px){
+  .nav-actions{gap:6px}
+  .lang-btn{width:44px;padding:0;justify-content:center}
+  #langLabel{display:none}
+}
+
+/* ---------- Bara „Continuă de unde ai rămas” + instalare ---------- */
+html.has-resume{--scroll-offset:64px}
+.resume-bar{
+  position:sticky;top:var(--nav-h);z-index:65;
+  background:var(--surface);border-bottom:1px solid var(--line);box-shadow:var(--sh-1);
+}
+.resume-in{display:flex;align-items:center;gap:10px;padding-block:6px;min-height:56px}
+.resume-ico{
+  flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand-600);font-size:15px;
+}
+.resume-txt{flex:1;min-width:0;font-size:var(--fs-13);line-height:1.35;color:var(--ink-2)}
+.resume-txt b{display:block;font-size:var(--fs-14);color:var(--ink)}
+.resume-go{
+  flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:9px 16px;
+  border-radius:var(--r-full);background:var(--grad-brand);color:#fff;
+  font-size:var(--fs-13);font-weight:750;box-shadow:var(--sh-brand);
+}
+.resume-go:hover{color:#fff;text-decoration:none}
+.resume-go:active{transform:scale(.97)}
+.resume-x{
+  flex:none;width:44px;height:44px;border-radius:var(--r-sm);display:grid;place-items:center;
+  color:var(--muted);border:1px solid transparent;font-size:15px;
+}
+.resume-x:hover{border-color:var(--line-strong);color:var(--ink)}
+.resume-x:active{background:var(--surface-3)}
+@media (max-width:560px){
+  .resume-in{flex-wrap:wrap;gap:8px;padding-block:8px}
+  .resume-txt{flex:1 1 100%;order:2;font-size:var(--fs-12)}
+  .resume-ico,.resume-x{order:1}
+  .resume-go{order:1;margin-left:auto}
+}
+@media print{.resume-bar{display:none !important}}
+
+/* Ținte de atingere de 44px oriunde e un deget care apasă (nu pe desktop cu mouse) */
+@media (pointer:coarse){
+  .icon-btn,.lang-btn{min-width:var(--tap);min-height:var(--tap)}
+  .fchip,.tab{min-height:var(--tap)}
+  .report-link{min-height:36px}
+  .vlink{min-height:36px}
+}
+@media (max-width:640px){
+  .icon-btn,.lang-btn{min-width:var(--tap);min-height:var(--tap)}
+}
+/* ---------- Tabele late pe telefon: indiciu + umbră pe muchie ---------- */
+.scroll-hint{
+  display:none;
+  margin:0 0 6px;font-size:var(--fs-11);font-weight:700;letter-spacing:.02em;
+  color:var(--muted);text-align:right;
+}
+.table-wrap,.start-table-wrap{position:relative}
+.table-wrap.is-scrollable{box-shadow:inset -20px 0 20px -20px rgba(13,20,36,.3),var(--sh-1)}
+.table-wrap.is-scrollable.at-end{box-shadow:var(--sh-1)}
+.start-table-wrap.is-scrollable{box-shadow:inset -20px 0 20px -20px rgba(13,20,36,.3)}
+.start-table-wrap.is-scrollable.at-end{box-shadow:none}
+html[data-theme="dark"] .table-wrap.is-scrollable{box-shadow:inset -20px 0 20px -20px rgba(255,255,255,.22),var(--sh-1)}
+html[data-theme="dark"] .start-table-wrap.is-scrollable{box-shadow:inset -20px 0 20px -20px rgba(255,255,255,.22)}
+html[data-theme="dark"] .table-wrap.is-scrollable.at-end{box-shadow:var(--sh-1)}
+html[data-theme="dark"] .start-table-wrap.is-scrollable.at-end{box-shadow:none}
+
+@media (max-width:760px){
+  .scroll-hint{display:block}
+  /* prima coloană rămâne vizibilă cât derulezi lateral */
+  .school-table td:first-child,.school-table th:first-child,
+  .start-table th[scope="row"]{
+    position:sticky;left:0;z-index:2;background:var(--surface);
+    box-shadow:1px 0 0 var(--line);
+  }
+  .school-table thead th:first-child{z-index:3}
+  .start-table-wrap .start-table tbody th[scope="row"]{background:var(--surface)}
+}
+
+/* ---------- Notificări de aplicație: offline / versiune nouă ---------- */
+.app-note{
+  position:fixed;left:50%;transform:translateX(-50%);
+  bottom:calc(18px + var(--safe-b));z-index:130;
+  display:flex;align-items:center;gap:10px;
+  max-width:min(560px,calc(100vw - 24px));
+  background:var(--ink);color:var(--bg);border-radius:var(--r-full);
+  padding:8px 10px 8px 18px;font-size:var(--fs-13);font-weight:650;
+  box-shadow:var(--sh-4);
+}
+.app-note[data-kind="update"]{background:var(--brand-700)}
+.an-txt{min-width:0}
+.an-act{
+  flex:none;min-height:36px;padding:6px 14px;border-radius:var(--r-full);
+  background:var(--brand);color:#fff;font-weight:750;font-size:var(--fs-12);
+}
+.an-act:hover{background:var(--brand-600);color:#fff}
+.an-x{
+  flex:none;width:36px;height:36px;border-radius:50%;
+  color:inherit;opacity:.7;font-size:13px;
+}
+.an-x:hover{opacity:1;background:rgba(255,255,255,.12)}
+html.has-note .toast{bottom:calc(86px + var(--safe-b))}
+html.has-stepbar .app-note{bottom:calc(86px + var(--safe-b))}
+@media print{.app-note{display:none !important}}

@@ -25,6 +25,34 @@
   }
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+  /* Copiere fiabilă: Clipboard API → execCommand (iOS, file://, origini nesigure). */
+  function legacyCopy(txt){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = txt;
+      ta.setAttribute('readonly','');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      if(ta.setSelectionRange) ta.setSelectionRange(0, ta.value.length);
+      var ok = !!(document.execCommand && document.execCommand('copy'));
+      document.body.removeChild(ta);
+      return ok;
+    }catch(e){ return false; }
+  }
+  function copyText(txt){
+    return new Promise(function(resolve, reject){
+      var fallback = function(){ legacyCopy(txt) ? resolve() : reject(new Error('copy-failed')); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(resolve, fallback);
+      }else{
+        fallback();
+      }
+    });
+  }
+
   var LS_KEY = 'cp_start_v2';
   var STEP_XP = 10, QUIZ_XP = 5;
 
@@ -771,6 +799,7 @@
       if(!isDone && state.quiz[s.id] == null){
         h += '<span class="start-hint">' + (lang()==='ro' ? 'Răspunde la verificare ca să primești XP-ul întreg.' : 'Answer the check question to earn the full XP.') + '</span>';
       }
+      h += '<button type="button" class="start-share" data-share="' + s.id + '" title="' + (lang()==='ro' ? 'Copiază un link direct către acest pas' : 'Copy a direct link to this step') + '">🔗 ' + (lang()==='ro' ? 'Link către pas' : 'Link to step') + '</button>';
       if(s.links && s.links.length){
         h += '<span class="start-links">' + (lang()==='ro' ? 'Mai departe: ' : 'Go deeper: ');
         s.links.forEach(function(l,i2){ h += (i2 ? ' · ' : '') + '<a href="' + l.h + '">' + esc(L(l.l)) + '</a>'; });
@@ -780,6 +809,64 @@
     }
     h += '</div></article>';
     return h;
+  }
+
+  /* ---------- LINK DIRECT CĂTRE UN PAS (incepe.html#s4) ----------
+     Pasul deschis se scrie în adresă, deci linkul poate fi trimis mai departe,
+     iar butonul Back/Foreword al browserului funcționează. */
+  function stepIds(){ return STEPS.map(function(x){ return x.id; }); }
+  function setHash(id){
+    if(('#' + id) === location.hash) return;
+    try{ history.replaceState(null, '', '#' + id); }
+    catch(e){ location.hash = id; }
+  }
+  function applyHash(scroll){
+    var h = (location.hash || '').replace(/^#/, '');
+    if(!h || stepIds().indexOf(h) === -1) return false;
+    if(state.open !== h){ state.open = h; save(); renderSteps(); refreshHints(); }
+    var el = document.getElementById('step-' + h);
+    if(scroll && el && el.scrollIntoView) el.scrollIntoView({ behavior:smooth(), block:'start' });
+    return true;
+  }
+  function pageURL(id){
+    return location.href.split('#')[0] + '#' + id;
+  }
+
+  /* ---------- BARĂ FIXĂ PE TELEFON: progres + pasul următor ---------- */
+  function barDoneNext(){
+    var first = null;
+    STEPS.forEach(function(x){ if(!first && !state.done[x.id]) first = x; });
+    if(state.open){
+      var cur = null;
+      STEPS.forEach(function(x){ if(x.id === state.open) cur = x; });
+      if(cur && !state.done[cur.id]) return cur;
+    }
+    return first;
+  }
+  function barHTML(){
+    if(!state.setup) return '';
+    var total = STEPS.length, done = doneCount();
+    if(done >= total) return '';
+    var next = barDoneNext();
+    if(!next) return '';
+    var idx = stepIds().indexOf(next.id);
+    var pct = Math.round(done / total * 100);
+    var ro = (lang() === 'ro');
+    var h = '<div class="sb-in wrap">';
+    h += '<span class="sb-txt"><b>' + (ro ? 'Pasul ' + (idx + 1) + ' din ' + total : 'Step ' + (idx + 1) + ' of ' + total) + '</b>';
+    h += '<span class="sb-bar" aria-hidden="true"><i style="width:' + pct + '%"></i></span></span>';
+    h += '<button type="button" class="sb-go" data-goto="' + next.id + '">' + esc(L(next.t)) + ' →</button>';
+    h += '</div>';
+    return h;
+  }
+  function renderBar(){
+    var el = $('#startBar');
+    if(!el) return;
+    var h = barHTML();
+    if(el.innerHTML !== h) el.innerHTML = h;
+    el.hidden = !h;
+    el.setAttribute('aria-label', lang()==='ro' ? 'Progres și pasul următor' : 'Progress and next step');
+    document.documentElement.classList.toggle('has-stepbar', !!h);
   }
 
   function routeText(){
@@ -879,8 +966,13 @@
   }
   function renderPlan(){ var el = $('#startPlan'); if(el) el.innerHTML = planHTML(); }
 
+  function refreshHints(){
+    if(window.CLP && window.CLP.refreshTableHints) window.CLP.refreshTableHints();
+  }
+
   function renderAll(){
-    renderHud(); renderSetup(); renderSteps(); renderPlan();
+    renderHud(); renderSetup(); renderSteps(); renderPlan(); renderBar();
+    refreshHints();
     var live = $('#startLive');
     if(live) live.textContent = (lang()==='ro' ? 'Progres: ' : 'Progress: ') + doneCount() + '/' + STEPS.length + ', ' + xp() + ' XP';
   }
@@ -931,7 +1023,7 @@
       announce((lang()==='ro' ? 'Pasul e gata. +' : 'Step done. +') + gain + ' XP. ' +
                (nb.length ? (lang()==='ro' ? 'Ai ' + nb.length + ' insigne.' : 'You have ' + nb.length + ' badges.') : ''));
       if(next){
-        save(); renderAll();
+        save(); renderAll(); setHash(next.id);
         var el = document.getElementById('step-' + next.id);
         if(el && el.scrollIntoView) el.scrollIntoView({ behavior:smooth(), block:'start' });
         return;
@@ -955,6 +1047,7 @@
       announce(lang()==='ro' ? 'Vezi explicația — apoi mergi mai departe.' : 'Read the explanation — then move on.');
     }
     if(state.done[id]) renderSteps();
+    refreshHints();
   }
 
   function bind(){
@@ -966,11 +1059,12 @@
         var id = t.getAttribute('data-toggle');
         state.open = (state.open === id) ? null : id;
         save(); renderSteps();
+        if(state.open) setHash(state.open);
         return;
       }
       if(t.hasAttribute('data-goto')){
         state.open = t.getAttribute('data-goto');
-        save(); renderSteps();
+        save(); renderSteps(); setHash(state.open);
         var el = document.getElementById('step-' + state.open);
         if(el && el.scrollIntoView) el.scrollIntoView({ behavior:smooth(), block:'start' });
         var head = el && el.querySelector('.start-step-head');
@@ -978,6 +1072,14 @@
         return;
       }
       if(t.hasAttribute('data-mark')){ markStep(t.getAttribute('data-mark')); return; }
+      if(t.hasAttribute('data-share')){
+        copyText(pageURL(t.getAttribute('data-share'))).then(function(){
+          toast(lang()==='ro' ? 'Link copiat. Îl poți trimite oricui.' : 'Link copied. Send it to anyone.');
+        }, function(){
+          toast(lang()==='ro' ? 'Nu am putut copia linkul automat.' : 'Could not copy the link automatically.');
+        });
+        return;
+      }
       if(t.hasAttribute('data-quiz')){ answerQuiz(t.getAttribute('data-quiz'), parseInt(t.getAttribute('data-i'), 10)); return; }
       if(t.hasAttribute('data-setup')){
         setAnswer(t.getAttribute('data-setup'), t.getAttribute('data-v'));
@@ -1000,14 +1102,19 @@
         toast(lang()==='ro' ? 'Hai să începem cu pasul 1.' : 'Let’s start with step 1.');
       }
       if(e.target && e.target.id === 'startCopy'){
-        var txt = planText();
-        if(navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(txt).then(function(){
-            toast(lang()==='ro' ? 'Plan copiat. Lipește-l unde lucrezi.' : 'Plan copied. Paste it wherever you work.');
-          }, function(){ toast(lang()==='ro' ? 'Nu am putut copia automat.' : 'Could not copy automatically.'); });
-        }else{
-          toast(lang()==='ro' ? 'Selectează textul planului și copiază-l manual.' : 'Select the plan text and copy it manually.');
-        }
+        copyText(planText()).then(function(){
+          toast(lang()==='ro' ? 'Plan copiat. Lipește-l unde lucrezi.' : 'Plan copied. Paste it wherever you work.');
+        }, function(){
+          /* ultima soluție: selectăm textul planului, ca un tap lung să fie de ajuns */
+          var pre = $('#startPlanText');
+          if(pre && window.getSelection && document.createRange){
+            var r = document.createRange();
+            r.selectNodeContents(pre);
+            var sel = window.getSelection();
+            sel.removeAllRanges(); sel.addRange(r);
+          }
+          toast(lang()==='ro' ? 'Textul planului e selectat — apasă lung și copiază.' : 'The plan text is selected — long press and copy.');
+        });
       }
       if(e.target && e.target.id === 'startPrint') window.print();
     });
@@ -1022,6 +1129,9 @@
   function boot(){
     if(!document.getElementById('startSteps')) return;
     load(); bind(); renderAll();
+    /* dacă cineva deschide un link direct (incepe.html#s7), mergem la acel pas */
+    if(applyHash(true)) toast(lang()==='ro' ? 'Te-am dus la pasul din link.' : 'Jumped to the step from your link.');
+    window.addEventListener('hashchange', function(){ applyHash(true); });
   }
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

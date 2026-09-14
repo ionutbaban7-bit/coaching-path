@@ -9,6 +9,75 @@ sau [direct pe GitHub](https://github.com/ionutbaban7-bit/coaching-path/issues/n
 
 ---
 
+## [1.5.0] — 2026-09-14
+
+### Adăugat — versiunea de telefon (Android + iOS)
+- **Bara „Continuă de unde ai rămas”.** Sub antet apare o bară discretă care citește progresul salvat
+  local și propune pasul următor concret: traseul „Începe aici” („ai ajuns la pasul 3 din 10”),
+  harta („3 noduri parcurse”) sau planul („5 pași bifați”). Se închide cu un tap, își ține minte
+  alegerea (`cp_resume_hidden`) și nu reapare pentru același pas. Ancorele țin cont de ea
+  (`--scroll-offset`), deci titlurile nu mai ajung sub bară.
+- **Instalare ca aplicație (PWA).** Pe Android/Chrome, `beforeinstallprompt` devine un buton
+  „Instalează”; pe iPhone (unde Apple nu permite prompt programatic) bara arată instrucțiunea
+  „Partajează → Adaugă la ecranul principal”. Iconița de ecran principal (`apple-touch-icon`) există
+  acum pe toate paginile.
+- **Link direct către orice pas.** Pasul deschis se scrie în adresă (`incepe.html#s7`), deci linkul poate
+  fi trimis mai departe, iar butoanele Back/Forward ale browserului merg natural. Fiecare pas are un
+  buton „🔗 Link către pas” care copiază adresa exactă.
+- **Bară fixă de progres pe telefon.** Când calibrarea e făcută și mai sunt pași de parcurs, în josul
+  ecranului apare „Pasul X din 10” cu bara de progres și butonul către pasul următor (dispare pe
+  desktop, nu blochează butonul „sus” și nu acoperă finalul paginii).
+- **Tabele late, citibile pe telefon.** Tabelele cu multe coloane derulează lateral cu inerție, au o
+  umbră pe muchia din dreapta când mai e conținut, un indiciu „↔ glisează pentru restul coloanelor”
+  și prima coloană lipită (numele școlii rămâne vizibil cât derulezi).
+- **Anunțuri de aplicație.** „Ești offline — paginile deja vizitate merg din cache”, „Ai revenit
+  online” și, când service worker-ul aduce o versiune nouă, „versiune nouă — Reîncarcă”.
+- **Audit automat de mobil**: `npm run qa:mobile` (28 de verificări statice: viewport, meta-uri iOS,
+  zone sigure, `dvh`, câmpuri de 16px, ținte de atingere, hover pe touch, meniu, bară, manifest,
+  versiunea cache-ului). `qa.mjs` are în plus o secțiune **MOBIL** care testează meniul și bara
+  „Continuă” în jsdom, cu progres injectat în `localStorage`.
+
+### Reparat — ce se strica pe telefon
+- **Zoom involuntar pe iPhone.** Câmpurile de căutare aveau ~14px; sub 16px iOS mărește pagina
+  automat la focus și layoutul „sare”. Acum toate câmpurile au 16px pe ecrane mici, iar căutările au
+  `type="search"` + `enterkeyhint="search"` (tastatură corectă și buton de „caută”).
+- **Ținte de atingere prea mici.** Butoanele de iconiță (36px), închiderea modalului (32px), punctele
+  de pas (30px) și bifa de pas (19px) erau sub pragul de 44px recomandat de Apple/Google. Toate au
+  acum minim 44px (bifa are zonă de atingere extinsă prin padding), inclusiv linkurile mici din
+  tabele și pastilele de filtru.
+- **Meniu mobil incomplet.** Bloca derularea doar vizual: pagina de dedesubt se derula, iar meniul nu
+  se închidea cu Escape sau la atingere în afară. Acum `html.nav-open` oprește derularea, Escape
+  închide și readuce focusul pe buton, atingerea în afară închide, rotirea telefonului închide, iar
+  butonul are `aria-controls`/`aria-haspopup`.
+- **Hover „lipicios” pe touch.** Efectele de ridicare la hover (butoane, carduri, noduri de hartă)
+  rămâneau active după tap. Sunt neutralizate în `@media (hover:none)`, iar în locul lor apare
+  feedback la apăsare (`:active`) pe toate componentele atinse des.
+- **`100vh` și zonele sigure.** Panoul de meniu și cuprinsul foloseau `100vh`, care pe telefon
+  include bara browserului — conținutul putea ieși din ecran; acum au și variantă `100dvh`. Antetul
+  respectă notch-ul, toastul și butonul „sus” stau deasupra barei de jos, modalul e încadrat în
+  zonele sigure (`env(safe-area-inset-*)`), iar `.wrap` nu mai intră sub decupaj în landscape.
+  Toate paginile au `viewport-fit=cover`.
+- **Derulare „elastică” nedorită.** Panourile interioare (tabele, cuprins, meniu, modal) folosesc
+  `overscroll-behavior: contain`, iar pe touch dispare întârzierea de 300 ms dublu-tap
+  (`touch-action: manipulation`), fără să se blocheze zoom-ul cu două degete.
+- **Antetul nu mai iese din ecran** pe telefoanele înguste: subtitlul logo-ului dispare sub 560px,
+  butonul de limbă devine doar steag sub 420px, iar iconițele rămân de 44px.
+- `overflow-x: clip` (unde e suportat) în loc de `hidden`, ca `position: sticky` să funcționeze corect.
+- **Copierea planului merge acum și pe iPhone / din fișier local.** Butonul „Copiază planul” folosea
+  doar Clipboard API (indisponibil pe `file://` sau pe origini nesigure); acum are fallback pe
+  `execCommand`, iar dacă nici acesta nu e permis selectează automat textul planului, ca un tap lung
+  să fie de ajuns.
+- **Căutarea în glosar nu mai rămâne mută:** dacă nu există niciun termen potrivit, apare un mesaj
+  clar („Niciun termen pentru căutarea ta. Încearcă alt cuvânt.”) în loc de o listă goală.
+
+### Modificat
+- Versiunea activelor urcă la `?v=1.5.0` (toate paginile + `package.json` + cache-ul service worker
+  `clp-v1.5.0`), plus meta-uri pentru aplicație: `format-detection`,
+  `apple-mobile-web-app-capable`, `apple-mobile-web-app-title`, `mobile-web-app-capable`,
+  `theme-color` pentru temă luminoasă și întunecată pe fiecare pagină.
+
+---
+
 ## [1.4.0] — 2026-09-14
 
 ### Adăugat — pagina „Începe aici” (`incepe.html`)

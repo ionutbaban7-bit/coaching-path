@@ -97,7 +97,20 @@
 
   /* ---------- Layout ---------- */
   --wrap:1200px;
-  --nav-h:64px;
+  --nav-h-base:64px;
+  /* Zone sigure (notch, Dynamic Island, bara de jos iOS/Android).
+     Sunt 0px pe desktop și pe telefoanele fără decupaj, deci nu schimbă nimic acolo. */
+  --safe-t:env(safe-area-inset-top,0px);
+  --safe-r:env(safe-area-inset-right,0px);
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-l:env(safe-area-inset-left,0px);
+  /* Înălțimea reală a antetului lipicios = bara propriu-zisă + zona sigură de sus */
+  --nav-h:calc(var(--nav-h-base) + var(--safe-t));
+  /* Offset suplimentar pentru ancore când bara „Continuă de unde ai rămas” e vizibilă */
+  --scroll-offset:0px;
+  --pad-x:clamp(16px,3.2vw,32px);
+  /* Ținta minimă de atingere recomandată de Apple (44pt) și Google (48dp) */
+  --tap:44px;
 
   /* ---------- Gradiente ---------- */
   --grad-brand:linear-gradient(135deg,#5b66e0 0%,#3a45bc 100%);
@@ -166,7 +179,13 @@
    ============================================================ */
 *,*::before,*::after{box-sizing:border-box}
 *{margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px)}
+html{
+  -webkit-text-size-adjust:100%;scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--nav-h) + 16px + var(--scroll-offset));
+  -webkit-tap-highlight-color:transparent;
+}
+/* Pe touch: fără întârzierea de 300 ms la „dublu tap” (zoom-ul cu două degete merge în continuare) */
+a,button,label,input,select,textarea,summary,[role="button"]{touch-action:manipulation}
 body{
   font-family:var(--font-sans);
   background:var(--bg);
@@ -182,6 +201,9 @@ body{
   overflow-x:hidden;
   transition:background var(--dur-3) var(--ease), color var(--dur-3) var(--ease);
 }
+/* `overflow-x:hidden` pe body poate rupe `position:sticky` în unele browsere;
+   `clip` face același lucru fără să creeze un container de derulare. */
+@supports (overflow:clip){html,body{overflow-x:clip}}
 img,svg,video{max-width:100%;display:block}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer;background:none;border:0}
@@ -236,7 +258,11 @@ strong,b{font-weight:700;color:var(--ink)}
 /* ============================================================
    LAYOUT
    ============================================================ */
-.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,3.2vw,32px)}
+.wrap{
+  width:100%;max-width:var(--wrap);margin-inline:auto;
+  padding-left:max(var(--pad-x),var(--safe-l));
+  padding-right:max(var(--pad-x),var(--safe-r));
+}
 .wrap-narrow{max-width:820px}
 section{padding-block:var(--sec-y);position:relative}
 section:nth-of-type(even of .band){background:var(--surface)}
@@ -297,7 +323,7 @@ html.js .reveal.in{opacity:1;transform:none}
 
 /* Bara de progres la citire */
 .read-progress{
-  position:fixed;top:0;left:0;height:2px;width:0%;z-index:90;
+  position:fixed;top:var(--safe-t);left:var(--safe-l);right:var(--safe-r);height:2px;width:0%;z-index:90;
   background:var(--grad-brand);
   transition:width 80ms linear;
   pointer-events:none;

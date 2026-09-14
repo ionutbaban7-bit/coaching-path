@@ -216,10 +216,99 @@ for (const page of PAGES) {
   report[page] = entry;
 }
 
+/* ============================================================
+   MOBIL — meniul (Escape / atingere în afară / derulare blocată)
+   și bara „Continuă de unde ai rămas" (localStorage + incepe.html)
+   ============================================================ */
+async function loadSeeded(page, seed) {
+  const errors = [];
+  const vc = new VirtualConsole();
+  vc.on('jsdomError', (e) => {
+    if (/Not implemented|Could not load/.test(e.message)) return;
+    errors.push('jsdomError: ' + e.message);
+  });
+  vc.on('error', (...a) => errors.push('console.error: ' + a.join(' ')));
+  vc.on('warn', () => {});
+  const dom = await JSDOM.fromURL(`${BASE}/${page}`, {
+    runScripts: 'dangerously', resources: 'usable', pretendToBeVisual: true, virtualConsole: vc,
+    beforeParse(window) {
+      window.eval(POLYFILL);
+      try { window.localStorage.clear(); } catch (e) {}
+      for (const [k, v] of Object.entries(seed || {})) { try { window.localStorage.setItem(k, v); } catch (e) {} }
+      window.addEventListener('error', (e) =>
+        errors.push('window.error: ' + (e.error && e.error.stack ? e.error.stack : e.message || 'unknown')));
+    },
+  });
+  await new Promise((r) => {
+    if (dom.window.document.readyState === 'complete') r();
+    else dom.window.addEventListener('load', r);
+    setTimeout(r, 4000);
+  });
+  await new Promise((r) => setTimeout(r, 300));
+  return { dom, errors };
+}
+
+const mobileEntry = { errors: [], warnings: [], checks: [] };
+{
+  const check = (name, ok, detail) => mobileEntry.checks.push({ name, ok: !!ok, detail: detail || '' });
+  const mclick = (win, el) => el.dispatchEvent(new win.MouseEvent('click', { bubbles: true, cancelable: true }));
+
+  const a = await loadSeeded('teorie.html', {});
+  const { document: d1, window: w1 } = a.dom.window;
+  const btn = d1.getElementById('navToggle');
+  const nav = d1.getElementById('navlinks');
+  check('meniu: legat de nav (aria-controls)', !!btn && btn.getAttribute('aria-controls') === 'navlinks');
+  if (btn && nav) {
+    mclick(w1, btn);
+    check('meniu: deschis → .open + aria-expanded=true', nav.classList.contains('open') && btn.getAttribute('aria-expanded') === 'true');
+    check('meniu: derularea paginii e blocată (html.nav-open)', d1.documentElement.classList.contains('nav-open'));
+    d1.dispatchEvent(new w1.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    check('meniu: Escape îl închide și dă focusul înapoi', !nav.classList.contains('open') && d1.activeElement === btn);
+    mclick(w1, btn);
+    mclick(w1, d1.body);
+    check('meniu: atingerea în afară îl închide', !nav.classList.contains('open'));
+  }
+  mobileEntry.errors.push(...a.errors);
+  a.dom.window.close();
+
+  const seed = { cp_start_v2: JSON.stringify({ a: { who: 'student', time: 'fast', budget: 'small' }, done: { s1: true, s2: true }, quiz: {}, xp: 20, open: 's3' }) };
+  const b = await loadSeeded('teorie.html', seed);
+  const { document: d2, window: w2 } = b.dom.window;
+  const bar = d2.getElementById('resumeBar');
+  const txt = bar ? bar.textContent.replace(/\s+/g, ' ') : '';
+  check('bară „Continuă": apare când există progres salvat', !!bar && !bar.hidden);
+  check('bară „Continuă": indică pasul următor', /pasul 3 din 10/.test(txt), txt.slice(0, 80));
+  check('bară „Continuă": duce spre pagina traseului', !!bar && bar.dataset.href === 'incepe.html');
+  check('bară „Continuă": ancorele primesc offset (html.has-resume)', d2.documentElement.classList.contains('has-resume'));
+  if (bar) mclick(w2, bar.querySelector('#resumeX'));
+  check('bară „Continuă": se închide și ține minte alegerea', !!bar && bar.hidden === true && w2.localStorage.getItem('cp_resume_hidden') === 'start:2');
+  mobileEntry.errors.push(...b.errors);
+  b.dom.window.close();
+
+  const d = await loadSeeded('teorie.html', {});
+  const { document: d3, window: w3 } = d.dom.window;
+  w3.dispatchEvent(new w3.Event('offline'));
+  await new Promise((r) => setTimeout(r, 80));
+  const note = d3.querySelector('.app-note');
+  check('offline: apare o notificare discretă', !!note && note.hidden === false && /offline/i.test(note.textContent),
+    note ? note.textContent.slice(0, 70) : 'lipsă');
+  w3.dispatchEvent(new w3.Event('online'));
+  await new Promise((r) => setTimeout(r, 80));
+  check('online: notificarea se schimbă (și dispare singură)', !!note && /online/i.test(note.textContent),
+    note ? note.textContent.slice(0, 70) : 'lipsă');
+  d.dom.window.close();
+
+  const c = await loadSeeded('legal.html', {});
+  const barC = c.dom.window.document.getElementById('resumeBar');
+  check('bară „Continuă": nu apare fără progres', !barC || barC.hidden === true, barC ? 'ascunsă' : 'absentă');
+  c.dom.window.close();
+}
+report['MOBIL (meniu + bară „Continuă")'] = mobileEntry;
+
 let fails = 0;
 for (const [page, e] of Object.entries(report)) {
   console.log('\n========== ' + page + ' ==========');
-  console.log(`titlu: ${e.title} | h1: ${e.h1Count} | text: ${e.bodyTextLen} caractere`);
+  if (e.title !== undefined) console.log(`titlu: ${e.title} | h1: ${e.h1Count} | text: ${e.bodyTextLen} caractere`);
   if (e.errors.length) {
     fails += e.errors.length;
     console.log('  ❌ ERORI:');
