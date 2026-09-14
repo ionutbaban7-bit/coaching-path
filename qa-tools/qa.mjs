@@ -162,6 +162,58 @@ for (const page of PAGES) {
     for (const c of doc.querySelectorAll('#transGrid .trans-card')) clickAndReport('trans card', c);
     // noduri hartă
     for (const n of doc.querySelectorAll('#roadmap .rm-node')) clickAndReport('rm node ' + n.dataset.id, n);
+    /* ------- traseul cu bicicleta: popup, închidere, următoarea oprire ------- */
+    const rmJourney = doc.getElementById('rmJourney');
+    if (rmJourney) {
+      if (doc.getElementById('rmPanel').classList.contains('open')) clickAndReport('închide popup-ul rămas deschis', doc.getElementById('rmClose'));
+      const dots = doc.querySelectorAll('#rmJourney .rj-dot');
+      check('harta: bara drumului are 8 opriri', dots.length === 8, dots.length + ' puncte');
+      check('harta: o oprire e marcată „ești aici”', !!doc.querySelector('#roadmap .rm-node.is-now .rm-here'),
+        (doc.querySelector('#rmJourney .rj-txt') || {}).textContent || '');
+
+      const bg = doc.getElementById('rmBack');
+      check('harta: fundalul popup-ului e pregătit', !!bg && bg.hidden === true, 'rmBack');
+      clickAndReport('oprirea 1', doc.querySelector('#roadmap .rm-node'));
+      const popup = doc.getElementById('rmPanel');
+      check('harta: oprirea se deschide ca dialog', popup.classList.contains('open') && popup.getAttribute('role') === 'dialog' && popup.getAttribute('aria-modal') === 'true',
+        popup.getAttribute('role') + '/' + popup.getAttribute('aria-modal'));
+      check('harta: focusul intră în popup', doc.activeElement && doc.activeElement.id === 'rmClose', doc.activeElement ? doc.activeElement.id : 'nimic');
+      check('harta: fundalul întunecat apare', bg.hidden === false, 'rmBack');
+      check('harta: derularea paginii se blochează', doc.documentElement.classList.contains('rm-open'), doc.documentElement.className);
+
+      const bikeBefore = win.localStorage.getItem('cp_map_bike');
+      clickAndReport('închide popup-ul', doc.getElementById('rmClose'));
+      check('harta: popup-ul se închide', !popup.classList.contains('open'), popup.className);
+      check('harta: fundalul dispare la închidere', bg.hidden === true, 'rmBack');
+      check('harta: focusul se întoarce pe oprire', doc.activeElement && doc.activeElement.classList.contains('rm-node'),
+        doc.activeElement ? doc.activeElement.className.split(' ')[0] : 'nimic');
+
+      // „pedalează mai departe” bifează oprirea, închide și mută bicicleta
+      clickAndReport('oprirea curentă', doc.querySelector('#roadmap .rm-node.is-now'));
+      clickAndReport('„am înțeles — pedalează mai departe”', doc.getElementById('rmPedal'));
+      const doneArr = JSON.parse(win.localStorage.getItem('cp_map_done') || '[]');
+      const bikeAfter = win.localStorage.getItem('cp_map_bike');
+      check('harta: oprirea parcursă se salvează', doneArr.length > 0, JSON.stringify(doneArr));
+      check('harta: bicicleta avansează la oprirea următoare', !!bikeAfter && bikeAfter !== bikeBefore, String(bikeBefore) + ' → ' + String(bikeAfter));
+      check('harta: popup-ul se închide după pedalare', !doc.getElementById('rmPanel').classList.contains('open'), 'închis');
+
+      // drumul continuă din bara de călătorie
+      const nextBtn = doc.querySelector('#rmJourney [data-move="next"]');
+      check('harta: bara are butonul „pedalează mai departe”', !!nextBtn && !nextBtn.disabled, nextBtn ? nextBtn.textContent.trim() : 'lipsă');
+      if (nextBtn) {
+        clickAndReport('butonul din bara drumului', nextBtn);
+        await new Promise((r) => setTimeout(r, 420));
+        check('harta: oprirea următoare se deschide singură', doc.getElementById('rmPanel').classList.contains('open'),
+          doc.getElementById('rmTitle') ? doc.getElementById('rmTitle').textContent : 'lipsă');
+      }
+      const d1 = doc.querySelector('#rmJourney .rj-dot');
+      if (d1) { clickAndReport('punctul opririi 1', d1); await new Promise((r) => setTimeout(r, 420)); }
+      // rămâne o oprire deschisă: verificările de mai jos confirmă că popup-ul se umple
+      if (!doc.getElementById('rmPanel').classList.contains('open')) {
+        clickAndReport('redeschide o oprire', doc.querySelector('#roadmap .rm-node'));
+      }
+    }
+
     // căutări (doar cele care există pe pagina respectivă)
     for (const id of ['credSearch','schoolSearch','glossSearch','qbSearch']) {
       const inp = doc.getElementById(id);
@@ -175,6 +227,9 @@ for (const page of PAGES) {
     // 7. după interacțiuni: nav are linkuri, iar pagina nu are HTML injectat greșit
     // modal: rol de dialog respectat (aria-hidden comutat + focus mutat în dialog)
     const modalBg = doc.getElementById('modalBg');
+    if (modalBg && doc.querySelector('#credGrid .cred-card')) {
+      clickAndReport('redeschide modalul pentru verificare', doc.querySelector('#credGrid .cred-card'));
+    }
     if (modalBg && modalBg.classList.contains('open')) {
       check('modal: aria-hidden=false când e deschis', modalBg.getAttribute('aria-hidden') === 'false', modalBg.getAttribute('aria-hidden'));
       check('modal: focus mutat în dialog', doc.activeElement && doc.activeElement.id === 'mClose', doc.activeElement ? doc.activeElement.id || doc.activeElement.tagName : 'nimic');

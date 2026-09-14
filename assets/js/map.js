@@ -142,13 +142,41 @@
     career:     { ro:'Profesează',en:'Practise' }
   };
 
-  var LS_KEY = 'cp_map_done';
+  /* ---------- ce ținem minte pe dispozitiv ---------- */
+  var LS_KEY  = 'cp_map_done';   /* opririle parcurse */
+  var LS_BIKE = 'cp_map_bike';   /* unde e bicicleta pe drum */
+  var TOTAL   = ROADMAP.length;
+
   function loadDone(){
-    try{ return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }catch(e){ return []; }
+    try{ var v = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); return Array.isArray(v) ? v : []; }
+    catch(e){ return []; }
   }
-  function saveDone(arr){
-    try{ localStorage.setItem(LS_KEY, JSON.stringify(arr)); }catch(e){}
+  function saveDone(arr){ try{ localStorage.setItem(LS_KEY, JSON.stringify(arr)); }catch(e){} }
+  function indexOfId(id){
+    for(var i = 0; i < TOTAL; i++){ if(ROADMAP[i].id === id) return i; }
+    return -1;
   }
+  function loadBike(){
+    try{
+      var v = localStorage.getItem(LS_BIKE);
+      return (v && indexOfId(v) > -1) ? v : null;
+    }catch(e){ return null; }
+  }
+  function saveBike(id){ try{ localStorage.setItem(LS_BIKE, id); }catch(e){} }
+  /* prima oprire nebifată pornind din poziția dată (o ia de la capăt dacă e nevoie) */
+  function firstUnfinished(start){
+    var d = loadDone(), i;
+    for(i = start; i < TOTAL; i++){ if(d.indexOf(ROADMAP[i].id) === -1) return ROADMAP[i].id; }
+    for(i = 0; i < start; i++){ if(d.indexOf(ROADMAP[i].id) === -1) return ROADMAP[i].id; }
+    return null;
+  }
+  function currentBike(){ return loadBike() || firstUnfinished(0) || ROADMAP[0].id; }
+  function routeFinished(){ return loadDone().length >= TOTAL; }
+  function stopTitle(id){
+    var n = ROADMAP.filter(function(x){ return x.id === id; })[0];
+    return n ? L(n.t) : '';
+  }
+  function T(ro, en){ return L({ ro:ro, en:en }); }
 
   function L(v){
     if(v == null) return '';
@@ -157,22 +185,30 @@
     return v[l] || v.ro || '';
   }
 
-  var current = null;
+  var current = null;      /* oprirea deschisă în popup */
+  var lastFocus = null;    /* unde dăm focusul înapoi când închidem */
 
+  /* ============================================================
+     RANDARE: drumul, opririle, bicicleta
+     ============================================================ */
   function render(){
     var host = document.getElementById('roadmap');
-    var panel = document.getElementById('rmPanel');
-    var wrap = document.getElementById('mapShell');
     if(!host) return;
     var done = loadDone();
+    var bike = currentBike();
 
     host.innerHTML = ROADMAP.map(function(n, i){
       var row = Math.floor(i / 4) + 1;
-      var col = (row === 1) ? (i + 1) : (8 - i);       // șerpuitor: rândul 2 merge dreapta→stânga
-      return '<button class="rm-node" type="button" data-id="' + n.id + '" data-lane="' + n.lane + '"' +
+      var col = (row === 1) ? (i + 1) : (8 - i);       /* șerpuitor: rândul 2 merge dreapta→stânga */
+      var isDone = done.indexOf(n.id) > -1;
+      var isHere = (bike === n.id);
+      return '<button class="rm-node' + (isDone ? ' is-done' : '') + (isHere ? ' is-now' : '') + '"' +
+             ' type="button" data-id="' + n.id + '" data-lane="' + n.lane + '"' +
              ' style="grid-row:' + row + ';grid-column:' + col + '"' +
-             ' aria-controls="rmPanel" aria-expanded="' + (current === n.id ? 'true' : 'false') + '">' +
-               '<span class="rm-step" aria-hidden="true">' + (done.indexOf(n.id) > -1 ? '✓' : (i + 1)) + '</span>' +
+             ' aria-controls="rmPanel" aria-expanded="' + (current === n.id ? 'true' : 'false') + '"' +
+             (isHere ? ' aria-current="true"' : '') + '>' +
+               '<span class="rm-step" aria-hidden="true">' + (isDone ? '✓' : (i + 1)) + '</span>' +
+               (isHere ? '<span class="rm-here" aria-hidden="true"><span class="rm-bike">🚲</span>' + T('Ești aici', 'You are here') + '</span>' : '') +
                '<span class="rm-tag">' + L(n.tag) + '</span>' +
                '<span class="rm-ic" aria-hidden="true">' + n.icon + '</span>' +
                '<h4>' + L(n.t) + '</h4>' +
@@ -180,36 +216,99 @@
              '</button>';
     }).join('');
 
-    // conectori SVG
     drawRoads();
 
     host.querySelectorAll('.rm-node').forEach(function(btn){
       btn.addEventListener('click', function(){ open(btn.dataset.id); });
     });
 
-    // după o re-randare (ex. schimbarea limbii) redeschidem oprirea selectată,
-    // altfel panoul rămânea cu textul în limba veche
+    /* după o re-randare (ex. schimbarea limbii) redeschidem oprirea selectată */
     if(current) open(current);
 
-    // contor progres
-    var meter = document.getElementById('rmMeter');
-    if(meter) meter.textContent = done.length + '/8';
+    renderJourney(bike);
 
-    // legendă
+    var meter = document.getElementById('rmMeter');
+    if(meter) meter.textContent = done.length + '/' + TOTAL;
+
     var legend = document.getElementById('mapLegend');
     if(legend){
       var lanes = ['learn','practice','credential','career'];
       legend.innerHTML = lanes.map(function(k){
         return '<span><i style="background:var(--' + (k === 'learn' ? 'brand' : k === 'practice' ? 'teal' : k === 'credential' ? 'icf' : 'violet') + ')"></i>' + L(LANE_LABEL[k]) + '</span>';
-      }).join('') + '<span style="margin-left:auto" class="text-muted">' + L({ro:'Apasă orice oprire pentru detalii', en:'Tap any stop for details'}) + '</span>';
+      }).join('') + '<span style="margin-left:auto" class="text-muted">' +
+        T('Dai click pe o oprire, apoi închizi fereastra și pedalezi mai departe 🚲', 'Click a stop, close the window and pedal on 🚲') + '</span>';
     }
   }
 
+  /* bara drumului: unde ești, câte opriri sunt, înainte / înapoi */
+  function renderJourney(bike){
+    var host = document.getElementById('rmJourney');
+    if(!host) return;
+    var done = loadDone();
+    var here = indexOfId(bike);
+    var finished = routeFinished();
+    host.innerHTML =
+      '<div class="rj-left">' +
+        '<span class="rj-bike" aria-hidden="true">🚲</span>' +
+        '<span class="rj-txt">' + (finished
+          ? T('Ai parcurs tot drumul. Bravo!', 'You completed the whole road. Well done!')
+          : T('Oprirea', 'Stop') + ' <b>' + (here + 1) + '</b> ' + T('din', 'of') + ' ' + TOTAL) + '</span>' +
+      '</div>' +
+      '<div class="rj-dots" role="group" aria-label="' + T('Opririle drumului', 'Stops on the road') + '">' +
+        ROADMAP.map(function(n, k){
+          return '<button type="button" class="rj-dot' + (done.indexOf(n.id) > -1 ? ' done' : '') + (k === here ? ' now' : '') + '"' +
+                 ' data-bike="' + n.id + '" aria-label="' + T('Oprirea ', 'Stop ') + (k + 1) + ': ' + L(n.t) + '"' +
+                 (k === here ? ' aria-current="true"' : '') + '>' + (k + 1) + '</button>';
+        }).join('') +
+      '</div>' +
+      '<div class="rj-actions">' +
+        '<button type="button" class="btn btn-ghost btn-sm" data-move="prev"' + (here === 0 ? ' disabled' : '') + '>← ' + T('Înapoi', 'Back') + '</button>' +
+        '<button type="button" class="btn btn-primary btn-sm" data-move="next"' + (here >= TOTAL - 1 ? ' disabled' : '') + '>' +
+          T('Pedalează mai departe', 'Pedal on') + ' →</button>' +
+      '</div>';
+
+    host.querySelectorAll('[data-bike]').forEach(function(b){
+      b.addEventListener('click', function(){ goTo(b.getAttribute('data-bike'), true); });
+    });
+    host.querySelectorAll('[data-move]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var step = b.getAttribute('data-move') === 'next' ? 1 : -1;
+        var k = indexOfId(currentBike()) + step;
+        if(k < 0 || k > TOTAL - 1) return;
+        goTo(ROADMAP[k].id, true);
+      });
+    });
+  }
+
+  /* mută bicicleta la o oprire (și, opțional, deschide imediat fereastra) */
+  function goTo(id, openIt){
+    if(indexOfId(id) < 0) return;
+    saveBike(id);
+    rideFx();
+    render();
+    if(openIt){
+      setTimeout(function(){
+        if(current) return;          /* dacă între timp a deschis altcineva ceva, nu-l deranjăm */
+        open(id);
+      }, 320);
+    }
+  }
+
+  function rideFx(){
+    var host = document.getElementById('roadmap');
+    if(!host) return;
+    host.classList.add('is-riding');
+    setTimeout(function(){ host.classList.remove('is-riding'); }, 950);
+  }
+
+  /* ============================================================
+     DRUMUL DESENAT (SVG) — trece prin fiecare oprire
+     ============================================================ */
   function drawRoads(){
     var host = document.getElementById('roadmap');
     var svg = document.getElementById('rmRoads');
     if(!host || !svg) return;
-    // pe ecrane mici grila are o coloană, iar liniile deveneau zigzag peste carduri
+    /* pe ecrane mici grila are o coloană, iar liniile deveneau zigzag peste carduri */
     if(svg.offsetParent === null || getComputedStyle(svg).display === 'none'){ svg.innerHTML = ''; return; }
     var nodes = Array.prototype.slice.call(host.querySelectorAll('.rm-node'));
     if(nodes.length < 2) return;
@@ -218,12 +317,7 @@
 
     var pts = nodes.map(function(n){
       var r = n.getBoundingClientRect();
-      return {
-        x: r.left - box.left + r.width / 2,
-        y: r.top - box.top + r.height / 2,
-        cy: r.top - box.top,            // pentru gruparea pe rânduri
-        node: n
-      };
+      return { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2, cy: r.top - box.top, node: n };
     });
     /* Ordinea vizuală se calculează din pozițiile reale, nu presupunând
        „8 noduri în 2 rânduri de 4”: pe tabletă grila are 2 coloane, iar
@@ -238,7 +332,7 @@
     var order = [];
     rows.forEach(function(r, i){
       r.items.sort(function(a,b){ return a.x - b.x; });
-      if(i % 2 === 1) r.items.reverse();      // șerpuitor: rândurile pare merg invers
+      if(i % 2 === 1) r.items.reverse();      /* șerpuitor: rândurile pare merg invers */
       order = order.concat(r.items);
     });
     if(order.length < 2) return;
@@ -248,67 +342,164 @@
       var a = order[i - 1], b = order[i];
       var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
       if(Math.abs(a.y - b.y) > Math.abs(a.x - b.x)){
-        d += ' C' + a.x + ' ' + my + ',' + b.x + ' ' + my + ',' + b.x + ' ' + b.y;  // coborâre lină
+        d += ' C' + a.x + ' ' + my + ',' + b.x + ' ' + my + ',' + b.x + ' ' + b.y;
       }else{
-        d += ' C' + mx + ' ' + a.y + ',' + mx + ' ' + b.y + ',' + b.x + ' ' + b.y;  // lateral
+        d += ' C' + mx + ' ' + a.y + ',' + mx + ' ' + b.y + ',' + b.x + ' ' + b.y;
       }
     }
     svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
-    svg.innerHTML = '<path d="' + d + '"/>';
+    svg.innerHTML = '<path class="rm-road-line" d="' + d + '"/><path class="rm-road-dash" d="' + d + '"/>';
   }
 
+  /* ============================================================
+     POPUP-UL OPRIRII — se deschide la click, se închide și pleci mai departe
+     ============================================================ */
   function open(id){
     var n = ROADMAP.filter(function(x){ return x.id === id; })[0];
     var panel = document.getElementById('rmPanel');
     if(!n || !panel) return;
-    current = id;
+
     var host = document.getElementById('roadmap');
+    /* focusul se întoarce pe cardul opririi, nu pe un element care dispare */
+    var trigger = host ? host.querySelector('.rm-node[data-id="' + id + '"]') : null;
+    lastFocus = (document.activeElement && document.activeElement.classList &&
+                 document.activeElement.classList.contains('rm-node'))
+      ? document.activeElement : trigger;
+    current = id;
 
-    host.querySelectorAll('.rm-node').forEach(function(x){
-      x.classList.toggle('active', x.dataset.id === id);
-      x.setAttribute('aria-expanded', x.dataset.id === id ? 'true' : 'false');
-    });
+    if(host){
+      host.querySelectorAll('.rm-node').forEach(function(x){
+        x.classList.toggle('active', x.dataset.id === id);
+        x.setAttribute('aria-expanded', x.dataset.id === id ? 'true' : 'false');
+      });
+    }
 
-    panel.setAttribute('aria-label', L({ro:'Detalii oprire', en:'Stop details'}));
+    var isDone = loadDone().indexOf(id) > -1;
+    var isLast = indexOfId(id) === TOTAL - 1;
+
+    panel.setAttribute('role','dialog');
+    panel.setAttribute('aria-modal','true');
+    panel.setAttribute('aria-labelledby','rmTitle');
     panel.innerHTML =
       '<div class="rm-head">' +
-        '<span class="rm-tag" style="background:var(--surface-3);color:var(--muted)">' + L(n.tag) + '</span>' +
-        '<h3>' + L(n.t) + '</h3>' +
-        '<p class="text-muted" style="margin-top:6px">' + L(n.d) + '</p>' +
+        '<div class="rm-head-txt">' +
+          '<span class="rm-tag" style="background:var(--surface-3);color:var(--muted)">' + L(n.tag) + '</span>' +
+          '<h3 id="rmTitle">' + n.icon + ' ' + L(n.t) + '</h3>' +
+          '<p class="text-muted">' + L(n.d) + '</p>' +
+        '</div>' +
+        '<button class="rm-close" id="rmClose" type="button" aria-label="' + T('Închide fereastra', 'Close the window') + '">✕</button>' +
       '</div>' +
       '<div class="rm-grid">' +
-        '<div class="rm-box"><h5>' + L({ro:'De ce contează', en:'Why it matters'}) + '</h5><p style="font-size:13px;color:var(--ink-2)">' + L(n.why) + '</p></div>' +
-        '<div class="rm-box"><h5>' + L({ro:'Repere concrete', en:'Concrete markers'}) + '</h5><ul>' +
+        '<div class="rm-box"><h5>' + T('De ce contează', 'Why it matters') + '</h5><p style="font-size:13px;color:var(--ink-2)">' + L(n.why) + '</p></div>' +
+        '<div class="rm-box"><h5>' + T('Repere concrete', 'Concrete markers') + '</h5><ul>' +
           L(n.facts).map(function(f){ return '<li>' + f + '</li>'; }).join('') +
         '</ul></div>' +
       '</div>' +
-      '<div class="rec" style="margin-top:16px"><b>💡 ' + L({ro:'De reținut', en:'Remember'}) + ':</b> ' + L(n.tip) + '</div>' +
-      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">' +
-        n.links.map(function(l){
-          return '<a class="btn-mini" href="' + l.href + '">' + L({ ro:l.ro, en:l.en }) + ' →</a>';
-        }).join('') +
-        '<button class="btn-mini" id="rmDone" style="margin-left:auto">' +
-          (loadDone().indexOf(id) > -1
-            ? '✓ ' + L({ro:'Parcurs — anulează', en:'Done — undo'})
-            : L({ro:'Marchează ca parcurs', en:'Mark as done'})) +
-        '</button>' +
+      '<div class="rec" style="margin-top:16px"><b>💡 ' + T('De reținut', 'Remember') + ':</b> ' + L(n.tip) + '</div>' +
+      '<div class="rm-foot">' +
+        '<div class="rm-links">' +
+          n.links.map(function(l){
+            return '<a class="btn-mini" href="' + l.href + '">' + L({ ro:l.ro, en:l.en }) + ' →</a>';
+          }).join('') +
+        '</div>' +
+        '<div class="rm-foot-btns">' +
+          '<button type="button" class="btn btn-ghost btn-sm" id="rmCloseFoot">' + T('Închide', 'Close') + '</button>' +
+          '<button type="button" class="btn btn-primary btn-sm" id="rmPedal">' +
+            (isLast ? T('🎉 Încheie drumul', '🎉 Finish the road') : T('🚲 Am înțeles — pedalează mai departe', '🚲 Got it — pedal on')) +
+          '</button>' +
+        '</div>' +
       '</div>';
-    panel.classList.add('open');
 
-    document.getElementById('rmDone').addEventListener('click', function(){
-      var done = loadDone();
-      var i = done.indexOf(id);
-      if(i > -1) done.splice(i, 1); else done.push(id);
-      saveDone(done);
-      render();      // re-randează nodurile (apare bifa ✓)
-      open(id);      // re-randează panoul (eticheta butonului se actualizează)
-      window.CLP && window.CLP.toast && window.CLP.toast(
-        i > -1 ? L({ro:'Scos de pe hartă', en:'Removed from map'}) : L({ro:'Bravo! Următorul pas e mai clar.', en:'Nice! The next step is clearer.'})
-      );
+    panel.classList.add('open');
+    var back = document.getElementById('rmBack');
+    if(back) back.hidden = false;
+    document.documentElement.classList.add('rm-open');
+
+    var c1 = document.getElementById('rmClose');
+    var c2 = document.getElementById('rmCloseFoot');
+    var pedal = document.getElementById('rmPedal');
+    if(c1) c1.addEventListener('click', function(){ closePopup(false); });
+    if(c2) c2.addEventListener('click', function(){ closePopup(false); });
+    if(pedal) pedal.addEventListener('click', function(){ markDone(id, true); });
+    if(c1 && c1.focus){ try{ c1.focus({ preventScroll:true }); }catch(e){ c1.focus(); } }
+  }
+
+  function closePopup(advance){
+    var panel = document.getElementById('rmPanel');
+    if(!panel || !panel.classList.contains('open')) return;
+    var from = current;
+    panel.classList.remove('open');
+    panel.removeAttribute('aria-modal');
+    panel.innerHTML = '';
+    var back = document.getElementById('rmBack');
+    if(back) back.hidden = true;
+    document.documentElement.classList.remove('rm-open');
+    var host = document.getElementById('roadmap');
+    if(host){
+      host.querySelectorAll('.rm-node').forEach(function(x){
+        x.classList.remove('active');
+        x.setAttribute('aria-expanded','false');
+      });
+    }
+    current = null;
+    if(lastFocus && lastFocus.focus){ try{ lastFocus.focus({ preventScroll:true }); }catch(e){ lastFocus.focus(); } }
+    lastFocus = null;
+    if(advance && from) pedalOn(from);
+  }
+
+  /* după ce închizi fereastra, bicicleta pleacă la următoarea oprire nebifată */
+  function pedalOn(fromId){
+    var target = firstUnfinished(indexOfId(fromId) + 1);
+    if(!target || target === fromId) return;
+    saveBike(target);
+    rideFx();
+    render();
+    if(window.CLP && window.CLP.toast){
+      window.CLP.toast('🚲 ' + T('Următoarea oprire', 'Next stop') + ': ' + stopTitle(target));
+    }
+  }
+
+  function markDone(id, thenAdvance){
+    var done = loadDone();
+    var i = done.indexOf(id);
+    if(i > -1) done.splice(i, 1); else done.push(id);
+    saveDone(done);
+    if(window.CLP && window.CLP.toast){
+      window.CLP.toast(i > -1
+        ? T('Scos de pe drum', 'Removed from the road')
+        : (routeFinished() ? T('🎉 Ai parcurs toate cele 8 opriri!', '🎉 You completed all 8 stops!')
+                           : T('Bravo! Drumul continuă.', 'Nice! The road goes on.')));
+    }
+    if(thenAdvance){ closePopup(true); return; }
+    render();
+    open(id);
+  }
+
+  /* ============================================================
+     PORNIRE
+     ============================================================ */
+  function initPopup(){
+    var back = document.getElementById('rmBack');
+    if(back) back.addEventListener('click', function(){ closePopup(false); });
+    document.addEventListener('keydown', function(e){
+      var panel = document.getElementById('rmPanel');
+      if(!panel || !panel.classList.contains('open')) return;
+      if(e.key === 'Escape' || e.key === 'Esc'){
+        e.stopPropagation();
+        closePopup(false);
+        return;
+      }
+      if(e.key !== 'Tab') return;
+      var f = panel.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+      if(!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
     });
   }
 
   function boot(){
+    initPopup();
     render();
     var t;
     window.addEventListener('resize', function(){
@@ -323,5 +514,5 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 
-  window.Roadmap = { render: render, open: open, data: ROADMAP };
+  window.Roadmap = { render: render, open: open, close: closePopup, data: ROADMAP, bike: currentBike };
 })();

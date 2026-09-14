@@ -228,6 +228,22 @@ ok('nu blocăm zoom-ul cu touch-action:none', !/touch-action:\s*none/.test(allCs
 ok('variabila --tap (ținta minimă) e folosită', /var\(--tap\)/.test(allCss));
 ok('mesaj clar când căutarea nu găsește nimic (glosar)', /empty-state/.test(RM('assets/js/app.js')));
 
+/* ---------- 8. popup-ul opririi (drumul cu bicicleta) ---------- */
+const mapJs = RM('assets/js/map.js');
+const sheet = valueFor(rules, '.rm-panel', 'position');
+const sheetMedia = rules.filter(r => r.sel.trim() === '.rm-panel' && /max-width:760px/.test(r.media));
+ok('popup-ul opririi e dialog modal', /aria-modal/.test(mapJs) && /role="dialog"|setAttribute\('role','dialog'\)/.test(mapJs) && /rm-open/.test(allCss));
+ok('pe telefon popup-ul e „bottom sheet”', sheetMedia.some(r => /bottom:0/.test(r.decls) && /max-height:88dvh/.test(r.decls)));
+ok('popup-ul respectă bara gestuală', sheetMedia.some(r => /var\(--safe-b\)/.test(r.decls)));
+ok('popup-ul nu depășește ecranul', (sheet ? String(sheet.v) : '') !== '' && /dvh/.test(allCss) && /max-height:min\(84dvh/.test(allCss));
+ok('butonul de închidere are țintă de 44px', /var\(--tap\)/.test((valueFor(rules, '.rm-close', 'width') || {}).v || ''));
+ok('fundalul popup-ului acoperă ecranul', (valueFor(rules, '.rm-back', 'position') || {}).v === 'fixed' && /\.rm-back\{[^}]*inset:0/.test(allCss));
+ok('derularea paginii se blochează cât e popup-ul deschis', /html\.rm-open/.test(allCss));
+ok('punctele drumului au 44px pe touch', /@media \(pointer:coarse\)\{\.rj-dot\{width:var\(--tap\)/.test(allCss.replace(/\s+/g, ' ')) || /@media \(pointer:coarse\)\{\s*\.rj-dot\{width:var\(--tap\);height:var\(--tap\)\}/.test(allCss));
+ok('bicicleta respectă „mișcare redusă”', /prefers-reduced-motion:reduce[\s\S]{0,120}\.rj-bike/.test(allCss));
+ok('bara drumului nu se rupe pe telefon', /@media \(max-width:760px\)[\s\S]{0,400}\.rj-dots\{order:3/.test(allCss));
+ok('titlul secțiunii a fost rescris', /Ești nou în coaching\?/.test(RM('index.html')));
+
 /* ============================================================
    RAPORT
    ============================================================ */

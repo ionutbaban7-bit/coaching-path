@@ -650,7 +650,7 @@ table.compare tbody tr:hover td.hl{background:var(--brand-soft)}
 
 /* ============================================================
    19. MOBIL — paginile de conținut + traseul „Începe aici”
-   Feedback la apăsare și „hover” neutralizat pe touch (v1.5.0)
+   Feedback la apăsare și „hover” neutralizat pe touch (v1.5.0+)
    ============================================================ */
 .start-dot:active{transform:scale(.92)}
 .start-opt:active,.start-quiz-opt:active{transform:scale(.99);border-color:var(--brand)}

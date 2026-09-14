@@ -7,12 +7,14 @@
      • local                  : `node server.js` → http://localhost:3000
    Node >= 18. Nu folosește nimic din npm: n-are ce să se strice.
 
-   v1.5.0 — mobil (Android + iOS):
+   v1.6.0 — drumul cu bicicleta + QA de producție (ITIL):
      • viewport-fit=cover + zone sigure (notch / bara de jos) în tot layoutul
      • câmpuri de 16px pe telefon (iOS nu mai face zoom la focus)
      • ținte de atingere de minim 44px + feedback la apăsare
      • meniu mobil: blocare scroll, Escape, atingere în afară
      • bară „Continuă de unde ai rămas" + instalare ca aplicație (PWA)
+     • harta e un drum cu 8 opriri: popup, închizi și pedalezi mai departe
+   v1.5.0 — mobil (Android + iOS):
    v1.4.0 — ce s-a reparat înainte:
      • compresie gzip/brotli (HTML-ul scădea de la ~70 KB la ~15 KB)
      • cache corect: active versionate (?v=) = imutabile, HTML mereu proaspăt

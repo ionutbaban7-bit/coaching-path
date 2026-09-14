@@ -43,7 +43,8 @@ npm run qa                    # încarcă toate paginile în jsdom: erori, randa
 npm run qa:start              # 48 de verificări pentru traseul „Începe aici” (quiz, XP, linkuri directe, bară mobilă)
 npm run qa:css                # clase/variabile CSS folosite dar nedefinite, id-uri lipsă
 npm run qa:contrast           # contrast text/fundal în ambele teme (prag AA 4.5:1)
-npm run qa:mobile             # audit mobil: viewport, zone sigure, ținte de atingere, meniu, PWA
+npm run qa:mobile             # audit mobil (54 de verificări): viewport, zone sigure, ținte, meniu, PWA, popup
+npm run qa:itil               # verificare de punere în producție (ITIL 4) cu verdict GO / NO-GO
 ```
 
 ## Structura proiectului
@@ -69,7 +70,7 @@ manifest.webmanifest · robots.txt · sitemap.xml  → instalare, indexare, SEO
 sw.js              → service worker: site-ul merge și offline, a doua vizită e instant
 tools/update-info.mjs  → jobul de verificare a datelor (rulează manual sau lunar)
 tools/check-site.mjs   → verificare înainte de publicare (npm run check)
-qa-tools/              → verificări de calitate (npm run qa / qa:start / qa:css / qa:contrast / qa:mobile)
+qa-tools/              → verificări de calitate (npm run qa / qa:start / qa:css / qa:contrast / qa:mobile / qa:itil)
 server.js          → server static, zero dependențe (pentru Render Web Service)
 package.json       → npm start / npm run update-info
 render.yaml        → Blueprint Render (Static Site implicit + Web Service Node comentat)

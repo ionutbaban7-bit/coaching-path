@@ -9,6 +9,44 @@ sau [direct pe GitHub](https://github.com/ionutbaban7-bit/coaching-path/issues/n
 
 ---
 
+## [1.6.0] — 2026-09-14
+
+### Adăugat — harta e acum un drum cu bicicleta 🚲
+- Titlul secțiunii de pe prima pagină devine **„Ești nou în coaching?”** (în engleză „New to
+  coaching?”), iar subtitlul explică mecanismul: dai click pe o oprire, citești ce și cum, închizi
+  fereastra și pedalezi mai departe. Aceeași voce și în introducerea teoriei.
+- **Opt opriri pe un drum desenat** (șosea cu linie întreruptă de mijloc, care se animă când
+  bicicleta pleacă), cu marcajul „Ești aici” pe oprirea curentă și bifă verde pe cele parcurse.
+- **Popup pe fiecare oprire**, ca dialog accesibil (`role="dialog"`, `aria-modal`, titlu legat prin
+  `aria-labelledby`): ce este, de ce contează, repere concrete, ce să reții, legături mai departe.
+  Se închide cu ✕, cu butonul „Închide”, cu Escape sau cu click pe fundal; pagina nu se mai derulează
+  sub el, iar focusul se întoarce exact pe cardul opririi.
+- **Bara drumului**: „Oprirea X din 8”, punctele tuturor opririlor (bifate / curente), butoanele
+  „← Înapoi” și „Pedalează mai departe →”. Butonul principal din popup („🚲 Am înțeles — pedalează
+  mai departe”) bifează oprirea, închide fereastra și mută bicicleta la următoarea oprire nebifată,
+  cu un mesaj care spune unde ai ajuns. Poziția bicicletei se salvează local (`cp_map_bike`), deci
+  drumul se reia de unde ai rămas.
+- Pe telefon popup-ul se deschide ca **bottom sheet** (80% din înălțime, colțuri rotunjite sus, spațiu
+  pentru bara gestuală, derulare cu inerție în interior), iar punctele drumului au 44px la atingere.
+
+### Adăugat — QA de producție în stil ITIL
+- `npm run qa:itil` — verificare de punere în producție pe cele patru dimensiuni ITIL 4 (organizație
+  și oameni, informație și tehnologie, parteneri și furnizori, fluxuri de valoare și procese),
+  plus tranziția serviciului: gestiunea schimbării, release, capacitate, disponibilitate,
+  continuitate, securitate, măsurare și îmbunătățire continuă. Verdict automat **GO / NO-GO**.
+- `RAPORT-PRODUCTIE.md` — raportul de punere în producție: schimbarea (RFC), impact, dovada
+  testelor, plan de implementare, plan de revenire (rollback), hiper-îngrijire 24–72 h, riscuri
+  cunoscute și criterii de acceptare.
+
+### Modificat
+- Versiunea activelor urcă la `?v=1.6.0` (toate paginile + `package.json` + cache-ul service worker
+  `clp-v1.6.0`).
+- Auditul de mobil crește la **54 de verificări** (popup, bottom sheet, zone sigure, punctele
+  drumului, blocarea derulării, mișcare redusă), iar `npm run qa` acoperă acum și drumul cu
+  bicicleta: deschidere, focus, închidere, salvare, avans automat, butonul din bara drumului.
+
+---
+
 ## [1.5.0] — 2026-09-14
 
 ### Adăugat — versiunea de telefon (Android + iOS)

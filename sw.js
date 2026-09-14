@@ -12,7 +12,7 @@
    ============================================================ */
 'use strict';
 
-var CACHE_VERSION = 'clp-v1.5.0';
+var CACHE_VERSION = 'clp-v1.6.0';
 var HTML_CACHE = CACHE_VERSION + '-html';
 var ASSET_CACHE = CACHE_VERSION + '-assets';
 
