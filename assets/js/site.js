@@ -89,25 +89,8 @@
     var page = document.body.dataset.page || 'index';
     var html = '';
 
-    // secțiuni (doar pe pagina principală există ca ancore)
-    if(typeof UI !== 'undefined' && page === 'index'){
-      html += UI[lang].nav.map(function(p){
-        return '<a href="#' + p[0] + '" data-spy="' + p[0] + '">' + p[1] + '</a>';
-      }).join('');
-    }else{
-      var secs = (typeof UI !== 'undefined') ? UI[lang].nav : [];
-      html += secs.map(function(p){
-        return '<a href="index.html#' + p[0] + '">' + p[1] + '</a>';
-      }).join('');
-    }
-
-    html += '<span class="nav-sep" aria-hidden="true"></span>';
-    html += PAGES.map(function(p){
-      var active = (page === p.id) ? ' active' : '';
-      var current = (page === p.id) ? ' aria-current="page"' : '';
-      return '<a class="is-page' + active + '"' + current + ' href="' + p.href + '">' + p.label[lang] + '</a>';
-    }).join('');
-
+    var groups=[['incepe','Începe','Start'],['certificari','Certificare','Credentials'],['invata','Practică','Practice'],['scoli','Școli','Schools'],['resurse','Resurse','Resources']];
+    html=groups.map(function(p){var active=page===p[0]||(p[0]==='invata'&&['theory','individual','team'].indexOf(page)>=0)||(p[0]==='certificari'&&page==='traseul-meu')||(p[0]==='incepe'&&page==='start');return '<a href="'+p[0]+'.html"'+(active?' aria-current="page" class="active"':'')+'>'+p[lang==='ro'?1:2]+'</a>';}).join('');
     box.innerHTML = html;
   }
 
@@ -152,7 +135,7 @@
       var here = document.body.dataset.page || 'index';
       pill.href = p.steps
         ? (here === 'incepe' ? '#startSteps' : 'incepe.html#startSteps')
-        : (here === 'index' ? '#harta' : 'index.html#harta');
+        : (here === 'index' ? '#harta' : 'incepe.html');
       pill.hidden = false;
     }
     render();
@@ -507,6 +490,8 @@
     }
     function installReady(){
       if(lsGet('cp_install_hidden')) return false;
+      var completed=lsJson('cp_start_v2',{});
+      if(!completed.done || !Object.keys(completed.done).some(function(k){return completed.done[k];})) return false;
       if(isStandalone()) return false;
       return !!deferred || isIOS();
     }
@@ -527,7 +512,7 @@
         return { sig:'map:' + nodes, ico:'\uD83D\uDDFA',
           title:T('Continuă harta coachingului','Continue the coaching map'),
           sub:T(nodes + ' noduri parcurse', nodes + ' nodes explored'),
-          href:'index.html#harta', label:T('Deschide harta','Open the map') };
+          href:'incepe.html', label:T('Deschide harta','Open the map') };
       }
       var prog = lsJson('cp_progress', null);
       var steps = 0, k;
@@ -538,7 +523,7 @@
         return { sig:'plan:' + steps, ico:'\u2713',
           title:T('Continuă planul tău','Continue your plan'),
           sub:T(steps + ' pași bifați', steps + ' steps ticked'),
-          href:'index.html#paths', label:T('Continuă','Continue') };
+          href:'traseul-meu.html#paths', label:T('Continuă','Continue') };
       }
       return null;
     }
@@ -782,7 +767,7 @@
     initLang();
     initNotices();
     initProgressBadge();
-    initFeedback();
+    // Feedback v2 uses an explicit, user-reviewed GitHub issue draft.
     initPrintBtn();
     initSearchCount();
     initOffline();

@@ -1,5 +1,9 @@
 # Coaching Learning Path
 
+## Atlas v2 — noua experiență
+
+Homepage scurt, navigare în cinci direcții, pagini separate pentru certificări, traseu, școli, costuri, practică și resurse. Include lectură pe capitole, comparație între școli și un singur traseu ghidat. Vezi [ATLAS_V2.md](ATLAS_V2.md) pentru comportament, verificări și limite. Secțiunile de mai jos descriu și istoricul v1; comanda actuală de verificare funcțională este `npm run qa`.
+
 Aplicație web gratuită, complet autonomă (fără internet, fără cont, fără tracking), care explică
 coachingul de la zero și hărțuiește certificările relevante în România:
 

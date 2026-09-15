@@ -4,4 +4,4 @@ Allow: /
 Disallow: /tools/
 Disallow: /data/
 
-Sitemap: https://ionutbaban7-bit.github.io/coaching-path/sitemap.xml
+Sitemap: https://coaching-path.onrender.com/sitemap.xml

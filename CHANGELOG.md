@@ -357,3 +357,11 @@ Evenimente deja reflectate în conținut, dar care trebuie **reverificate la dat
 - **Modificat** — schimbări în funcționalități existente
 - **Reparat** — corecții de bug-uri
 - **Scos** — funcționalități eliminate
+# 2.0.0 — Atlas
+
+- New editorial visual system and focused, intent-based homepage.
+- Separate destinations, five-link navigation and legacy anchor compatibility.
+- Guided journey map, chapter reading, inline credential details and pathway advisor.
+- School filtering, pagination and three-school comparison.
+- Preserved local progress, deferred installation prompt, versioned offline precache.
+- GitHub feedback draft and v2 DOM integration suite. See ATLAS_V2.md.

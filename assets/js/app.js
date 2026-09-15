@@ -241,14 +241,15 @@ function renderTransitions(){
  $('#transGrid').innerHTML = TRANS.map(tr=>{
    const f=TRANS_FLOW[tr.id];
    const chips=f[lang].map((t,i)=>{const [bg,col]=f.c[i].split('|');return `<span class="chip-node" style="background:${bg};color:${col}">${t}</span>`;}).join('<span class="arrow">→</span>');
-   return `<div class="trans-card" data-trans="${tr.id}">
+   return `<div class="trans-card" role="button" tabindex="0" data-trans="${tr.id}">
      <div class="trans-flow">${chips}</div>
      <h3>${L(tr.t)}</h3><p>${L(tr.short)}</p>
    </div>`;
  }).join('');
- $$('#transGrid .trans-card').forEach(c=>c.onclick=()=>openTrans(c.dataset.trans));
+ $$('#transGrid .trans-card').forEach(c=>{c.onclick=()=>openTrans(c.dataset.trans);c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click();}};});
 }
 function openTrans(id){
+ if(location.hash!=='#detail-'+id)history.pushState(null,'','#detail-'+id);
  const tr=TRANS.find(x=>x.id===id), o=orgMeta(tr.org);
  const li=arr=>arr[lang].map(x=>`<li>${x}</li>`).join('');
  modal(`
@@ -314,6 +315,7 @@ function renderCreds(){
  });
 }
 function openCred(id){
+ if(location.hash!=='#detail-'+id)history.pushState(null,'','#detail-'+id);
  const c=CREDS.find(x=>x.id===id), o=orgMeta(c.org);
  modal(`
   <div class="cc-ic" style="background:${o.bg};color:${o.color};width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-weight:900;flex:none">${c.badge}</div>
@@ -449,6 +451,11 @@ function modalScrollbar(on){
  document.body.style.paddingRight=(on&&w>0)?w+'px':'';
 }
 function modal(head,body){
+ if(document.body.dataset.page!=='index'){
+ let panel=document.getElementById('atlasDetail');if(!panel){panel=document.createElement('section');panel.id='atlasDetail';panel.className='wrap atlas-detail';document.querySelector('.atlas-heading').after(panel);}
+ panel.innerHTML='<div class="modal-head">'+head+'</div><div class="modal-body">'+body+'</div><button type="button" class="btn btn-ghost" id="atlasCloseDetail">'+(lang==='ro'?'Înapoi la listă':'Back to list')+'</button>';panel.hidden=false;panel.tabIndex=-1;panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'auto',block:'start'});
+ document.getElementById('atlasCloseDetail').onclick=()=>{panel.hidden=true;const selector=location.hash.includes('detail-t-')?'#transitions':'#credentials';history.pushState(null,'',selector);document.querySelector(selector)?.scrollIntoView({block:'start'});};return;
+ }
  modalLastFocus=document.activeElement;
  $('#modalBox').innerHTML=`
   <div class="modal-head">${head}<button class="modal-close" id="mClose" aria-label="${lang==='ro'?'Închide':'Close'}">✕</button></div>
@@ -507,10 +514,9 @@ $$('.qstart-item').forEach(b=>b.onclick=()=>{
 
 /* ====================== INIT ====================== */
 function renderAll(){
- applyI18n(); renderNav(); renderOrgs(); renderNews();
- renderPathTabs(); renderStepper(); renderTransitions();
- renderCredFilters(); renderCreds(); renderSchoolFilters(); renderSchools();
- renderJourney(); renderCosts(); renderFaq(); renderGloss(); renderSources();
+ applyI18n(); renderNav();
+ const modules = [['#orgCards',renderOrgs],['#newsGrid',renderNews],['#pathTabs',renderPathTabs],['#stepper',renderStepper],['#transGrid',renderTransitions],['#credFilters',renderCredFilters],['#credGrid',renderCreds],['#schoolFilters',renderSchoolFilters],['#schoolRows',renderSchools],['#journeyRows',renderJourney],['#costTable',renderCosts],['#faqList',renderFaq],['#glossList',renderGloss],['#srcGrid',renderSources]];
+ modules.forEach(([selector,render])=>{if($(selector))render();});
 }
 $('#langBtn').onclick=()=>{
  lang=(lang==='ro'?'en':'ro');
@@ -520,6 +526,5 @@ $('#langBtn').onclick=()=>{
  document.dispatchEvent(new CustomEvent('clp:lang',{detail:{lang:lang}}));
  toast(lang==='ro'?'Română activată':'English on');
 };
-$('#glossSearch').addEventListener('input',renderGloss);
+$('#glossSearch')?.addEventListener('input',renderGloss);
 renderAll();
-

@@ -65,6 +65,12 @@ const MIME = {
 
 /* rute scurte → fișier */
 const CLEAN = {
+  '/certificari': 'certificari.html',
+  '/traseul-meu': 'traseul-meu.html',
+  '/scoli': 'scoli.html',
+  '/costuri': 'costuri.html',
+  '/resurse': 'resurse.html',
+  '/invata': 'invata.html',
   '/teorie': 'teorie.html',
   '/incepe': 'incepe.html',
   '/individual': 'individual.html',

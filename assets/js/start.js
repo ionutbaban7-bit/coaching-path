@@ -281,7 +281,7 @@
             why:{ro:'Nu. Problema nu e prețul, ci faptul că ruta de program nu e valabilă.', en:'No. The issue is not price, it is that the programme route is not valid.'} }
         ]
       },
-      links:[{l:{ro:'Toate credențialele, pe rând', en:'All credentials, one by one'}, h:'index.html#credentials'}, {l:{ro:'Școli din România', en:'Schools in Romania'}, h:'index.html#schools'}]
+      links:[{l:{ro:'Toate credențialele, pe rând', en:'All credentials, one by one'}, h:'certificari.html#credentials'}, {l:{ro:'Școli din România', en:'Schools in Romania'}, h:'scoli.html#schools'}]
     },
 
     /* ---------- 6 ---------- */
@@ -336,7 +336,7 @@
             why:{ro:'Nu. Taxa nu înlocuiește cerințele; ea doar diferențiază membru/nemembru.', en:'No. A fee never replaces requirements; it only differentiates member/non-member.'} }
         ]
       },
-      links:[{l:{ro:'Parcursurile pas cu pas', en:'Step-by-step paths'}, h:'index.html#paths'}, {l:{ro:'Costuri și durate', en:'Costs and durations'}, h:'index.html#costs'}, {l:{ro:'Trecerea între certificări', en:'Bridges between credentials'}, h:'index.html#transitions'}]
+      links:[{l:{ro:'Parcursurile pas cu pas', en:'Step-by-step paths'}, h:'traseul-meu.html#paths'}, {l:{ro:'Costuri și durate', en:'Costs and durations'}, h:'costuri.html#costs'}, {l:{ro:'Trecerea între certificări', en:'Bridges between credentials'}, h:'traseul-meu.html#transitions'}]
     },
 
     /* ---------- 7 ---------- */
@@ -377,7 +377,7 @@
             why:{ro:'Nu. Nu există „taxă de urgență” care să comprime timpul sau regulile.', en:'No. There is no rush fee that compresses time or the rules.'} }
         ]
       },
-      links:[{l:{ro:'Glosar: mentor coaching, supervizare', en:'Glossary: mentor coaching, supervision'}, h:'index.html#faq'}, {l:{ro:'Trecerea spre supervizare', en:'The move into supervision'}, h:'index.html#transitions'}]
+      links:[{l:{ro:'Glosar: mentor coaching, supervizare', en:'Glossary: mentor coaching, supervision'}, h:'resurse.html#faq'}, {l:{ro:'Trecerea spre supervizare', en:'The move into supervision'}, h:'traseul-meu.html#transitions'}]
     },
 
     /* ---------- 8 ---------- */
@@ -415,7 +415,7 @@
             why:{ro:'Nu. Tehnicile nu compensează lipsa orelor acreditate și a rutei de program.', en:'No. Techniques do not make up for missing accredited hours and a programme route.'} }
         ]
       },
-      links:[{l:{ro:'Școlile din România (31)', en:'Schools in Romania (31)'}, h:'index.html#schools'}, {l:{ro:'Costuri, pe șleau', en:'Costs, plainly'}, h:'index.html#costs'}]
+      links:[{l:{ro:'Școlile din România (31)', en:'Schools in Romania (31)'}, h:'scoli.html#schools'}, {l:{ro:'Costuri, pe șleau', en:'Costs, plainly'}, h:'costuri.html#costs'}]
     },
 
     /* ---------- 9 ---------- */
@@ -454,7 +454,7 @@
             why:{ro:'Nu. Formatorul e pentru predare; mentor coachingul are alte cerințe.', en:'No. The trainer diploma is for teaching; mentor coaching has its own requirements.'} }
         ]
       },
-      links:[{l:{ro:'Toate credențialele și specializările', en:'All credentials and specialties'}, h:'index.html#credentials'}, {l:{ro:'Trecerea între niveluri', en:'Bridges between levels'}, h:'index.html#transitions'}]
+      links:[{l:{ro:'Toate credențialele și specializările', en:'All credentials and specialties'}, h:'certificari.html#credentials'}, {l:{ro:'Trecerea între niveluri', en:'Bridges between levels'}, h:'traseul-meu.html#transitions'}]
     },
 
     /* ---------- 10 ---------- */
@@ -480,7 +480,7 @@
             why:{ro:'Nu. Există meta-analize peer-reviewed, inclusiv pe studii randomizate.', en:'No. Peer-reviewed meta-analyses exist, including on randomised trials.'} }
         ]
       },
-      links:[{l:{ro:'Ce spune cercetarea', en:'What research says'}, h:'teorie.html#cercetare'}, {l:{ro:'Surse oficiale', en:'Official sources'}, h:'index.html#sources'}]
+      links:[{l:{ro:'Ce spune cercetarea', en:'What research says'}, h:'teorie.html#cercetare'}, {l:{ro:'Surse oficiale', en:'Official sources'}, h:'resurse.html#sources'}]
     }
   ];
 
@@ -822,7 +822,7 @@
   function stepIds(){ return STEPS.map(function(x){ return x.id; }); }
   function setHash(id){
     if(('#' + id) === location.hash) return;
-    try{ history.replaceState(null, '', '#' + id); }
+    try{ history.pushState(null, '', '#' + id); }
     catch(e){ location.hash = id; }
   }
   function applyHash(scroll){
