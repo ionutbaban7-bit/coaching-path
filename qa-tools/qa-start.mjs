@@ -74,14 +74,14 @@ for (const [label, needle] of Object.entries(want)) {
 
 /* 3. calibrare → plan */
 const radios = $$('#startSetup input[type=radio]');
-for (const name of ['q_who', 'q_time', 'q_budget']) {
+for (const name of ['q_who', 'q_time', 'q_focus']) {
   const inp = $$(`#startSetup input[name="${name}"]`)[0];
   change(inp);
 }
 check('după calibrare butonul de start se activează', !$('#startSetupGo').hasAttribute('disabled'));
 check('planul personalizat se randează', $('#startPlan')?.textContent.includes('PLANUL MEU'), $('#startPlan')?.textContent.slice(0, 40));
 const saved = JSON.parse(window.localStorage.getItem('cp_start_v2') || '{}');
-check('răspunsurile se salvează local', saved.a && saved.a.who && saved.a.time && saved.a.budget, JSON.stringify(saved.a));
+check('răspunsurile se salvează local', saved.a && saved.a.who && saved.a.time && saved.a.focus, JSON.stringify(saved.a));
 
 /* 4. quiz + XP */
 const head = $('#step-s1 .start-step-head');

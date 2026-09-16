@@ -65,6 +65,11 @@ const MIME = {
 
 /* rute scurte → fișier */
 const CLEAN = {
+  '/descopera': 'descopera.html',
+  '/competente': 'competente.html',
+  '/povesti': 'povesti.html',
+  '/intrebari': 'intrebari.html',
+  '/greseli': 'greseli.html',
   '/certificari': 'certificari.html',
   '/traseul-meu': 'traseul-meu.html',
   '/scoli': 'scoli.html',
@@ -212,6 +217,7 @@ const server = http.createServer((req, res) => {
   if (pathname === '/index.html' && search === '') {
     return send(req, res, 301, '', MIME['.txt'], { Location: '/' });
   }
+  if (pathname === '/costuri' || pathname === '/costuri.html') return send(req, res, 301, '', MIME['.txt'], { Location: '/certificari.html' });
   if (CLEAN[pathname]) pathname = '/' + CLEAN[pathname];
 
   let rel = pathname.replace(/^\/+/, '') || 'index.html';

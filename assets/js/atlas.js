@@ -7,7 +7,7 @@
  const en=()=>document.documentElement.lang==='en';
  const t=(ro,eng)=>en()?eng:ro;
  const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const routeMap={harta:'incepe.html',home:'certificari.html#home',credentials:'certificari.html#credentials',transitions:'traseul-meu.html#transitions',paths:'traseul-meu.html#paths',journey:'traseul-meu.html#journey',schools:'scoli.html#schools',costs:'costuri.html#costs',faq:'resurse.html#faq',sources:'resurse.html#sources',pages:'invata.html'};
+ const routeMap={harta:'incepe.html',home:'certificari.html#home',credentials:'certificari.html#credentials',transitions:'traseul-meu.html#transitions',paths:'traseul-meu.html#paths',journey:'traseul-meu.html#journey',schools:'scoli.html#schools',costs:'certificari.html',faq:'resurse.html#faq',sources:'resurse.html#sources',pages:'invata.html'};
  function fixLinks(){document.querySelectorAll('a[href^="index.html#"],a[href^="#"]').forEach(a=>{const h=a.getAttribute('href');const id=h.slice(h.indexOf('#')+1);if(routeMap[id]&&!document.getElementById(id))a.href=routeMap[id];});}
  function resume(){
  const box=$('#atlasResume');if(!box)return;
@@ -46,14 +46,14 @@
  let query='',system='all',city='all',mode='all',page=0;const chosen=new Set();
  const pageSize=10;
  function filtered(){return SCHOOLS.filter(s=>{
- const text=(s.n+' '+s.sub+' '+s.city).toLocaleLowerCase();
+ const text=(s.n+' '+s.city).toLocaleLowerCase();
  return text.includes(query.toLocaleLowerCase())&&(system==='all'||system==='icf'&&s.icf.length||system==='emcc'&&s.emcc.length||system==='anc'&&s.anc)&&(city==='all'||s.city===city)&&(mode==='all'||(mode==='online'?/online/i.test(s.city):!/online/i.test(s.city)));
  });}
  const tags=s=>[...s.icf.map(x=>'ICF '+x),...s.emcc,s.anc?'ANC':''].filter(Boolean);
  function results(){
  const list=filtered();page=Math.max(0,Math.min(page,Math.ceil(list.length/pageSize)-1));
  $('#atlasSchoolCount').textContent=list.length+' '+t('rezultate','results');
- $('#atlasSchoolList').innerHTML=list.slice(page*pageSize,(page+1)*pageSize).map(s=>{const id=SCHOOLS.indexOf(s);return `<article class="atlas-school"><div class="atlas-tags">${tags(s).map(x=>`<span>${escape(x)}</span>`).join('')}</div><h3>${escape(s.n)}</h3><p>${escape(s.sub)}</p><p>${escape(s.city)} · ${s.ro?'RO':'EN'}</p>${s.claim?'<p>'+t('Declarație a furnizorului — verifică acreditarea.','Provider claim — verify accreditation.')+'</p>':''}<a href="${escape(s.url)}" target="_blank" rel="noopener">${t('Vezi programul','View programme')} ↗</a><label><input type="checkbox" data-school="${id}" ${chosen.has(id)?'checked':''}>${t('Compară','Compare')}</label></article>`;}).join('')||`<p>${t('Niciun rezultat. Încearcă alt termen sau resetează filtrele.','No results. Try another term or reset the filters.')}</p>`;
+ $('#atlasSchoolList').innerHTML=list.slice(page*pageSize,(page+1)*pageSize).map(s=>{const id=SCHOOLS.indexOf(s);return `<article class="atlas-school"><div class="atlas-tags">${tags(s).map(x=>`<span>${escape(x)}</span>`).join('')}</div><h3>${escape(s.n)}</h3><p>${escape(s.city)} · ${s.ro?'RO':'EN'}</p>${s.claim?'<p>'+t('Declarație a furnizorului — verifică acreditarea.','Provider claim — verify accreditation.')+'</p>':''}<a href="${escape(s.url)}" target="_blank" rel="noopener">${t('Vezi programul','View programme')} ↗</a><label><input type="checkbox" data-school="${id}" ${chosen.has(id)?'checked':''}>${t('Compară','Compare')}</label></article>`;}).join('')||`<p>${t('Niciun rezultat. Încearcă alt termen sau resetează filtrele.','No results. Try another term or reset the filters.')}</p>`;
  $('#atlasSchoolPager').innerHTML=`<button type="button" id="schoolPrev" ${page===0?'disabled':''}>← ${t('Anterior','Previous')}</button><span>${page+1} / ${Math.max(1,Math.ceil(list.length/pageSize))}</span><button type="button" id="schoolNext" ${(page+1)*pageSize>=list.length?'disabled':''}>${t('Următorul','Next')} →</button>`;
  $('#schoolPrev').onclick=()=>{page--;results();$('#atlasSchoolCount').scrollIntoView({block:'center'});};$('#schoolNext').onclick=()=>{page++;results();$('#atlasSchoolCount').scrollIntoView({block:'center'});};
  box.querySelectorAll('[data-school]').forEach(input=>input.onchange=()=>{const id=Number(input.dataset.school);if(input.checked&&chosen.size>=3){input.checked=false;$('#atlasSchoolCount').textContent=t('Poți compara maximum 3 școli.','Compare up to 3 schools.');return;}input.checked?chosen.add(id):chosen.delete(id);compare();});compare();

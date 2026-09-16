@@ -3,11 +3,22 @@
 Toate modificările notabile ale proiectului sunt documentate aici.
 Format bazat pe [Keep a Changelog](https://keepachangelog.com/) · versiuni [SemVer](https://semver.org/).
 
-Data de verificare a conținutului: **14 septembrie 2026**.
+Data de verificare a conținutului public v3: **16 septembrie 2026**.
 Pentru a raporta o informație greșită: butonul „Raportează o greșeală” de pe orice secțiune
 sau [direct pe GitHub](https://github.com/ionutbaban7-bit/coaching-path/issues/new?labels=corectie).
 
 ---
+
+## [3.0.0] — 2026-09-16
+
+- Refacere vizuală: identitate editorială crem/verde, două imagini originale, cinci destinații principale și interfețe adaptate ecranelor mici.
+- Pagini de descoperire, cele opt competențe ICF explicate, patru povești interactive, 24 de întrebări și 12 situații despre greșeli și limite.
+- Atelier pe competențe cu jurnal local, salvare explicită, progres, export și ștergere; favorite pentru întrebări și resurse.
+- Bibliotecă de 14 resurse, inclusiv șase cărți, plus articole originale despre teorie, practică individuală și echipe.
+- Rescrierea traseului în zece pași și a orientării profesionale; eliminarea costurilor și a promisiunilor de buget sau durată până la certificare.
+- Surse oficiale ICF/EMCC/ANC, delimitarea formării de credențiale și etichetarea exemplelor fictive. Directorul de școli rămâne orientativ.
+- Redirecționarea adreselor de costuri, cache v3, sitemap actualizat și reguli defensive pentru stocarea locală.
+- Noi verificări QA pentru pagini, interacțiuni, migrarea progresului, stocare indisponibilă, rute, cache și export. Detalii și limite în `REVIEW_CONTENT_V3.md`.
 
 ## [1.7.0] — 2026-09-14
 

@@ -12,20 +12,23 @@
    ============================================================ */
 'use strict';
 
-var CACHE_VERSION = 'clp-v2.0.0';
+var CACHE_VERSION = 'clp-v3.0.0';
 var HTML_CACHE = CACHE_VERSION + '-html';
 var ASSET_CACHE = CACHE_VERSION + '-assets';
 
 var CORE = [
+  'descopera.html', 'competente.html', 'povesti.html', 'intrebari.html', 'greseli.html',
+  'assets/css/academy.css?v=3.0.0', 'assets/js/academy-data.js?v=3.0.0', 'assets/js/academy.js?v=3.0.0',
+  'assets/js/start-content.js?v=3.0.0',
+  'assets/img/academy-conversation.webp?v=3.0.0', 'assets/img/academy-library.webp?v=3.0.0',
   './',
   'certificari.html',
   'traseul-meu.html',
   'scoli.html',
-  'costuri.html',
   'resurse.html',
   'invata.html',
-  'assets/css/atlas.css?v=2.0.0',
-  'assets/js/atlas.js?v=2.0.0',
+  'assets/css/atlas.css?v=3.0.0',
+  'assets/js/atlas.js?v=3.0.0',
   'index.html',
   'incepe.html',
   'teorie.html',
@@ -37,12 +40,9 @@ var CORE = [
   'assets/css/tokens.css',
   'assets/css/app.css',
   'assets/css/pages.css',
-  'assets/js/data.js',
+  'assets/js/school-data.js',
   'assets/js/site.js',
   'assets/js/credibility.js',
-  'assets/js/map.js',
-  'assets/js/plan.js',
-  'assets/js/app.js',
   'assets/js/start.js',
   'assets/fonts/inter-latin-wght-normal.woff2',
   'assets/fonts/inter-latin-ext-wght-normal.woff2',
@@ -55,7 +55,7 @@ self.addEventListener('install', function(e){
     caches.open(CACHE_VERSION).then(function(c){
       // addAll eșuează în bloc dacă un singur fișier lipsește → adăugăm individual
       return Promise.all(CORE.map(function(u){
-        return c.add(new Request(/\.(css|js)$/.test(u) ? u + '?v=2.0.0' : u, { cache:'reload' })).catch(function(){});
+        return c.add(new Request(/\.(css|js)$/.test(u) ? u + '?v=3.0.0' : u, { cache:'reload' })).catch(function(){});
       }));
     }).then(function(){ return self.skipWaiting(); })
   );
@@ -95,7 +95,8 @@ self.addEventListener('fetch', function(e){
         return res;
       }).catch(function(){
         return caches.match(req).then(function(hit){
-          return hit || caches.match('index.html') || caches.match('./');
+          if(hit) return hit;
+          return caches.match('index.html').then(function(home){ return home || caches.match('./'); });
         });
       })
     );

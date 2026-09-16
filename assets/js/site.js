@@ -37,7 +37,7 @@
     var saved = null;
     try{ saved = localStorage.getItem('cp_theme'); }catch(e){}
     if(!saved){
-      saved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      saved = 'light';
     }
     applyTheme(saved);
     var btn = $('#themeBtn');
@@ -89,8 +89,8 @@
     var page = document.body.dataset.page || 'index';
     var html = '';
 
-    var groups=[['incepe','Începe','Start'],['certificari','Certificare','Credentials'],['invata','Practică','Practice'],['scoli','Școli','Schools'],['resurse','Resurse','Resources']];
-    html=groups.map(function(p){var active=page===p[0]||(p[0]==='invata'&&['theory','individual','team'].indexOf(page)>=0)||(p[0]==='certificari'&&page==='traseul-meu')||(p[0]==='incepe'&&page==='start');return '<a href="'+p[0]+'.html"'+(active?' aria-current="page" class="active"':'')+'>'+p[lang==='ro'?1:2]+'</a>';}).join('');
+    var groups=[['descopera','Descoperă','Discover'],['competente','Competențe','Competencies'],['invata','Practică','Practice'],['certificari','Certificare','Credentials'],['resurse','Bibliotecă','Library']];
+    html=groups.map(function(p){var active=page===p[0]||(p[0]==='invata'&&['povesti','intrebari','greseli','individual','team'].indexOf(page)>=0)||(p[0]==='certificari'&&['traseul-meu','scoli'].indexOf(page)>=0)||(p[0]==='descopera'&&page==='start')||(p[0]==='resurse'&&page==='theory');return '<a href="'+p[0]+'.html"'+(active?' aria-current="page" class="active"':'')+'>'+p[lang==='ro'?1:2]+'</a>';}).join('');
     box.innerHTML = html;
   }
 
