@@ -1,0 +1,108 @@
+{
+  "topics": [
+    {
+      "id": "seed-1",
+      "kind": "discussion",
+      "category": "beginners",
+      "author": "Mara",
+      "role": "coach în formare",
+      "createdAt": "2026-09-20T09:00:00.000Z",
+      "updatedAt": "2026-09-21T11:00:00.000Z",
+      "title": {
+        "ro": "Cum aleg prima formare fără să cumpăr promisiuni?",
+        "en": "How do I choose first training without buying promises?"
+      },
+      "body": {
+        "ro": "Ce întrebări v-au ajutat să diferențiați o programă serioasă de marketing? Mă interesează practica observată și feedbackul real.",
+        "en": "Which questions helped you distinguish serious training from marketing? I care about observed practice and real feedback."
+      },
+      "replies": [
+        {
+          "id": "seed-1-r1",
+          "author": "Andrei",
+          "role": "PCC",
+          "createdAt": "2026-09-21T11:00:00.000Z",
+          "body": {
+            "ro": "Aș începe cu: câte sesiuni observate, cum arată evaluarea și ce se întâmplă dacă nu treci prima dată.",
+            "en": "I would start with: how many observed sessions, what assessment looks like and what happens if you do not pass first time."
+          }
+        }
+      ]
+    },
+    {
+      "id": "seed-2",
+      "kind": "discussion",
+      "category": "practice",
+      "author": "Radu",
+      "role": "coach",
+      "createdAt": "2026-09-18T15:30:00.000Z",
+      "updatedAt": "2026-09-18T15:30:00.000Z",
+      "title": {
+        "ro": "Cum păstrez primele ore de coaching într-un log util?",
+        "en": "How do I keep my first coaching hours in a useful log?"
+      },
+      "body": {
+        "ro": "Vreau să separ clar învățarea, practica și coachingul cu clienți. Ce câmpuri vi se par indispensabile?",
+        "en": "I want to separate learning, practice and client coaching clearly. Which fields do you find essential?"
+      },
+      "replies": []
+    },
+    {
+      "id": "seed-3",
+      "kind": "article",
+      "category": "niche",
+      "author": "Ioana",
+      "role": "coach",
+      "createdAt": "2026-09-16T08:20:00.000Z",
+      "updatedAt": "2026-09-18T10:00:00.000Z",
+      "title": {
+        "ro": "Nișa nu este un slogan: ce am învățat din 10 conversații",
+        "en": "A niche is not a slogan: what I learned from 10 conversations"
+      },
+      "body": {
+        "ro": "O notiță despre diferența dintre „vreau să lucrez cu lideri” și o problemă concretă pe care oamenii chiar vor să o exploreze.",
+        "en": "A note about the difference between “I want to work with leaders” and a concrete problem people actually want to explore."
+      },
+      "replies": [
+        {
+          "id": "seed-3-r1",
+          "author": "Dana",
+          "role": "coach",
+          "createdAt": "2026-09-17T10:00:00.000Z",
+          "body": {
+            "ro": "Mi-a plăcut separarea dintre public, problemă și context. A făcut oferta mult mai puțin abstractă.",
+            "en": "I liked separating audience, problem and context. It made the offer much less abstract."
+          }
+        },
+        {
+          "id": "seed-3-r2",
+          "author": "Mara",
+          "role": "coach în formare",
+          "createdAt": "2026-09-18T10:00:00.000Z",
+          "body": {
+            "ro": "Și eu încerc să nu aleg nișa doar după ce sună bine în profil.",
+            "en": "I am also trying not to choose a niche only because it sounds good in a profile."
+          }
+        }
+      ]
+    },
+    {
+      "id": "seed-4",
+      "kind": "discussion",
+      "category": "ethics",
+      "author": "Sorin",
+      "role": "curios",
+      "createdAt": "2026-09-14T12:10:00.000Z",
+      "updatedAt": "2026-09-14T12:10:00.000Z",
+      "title": {
+        "ro": "Unde se termină coachingul și începe trimiterea mai departe?",
+        "en": "Where does coaching end and referral begin?"
+      },
+      "body": {
+        "ro": "Cum recunoașteți o situație în care clientul are nevoie de alt tip de sprijin și cum formulați asta fără să-l rușinați?",
+        "en": "How do you recognise when a client needs another kind of support and say it without shaming them?"
+      },
+      "replies": []
+    }
+  ]
+}

@@ -3,9 +3,32 @@
 Toate modificările notabile ale proiectului sunt documentate aici.
 Format bazat pe [Keep a Changelog](https://keepachangelog.com/) · versiuni [SemVer](https://semver.org/).
 
-Data de verificare a conținutului public v3: **16 septembrie 2026**.
+Data de verificare a conținutului public: **22 septembrie 2026**.
 Pentru a raporta o informație greșită: butonul „Raportează o greșeală” de pe orice secțiune
 sau [direct pe GitHub](https://github.com/ionutbaban7-bit/coaching-path/issues/new?labels=corectie).
+
+---
+
+## [4.0.0] — 2026-09-22
+
+### Adăugat — coachinghub.ro ca hub de învățare și practică
+
+- Rebranding complet din Coaching Learning Path în `coachinghub.ro`, cu navigare principală redusă la cinci intenții: explorează, paths, practică, forum și bibliotecă.
+- Hub central cu trei trasee — Learning path, Practical path și Professional path — plus „Biblia începătorului”, roadmap de orientare ANC → ACC → PCC → MCC și checklist practic salvat local.
+- Forum RO/EN pentru subiecte și articole, categorii, căutare, răspunsuri și seed topics. Pe static hosting există fallback local; serverul Node expune API file-backed pentru MVP.
+- Server Render schimbat la Web Service Node pentru rutele `/api/forum`; rutele HTML vechi și redirectul `/costuri.html` sunt păstrate.
+- Service worker, manifest, sitemap, canonical URLs, meta-uri iOS, theme-color light/dark și date structurate schema.org actualizate la v4.
+- Feedback local „A fost util?”, print/PDF pentru paginile editoriale, căutare cu rezultat anunțat accesibil și îmbunătățiri pentru ecrane mici.
+
+### Limite cunoscute
+
+- Forumul nu are încă autentificare, moderare sau stocare persistentă externă. `data/forum.json` este potrivit pentru MVP/demo; următorul increment trebuie să folosească o bază de date și politici de moderare.
+- `coachinghub.ro` trebuie mapat separat ca domeniu custom în Render și DNS; repo-ul pregătește canonical URLs și blueprint-ul de deploy, dar nu poate modifica DNS-ul.
+
+### Verificat
+
+- `npm run check`, `npm run qa`, `npm run qa:server`, `npm run qa:polish`, `npm run qa:mobile`, `npm run qa:css`.
+- QA: 723 assertions academice, 84 assertions server, 36 polish și 54 mobile.
 
 ---
 

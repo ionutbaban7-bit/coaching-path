@@ -1,7 +1,7 @@
 {
-  "name": "Coaching Path — descoperă, învață, exersează",
-  "short_name": "Coaching Path",
-  "description": "Competențe ICF, povești interactive, întrebări și jurnal de practică. Gratuit, bilingv, fără cont.",
+  "name": "coachinghub.ro — învață, exersează, conectează-te",
+  "short_name": "coachinghub.ro",
+  "description": "Learning paths, practică, forum și repere profesionale pentru coaching. Gratuit, bilingv, fără cont.",
   "lang": "ro",
   "dir": "ltr",
   "start_url": "./index.html",

@@ -1,8 +1,8 @@
 {
-  "name": "coaching-learning-path",
-  "version": "3.0.0",
+  "name": "coachinghub-ro",
+  "version": "4.0.0",
   "private": true,
-  "description": "Coaching Learning Path — studio educațional RO/EN: descoperire, competențe ICF, practică, povești, certificare și bibliotecă. Site static, fără dependențe la rulare.",
+  "description": "coachinghub.ro — hub educațional RO/EN pentru învățare, practică, credențiale și comunitate în coaching.",
   "main": "server.js",
   "engines": {
     "node": ">=18"

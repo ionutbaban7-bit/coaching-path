@@ -10,8 +10,8 @@
   var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
   function L(p){ var l = (window.CLP && window.CLP.lang) ? window.CLP.lang() : 'ro'; return p[(l === 'en') ? 1 : 0]; }
 
-  var VERIFIED = '2026-09-14';
-  var VERIFIED_RO = '14 septembrie 2026';
+  var VERIFIED = '2026-09-22';
+  var VERIFIED_RO = '22 septembrie 2026';
   var REPO = 'https://github.com/ionutbaban7-bit/coaching-path';
 
   /* ---------- Surse pe teme ---------- */

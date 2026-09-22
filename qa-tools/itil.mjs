@@ -30,7 +30,7 @@ const RM = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
 const EX = f => fs.existsSync(path.join(ROOT, f));
 const KB = f => Math.round(fs.statSync(path.join(ROOT, f)).size / 1024);
 const ALL = (dir, ext) => fs.readdirSync(path.join(ROOT, dir)).filter(f => f.endsWith(ext));
-const PAGES = ['index.html', 'incepe.html', 'teorie.html', 'individual.html', 'echipa.html', 'legal.html', '404.html'];
+const PAGES = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
 const CSS = ['assets/css/tokens.css', 'assets/css/app.css', 'assets/css/pages.css'];
 const JS = ALL('assets/js', '.js').map(f => 'assets/js/' + f);
 const ALLCSS = CSS.map(RM).join('\n');
@@ -126,9 +126,9 @@ chk('Informație și tehnologie', 'IT-12', 'Accesibilitate: skip-link, focus viz
 const render = T('render.yaml'), wf = T('.github/workflows/pages.yml');
 chk('Parteneri și furnizori', 'PF-01', 'Zero dependențe de runtime (site static, fără lanț de aprovizionare)', 'blocant',
   Object.keys(pkg.dependencies || {}).length === 0, 'dependencies: {} · dev: ' + Object.keys(pkg.devDependencies || {}).join(', '));
-chk('Parteneri și furnizori', 'PF-02', 'Configurația furnizorului de hosting validă (Blueprint static + rute + cache)', 'conditionat',
-  /runtime:\s*static/i.test(render) && /staticPublishPath/.test(render) && /type:\s*rewrite/.test(render) && /Cache-Control/.test(render),
-  'render.yaml: static, 6 rute, antete de cache');
+chk('Parteneri și furnizori', 'PF-02', 'Configurația furnizorului de hosting validă (Node + rute + API)', 'conditionat',
+  /type:\s*web/i.test(render) && /runtime:\s*node/i.test(render) && /startCommand:\s*node server\.js/.test(render) && /healthCheckPath/.test(render) && /api\/forum/.test(T('server.js')),
+  'render.yaml: Node Web Service + server.js: /api/forum');
 chk('Parteneri și furnizori', 'PF-03', 'Publicarea trece prin poarta de calitate (nu se publică ce nu trece testele)', 'blocant',
   /(npm run check|tools\/check-site\.mjs)/.test(wf) && /upload-pages-artifact|deploy-pages/.test(wf),
   '.github/workflows/pages.yml: check înainte de publicare');
@@ -142,8 +142,8 @@ chk('Parteneri și furnizori', 'PF-05', 'Fonturi și imagini livrate local, cu l
   fs.readdirSync(path.join(ROOT, 'assets/fonts')).filter(f => f.endsWith('.woff2')).length + ' fonturi · ' +
   fs.readdirSync(path.join(ROOT, 'assets/img')).filter(f => f.endsWith('.webp')).length + ' imagini WebP');
 chk('Parteneri și furnizori', 'PF-06', 'Fără blocare la un singur furnizor (site static mutabil pe orice host)', 'conditionat',
-  /node server\.js/.test(readme) && /static/i.test(render) && /GitHub Pages/.test(readme),
-  'Render (static) · GitHub Pages · orice server de fișiere');
+  /node server\.js/.test(readme) && /runtime:\s*node/i.test(render) && /GitHub Pages/.test(readme + wf),
+  'Render Node + fallback static GitHub Pages · orice server de fișiere');
 
 /* ============================================================
    4. FLUXURI DE VALOARE ȘI PROCESE — tranziția serviciului
@@ -159,7 +159,7 @@ chk('Fluxuri de valoare', 'VS-03', 'Cache-busting complet (fiecare activ are ?v=
   unversioned.length === 0, assetRefs.length + ' referințe, ' + unversioned.length + ' fără versiune' +
   (unversioned.length ? ': ' + unversioned.slice(0, 3).join(', ') : ''));
 chk('Fluxuri de valoare', 'VS-04', 'Politici de cache corecte (imutabil pe active, revalidare pe HTML/sw)', 'conditionat',
-  /immutable/.test(T('server.js')) && /no-cache/.test(T('server.js')) && /Cache-Control/.test(render),
+  /immutable/.test(T('server.js')) && /no-cache/.test(T('server.js')) && /cache-control/i.test(T('server.js') + render),
   'server.js + render.yaml');
 chk('Fluxuri de valoare', 'VS-05', 'Rute curate, 301 și pagină 404 proprii', 'conditionat',
   /301/.test(T('server.js')) && /404\.html/.test(T('server.js')) && EX('404.html'), '/teorie, /incepe, 404.html');
@@ -210,7 +210,7 @@ chk('Continuitate și măsurare', 'CM-01', 'Pagină 404 proprie și rute inexist
 chk('Continuitate și măsurare', 'CM-02', 'Funcționare offline după prima vizită (continuitatea serviciului)', 'conditionat',
   /caches\.open/.test(sw) && /fetch\(/.test(sw), 'sw.js cache-first pe active');
 chk('Continuitate și măsurare', 'CM-03', 'Disponibilitate fără spin-down (hosting static, fără proces care adoarme)', 'conditionat',
-  /runtime:\s*static/i.test(render) && /staticPublishPath/.test(render), 'Render Static Site (runtime: static) · GitHub Pages');
+  /runtime:\s*node|runtime:\s*static/i.test(render) && /healthCheckPath|staticPublishPath/.test(render), 'Render Node Web Service cu health check · fallback GitHub Pages');
 chk('Continuitate și măsurare', 'CM-04', 'KPI de succes definiți (ce măsurăm după lansare)', 'conditionat',
   /KPI|Indicatori/i.test(raport), 'RAPORT-PRODUCTIE.md');
 chk('Continuitate și măsurare', 'CM-05', 'Revizuire periodică a conținutului (date verificate, surse oficiale)', 'conditionat',

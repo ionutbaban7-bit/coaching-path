@@ -30,7 +30,17 @@ const errors = [];
 window.addEventListener('error', (e) => errors.push('window.error: ' + (e.message || e.error)));
 window.addEventListener('unhandledrejection', (e) => errors.push('rejection: ' + e.reason));
 
-await new Promise((r) => setTimeout(r, 600));
+/* Setup-ul este hidratat de JS după ce resursele „usable” se încarcă.
+   Așteptăm condiția, nu un interval fix, ca poarta să nu fie dependentă
+   de viteza mașinii sau de ordinea în care JSDOM livrează scripturile. */
+await new Promise((resolve) => {
+  const deadline = Date.now() + 3000;
+  const poll = () => {
+    if (doc.querySelector('#startSetup input[type="radio"]') || Date.now() >= deadline) return resolve();
+    setTimeout(poll, 100);
+  };
+  poll();
+});
 
 const $ = (s) => doc.querySelector(s);
 const $$ = (s) => [...doc.querySelectorAll(s)];

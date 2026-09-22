@@ -1,5 +1,5 @@
 /* ============================================================
-   Coaching Learning Path — server static minimal, ZERO dependențe
+   coachinghub.ro — server static minimal + Forum API
    ------------------------------------------------------------
    Existența lui înseamnă că site-ul se poate publica oriunde:
      • Render → Web Service   : Build `npm install`, Start `node server.js`
@@ -7,6 +7,9 @@
      • local                  : `node server.js` → http://localhost:3000
    Node >= 18. Nu folosește nimic din npm: n-are ce să se strice.
 
+   v4.0.0 — hub, paths și forum:
+     • rute hub/forum și API file-backed pentru subiecte și răspunsuri
+     • fallback local în forum pe hosting static
    v1.7.0 — finisaj de produs (runda 5):
      • text scurt și la obiect: lead-uri, subtitluri, note de subsol
      • date structurate schema.org (WebSite, EducationalOrganization, LearningResource, Article)
@@ -76,6 +79,8 @@ const CLEAN = {
   '/costuri': 'costuri.html',
   '/resurse': 'resurse.html',
   '/invata': 'invata.html',
+  '/hub': 'hub.html',
+  '/forum': 'forum.html',
   '/teorie': 'teorie.html',
   '/incepe': 'incepe.html',
   '/individual': 'individual.html',
@@ -85,6 +90,143 @@ const CLEAN = {
   '/home': 'index.html',
   '/404': '404.html'
 };
+
+/* Forum MVP: folosește fișierul local când rulează ca Web Service.
+   Pe Static Site, forum.js cade elegant pe localStorage până există un backend. */
+const FORUM_FILE = process.env.FORUM_DATA_FILE || path.join(ROOT, 'data', 'forum.json');
+const FORUM_CATEGORIES = new Set(['beginners', 'practice', 'credentials', 'niche', 'ethics', 'resources']);
+const FORUM_KINDS = new Set(['discussion', 'article']);
+const forumAttempts = new Map();
+let forumCache = null;
+
+function textField(value, max, multiline = false) {
+  if (typeof value !== 'string') return '';
+  let text = value.replace(/\u0000/g, '').trim();
+  if (!multiline) text = text.replace(/[\r\n]+/g, ' ');
+  return text.slice(0, max);
+}
+
+function bilingual(value) {
+  if (value && typeof value === 'object') {
+    const ro = textField(value.ro || value.en, 6000, true);
+    const en = textField(value.en || value.ro, 6000, true);
+    return { ro, en };
+  }
+  const text = textField(value, 6000, true);
+  return { ro: text, en: text };
+}
+
+function normaliseForum(value) {
+  const topics = Array.isArray(value) ? value : (value && Array.isArray(value.topics) ? value.topics : []);
+  return { topics: topics.slice(0, 500).map((topic) => ({
+    id: textField(topic.id, 90) || `topic-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    kind: FORUM_KINDS.has(topic.kind) ? topic.kind : 'discussion',
+    category: FORUM_CATEGORIES.has(topic.category) ? topic.category : 'beginners',
+    author: textField(topic.author, 60) || 'Participant',
+    role: textField(topic.role, 60),
+    createdAt: topic.createdAt || new Date().toISOString(),
+    updatedAt: topic.updatedAt || topic.createdAt || new Date().toISOString(),
+    title: bilingual(topic.title),
+    body: bilingual(topic.body),
+    replies: Array.isArray(topic.replies) ? topic.replies.slice(0, 100).map((reply) => ({
+      id: textField(reply.id, 90) || `reply-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      author: textField(reply.author, 60) || 'Participant',
+      role: textField(reply.role, 60),
+      createdAt: reply.createdAt || new Date().toISOString(),
+      body: bilingual(reply.body)
+    })) : []
+  })) };
+}
+
+function forumStore() {
+  if (forumCache) return forumCache;
+  try { forumCache = normaliseForum(JSON.parse(fs.readFileSync(FORUM_FILE, 'utf8'))); }
+  catch (e) { forumCache = { topics: [] }; }
+  return forumCache;
+}
+
+function saveForum() {
+  const dir = path.dirname(FORUM_FILE);
+  fs.mkdirSync(dir, { recursive: true });
+  const temp = `${FORUM_FILE}.${process.pid}.tmp`;
+  fs.writeFileSync(temp, JSON.stringify(forumCache, null, 2) + '\n', 'utf8');
+  fs.renameSync(temp, FORUM_FILE);
+}
+
+function sendJson(req, res, code, payload, extra = {}) {
+  send(req, res, code, JSON.stringify(payload), MIME['.json'], {
+    'Cache-Control': 'no-store',
+    ...extra
+  });
+}
+
+function requestBody(req, limit = 9000) {
+  return new Promise((resolve, reject) => {
+    let raw = '';
+    let size = 0;
+    let settled = false;
+    req.on('data', (chunk) => {
+      if (settled) return;
+      size += chunk.length;
+      if (size > limit) {
+        settled = true;
+        reject(Object.assign(new Error('Payload too large'), { statusCode: 413 }));
+        req.resume();
+        return;
+      }
+      raw += chunk;
+    });
+    req.on('end', () => {
+      if (settled) return;
+      settled = true;
+      try { resolve(raw ? JSON.parse(raw) : {}); }
+      catch (e) { reject(Object.assign(new Error('Invalid JSON'), { statusCode: 400 })); }
+    });
+    req.on('error', (error) => { if (!settled) { settled = true; reject(error); } });
+  });
+}
+
+function allowForumWrite(req) {
+  const now = Date.now();
+  const key = req.socket.remoteAddress || 'unknown';
+  const previous = forumAttempts.get(key) || { at: now, count: 0 };
+  if (now - previous.at > 60_000) { previous.at = now; previous.count = 0; }
+  previous.count += 1;
+  forumAttempts.set(key, previous);
+  return previous.count <= 8;
+}
+
+async function forumRoute(req, res, pathname) {
+  if (req.method === 'GET') return sendJson(req, res, 200, forumStore());
+  if (req.method !== 'POST') return sendJson(req, res, 405, { error: 'Method not allowed' }, { Allow: 'GET, POST' });
+  if (!allowForumWrite(req)) return sendJson(req, res, 429, { error: 'Too many requests. Try again later.' });
+
+  let body;
+  try { body = await requestBody(req); }
+  catch (error) { return sendJson(req, res, error.statusCode || 400, { error: error.message || 'Invalid request' }); }
+  const store = forumStore();
+  const replyMatch = pathname.match(/^\/api\/forum\/([^/]+)\/replies$/);
+  if (replyMatch) {
+    const topic = store.topics.find((item) => item.id === decodeURIComponent(replyMatch[1]));
+    const author = textField(body.author, 60);
+    const content = textField(body.body, 2400, true);
+    if (!topic) return sendJson(req, res, 404, { error: 'Topic not found' });
+    if (!author || !content) return sendJson(req, res, 422, { error: 'Author and body are required' });
+    const reply = { id: `reply-${Date.now()}-${Math.random().toString(16).slice(2)}`, author, role: 'participant', createdAt: new Date().toISOString(), body: bilingual(content) };
+    topic.replies.push(reply); topic.updatedAt = reply.createdAt; saveForum();
+    return sendJson(req, res, 201, { reply });
+  }
+  if (pathname !== '/api/forum') return sendJson(req, res, 404, { error: 'Forum route not found' });
+  const author = textField(body.author, 60);
+  const title = textField(body.title, 140);
+  const content = textField(body.body, 6000, true);
+  if (!author || !title || !content) return sendJson(req, res, 422, { error: 'Author, title and body are required' });
+  if (!FORUM_CATEGORIES.has(body.category) || !FORUM_KINDS.has(body.kind)) return sendJson(req, res, 422, { error: 'Invalid category or topic type' });
+  const now = new Date().toISOString();
+  const topic = { id: `topic-${Date.now()}-${Math.random().toString(16).slice(2)}`, kind: body.kind, category: body.category, author, role: 'participant', createdAt: now, updatedAt: now, title: bilingual(title), body: bilingual(content), replies: [] };
+  store.topics.unshift(topic); saveForum();
+  return sendJson(req, res, 201, { topic });
+}
 
 /* tipuri compresibile */
 const COMPRESSIBLE = /^(text\/|application\/(json|xml|manifest\+json)|image\/svg)/;
@@ -197,15 +339,12 @@ function serveFile(req, res, rel, search) {
   });
 }
 
-const server = http.createServer((req, res) => {
-  if (req.method !== 'GET' && req.method !== 'HEAD') {
-    return send(req, res, 405, '405 — doar GET/HEAD', MIME['.txt'], { Allow: 'GET, HEAD' });
-  }
-
+const server = http.createServer(async (req, res) => {
   let pathname = '/';
   let search = '';
+  let parsed;
   try {
-    const parsed = new URL(req.url, 'http://localhost');
+    parsed = new URL(req.url, 'http://localhost');
     pathname = decodeURIComponent(parsed.pathname || '/');
     search = parsed.search || '';
   } catch (e) {
@@ -214,6 +353,12 @@ const server = http.createServer((req, res) => {
 
   pathname = pathname.replace(/\/{2,}/g, '/');
   if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);   // /teorie/ → /teorie
+  if (pathname === '/api/forum' || pathname.startsWith('/api/forum/')) {
+    return forumRoute(req, res, pathname);
+  }
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    return send(req, res, 405, '405 — doar GET/HEAD', MIME['.txt'], { Allow: 'GET, HEAD' });
+  }
   if (pathname === '/index.html' && search === '') {
     return send(req, res, 301, '', MIME['.txt'], { Location: '/' });
   }
@@ -239,7 +384,7 @@ server.requestTimeout = 30000;
 server.keepAliveTimeout = 65000;
 
 server.listen(PORT, HOST, () => {
-  console.log(`Coaching Learning Path → http://${HOST}:${PORT}  (compresie: br/gzip)`);
+  console.log(`coachinghub.ro → http://${HOST}:${PORT}  (compresie: br/gzip, forum API activ)`);
 });
 
 // oprire grațioasă (Render trimite SIGTERM la redeploy)

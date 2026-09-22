@@ -1,7 +1,7 @@
-# Coaching Learning Path — reguli pentru roboți
+# coachinghub.ro — reguli pentru roboți
 User-agent: *
 Allow: /
 Disallow: /tools/
 Disallow: /data/
 
-Sitemap: https://coaching-path.onrender.com/sitemap.xml
+Sitemap: https://coachinghub.ro/sitemap.xml

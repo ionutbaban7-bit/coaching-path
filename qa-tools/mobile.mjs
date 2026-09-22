@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const RM = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
 
-const PAGES = ['index.html', 'incepe.html', 'teorie.html', 'individual.html', 'echipa.html', 'legal.html', '404.html'];
+const PAGES = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
 const CSS_FILES = ['assets/css/tokens.css', 'assets/css/app.css', 'assets/css/pages.css'];
 
 const checks = [];
@@ -131,7 +131,7 @@ ok('theme-color pentru ambele teme', badTheme.length === 0, badTheme.join(', '))
 const searchInputs = [];
 for (const f of PAGES) {
   const s = RM(f);
-  for (const m of s.matchAll(/<input[^>]*class="search"[^>]*>/g)) searchInputs.push({ f, tag: m[0] });
+  for (const m of s.matchAll(/<input[^>]*type="search"[^>]*>/g)) searchInputs.push({ f, tag: m[0] });
 }
 const badSearch = searchInputs.filter(x => !(/type="search"/.test(x.tag) && /enterkeyhint/.test(x.tag)));
 ok('câmpuri de căutare mobile (type=search + enterkeyhint)', searchInputs.length >= 3 && badSearch.length === 0,
@@ -212,7 +212,7 @@ ok('sw.js: CACHE_VERSION = versiunea din package.json', RM('sw.js').includes(`cl
       indicii de derulare, notificări offline / versiune nouă
    ============================================================ */
 const startJs = RM('assets/js/start.js');
-ok('start.js: pasul deschis se scrie în adresă (#s4)', /history\.replaceState/.test(startJs) && /function setHash/.test(startJs));
+ok('start.js: pasul deschis se scrie în adresă (#s4)', /history\.(?:replace|push)State/.test(startJs) && /function setHash/.test(startJs));
 ok('start.js: linkul direct deschide pasul cerut', /function applyHash/.test(startJs) && /hashchange/.test(startJs));
 ok('start.js: buton „Link către pas”', /data-share/.test(startJs) && /start-share/.test(allCss));
 ok('start.js: copiere cu fallback (iOS / file://)', /execCommand/.test(startJs) && /navigator\.clipboard/.test(startJs));

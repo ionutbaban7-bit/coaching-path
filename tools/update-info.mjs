@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ============================================================
-   Coaching Learning Path — JOBUL „ACTUALIZARE INFORMAȚII”
+   coachinghub.ro — jobul „actualizare informații”
    ------------------------------------------------------------
    Un singur job, rulat manual din GitHub (sau lunar, automat),
    care spune exact ce date există, ce a expirat și ce trebuie

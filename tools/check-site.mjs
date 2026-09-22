@@ -127,7 +127,7 @@ for (const f of htmlFiles) {
 }
 
 /* raport ---------------------------------------------------- */
-console.log('Verificare site — Coaching Learning Path\n');
+console.log('Verificare site — coachinghub.ro\n');
 for (const n of notes) console.log('  · ' + n);
 console.log('');
 if (problems.length) {

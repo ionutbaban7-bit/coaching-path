@@ -1,5 +1,5 @@
 /* ============================================================
-   Coaching Learning Path — SITE.JS
+   coachinghub.ro — SITE.JS
    Comportament partajat de toate paginile:
    temă dark/light, limbă RO/EN, nav, scroll-spy, reveal,
    progres de citire, back-to-top, meniu mobil.
@@ -12,10 +12,12 @@
 
   /* ---------- PAGINI (linkuri externe în nav) ---------- */
   var PAGES = [
-    { id:'start',   href:'incepe.html',   label:{ ro:'Începe aici', en:'Start here' } },
-    { id:'theory', href:'teorie.html',    label:{ ro:'Teorie',            en:'Theory' } },
+    { id:'hub',    href:'hub.html',       label:{ ro:'Paths',             en:'Paths' } },
+    { id:'start',  href:'incepe.html',    label:{ ro:'Biblia începătorului', en:'Beginner bible' } },
+    { id:'theory', href:'teorie.html',    label:{ ro:'Teorie',             en:'Theory' } },
+    { id:'forum',  href:'forum.html',     label:{ ro:'Forum',              en:'Forum' } },
     { id:'individual', href:'individual.html', label:{ ro:'Coaching 1:1', en:'1:1 Coaching' } },
-    { id:'team',    href:'echipa.html',   label:{ ro:'Coaching de echipă', en:'Team Coaching' } }
+    { id:'team',   href:'echipa.html',   label:{ ro:'Coaching de echipă', en:'Team Coaching' } }
   ];
 
   /* ---------- LIMBĂ ---------- */
@@ -89,8 +91,20 @@
     var page = document.body.dataset.page || 'index';
     var html = '';
 
-    var groups=[['descopera','Descoperă','Discover'],['competente','Competențe','Competencies'],['invata','Practică','Practice'],['certificari','Certificare','Credentials'],['resurse','Bibliotecă','Library']];
-    html=groups.map(function(p){var active=page===p[0]||(p[0]==='invata'&&['povesti','intrebari','greseli','individual','team'].indexOf(page)>=0)||(p[0]==='certificari'&&['traseul-meu','scoli'].indexOf(page)>=0)||(p[0]==='descopera'&&page==='start')||(p[0]==='resurse'&&page==='theory');return '<a href="'+p[0]+'.html"'+(active?' aria-current="page" class="active"':'')+'>'+p[lang==='ro'?1:2]+'</a>';}).join('');
+    var groups=[
+      ['descopera','Explorează','Explore'],
+      ['hub','Paths','Learning paths'],
+      ['invata','Practică','Practice'],
+      ['forum','Forum','Community'],
+      ['resurse','Bibliotecă','Library']
+    ];
+    html=groups.map(function(p){
+      var active=page===p[0]
+        ||(p[0]==='hub'&&['certificari','traseul-meu','scoli','start'].indexOf(page)>=0)
+        ||(p[0]==='invata'&&['competente','povesti','intrebari','greseli','individual','team'].indexOf(page)>=0)
+        ||(p[0]==='resurse'&&page==='theory');
+      return '<a href="'+p[0]+'.html"'+(active?' aria-current="page" class="active"':'')+'>'+p[lang==='ro'?1:2]+'</a>';
+    }).join('');
     box.innerHTML = html;
   }
 
@@ -147,7 +161,9 @@
   /* ---------- „A FOST UTIL?” PE SECȚIUNI ---------- */
   /* Feedback local, fără trackere și fără server: un semnal pentru revizuire. */
   function initFeedback(){
-    var secs = document.querySelectorAll('section.doc-sec[id]');
+    var page = document.body.dataset.page || 'index';
+    if(page === 'index' || page === 'hub' || page === 'forum' || page === '404' || page === 'start') return;
+    var secs = document.querySelectorAll('section.doc-sec[id], section.ac-section[id]');
     if(!secs.length) return;
     var store = {};
     try{ store = JSON.parse(localStorage.getItem('cp_feedback') || '{}') || {}; }catch(e){ store = {}; }
@@ -195,7 +211,7 @@
   /* Fiecare câmp de căutare are `data-search-out` (lista în care apar rezultatele).
      După fiecare tastă numărăm ce a rămas și anunțăm: „7 rezultate” / „Niciun rezultat”. */
   function initSearchCount(){
-    if(!document.querySelector('.search')) return;
+    if(!document.querySelector('input[type="search"]')) return;
     var live = document.getElementById('searchLive');
     if(!live){
       live = document.createElement('p');
@@ -207,8 +223,9 @@
     }
     document.addEventListener('input', function(e){
       var el = e.target;
-      if(!el || !el.classList || !el.classList.contains('search')) return;
+      if(!el || el.tagName !== 'INPUT' || el.type !== 'search') return;
       var sel = el.getAttribute('data-search-out');
+      if(!sel && el.id === 'acHomeSearch') sel = '#acHomeResults';
       if(!sel) return;
       var out = document.querySelector(sel);
       if(!out) return;
@@ -230,16 +247,22 @@
   function initPrintBtn(){
     var page = document.body.dataset.page || 'index';
     if(page === 'index' || page === '404') return;
-    var cta = document.querySelector('.hero-cta');
+    var cta = document.querySelector('.hero-cta, .ac-heading');
     if(!cta || cta.querySelector('.print-btn')) return;
+    var actions = cta.querySelector('.ac-actions');
+    if(!actions){
+      actions = document.createElement('div');
+      actions.className = 'ac-actions';
+      cta.appendChild(actions);
+    }
     var b = document.createElement('button');
     b.type = 'button';
-    b.className = 'btn btn-ghost print-btn';
+    b.className = 'ac-btn print-btn';
     function label(){ b.textContent = (lang === 'ro') ? '\uD83D\uDDA8\uFE0F Printează / PDF' : '\uD83D\uDDA8\uFE0F Print / PDF'; }
     b.addEventListener('click', function(){ window.print(); });
     document.addEventListener('clp:lang', label);
     label();
-    cta.appendChild(b);
+    actions.appendChild(b);
   }
 
   /* ---------- HEADER / SCROLL ---------- */
@@ -768,6 +791,7 @@
     initNotices();
     initProgressBadge();
     // Feedback v2 uses an explicit, user-reviewed GitHub issue draft.
+    initFeedback();
     initPrintBtn();
     initSearchCount();
     initOffline();

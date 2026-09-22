@@ -1,135 +1,25 @@
-# ============================================================
-#  Coaching Learning Path — Render Blueprint
-#  ------------------------------------------------------------
-#  DE CE NU MERGEA DEPLOY-UL PÂNĂ ACUM
-#  Blueprint-ul se citește din branch-ul implicit (main), iar pe
-#  `main` nu existau render.yaml / package.json / server.js —
-#  erau doar în branch-ul de lucru. De aici eroarea de la Render.
-#  După merge-ul PR-ului în `main`, fișierul acesta e complet.
+# coachinghub.ro — Render Blueprint
 #
-#  Cum publici (două variante, ambele fără costuri):
-#
-#  A) STATIC SITE (recomandat — fără spin-down, fără build)  ← implicit mai jos
-#     Render → New → Static Site → branch: main → Build Command gol
-#     → Publish Directory: .
-#
-#  B) WEB SERVICE (Node, zero dependențe)
-#     Render → New → Web Service → branch: main →
-#     Build: npm install --omit=dev · Start: node server.js
-#     (blocul comentat de la finalul fișierului)
-#
-#  Pentru Blueprint (New → Blueprint) e nevoie ca acest fișier să
-#  existe pe branch-ul implicit. Dacă vrei să publici ACUM, din
-#  branch-ul de lucru: folosește varianta A din dashboard și alege
-#  branch-ul respectiv la pasul „Branch”.
-# ============================================================
+# The forum needs a same-origin API, so the primary deployment is the
+# zero-dependency Node service. It keeps the existing static pages and adds
+# GET/POST /api/forum. For durable production community data, set
+# FORUM_DATA_FILE to a persistent disk or replace the adapter with a database.
 
 services:
-  # ---------- A) STATIC SITE (implicit) ----------
   - type: web
-    name: coaching-learning-path
-    runtime: static
-    branch: main                    # ← după merge; în dashboard poți alege orice branch
+    name: coachinghub-ro
+    runtime: node
+    region: frankfurt
     plan: free
-    autoDeployTrigger: commit       # redeploy automat la fiecare push
-    buildCommand: ''                # nimic de construit — HTML/CSS/JS pur
-    staticPublishPath: .            # se publică rădăcina repo-ului
-
+    branch: main
+    autoDeployTrigger: commit
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /
     envVars:
       - key: NODE_VERSION
         value: "20"
 
-    # Rute „frumoase”, identice cu cele din server.js
-    routes:
-      - type: rewrite
-        source: /descopera
-        destination: /descopera.html
-      - type: rewrite
-        source: /competente
-        destination: /competente.html
-      - type: rewrite
-        source: /povesti
-        destination: /povesti.html
-      - type: rewrite
-        source: /intrebari
-        destination: /intrebari.html
-      - type: rewrite
-        source: /greseli
-        destination: /greseli.html
-      - type: rewrite
-        source: /certificari
-        destination: /certificari.html
-      - type: rewrite
-        source: /traseul-meu
-        destination: /traseul-meu.html
-      - type: rewrite
-        source: /scoli
-        destination: /scoli.html
-      - type: redirect
-        source: /costuri
-        destination: /certificari.html
-      - type: redirect
-        source: /costuri.html
-        destination: /certificari.html
-      - type: redirect
-        source: /costuri/
-        destination: /certificari.html
-      - type: rewrite
-        source: /resurse
-        destination: /resurse.html
-      - type: rewrite
-        source: /invata
-        destination: /invata.html
-      - type: rewrite
-        source: /incepe
-        destination: /incepe.html
-      - type: rewrite
-        source: /teorie
-        destination: /teorie.html
-      - type: rewrite
-        source: /individual
-        destination: /individual.html
-      - type: rewrite
-        source: /echipa
-        destination: /echipa.html
-      - type: rewrite
-        source: /legal
-        destination: /legal.html
-      - type: rewrite
-        source: /index
-        destination: /index.html
-
-    headers:
-      # Activele sunt versionate în HTML (?v=3.0.0) → pot fi cache-uite un an
-      - path: /assets/*
-        name: Cache-Control
-        value: public, max-age=31536000, immutable
-      # HTML-ul se reverifică mereu, ca să prinzi imediat o versiune nouă
-      - path: /*.html
-        name: Cache-Control
-        value: public, max-age=0, must-revalidate
-      - path: /
-        name: Cache-Control
-        value: public, max-age=0, must-revalidate
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
-      - path: /*
-        name: X-Frame-Options
-        value: DENY
-      - path: /*
-        name: Referrer-Policy
-        value: strict-origin-when-cross-origin
-
-# ---------- B) WEB SERVICE (alternativă, dacă vrei serverul Node) ----------
-# services:
-#   - type: web
-#     name: coaching-learning-path-node
-#     runtime: node
-#     branch: main
-#     region: frankfurt
-#     plan: free
-#     autoDeployTrigger: commit
-#     buildCommand: npm install --omit=dev
-#     startCommand: node server.js
-#     healthCheckPath: /
+# Static fallback (without the shared forum API):
+# Render → New → Static Site → branch main → Publish Directory: .
+# The forum UI still works locally per browser in this mode.

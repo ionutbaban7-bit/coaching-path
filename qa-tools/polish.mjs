@@ -80,11 +80,15 @@ check('la printare dispar butonul de printare și feedbackul',
   printRule.some((r) => r.includes('.print-btn') && r.includes('.fb-box')));
 
 /* ---------- 3b. accesibilitate: căutări cu nume, tabele cu nume și scope ---------- */
-const PAGES_ALL = ['index.html', 'incepe.html', 'teorie.html', 'individual.html', 'echipa.html', 'legal.html', '404.html'];
+const PAGES_ALL = fs.readdirSync(ROOT).filter((f) => f.endsWith('.html'));
 const noName = [];
 for (const f of PAGES_ALL) {
-  for (const m of read(f).matchAll(/<input[^>]*class="search"[^>]*>/g)) {
-    if (!/aria-label=/.test(m[0])) noName.push(f);
+  for (const m of read(f).matchAll(/<input[^>]*type="search"[^>]*>/g)) {
+    const id = m[0].match(/id="([^"]+)"/)?.[1] || '__missing__';
+    const source = read(f);
+    const hasExplicitLabel = new RegExp(`<label[^>]*for="${id}"`).test(source);
+    const hasWrappedLabel = new RegExp(`<label[^>]*>[\\s\\S]*${id}[\\s\\S]*<\\/label>`).test(source);
+    if (!/aria-label=|aria-describedby=/.test(m[0]) && !hasExplicitLabel && !hasWrappedLabel) noName.push(f);
   }
 }
 check('fiecare câmp de căutare are nume accesibil', noName.length === 0,
@@ -155,17 +159,17 @@ check('fără progres, insigna se ascunde',
 check('index fără erori de script', iErrors.length === 0, iErrors.join(' | '));
 
 // căutarea anunță câte rezultate sunt (cititoarele de ecran aud același lucru)
-const schoolInput = doc.querySelector('#schoolSearch');
-const live = doc.querySelector('#searchLive');
-check('există zona care anunță rezultatele căutării', !!live && live.getAttribute('aria-live') === 'polite');
-if (schoolInput && live) {
-  schoolInput.value = 'zzzz';
-  schoolInput.dispatchEvent(new index.window.Event('input', { bubbles: true }));
+const searchInput = doc.querySelector('#acHomeSearch');
+const live = doc.querySelector('#acHomeSearchStatus');
+check('există zona care anunță rezultatele căutării', !!live && live.getAttribute('role') === 'status');
+if (searchInput && live) {
+  searchInput.value = 'zzzz';
+  searchInput.dispatchEvent(new index.window.Event('input', { bubbles: true }));
   const none = /Niciun rezultat|No results/.test(live.textContent);
-  schoolInput.value = '';
-  schoolInput.dispatchEvent(new index.window.Event('input', { bubbles: true }));
+  searchInput.value = 'icf';
+  searchInput.dispatchEvent(new index.window.Event('input', { bubbles: true }));
   const many = /\d+\s*(rezultate|results)/.test(live.textContent);
-  check('căutarea anunță rezultatele (0 și apoi lista completă)', none && many, `„${live.textContent}”`);
+  check('căutarea anunță rezultatele (0 și apoi lista relevantă)', none && many, `„${live.textContent}”`);
 } else {
   check('căutarea anunță rezultatele (0 și apoi lista completă)', false, 'lipsesc câmpul sau zona live');
 }
@@ -189,7 +193,7 @@ async function loadPage(page) {
 
 const teorie = await loadPage('teorie.html');
 const tDoc = teorie.window.document;
-const secs = tDoc.querySelectorAll('section.doc-sec[id]').length;
+const secs = tDoc.querySelectorAll('section.ac-section[id], section.doc-sec[id]').length;
 const boxes = tDoc.querySelectorAll('.fb-box').length;
 check('fiecare secțiune are caseta „A fost util?”', secs > 0 && boxes === secs, `${boxes}/${secs}`);
 const btn = tDoc.querySelector('.fb-box .fb-btn');
@@ -201,7 +205,7 @@ if (btn) {
 } else {
   check('butonul de feedback se marchează și mulțumește', false, 'lipsește butonul');
 }
-const pBtn = tDoc.querySelector('.hero-cta .print-btn');
+const pBtn = tDoc.querySelector('.ac-heading .print-btn, .hero-cta .print-btn');
 check('buton de printare / PDF pe pagina de conținut', !!pBtn, pBtn ? pBtn.textContent.trim() : 'lipsă');
 if (pBtn) {
   pBtn.dispatchEvent(new teorie.window.MouseEvent('click', { bubbles: true, cancelable: true }));
