@@ -333,10 +333,9 @@ html.rm-open,html.rm-open body{overflow:hidden}
   .nav-progress{min-height:var(--tap)}
 }
 
-/* ---------- citit pe hârtie: butonul de printare dispare la tipărire ---------- */
-.print-btn{cursor:pointer}
+/* ---------- citire pe hârtie: feedbackul și elementele de navigare dispar ---------- */
 @media print{
-  .print-btn,.fb-box,.nav-progress{display:none !important}
+  .fb-box,.nav-progress{display:none !important}
   h1,h2,h3{break-after:avoid;page-break-after:avoid}
   tr,li,.def-card,.model-card,.comp-card,.jwhat,.slot,.lib-card,.start-step{break-inside:avoid;page-break-inside:avoid}
   table,.toc,.card{break-inside:avoid}

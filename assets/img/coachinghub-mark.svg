@@ -1,10 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
   <title id="title">coachinghub.ro</title>
-  <desc id="desc">Sigla coachinghub.ro.</desc>
+  <desc id="desc">Sigla circulară coachinghub.ro, cu monograma CH.</desc>
   <circle cx="48" cy="48" r="45" fill="#1f4c3e"/>
   <circle cx="48" cy="48" r="41" fill="none" stroke="#b7925b" stroke-width="1.6"/>
   <circle cx="48" cy="48" r="36" fill="none" stroke="#b7925b" stroke-width=".7" opacity=".7"/>
+  <path d="M31 29c4-7 10-10 17-10s13 3 17 10" fill="none" stroke="#e8ddc6" stroke-width="1" opacity=".8"/>
+  <path d="M30 68c7 5 13 7 18 7s11-2 18-7" fill="none" stroke="#e8ddc6" stroke-width="1" opacity=".8"/>
   <text x="26" y="59" fill="#f7f1e5" font-family="Georgia, 'Times New Roman', serif" font-size="31" letter-spacing="-3">C</text>
   <text x="47" y="59" fill="#d6b57a" font-family="Georgia, 'Times New Roman', serif" font-size="31" letter-spacing="-3">H</text>
   <path d="M48 17v5M45.5 19.5h5" stroke="#d6b57a" stroke-width="1.3" stroke-linecap="round"/>
+  <circle cx="48" cy="79" r="1.6" fill="#d6b57a"/>
 </svg>

@@ -72,12 +72,12 @@ check('textul din pagină (fără JS) = dicționarul RO', drift.length === 0,
 
 /* ---------- 3. finisajele din CSS există și sunt ascunse la printare ---------- */
 const css = read('assets/css/app.css');
-for (const sel of ['.nav-progress', '.fb-box', '.fb-btn', '.print-btn']) {
+for (const sel of ['.nav-progress', '.fb-box', '.fb-btn']) {
   check(`CSS definește ${sel}`, css.includes(sel + '{') || css.includes(sel + ' {'));
 }
 const printRule = css.match(/@media print\{[^}]*\}/g) || [];
-check('la printare dispar butonul de printare și feedbackul',
-  printRule.some((r) => r.includes('.print-btn') && r.includes('.fb-box')));
+check('la printare dispar feedbackul și navigarea',
+  printRule.some((r) => r.includes('.fb-box') && r.includes('.nav-progress')));
 
 /* ---------- 3b. accesibilitate: căutări cu nume, tabele cu nume și scope ---------- */
 const PAGES_ALL = fs.readdirSync(ROOT).filter((f) => f.endsWith('.html'));
@@ -174,7 +174,7 @@ if (searchInput && live) {
   check('căutarea anunță rezultatele (0 și apoi lista completă)', false, 'lipsesc câmpul sau zona live');
 }
 
-/* ---------- 5. feedback pe secțiuni + buton de printare, în browser ---------- */
+/* ---------- 5. feedback pe secțiuni + fără controale de printare, în browser ---------- */
 async function loadPage(page) {
   const dom = await JSDOM.fromURL(`${BASE}/${page}`, {
     runScripts: 'dangerously', resources: 'usable', pretendToBeVisual: true,
@@ -205,14 +205,8 @@ if (btn) {
 } else {
   check('butonul de feedback se marchează și mulțumește', false, 'lipsește butonul');
 }
-const pBtn = tDoc.querySelector('.ac-heading .print-btn, .hero-cta .print-btn');
-check('buton de printare / PDF pe pagina de conținut', !!pBtn, pBtn ? pBtn.textContent.trim() : 'lipsă');
-if (pBtn) {
-  pBtn.dispatchEvent(new teorie.window.MouseEvent('click', { bubbles: true, cancelable: true }));
-  check('butonul de printare chiar declanșează tipărirea', teorie.window.__printed === true);
-} else {
-  check('butonul de printare chiar declanșează tipărirea', false);
-}
+const pBtn = tDoc.querySelector('.ac-heading .print-btn, .hero-cta .print-btn, #startPrint, [data-print]');
+check('site-ul nu afișează buton de printare / PDF', !pBtn, pBtn ? pBtn.textContent.trim() : 'absent');
 const tErrors = [];
 teorie.window.addEventListener('error', (e) => tErrors.push(e.message || e.error));
 check('teorie fără erori de script', true);

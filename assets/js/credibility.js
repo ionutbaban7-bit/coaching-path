@@ -12,7 +12,6 @@
 
   var VERIFIED = '2026-09-22';
   var VERIFIED_RO = '22 septembrie 2026';
-  var REPO = 'https://github.com/ionutbaban7-bit/coaching-path';
 
   /* ---------- Surse pe teme ---------- */
   var TOPICS = {
@@ -94,25 +93,6 @@
     }
   };
 
-  /* ---------- URL de raportare, pre-completat ---------- */
-  function reportUrl(topic){
-    var page = location.pathname.split('/').pop() || 'index.html';
-    var l = (window.CLP && window.CLP.lang) ? window.CLP.lang() : 'ro';
-    var title = '[Corecție] ' + (topic || page) + ' — ' + VERIFIED_RO;
-    var body =
-      '**Ce e de corectat?**\n\n' +
-      '_(descrie pe scurt ce ai găsit greșit sau ce s-a schimbat)_\n\n' +
-      '---\n' +
-      'Pagina: `' + page + '`\n' +
-      'Secțiunea: `' + (topic || '—') + '`\n' +
-      'Limbă: ' + (l === 'ro' ? 'română' : 'engleză') + '\n' +
-      'Versiunea informației: ' + VERIFIED_RO + '\n' +
-      'Link: ' + (location.href || page) + '\n\n' +
-      '**Surse care contrazic informația (dacă ai):**\n\n';
-    return REPO + '/issues/new?labels=corectie&title=' + encodeURIComponent(title) +
-           '&body=' + encodeURIComponent(body);
-  }
-
   /* ---------- Randare ---------- */
   function render(){
     $$('[data-verify]').forEach(function(el){
@@ -136,10 +116,7 @@
           '</div>' +
           (t.note ? '<div class="vs-note">' + L(t.note) + '</div>' : '') +
         '</div>' +
-        '<a class="report-link" href="' + reportUrl(key) + '" target="_blank" rel="noopener" ' +
-          'title="' + L(['Deschide un issue pe GitHub cu pagina și secțiunea deja completate','Open a GitHub issue with the page and section pre-filled']) + '">' +
-          '⚠ <span>' + L(['Raportează o greșeală','Report an error']) + '</span>' +
-        '</a>';
+        '<span class="verify-note">' + L(['Canalul public de corecții este în pregătire.','The public corrections channel is being prepared.']) + '</span>';
     });
   }
 
@@ -165,7 +142,6 @@
     render: render,
     verified: VERIFIED,
     verifiedRo: VERIFIED_RO,
-    reportUrl: reportUrl,
     verificationLinks: verificationLinks,
     topics: TOPICS
   };

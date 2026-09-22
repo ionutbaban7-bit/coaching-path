@@ -399,8 +399,8 @@
     var r = routeText(), ro = lang() !== 'en';
     var h = '<h2>🗺️ ' + (ro ? 'Planul tău, personalizat' : 'Your personalised plan') + '</h2>';
     h += '<p class="start-lead">' + (ro
-      ? 'Construit din cele 3 răspunsuri de la început. Îl poți copia sau printa.'
-      : 'Built from your three initial answers. You can copy or print it.') + '</p>';
+      ? 'Construit din cele 3 răspunsuri de la început. Îl poți copia și păstra aproape.'
+      : 'Built from your three initial answers. You can copy it and keep it close.') + '</p>';
     h += '<div class="plan-grid">';
     h += '<div class="plan-card"><h4>' + (ro ? 'Ruta recomandată' : 'Recommended route') + '</h4><p>' + esc(r.route) + '</p></div>';
     h += '<div class="plan-card"><h4>' + (ro ? 'Ritm' : 'Pace') + '</h4><p>' + esc(r.pace) + '</p></div>';
@@ -409,7 +409,6 @@
     h += '<pre class="start-plan-text" id="startPlanText">' + esc(planText()) + '</pre>';
     h += '<div class="start-plan-actions">';
     h += '<button type="button" class="btn btn-primary" id="startCopy">📋 ' + (ro ? 'Copiază planul' : 'Copy the plan') + '</button>';
-    h += '<button type="button" class="btn btn-ghost" id="startPrint">🖨️ ' + (ro ? 'Printează' : 'Print') + '</button>';
     h += '</div>';
     return h;
   }
@@ -573,7 +572,6 @@
           toast(lang()==='ro' ? 'Textul planului e selectat — apasă lung și copiază.' : 'The plan text is selected — long press and copy.');
         });
       }
-      if(e.target && e.target.id === 'startPrint') window.print();
     });
 
     document.addEventListener('clp:lang', function(){

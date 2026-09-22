@@ -95,9 +95,7 @@
  window.addEventListener('hashchange',open);window.addEventListener('popstate',open);document.addEventListener('clp:lang',open);open();
  }
  function feedback(){
- const a=document.createElement('a');a.className='atlas-feedback';a.target='_blank';a.rel='noopener';document.querySelector('main')?.after(a);
- function draw(){a.textContent=t('Ce putem face mai clar? Trimite feedback ↗','What could be clearer? Send feedback ↗');a.href='https://github.com/ionutbaban7-bit/coaching-path/issues/new?title='+encodeURIComponent('Feedback: '+document.title)+'&body='+encodeURIComponent(t('Pagina: ','Page: ')+location.pathname+'\n\n'+t('Ce am încercat să fac:\n\nCe nu a fost clar:\n\nNu include date personale. Revizuiește textul înainte de publicare.','What I was trying to do:\n\nWhat was unclear:\n\nDo not include personal data. Review before posting.'));a.title=t('Deschide o ciornă pe GitHub. Necesită cont. Nimic nu se trimite automat.','Opens a GitHub draft. Account required. Nothing is sent automatically.');}
-  draw();document.addEventListener('clp:lang',draw);
+ return;
  }
  function journey(){
  const steps=$('#startSteps');if(!steps)return;

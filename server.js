@@ -14,7 +14,7 @@
      • text scurt și la obiect: lead-uri, subtitluri, note de subsol
      • date structurate schema.org (WebSite, EducationalOrganization, LearningResource, Article)
      • insigna de progres în antet (traseu / hartă) + „A fost util?" pe secțiuni
-     • buton „Printează / PDF" pe paginile de conținut
+     • traseu local „Continuă de unde ai rămas" pe paginile de conținut
      • căutările anunță câte rezultate au, tabelele au nume și scope, tipărirea nu rupe blocurile
      • poartă nouă de calitate: npm run qa:polish (text, date, finisaj)
    v1.6.0 — drumul cu bicicleta + QA de producție (ITIL):

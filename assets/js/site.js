@@ -241,30 +241,6 @@
     }, false);
   }
 
-  /* ---------- PRINTARE / PDF, ACASĂ PE PAGINILE DE CONȚINUT ---------- */
-  /* Un buton discret, lângă CTA-urile din hero: pagina de teorie, planurile și
-     informațiile legale se citesc bine și pe hârtie. Dispare la printare. */
-  function initPrintBtn(){
-    var page = document.body.dataset.page || 'index';
-    if(page === 'index' || page === '404') return;
-    var cta = document.querySelector('.hero-cta, .ac-heading');
-    if(!cta || cta.querySelector('.print-btn')) return;
-    var actions = cta.querySelector('.ac-actions');
-    if(!actions){
-      actions = document.createElement('div');
-      actions.className = 'ac-actions';
-      cta.appendChild(actions);
-    }
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'ac-btn print-btn';
-    function label(){ b.textContent = (lang === 'ro') ? '\uD83D\uDDA8\uFE0F Printează / PDF' : '\uD83D\uDDA8\uFE0F Print / PDF'; }
-    b.addEventListener('click', function(){ window.print(); });
-    document.addEventListener('clp:lang', label);
-    label();
-    actions.appendChild(b);
-  }
-
   /* ---------- HEADER / SCROLL ---------- */
   function initScrollFx(){
     var header = $('.site-header');
@@ -479,9 +455,8 @@
     sync();
   }
 
-  /* ---------- „CONTINUĂ DE UNDE AI RĂMAS” + INSTALARE (PWA) ---------- */
+  /* ---------- „CONTINUĂ DE UNDE AI RĂMAS” ---------- */
   function initResume(){
-    var deferred = null;                 /* evenimentul de instalare (Chrome/Edge/Android) */
     var bar = null;
     var page = document.body.dataset.page || 'index';
 
@@ -502,23 +477,6 @@
       for(k in o){ if(Object.prototype.hasOwnProperty.call(o,k) && o[k]) n++; }
       return n;
     }
-    function isStandalone(){
-      try{ if(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) return true; }catch(e){}
-      return window.navigator.standalone === true;
-    }
-    function isIOS(){
-      var ua = navigator.userAgent || '';
-      if(/iPhone|iPad|iPod/.test(ua)) return true;
-      return (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    }
-    function installReady(){
-      if(lsGet('cp_install_hidden')) return false;
-      var completed=lsJson('cp_start_v2',{});
-      if(!completed.done || !Object.keys(completed.done).some(function(k){return completed.done[k];})) return false;
-      if(isStandalone()) return false;
-      return !!deferred || isIOS();
-    }
-
     /* Următorul pas concret al vizitatorului, din progresul salvat local. */
     function nextStep(){
       var st = lsJson('cp_start_v2', null);
@@ -568,11 +526,9 @@
       header.parentNode.insertBefore(bar, header.nextSibling);
       bar.querySelector('#resumeX').addEventListener('click', function(){
         lsSet('cp_resume_hidden', bar.dataset.sig || 'all');
-        if(bar.dataset.mode === 'install') lsSet('cp_install_hidden','1');
         hide();
       });
       bar.querySelector('#resumeGo').addEventListener('click', function(){
-        if(bar.dataset.mode === 'install'){ doInstall(); return; }
         if(bar.dataset.href) location.href = bar.dataset.href;
       });
       return true;
@@ -581,67 +537,28 @@
       if(bar) bar.hidden = true;
       document.documentElement.classList.remove('has-resume');
     }
-    function doInstall(){
-      if(!deferred) return;
-      deferred.prompt();
-      if(deferred.userChoice && deferred.userChoice.then){
-        deferred.userChoice.then(function(res){
-          deferred = null;
-          if(res && res.outcome === 'accepted') toast(T('Aplicația a fost instalată','App installed'));
-          else lsSet('cp_install_hidden','1');
-          render();
-        });
-      }else{
-        deferred = null; render();
-      }
-    }
     function render(){
       var p = nextStep();
-      var inst = installReady();
-      var mode = p ? 'progress' : (inst ? 'install' : null);
-      if(!mode){ hide(); return; }
-      var sig = p ? p.sig : (deferred ? 'install:prompt' : 'install:ios');
+      if(!p){ hide(); return; }
+      var sig = p.sig;
       if(lsGet('cp_resume_hidden') === sig){ hide(); return; }
       /* bara se construiește abia când are ceva de spus — fără noduri inutile în pagină */
       if(!bar && !build()) return;
       bar.dataset.sig = sig;
-      bar.dataset.mode = mode;
       var ico = bar.querySelector('.resume-ico');
       var ttl = bar.querySelector('.resume-txt b');
       var sub = bar.querySelector('.resume-txt span');
       var go  = bar.querySelector('#resumeGo');
-      if(mode === 'progress'){
-        ico.textContent = p.ico;
-        ttl.textContent = p.title;
-        sub.textContent = inst ? p.sub + ' \u00B7 ' + T('poți instala aplicația','you can install the app') : p.sub;
-        go.textContent = p.label;
-        go.hidden = false;
-        bar.dataset.href = p.href;
-      }else{
-        ico.textContent = '\u2B07';
-        ttl.textContent = T('Instalează Coaching Path','Install Coaching Path');
-        sub.textContent = deferred
-          ? T('Se deschide ca o aplicație, fără bara browserului.','Opens like an app, without the browser bar.')
-          : T('Partajează \u2192 Adaugă la ecranul principal.','Share \u2192 Add to Home Screen.');
-        go.textContent = T('Instalează','Install');
-        go.hidden = !deferred;          /* pe iOS nu există prompt programatic */
-        delete bar.dataset.href;
-      }
+      ico.textContent = p.ico;
+      ttl.textContent = p.title;
+      sub.textContent = p.sub;
+      go.textContent = p.label;
+      go.hidden = false;
+      bar.dataset.href = p.href;
       bar.querySelector('#resumeX').setAttribute('aria-label', T('Ascunde bara','Hide this bar'));
       bar.hidden = false;
       document.documentElement.classList.add('has-resume');
     }
-
-    window.addEventListener('beforeinstallprompt', function(e){
-      e.preventDefault();
-      deferred = e;
-      render();
-    });
-    window.addEventListener('appinstalled', function(){
-      deferred = null;
-      lsSet('cp_install_hidden','1');
-      render();
-    });
     document.addEventListener('clp:lang', function(e){
       lang = (e.detail && e.detail.lang) ? e.detail.lang : lang;
       render();
@@ -790,9 +707,7 @@
     initLang();
     initNotices();
     initProgressBadge();
-    // Feedback v2 uses an explicit, user-reviewed GitHub issue draft.
     initFeedback();
-    initPrintBtn();
     initSearchCount();
     initOffline();
     // sincronizare cu schimbarea de limbă făcută de app.js

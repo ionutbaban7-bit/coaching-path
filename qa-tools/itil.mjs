@@ -94,8 +94,8 @@ const versions = new Set([pkg.version, (sw.match(/clp-v([\d.]+)/) || [])[1]]);
 chk('Informație și tehnologie', 'IT-05', 'O singură versiune în tot sistemul (package.json = sw.js = ?v=)', 'blocant',
   versions.size === 1 && PAGES.every(f => !/\?v=/.test(T(f)) || T(f).includes('?v=' + pkg.version)),
   'v' + pkg.version + ' · ' + (ALLHTML.match(/\?v=/g) || []).length + ' referințe versionate');
-chk('Informație și tehnologie', 'IT-06', 'Service worker + manifest: instalabil și funcțional offline', 'conditionat',
-  /CACHE_VERSION/.test(sw) && /standalone/.test(T('manifest.webmanifest')) && /serviceWorker/.test(ALLJS),
+chk('Informație și tehnologie', 'IT-06', 'Service worker + manifest: site normal și funcțional offline', 'conditionat',
+  /CACHE_VERSION/.test(sw) && /"display"\s*:\s*"browser"/.test(T('manifest.webmanifest')) && /serviceWorker/.test(ALLJS),
   'sw.js + manifest.webmanifest');
 chk('Informație și tehnologie', 'IT-07', 'Fără console.log / eval în codul de producție', 'conditionat',
   !has(ALLJS, /console\.(log|debug)\(/) && !has(ALLJS, /\beval\(/), JS.length + ' fișiere JS verificate');

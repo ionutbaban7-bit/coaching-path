@@ -2,7 +2,7 @@
 /* Audit „super mobile friendly” (Android + iOS) — verificări statice pe HTML, CSS, JS
    și manifest. Nu are nevoie de browser: citește fișierele sursă și caută exact
    lucrurile care se strică pe telefon (zoom la focus, ținte prea mici, notch,
-   100vh, meniu care lasă pagina să se deruleze, lipsa instalării ca aplicație).
+   100vh, meniu care lasă pagina să se deruleze și experiența de site normal).
 
    Rulează: npm run qa:mobile   (sau node qa-tools/mobile.mjs)                */
 import fs from 'node:fs';
@@ -115,11 +115,8 @@ const rules = parsed.rules;
 const badViewport = PAGES.filter(f => !/name="viewport"[^>]*viewport-fit=cover/.test(RM(f)));
 ok('viewport cu viewport-fit=cover pe toate paginile', badViewport.length === 0, badViewport.join(', '));
 
-const missingApple = PAGES.filter(f => {
-  const s = RM(f);
-  return !(/apple-mobile-web-app-capable/.test(s) && /apple-touch-icon/.test(s) && /format-detection/.test(s));
-});
-ok('meta-uri iOS (apple-mobile-web-app-capable, apple-touch-icon, format-detection)', missingApple.length === 0, missingApple.join(', '));
+const missingFormat = PAGES.filter(f => !/format-detection/.test(RM(f)));
+ok('meta de format pentru telefon', missingFormat.length === 0, missingFormat.join(', '));
 
 const badTheme = PAGES.filter(f => {
   const s = RM(f).split('</head>')[0];
@@ -183,7 +180,7 @@ const small = targets.filter(([sel, prop, min]) => !(maxFor(rules, sel, prop) >=
 ok('ținte de atingere de minim 44px', small.length === 0, small.map(([s, p]) => `${s}{${p}}`).join(', '));
 
 /* ============================================================
-   6. Meniu mobil + bara „Continuă” + instalare
+   6. Meniu mobil + bara „Continuă” + site normal
    ============================================================ */
 ok('meniul mobil blochează derularea paginii', /html\.nav-open[^{]*\{[^}]*overflow:hidden/.test(allCss));
 const siteJs = RM('assets/js/site.js');
@@ -191,7 +188,7 @@ ok('site.js: Escape închide meniul', /'Escape'/.test(siteJs));
 ok('site.js: meniul se închide la atingere în afară', /nav\.contains\(e\.target\)/.test(siteJs));
 ok('site.js: meniul se închide la rotire / ecran lat', /orientationchange/.test(siteJs) && /closeIfWide/.test(siteJs));
 ok('site.js: bară „Continuă de unde ai rămas"', /cp_start_v2/.test(siteJs) && /cp_map_done/.test(siteJs) && /cp_progress/.test(siteJs));
-ok('site.js: instalare ca aplicație (PWA)', /beforeinstallprompt/.test(siteJs) && /display-mode: standalone/.test(siteJs));
+ok('site.js: nu forțează instalarea ca aplicație', !/beforeinstallprompt/.test(siteJs) && !/appinstalled/.test(siteJs));
 ok('bara „Continuă” e lipită sub antet', !!valueFor(rules, '.resume-bar', 'position') && /var\(--nav-h\)/.test((valueFor(rules, '.resume-bar', 'top') || {}).v || ''));
 ok('ancorele țin cont de bara „Continuă”', /--scroll-offset/.test(allCss) && (allCss.match(/var\(--scroll-offset\)/g) || []).length >= 3);
 
@@ -200,8 +197,8 @@ ok('ancorele țin cont de bara „Continuă”', /--scroll-offset/.test(allCss) 
    ============================================================ */
 let manifest = null;
 try { manifest = JSON.parse(RM('manifest.webmanifest')); } catch (e) { manifest = null; }
-ok('manifest: standalone + iconițe + culori',
-  !!manifest && manifest.display === 'standalone' && Array.isArray(manifest.icons) && manifest.icons.length > 0 &&
+ok('manifest: browser mode + iconițe + culori',
+  !!manifest && manifest.display === 'browser' && Array.isArray(manifest.icons) && manifest.icons.length > 0 &&
   !!manifest.theme_color && !!manifest.start_url);
 
 const pkgVersion = JSON.parse(RM('package.json')).version;

@@ -4,8 +4,20 @@ Toate modificările notabile ale proiectului sunt documentate aici.
 Format bazat pe [Keep a Changelog](https://keepachangelog.com/) · versiuni [SemVer](https://semver.org/).
 
 Data de verificare a conținutului public: **22 septembrie 2026**.
-Pentru a raporta o informație greșită: butonul „Raportează o greșeală” de pe orice secțiune
-sau [direct pe GitHub](https://github.com/ionutbaban7-bit/coaching-path/issues/new?labels=corectie).
+Pentru corecții editoriale, consultă secțiunea „Corecții” din pagina Legal.
+
+## [4.1.0] — 2026-09-22
+
+### Modificat — coachinghub.ro, ediția editorială premium
+
+- Antet refăcut cu siglă CH în stil sigiliu, tipografie serif și paletă ivory / forest / brass.
+- Cardurile și componentele forumului, Paths și paginilor legacy trec la suprafețe calde, margini fine și ritm editorial.
+- Site-ul rămâne site normal în browser: manifestul folosește `browser`, iar bara de instalare PWA a fost eliminată.
+
+### Scos
+
+- Linkurile publice către GitHub și raportarea directă în repository.
+- Butoanele „Printează / PDF” și textele asociate.
 
 ---
 
