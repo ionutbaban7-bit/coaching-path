@@ -15,7 +15,7 @@
     { id:'hub',    href:'hub.html',       label:{ ro:'Paths',             en:'Paths' } },
     { id:'start',  href:'incepe.html',    label:{ ro:'Biblia începătorului', en:'Beginner bible' } },
     { id:'theory', href:'teorie.html',    label:{ ro:'Teorie',             en:'Theory' } },
-    { id:'forum',  href:'forum.html',     label:{ ro:'Forum',              en:'Forum' } },
+    { id:'forum',  href:'forum.html',     label:{ ro:'Jurnal',             en:'Journal' } },
     { id:'individual', href:'individual.html', label:{ ro:'Coaching 1:1', en:'1:1 Coaching' } },
     { id:'team',   href:'echipa.html',   label:{ ro:'Coaching de echipă', en:'Team Coaching' } }
   ];
@@ -95,7 +95,7 @@
       ['descopera','Explorează','Explore'],
       ['hub','Paths','Learning paths'],
       ['invata','Practică','Practice'],
-      ['forum','Forum','Community'],
+      ['forum','Jurnal','Journal'],
       ['resurse','Bibliotecă','Library']
     ];
     html=groups.map(function(p){

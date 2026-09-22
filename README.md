@@ -20,7 +20,7 @@ Un hub educațional independent, în română și engleză, pentru cei care desc
 | Bibliotecă | 14 resurse selectate, inclusiv 6 cărți, documentație, cercetare și bloguri |
 | Începe aici | 10 pași cu verificarea înțelegerii și un plan de învățare adaptat interesului |
 | Școli | Director orientativ cu 31 de intrări, căutare, filtre, paginare și comparație |
-| Forum | Subiecte și articole bilingve, categorii, căutare, răspunsuri și fallback local fără cont |
+| CoachingHub Journal | Articole și conversații bilingve, selecție editorială, categorii, citiri, like/dislike și fallback local fără cont |
 
 Articolele de teorie, coaching individual și coaching de echipă sunt accesibile separat. Secțiunea de costuri a fost eliminată; adresele vechi redirecționează către certificare.
 
@@ -40,7 +40,7 @@ Verificările curente pentru v4:
 npm run check        # sintaxă, fișiere locale, traduceri, versiuni
 npm run qa           # pagini, interacțiuni, persistență și cazuri de eroare
 npm run qa:server    # server, rute, cache, redirecționări și traseul ghidat
-npm run qa:polish    # feedback, print/PDF, SEO și accesibilitate de bază
+npm run qa:polish    # feedback, SEO și accesibilitate de bază
 npm run qa:mobile    # verificări statice pentru Android/iOS
 npm run qa:css       # clase și variabile CSS folosite
 ```
@@ -57,8 +57,8 @@ npm run qa:css       # clase și variabile CSS folosite
 - `assets/js/site.js`: limbă, temă, navigare și comportamente comune.
 - `assets/css/academy.css`: noua identitate vizuală și adaptarea la ecrane mici, peste stilurile comune existente.
 - `hub.html`, `assets/js/hub.js`, `assets/css/hub.css`: paths, Biblia începătorului, roadmap și checklist-ul practic salvat local.
-- `forum.html`, `assets/js/forum.js`, `data/forum.json`: forumul bilingv, fallback local și subiectele de pornire.
-- `server.js`, `render.yaml`, `sw.js`: găzduire Node, API forum, rute și cache offline.
+- `forum.html`, `assets/js/forum.js`, `assets/css/journal.css`, `data/forum.json`: CoachingHub Journal, fallback local, articole și reacții.
+- `server.js`, `render.yaml`, `sw.js`: găzduire Node, API Journal, rute și cache offline.
 
 Fișierele istorice `data.js`, `app.js`, `map.js` și `plan.js` sunt păstrate în repository, dar nu mai sunt încărcate de paginile publice v4. Conținutul lor nu este o sursă editorială curentă.
 
@@ -66,7 +66,7 @@ Fișierele istorice `data.js`, `app.js`, `map.js` și `plan.js` sunt păstrate �
 
 Nu există cont, autentificare sau tracking. Preferințele, favoritele, progresul și reflecțiile sunt păstrate în browser. Jurnalul se salvează la cerere, se exportă ca text și poate fi șters separat de favorite. Dacă stocarea nu este disponibilă, interfața explică situația. Nu introduce date personale despre clienți.
 
-Forumul funcționează local fără cont pe hosting static. Când este servit de `server.js`, subiectele și răspunsurile sunt trimise la API și scrise în `data/forum.json`; implementarea nu are încă autentificare, moderare sau bază de date persistentă.
+Journal-ul funcționează local fără cont pe hosting static. Când este servit de `server.js`, articolele propuse, răspunsurile, citirile și reacțiile folosesc API-ul și sunt scrise în `data/forum.json`; implementarea nu are încă autentificare, moderare, deduplicare server-side sau bază de date persistentă.
 
 Progresul traseului v2 se păstrează; răspunsurile la vechile quizuri se resetează deoarece întrebările s-au schimbat. Fonturile și imaginile sunt locale. Cache-ul offline devine disponibil după o vizită online reușită; linkurile externe necesită internet.
 
@@ -76,8 +76,8 @@ Sursele și informațiile volatile sunt revizuite trimestrial și după schimbă
 
 ## Publicare
 
-Render urmărește `main` printr-un Web Service Node și rulează `node server.js`; un commit pe `main` declanșează publicarea dacă Auto Deploy este activ. `GET /api/forum`, `POST /api/forum` și `POST /api/forum/:id/replies` folosesc momentan `data/forum.json` (sau calea din `FORUM_DATA_FILE`). Pe hosting static forumul rămâne funcțional local, în browser.
+Render urmărește `main` printr-un Web Service Node și rulează `node server.js`; un commit pe `main` declanșează publicarea dacă Auto Deploy este activ. `GET /api/forum`, `POST /api/forum`, `POST /api/forum/:id/replies`, `POST /api/forum/:id/view` și `POST /api/forum/:id/react` folosesc momentan `data/forum.json` (sau calea din `FORUM_DATA_FILE`). Pe hosting static Journal-ul rămâne funcțional local, în browser.
 
-Pentru un forum public de producție, următorul increment este autentificare, moderare și stocare persistentă externă; filesystem-ul unui serviciu gratuit nu trebuie tratat ca bază de date durabilă. Domeniul `coachinghub.ro` trebuie mapat separat în Render și în DNS.
+Pentru o publicație și comunitate publică de producție, următorul increment este autentificare, moderare editorială, anti-abuz și stocare persistentă externă; filesystem-ul unui serviciu gratuit nu trebuie tratat ca bază de date durabilă. Domeniul `coachinghub.ro` trebuie mapat separat în Render și în DNS.
 
 Vezi [analiza v4](REVIEW_COACHINGHUB_V4.md), [planul v3](PLAN_ACADEMY_V3.md), [raportul editorial și QA](REVIEW_CONTENT_V3.md) și [istoricul](CHANGELOG.md).

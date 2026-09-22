@@ -12,23 +12,23 @@
    ============================================================ */
 'use strict';
 
-var CACHE_VERSION = 'clp-v4.1.0';
+var CACHE_VERSION = 'clp-v4.2.0';
 var HTML_CACHE = CACHE_VERSION + '-html';
 var ASSET_CACHE = CACHE_VERSION + '-assets';
 
 var CORE = [
   'descopera.html', 'competente.html', 'povesti.html', 'intrebari.html', 'greseli.html',
-  'assets/css/academy.css?v=4.1.0', 'assets/css/hub.css?v=4.1.0', 'assets/css/old-money.css?v=4.1.0', 'assets/js/academy-data.js?v=4.1.0', 'assets/js/academy.js?v=4.1.0',
-  'assets/js/hub.js?v=4.1.0', 'assets/js/forum.js?v=4.1.0', 'assets/js/start-content.js?v=4.1.0',
-  'assets/img/academy-conversation.webp?v=4.1.0', 'assets/img/academy-library.webp?v=4.1.0',
+  'assets/css/academy.css?v=4.2.0', 'assets/css/hub.css?v=4.2.0', 'assets/css/old-money.css?v=4.2.0', 'assets/css/journal.css?v=4.2.0', 'assets/js/academy-data.js?v=4.2.0', 'assets/js/academy.js?v=4.2.0',
+  'assets/js/hub.js?v=4.2.0', 'assets/js/forum.js?v=4.2.0', 'assets/js/start-content.js?v=4.2.0',
+  'assets/img/academy-conversation.webp?v=4.2.0', 'assets/img/academy-library.webp?v=4.2.0',
   './',
   'certificari.html',
   'traseul-meu.html',
   'scoli.html',
   'resurse.html',
   'invata.html',
-  'assets/css/atlas.css?v=4.1.0',
-  'assets/js/atlas.js?v=4.1.0',
+  'assets/css/atlas.css?v=4.2.0',
+  'assets/js/atlas.js?v=4.2.0',
   'index.html',
   'hub.html',
   'forum.html',
@@ -57,7 +57,7 @@ self.addEventListener('install', function(e){
     caches.open(CACHE_VERSION).then(function(c){
       // addAll eșuează în bloc dacă un singur fișier lipsește → adăugăm individual
       return Promise.all(CORE.map(function(u){
-        return c.add(new Request(/\.(css|js)$/.test(u) ? u + '?v=4.1.0' : u, { cache:'reload' })).catch(function(){});
+        return c.add(new Request(/\.(css|js)$/.test(u) ? u + '?v=4.2.0' : u, { cache:'reload' })).catch(function(){});
       }));
     }).then(function(){ return self.skipWaiting(); })
   );

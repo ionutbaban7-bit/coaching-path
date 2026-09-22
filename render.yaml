@@ -1,8 +1,8 @@
 # coachinghub.ro — Render Blueprint
 #
-# The forum needs a same-origin API, so the primary deployment is the
+# The Journal needs a same-origin API, so the primary deployment is the
 # zero-dependency Node service. It keeps the existing static pages and adds
-# GET/POST /api/forum. For durable production community data, set
+# GET/POST /api/forum plus view/reaction actions. For durable production data, set
 # FORUM_DATA_FILE to a persistent disk or replace the adapter with a database.
 
 services:
@@ -20,6 +20,6 @@ services:
       - key: NODE_VERSION
         value: "20"
 
-# Static fallback (without the shared forum API):
+# Static fallback (without the shared Journal API):
 # Render → New → Static Site → branch main → Publish Directory: .
-# The forum UI still works locally per browser in this mode.
+# The Journal UI still works locally per browser in this mode.

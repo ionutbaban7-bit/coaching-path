@@ -7,9 +7,10 @@
      • local                  : `node server.js` → http://localhost:3000
    Node >= 18. Nu folosește nimic din npm: n-are ce să se strice.
 
-   v4.0.0 — hub, paths și forum:
-     • rute hub/forum și API file-backed pentru subiecte și răspunsuri
-     • fallback local în forum pe hosting static
+   v4.2.0 — CoachingHub Journal:
+     • articole, categorii, timp de citire, citiri și reacții like/dislike
+     • API file-backed pentru articole propuse, răspunsuri și semnale editoriale
+     • fallback local în Journal pe hosting static
    v1.7.0 — finisaj de produs (runda 5):
      • text scurt și la obiect: lead-uri, subtitluri, note de subsol
      • date structurate schema.org (WebSite, EducationalOrganization, LearningResource, Article)
@@ -81,6 +82,7 @@ const CLEAN = {
   '/invata': 'invata.html',
   '/hub': 'hub.html',
   '/forum': 'forum.html',
+  '/journal': 'forum.html',
   '/teorie': 'teorie.html',
   '/incepe': 'incepe.html',
   '/individual': 'individual.html',
@@ -94,7 +96,7 @@ const CLEAN = {
 /* Forum MVP: folosește fișierul local când rulează ca Web Service.
    Pe Static Site, forum.js cade elegant pe localStorage până există un backend. */
 const FORUM_FILE = process.env.FORUM_DATA_FILE || path.join(ROOT, 'data', 'forum.json');
-const FORUM_CATEGORIES = new Set(['beginners', 'practice', 'credentials', 'niche', 'ethics', 'resources']);
+const FORUM_CATEGORIES = new Set(['coaching', 'practice', 'credentials', 'career', 'spirituality', 'psychology', 'research', 'stories', 'resources', 'beginners', 'niche', 'ethics']);
 const FORUM_KINDS = new Set(['discussion', 'article']);
 const forumAttempts = new Map();
 let forumCache = null;
@@ -116,18 +118,37 @@ function bilingual(value) {
   return { ro: text, en: text };
 }
 
+function metric(value) {
+  const number = Number(value);
+  return Number.isFinite(number) && number >= 0 ? Math.round(number) : 0;
+}
+
+function forumCategory(value) {
+  if (value === 'beginners') return 'credentials';
+  if (value === 'niche') return 'career';
+  if (value === 'ethics') return 'coaching';
+  return FORUM_CATEGORIES.has(value) ? value : 'coaching';
+}
+
 function normaliseForum(value) {
   const topics = Array.isArray(value) ? value : (value && Array.isArray(value.topics) ? value.topics : []);
   return { topics: topics.slice(0, 500).map((topic) => ({
     id: textField(topic.id, 90) || `topic-${Date.now()}-${Math.random().toString(16).slice(2)}`,
     kind: FORUM_KINDS.has(topic.kind) ? topic.kind : 'discussion',
-    category: FORUM_CATEGORIES.has(topic.category) ? topic.category : 'beginners',
+    category: forumCategory(topic.category),
     author: textField(topic.author, 60) || 'Participant',
     role: textField(topic.role, 60),
     createdAt: topic.createdAt || new Date().toISOString(),
     updatedAt: topic.updatedAt || topic.createdAt || new Date().toISOString(),
+    readTime: textField(topic.readTime, 20),
+    views: metric(topic.views),
+    likes: metric(topic.likes),
+    dislikes: metric(topic.dislikes),
+    featured: topic.featured === true,
+    editorPick: topic.editorPick === true,
     title: bilingual(topic.title),
     body: bilingual(topic.body),
+    reflection: bilingual(topic.reflection),
     replies: Array.isArray(topic.replies) ? topic.replies.slice(0, 100).map((reply) => ({
       id: textField(reply.id, 90) || `reply-${Date.now()}-${Math.random().toString(16).slice(2)}`,
       author: textField(reply.author, 60) || 'Participant',
@@ -205,6 +226,22 @@ async function forumRoute(req, res, pathname) {
   try { body = await requestBody(req); }
   catch (error) { return sendJson(req, res, error.statusCode || 400, { error: error.message || 'Invalid request' }); }
   const store = forumStore();
+  const actionMatch = pathname.match(/^\/api\/forum\/([^/]+)\/(view|react)$/);
+  if (actionMatch) {
+    const topic = store.topics.find((item) => item.id === decodeURIComponent(actionMatch[1]));
+    if (!topic) return sendJson(req, res, 404, { error: 'Topic not found' });
+    if (actionMatch[2] === 'view') {
+      topic.views = metric(topic.views) + 1;
+      saveForum();
+      return sendJson(req, res, 200, { topic });
+    }
+    const reaction = textField(body.value, 10);
+    if (reaction !== 'like' && reaction !== 'dislike') return sendJson(req, res, 422, { error: 'Reaction must be like or dislike' });
+    if (reaction === 'like') topic.likes = metric(topic.likes) + 1;
+    else topic.dislikes = metric(topic.dislikes) + 1;
+    saveForum();
+    return sendJson(req, res, 200, { topic });
+  }
   const replyMatch = pathname.match(/^\/api\/forum\/([^/]+)\/replies$/);
   if (replyMatch) {
     const topic = store.topics.find((item) => item.id === decodeURIComponent(replyMatch[1]));
@@ -223,7 +260,7 @@ async function forumRoute(req, res, pathname) {
   if (!author || !title || !content) return sendJson(req, res, 422, { error: 'Author, title and body are required' });
   if (!FORUM_CATEGORIES.has(body.category) || !FORUM_KINDS.has(body.kind)) return sendJson(req, res, 422, { error: 'Invalid category or topic type' });
   const now = new Date().toISOString();
-  const topic = { id: `topic-${Date.now()}-${Math.random().toString(16).slice(2)}`, kind: body.kind, category: body.category, author, role: 'participant', createdAt: now, updatedAt: now, title: bilingual(title), body: bilingual(content), replies: [] };
+  const topic = { id: `topic-${Date.now()}-${Math.random().toString(16).slice(2)}`, kind: body.kind, category: body.category, author, role: 'participant', createdAt: now, updatedAt: now, readTime: '', views: 0, likes: 0, dislikes: 0, featured: false, editorPick: false, title: bilingual(title), body: bilingual(content), reflection: bilingual(''), replies: [] };
   store.topics.unshift(topic); saveForum();
   return sendJson(req, res, 201, { topic });
 }

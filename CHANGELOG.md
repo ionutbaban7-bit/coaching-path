@@ -6,6 +6,23 @@ Format bazat pe [Keep a Changelog](https://keepachangelog.com/) · versiuni [Sem
 Data de verificare a conținutului public: **22 septembrie 2026**.
 Pentru corecții editoriale, consultă secțiunea „Corecții” din pagina Legal.
 
+## [4.2.0] — 2026-09-22
+
+### Adăugat — CoachingHub Journal
+
+- Zona Forum devine `CoachingHub Journal`, cu mesajul central „Conversații cu sens.” și o experiență editorială mai calmă, mai lizibilă și mai ușor de explorat.
+- Arhitectură de publicație cu alegerea editorului, articole recente, cele mai citite, cele mai apreciate, categorii, căutare și sortare.
+- Articole originale RO/EN despre coaching, practică, credențiale, carieră, spiritualitate, psihologie, cercetare, povești și resurse.
+- Metadata editorială: autor, rol, dată, timp estimat de citire, citiri și reacții like/dislike; articolele includ o întrebare de reflecție.
+- Reacțiile și vizualizările sunt disponibile prin API-ul Node și au fallback local pentru hosting static. O reacție per articol este păstrată per browser în MVP.
+- Ruta curată `/journal` indică pagina Journal; `/forum` și `forum.html` rămân compatibile pentru linkurile existente.
+- Documentată analiza comparativă a inspirațiilor editoriale în `JOURNAL-EDITORIAL-SPEC.md`: ce preluăm și ce excludem intenționat — dark patterns, promisiuni absolute și copiere de conținut.
+
+### Limite cunoscute
+
+- Like/dislike și „cele mai citite” sunt semnale orientative până când adăugăm conturi, deduplicare server-side, anti-abuz și moderare editorială.
+- Propunerile publice intră în store-ul MVP; pentru producție trebuie introdus fluxul de aprobare, raportare și stocare persistentă externă.
+
 ## [4.1.0] — 2026-09-22
 
 ### Modificat — coachinghub.ro, ediția editorială premium

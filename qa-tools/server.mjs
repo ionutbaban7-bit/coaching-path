@@ -14,7 +14,7 @@ const child=spawn(process.execPath,['server.js'],{env:{...process.env,PORT:Strin
 let count=0;const check=(v,s)=>{assert.ok(v,s);count++;};
 try{
   await Promise.race([once(child.stdout,'data'),once(child,'exit').then(()=>{throw Error('Server exited before listening');})]);
-  for(const name of ['descopera','competente','povesti','intrebari','greseli','invata','resurse','certificari','hub','forum']){
+  for(const name of ['descopera','competente','povesti','intrebari','greseli','invata','resurse','certificari','hub','forum','journal']){
     const r=await fetch(base+'/'+name+'/');check(r.status===200,name+': clean route');check((await r.text()).includes('academy.css?v='+pkgVersion),name+': current assets');check(r.headers.get('content-security-policy').includes("default-src 'self'"),'CSP preserved');
   }
   for(const name of ['/costuri','/costuri/','/costuri.html']){const r=await fetch(base+name,{redirect:'manual'});check(r.status===301&&r.headers.get('location')==='/certificari.html','legacy costs redirect '+name);}
@@ -27,6 +27,8 @@ try{
   r=await fetch(base+'/api/forum');const forum=await r.json();check(r.status===200&&Array.isArray(forum.topics),'forum GET returns topics');
   r=await fetch(base+'/api/forum',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({author:'QA',kind:'discussion',category:'practice',title:'QA topic',body:'A topic created by the server test.'})});const created=await r.json();check(r.status===201&&created.topic?.id,'forum POST creates a topic');
   r=await fetch(base+'/api/forum/'+encodeURIComponent(created.topic.id)+'/replies',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({author:'QA reply',body:'A reply created by the server test.'})});const reply=await r.json();check(r.status===201&&reply.reply?.id,'forum POST creates a reply');
+  r=await fetch(base+'/api/forum/'+encodeURIComponent(created.topic.id)+'/view',{method:'POST',headers:{'content-type':'application/json'},body:'{}'});const viewed=await r.json();check(r.status===200&&viewed.topic?.views===1,'journal view increments reads');
+  r=await fetch(base+'/api/forum/'+encodeURIComponent(created.topic.id)+'/react',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({value:'like'})});const reacted=await r.json();check(r.status===200&&reacted.topic?.likes===1,'journal reaction increments likes');
   const {stdout}=await promisify(execFile)(process.execPath,['qa-tools/qa-start.mjs'],{env:{...process.env,BASE:base},timeout:20000});console.log(stdout);
   console.log(`Server QA: ${count} route, header and offline-resource assertions passed.`);
 }finally{child.kill('SIGTERM');try{fs.rmSync(forumQaFile,{force:true});}catch{}}

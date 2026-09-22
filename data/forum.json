@@ -1,106 +1,261 @@
 {
   "topics": [
     {
-      "id": "seed-1",
-      "kind": "discussion",
-      "category": "beginners",
-      "author": "Mara",
-      "role": "coach în formare",
-      "createdAt": "2026-09-20T09:00:00.000Z",
-      "updatedAt": "2026-09-21T11:00:00.000Z",
+      "id": "journal-1",
+      "kind": "article",
+      "category": "coaching",
+      "author": "CoachingHub Editorial",
+      "role": "Journal",
+      "createdAt": "2026-09-21T09:00:00.000Z",
+      "updatedAt": "2026-09-21T09:00:00.000Z",
+      "readTime": "6 min",
+      "views": 96,
+      "likes": 18,
+      "dislikes": 1,
+      "featured": true,
+      "editorPick": true,
       "title": {
-        "ro": "Cum aleg prima formare fără să cumpăr promisiuni?",
-        "en": "How do I choose first training without buying promises?"
+        "ro": "Ce face o conversație de coaching utilă?",
+        "en": "What makes a coaching conversation useful?"
       },
       "body": {
-        "ro": "Ce întrebări v-au ajutat să diferențiați o programă serioasă de marketing? Mă interesează practica observată și feedbackul real.",
-        "en": "Which questions helped you distinguish serious training from marketing? I care about observed practice and real feedback."
+        "ro": "O conversație bună nu este o demonstrație de tehnici. Este un spațiu în care clientul poate vedea mai clar ce contează, ce alege și ce este dispus să încerce. Coachul nu trebuie să umple fiecare secundă cu întrebări; uneori, precizia vine dintr-o tăcere bine ținută.\n\nÎnainte de orice instrument, merită clarificat acordul: pentru ce este conversația aceasta, ce ar face-o folositoare și cum vom ști la final că am lucrat la ce trebuia? Un acord mic, verificabil, protejează ambele părți de conversații vagi și de soluții aduse prea devreme.\n\nDupă sesiune, practica începe cu o reflecție concretă: ce am observat în client, ce am presupus eu, unde am grăbit sensul și ce feedback aș cere? Coachingul se maturizează când curiozitatea coachului rămâne mai mare decât nevoia lui de a avea dreptate.",
+        "en": "A good conversation is not a demonstration of techniques. It is a space where the client can see more clearly what matters, what they choose and what they are willing to try. The coach does not need to fill every second with questions; sometimes precision comes from a well-held silence.\n\nBefore any tool, clarify the agreement: what is this conversation for, what would make it useful and how will we know at the end that we worked on the right thing? A small, observable agreement protects both people from vague conversations and solutions brought too early.\n\nAfter the session, practice begins with concrete reflection: what did I notice in the client, what did I assume, where did I rush meaning and what feedback would I ask for? Coaching matures when the coach’s curiosity stays larger than the need to be right."
+      },
+      "reflection": {
+        "ro": "Ce ai face diferit într-o sesiune dacă nu ar trebui să dovedești că ești un coach bun?",
+        "en": "What would you do differently in a session if you did not need to prove you are a good coach?"
       },
       "replies": [
         {
-          "id": "seed-1-r1",
+          "id": "journal-1-r1",
           "author": "Andrei",
           "role": "PCC",
           "createdAt": "2026-09-21T11:00:00.000Z",
           "body": {
-            "ro": "Aș începe cu: câte sesiuni observate, cum arată evaluarea și ce se întâmplă dacă nu treci prima dată.",
-            "en": "I would start with: how many observed sessions, what assessment looks like and what happens if you do not pass first time."
+            "ro": "Aș lăsa acordul să fie mai specific și aș verifica mai devreme dacă încă lucrăm la ce contează pentru client.",
+            "en": "I would make the agreement more specific and check earlier whether we are still working on what matters to the client."
           }
         }
       ]
     },
     {
-      "id": "seed-2",
-      "kind": "discussion",
-      "category": "practice",
-      "author": "Radu",
-      "role": "coach",
-      "createdAt": "2026-09-18T15:30:00.000Z",
-      "updatedAt": "2026-09-18T15:30:00.000Z",
+      "id": "journal-2",
+      "kind": "article",
+      "category": "spirituality",
+      "author": "Daria Pop",
+      "role": "coach & facilitator",
+      "createdAt": "2026-09-20T10:30:00.000Z",
+      "updatedAt": "2026-09-20T10:30:00.000Z",
+      "readTime": "7 min",
+      "views": 74,
+      "likes": 15,
+      "dislikes": 2,
       "title": {
-        "ro": "Cum păstrez primele ore de coaching într-un log util?",
-        "en": "How do I keep my first coaching hours in a useful log?"
+        "ro": "Spiritualitatea care nu te scoate din realitate",
+        "en": "Spirituality that does not take you out of reality"
       },
       "body": {
-        "ro": "Vreau să separ clar învățarea, practica și coachingul cu clienți. Ce câmpuri vi se par indispensabile?",
-        "en": "I want to separate learning, practice and client coaching clearly. Which fields do you find essential?"
+        "ro": "Spiritualitatea poate aduce sens, răgaz și o relație mai atentă cu viața. Devine însă riscantă când este folosită ca scurtătură peste durere, responsabilitate sau limite: „totul se întâmplă cu un motiv” poate suna liniștitor și poate închide o conversație prea repede.\n\nÎntr-un spațiu de coaching, este util să separăm trei niveluri. Experiența: ce simte și observă omul. Interpretarea: ce poveste construiește despre acea experiență. Cunoașterea susținută: ce poate fi verificat printr-o sursă sau printr-un proces de evaluare. Niciun nivel nu trebuie ridiculizat, dar nici amestecat cu celelalte.\n\nO întrebare matură nu atacă sensul clientului și nu îi vinde o explicație. Îl ajută să observe ce îi aduce acea explicație, ce cost are și ce alegere concretă rămâne posibilă acum.",
+        "en": "Spirituality can bring meaning, spaciousness and a more attentive relationship with life. It becomes risky when used as a shortcut around pain, responsibility or boundaries: “everything happens for a reason” can sound comforting and close a conversation too soon.\n\nIn coaching, it helps to separate three levels. Experience: what the person feels and observes. Interpretation: the story they build about that experience. Supported knowledge: what can be checked through a source or an assessment process. No level needs to be mocked, but they should not be mixed together.\n\nA mature question does not attack the client’s sense of meaning or sell an explanation. It helps them notice what that explanation gives them, what it costs and what concrete choice remains possible now."
+      },
+      "reflection": {
+        "ro": "Unde ai putea lăsa mai mult loc pentru mister fără să renunți la discernământ?",
+        "en": "Where could you leave more room for mystery without giving up discernment?"
       },
       "replies": []
     },
     {
-      "id": "seed-3",
+      "id": "journal-3",
       "kind": "article",
-      "category": "niche",
-      "author": "Ioana",
+      "category": "career",
+      "author": "Ioana Mureșan",
       "role": "coach",
-      "createdAt": "2026-09-16T08:20:00.000Z",
-      "updatedAt": "2026-09-18T10:00:00.000Z",
+      "createdAt": "2026-09-19T08:20:00.000Z",
+      "updatedAt": "2026-09-19T08:20:00.000Z",
+      "readTime": "5 min",
+      "views": 68,
+      "likes": 13,
+      "dislikes": 1,
       "title": {
-        "ro": "Nișa nu este un slogan: ce am învățat din 10 conversații",
-        "en": "A niche is not a slogan: what I learned from 10 conversations"
+        "ro": "Nișa nu se găsește în bio. Se testează în conversații.",
+        "en": "A niche is not found in a bio. It is tested in conversations."
       },
       "body": {
-        "ro": "O notiță despre diferența dintre „vreau să lucrez cu lideri” și o problemă concretă pe care oamenii chiar vor să o exploreze.",
-        "en": "A note about the difference between “I want to work with leaders” and a concrete problem people actually want to explore."
+        "ro": "„Lucrez cu lideri” este o descriere, nu încă o nișă. O nișă începe să capete formă când poți numi un context, o tensiune și o conversație pentru care oamenii caută ajutor: prima promovare, o echipă care evită dezacordul, o carieră care a devenit prea strâmtă.\n\nÎn loc să alegi o etichetă definitivă, poți face zece conversații de explorare. Nu le transforma în vânzări mascate. Întreabă ce încearcă persoana, ce a făcut deja, ce o costă blocajul și ce fel de sprijin ar considera util. Notează cuvintele ei, nu doar ipoteza ta despre ea.\n\nDupă aceea, formulează o propoziție provizorie și testeaz-o din nou. Nișa bună nu te închide; îți face practica mai ușor de recunoscut de către oamenii pentru care este relevantă.",
+        "en": "“I work with leaders” is a description, not yet a niche. A niche starts taking shape when you can name a context, a tension and a conversation for which people seek help: a first promotion, a team avoiding disagreement, a career that has become too narrow.\n\nInstead of choosing a final label, have ten exploratory conversations. Do not turn them into disguised sales calls. Ask what the person is trying, what they have already done, what the stuckness costs and what kind of support they would find useful. Note their words, not only your hypothesis about them.\n\nThen formulate a provisional sentence and test it again. A good niche does not trap you; it makes your practice easier to recognise for the people it is relevant to."
+      },
+      "reflection": {
+        "ro": "Ce problemă au numit oamenii cu propriile lor cuvinte în ultimele tale conversații?",
+        "en": "What problem have people named in their own words in your recent conversations?"
       },
       "replies": [
         {
-          "id": "seed-3-r1",
+          "id": "journal-3-r1",
           "author": "Dana",
           "role": "coach",
-          "createdAt": "2026-09-17T10:00:00.000Z",
+          "createdAt": "2026-09-19T12:00:00.000Z",
           "body": {
-            "ro": "Mi-a plăcut separarea dintre public, problemă și context. A făcut oferta mult mai puțin abstractă.",
-            "en": "I liked separating audience, problem and context. It made the offer much less abstract."
-          }
-        },
-        {
-          "id": "seed-3-r2",
-          "author": "Mara",
-          "role": "coach în formare",
-          "createdAt": "2026-09-18T10:00:00.000Z",
-          "body": {
-            "ro": "Și eu încerc să nu aleg nișa doar după ce sună bine în profil.",
-            "en": "I am also trying not to choose a niche only because it sounds good in a profile."
+            "ro": "Mi-a plăcut diferența dintre eticheta care sună bine și problema care poate fi recunoscută imediat.",
+            "en": "I liked the difference between a label that sounds good and a problem people can immediately recognise."
           }
         }
       ]
     },
     {
-      "id": "seed-4",
-      "kind": "discussion",
-      "category": "ethics",
-      "author": "Sorin",
-      "role": "curios",
-      "createdAt": "2026-09-14T12:10:00.000Z",
-      "updatedAt": "2026-09-14T12:10:00.000Z",
+      "id": "journal-4",
+      "kind": "article",
+      "category": "credentials",
+      "author": "CoachingHub Editorial",
+      "role": "Ghid de orientare",
+      "createdAt": "2026-09-18T07:50:00.000Z",
+      "updatedAt": "2026-09-18T07:50:00.000Z",
+      "readTime": "8 min",
+      "views": 122,
+      "likes": 17,
+      "dislikes": 1,
+      "editorPick": true,
       "title": {
-        "ro": "Unde se termină coachingul și începe trimiterea mai departe?",
-        "en": "Where does coaching end and referral begin?"
+        "ro": "ACC, PCC, MCC: cum citești traseul fără să te pierzi în acronime",
+        "en": "ACC, PCC, MCC: how to read the path without getting lost in acronyms"
       },
       "body": {
-        "ro": "Cum recunoașteți o situație în care clientul are nevoie de alt tip de sprijin și cum formulați asta fără să-l rușinați?",
-        "en": "How do you recognise when a client needs another kind of support and say it without shaming them?"
+        "ro": "Un certificat de absolvire, acreditarea unui program și credențiala individuală nu sunt același lucru. Prima întrebare a traseului este „ce confirmă documentul pe care îl primesc?”. A doua este „ce cere organismul profesional pentru nivelul la care vreau să aplic?”.\n\nPentru ruta ICF, ACC, PCC și MCC sunt repere de progres, cu cerințe diferite de educație, experiență, mentor coaching și evaluare. Numerele orientative nu trebuie învățate ca slogan; se verifică în sursa oficială la data la care aplici. Pentru ANC, EMCC sau alte rute, termenii și condițiile pot fi diferite. Nu presupune conversii automate.\n\nUn roadmap bun nu începe cu acronimul cel mai înalt. Începe cu practica pe care o poți susține etic astăzi: formare potrivită, ore documentate, feedback, reflecție, mentorat și o nișă testată cu răbdare.",
+        "en": "A completion certificate, programme accreditation and an individual credential are not the same thing. The first question on the path is “what does the document I receive confirm?” The second is “what does the professional body require for the level I want to apply for?”\n\nOn the ICF route, ACC, PCC and MCC are progress markers with different education, experience, mentor coaching and assessment requirements. Orientation numbers should not be memorised as slogans; check the official source when you apply. ANC, EMCC and other routes may use different terms and conditions. Do not assume automatic conversions.\n\nA good roadmap does not begin with the highest acronym. It begins with the practice you can ethically support today: suitable training, documented hours, feedback, reflection, mentoring and a niche tested patiently."
+      },
+      "reflection": {
+        "ro": "Ce informație oficială ai verifica astăzi înainte să alegi următorul curs?",
+        "en": "What official information would you check today before choosing your next course?"
+      },
+      "replies": []
+    },
+    {
+      "id": "journal-5",
+      "kind": "article",
+      "category": "practice",
+      "author": "Radu Enache",
+      "role": "coach",
+      "createdAt": "2026-09-17T15:30:00.000Z",
+      "updatedAt": "2026-09-17T15:30:00.000Z",
+      "readTime": "4 min",
+      "views": 61,
+      "likes": 12,
+      "dislikes": 0,
+      "title": {
+        "ro": "Când clientul nu are nevoie de încă o întrebare",
+        "en": "When the client does not need another question"
+      },
+      "body": {
+        "ro": "Întrebările pot deschide spațiu, dar pot și acoperi prea repede ceea ce se întâmplă. Dacă un client tocmai a spus ceva important, o nouă întrebare poate fi mai puțin utilă decât o confirmare simplă: „Aș vrea să rămânem puțin aici. Ce observi acum?”.\n\nPrezența nu înseamnă pasivitate. Înseamnă să nu confunzi mișcarea conversației cu progresul ei. Poți reflecta un cuvânt, poți verifica acordul sau poți spune că ai observat o schimbare de ritm, lăsând clientului dreptul să corecteze percepția.\n\nÎn practica de început, numără nu doar întrebările bune, ci și momentele în care ai rezistat impulsului de a interveni.",
+        "en": "Questions can create space, but they can also cover too quickly what is happening. If a client has just said something important, another question may be less useful than a simple acknowledgement: “I would like to stay here for a moment. What do you notice now?”\n\nPresence is not passivity. It means not confusing movement in the conversation with progress. You can reflect a word, check the agreement or say that you noticed a change in pace, while leaving the client the right to correct your perception.\n\nIn early practice, count not only good questions, but also the moments when you resisted the impulse to intervene."
+      },
+      "reflection": {
+        "ro": "Ce semnal îți arată că este momentul să încetinești?",
+        "en": "What signal tells you it is time to slow down?"
+      },
+      "replies": []
+    },
+    {
+      "id": "journal-6",
+      "kind": "article",
+      "category": "research",
+      "author": "Elena Pavel",
+      "role": "practician reflexiv",
+      "createdAt": "2026-09-16T13:10:00.000Z",
+      "updatedAt": "2026-09-16T13:10:00.000Z",
+      "readTime": "6 min",
+      "views": 58,
+      "likes": 11,
+      "dislikes": 1,
+      "title": {
+        "ro": "Un jurnal de practică îți arată ce faci, nu cine crezi că ești",
+        "en": "A practice journal shows what you do, not who you think you are"
+      },
+      "body": {
+        "ro": "Reflecția profesională devine mai folositoare când pleacă de la o secvență concretă. În loc de „nu am fost suficient de prezent”, notează ce s-a spus, unde ai schimbat direcția și ce ai observat înainte de intervenție.\n\nUn format simplu poate avea cinci câmpuri: acordul sesiunii, momentul de cotitură, ipoteza ta, intervenția și efectul observabil. La final adaugă o întrebare pentru mentor sau pentru următoarea practică. Jurnalul nu este un tribunal; este o metodă de a-ți face munca vizibilă.\n\nCând datele se adună, apar tipare. Asta oferă un punct de lucru mai bun decât o etichetă globală despre tine.",
+        "en": "Professional reflection becomes more useful when it starts from a concrete sequence. Instead of “I was not present enough”, note what was said, where you changed direction and what you noticed before intervening.\n\nA simple format can have five fields: the session agreement, the turning point, your hypothesis, the intervention and the observable effect. Add one question for a mentor or the next practice. A journal is not a tribunal; it is a way of making your work visible.\n\nWhen the data accumulates, patterns appear. That gives you a better point of work than a global label about yourself."
+      },
+      "reflection": {
+        "ro": "Ce ai putea observa în următoarea sesiune fără să încerci încă să repari?",
+        "en": "What could you observe in your next session without trying to fix it yet?"
+      },
+      "replies": []
+    },
+    {
+      "id": "journal-7",
+      "kind": "article",
+      "category": "psychology",
+      "author": "Mihai Cristea",
+      "role": "coach & researcher",
+      "createdAt": "2026-09-15T09:40:00.000Z",
+      "updatedAt": "2026-09-15T09:40:00.000Z",
+      "readTime": "5 min",
+      "views": 83,
+      "likes": 10,
+      "dislikes": 3,
+      "title": {
+        "ro": "O întrebare bună nu este o tehnică magică",
+        "en": "A good question is not a magic technique"
+      },
+      "body": {
+        "ro": "Aceeași întrebare poate crea claritate într-o conversație și presiune în alta. Efectul ei depinde de acord, relație, moment și de felul în care clientul o poate folosi. De aceea, o listă de întrebări „puternice” nu înlocuiește ascultarea.\n\nÎnainte de a întreba, verifică ce vrei să afli și pentru cine ar fi util răspunsul. Dacă întrebarea te ajută pe tine să te simți eficient, poate nu este încă în serviciul clientului. Poți cere permisiunea, poți spune ce ai observat sau poți formula întrebarea mai puțin spectaculos.\n\nCoachingul responsabil folosește psihologia ca reper, nu ca autoritate decorativă. Când citezi o idee, arată de unde vine și ce limită are.",
+        "en": "The same question can create clarity in one conversation and pressure in another. Its effect depends on agreement, relationship, timing and how the client can use it. A list of “powerful” questions therefore cannot replace listening.\n\nBefore asking, check what you want to learn and for whom the answer would be useful. If the question helps you feel effective, it may not yet be in service of the client. You can ask permission, name what you noticed or phrase the question less theatrically.\n\nResponsible coaching uses psychology as a reference, not as decorative authority. When you cite an idea, show where it comes from and what its limits are."
+      },
+      "reflection": {
+        "ro": "Ce întrebare ai putea înlocui cu o observație și o pauză?",
+        "en": "Which question could you replace with an observation and a pause?"
+      },
+      "replies": []
+    },
+    {
+      "id": "journal-8",
+      "kind": "article",
+      "category": "stories",
+      "author": "Mara Ionescu",
+      "role": "coach în formare",
+      "createdAt": "2026-09-14T12:10:00.000Z",
+      "updatedAt": "2026-09-14T12:10:00.000Z",
+      "readTime": "4 min",
+      "views": 49,
+      "likes": 14,
+      "dislikes": 0,
+      "title": {
+        "ro": "Povești din practică: tăcerea de după întrebare",
+        "en": "Practice stories: the silence after the question"
+      },
+      "body": {
+        "ro": "La început, tăcerea de după întrebare mi se părea un gol pe care trebuia să îl umplu. Îmi imaginam că clientul așteaptă următoarea intervenție și că eu trebuie să arăt că știu ce fac. Într-o sesiune, am spus întrebarea și am auzit propriul impuls de a o explica.\n\nDe data aceasta am rămas. Clientul a privit în jos, apoi a spus: „Nu m-am întrebat niciodată asta fără să caut imediat un răspuns”. Nu a fost o revelație spectaculoasă. A fost un centimetru de spațiu în care a putut gândi altfel.\n\nAm plecat cu o lecție mică: uneori nu am nevoie de o întrebare mai bună, ci de mai multă încredere în timpul de care are nevoie celălalt. Povestea este anonimă și detaliile sunt schimbate pentru protejarea confidențialității.",
+        "en": "At the beginning, the silence after a question felt like a gap I had to fill. I imagined the client was waiting for the next intervention and that I needed to show I knew what I was doing. In one session, I asked the question and heard my own impulse to explain it.\n\nThis time I stayed. The client looked down and then said: “I have never asked myself that without immediately looking for an answer.” It was not a spectacular revelation. It was an inch of space in which they could think differently.\n\nI left with a small lesson: sometimes I do not need a better question, but more trust in the time the other person needs. The story is anonymous and details have been changed to protect confidentiality."
+      },
+      "reflection": {
+        "ro": "Ce faci ca să nu transformi tăcerea clientului într-o problemă a ta?",
+        "en": "What do you do so that a client’s silence does not become your problem?"
+      },
+      "replies": []
+    },
+    {
+      "id": "journal-9",
+      "kind": "article",
+      "category": "resources",
+      "author": "CoachingHub Editorial",
+      "role": "Bibliotecă vie",
+      "createdAt": "2026-09-13T08:00:00.000Z",
+      "updatedAt": "2026-09-13T08:00:00.000Z",
+      "readTime": "5 min",
+      "views": 91,
+      "likes": 9,
+      "dislikes": 1,
+      "title": {
+        "ro": "Cum alegi o carte de coaching fără să confunzi povestea cu dovada",
+        "en": "How to choose a coaching book without confusing a story with evidence"
+      },
+      "body": {
+        "ro": "O carte poate fi valoroasă pentru limbaj, curaj sau o perspectivă nouă fără să fie un manual de dovezi. Când alegi o lectură, întreabă-te ce cauți: o poveste care te însoțește, un model de practică, o sinteză de cercetare sau un punct de vedere personal.\n\nCitește autorul în contextul lui. Notează afirmațiile care sună universal și caută sursa lor. Separă recomandările pe care le poți testa în siguranță de promisiunile care cer să crezi înainte să verifici. Un exercițiu bun îți oferă o întrebare de explorat, nu o identitate de cumpărat.\n\nÎn bibliotecă, vom lega pe cât posibil ideile de surse oficiale, lucrări originale și repere profesionale. Iar când un text este eseu sau experiență, îl vom numi așa.",
+        "en": "A book can be valuable for language, courage or a new perspective without being an evidence manual. When choosing a read, ask what you are looking for: a story that accompanies you, a practice model, a research synthesis or a personal point of view.\n\nRead the author in context. Note claims that sound universal and look for their source. Separate recommendations you can safely test from promises that ask you to believe before checking. A good exercise gives you a question to explore, not an identity to buy.\n\nIn the library, we will connect ideas where possible to official sources, original work and professional reference points. When a text is an essay or an experience, we will name it as such."
+      },
+      "reflection": {
+        "ro": "Ce fel de lectură îți este necesară acum: hartă, oglindă sau instrument?",
+        "en": "What kind of reading do you need now: a map, a mirror or a tool?"
       },
       "replies": []
     }
