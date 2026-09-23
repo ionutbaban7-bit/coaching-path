@@ -6,6 +6,16 @@ Format bazat pe [Keep a Changelog](https://keepachangelog.com/) · versiuni [Sem
 Data de verificare a conținutului public: **22 septembrie 2026**.
 Pentru corecții editoriale, consultă secțiunea „Corecții” din pagina Legal.
 
+## [4.3.0] — 2026-09-23
+
+### Modificat — CoachingHub Blog
+
+- Zona editorială este redenumită vizibil în **Blog**, păstrând `/forum` și `/journal` compatibile și adăugând ruta canonică `/blog`.
+- Headerul este mai compact; sloganul secundar încărcat este eliminat, iar navigarea și footerul folosesc „Blog”.
+- Descrierea Blogului este scurtată pentru o poziționare mai clară: „idei clare pentru practică, sens și dezvoltare profesională”.
+- Adăugat articolul editorial „Top 10 Mituri despre Coaching”, cu perspectivă critică asupra limitelor, eticii și identității profesionale.
+- Versiunea aplicației și cache-ul service worker au trecut la 4.3.0 pentru ca noul CSS și JavaScript să ajungă la utilizatori.
+
 ## [4.2.0] — 2026-09-22
 
 ### Adăugat — CoachingHub Journal

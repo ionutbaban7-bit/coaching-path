@@ -18,7 +18,7 @@
   };
   var seed = [
     {
-      id: 'journal-1', kind: 'article', category: 'coaching', author: 'CoachingHub Editorial', role: 'Journal',
+      id: 'journal-1', kind: 'article', category: 'coaching', author: 'CoachingHub Editorial', role: 'Editorial',
       createdAt: '2026-09-21T09:00:00.000Z', updatedAt: '2026-09-21T09:00:00.000Z', readTime: '6 min', views: 96, likes: 18, dislikes: 1, featured: true, editorPick: true,
       title: { ro: 'Ce face o conversație de coaching utilă?', en: 'What makes a coaching conversation useful?' },
       body: {
@@ -119,6 +119,17 @@
       },
       reflection: { ro: 'Ce fel de lectură îți este necesară acum: hartă, oglindă sau instrument?', en: 'What kind of reading do you need now: a map, a mirror or a tool?' },
       replies: []
+    },
+    {
+      id: 'journal-10', kind: 'article', category: 'coaching', author: 'CoachingHub Editorial', role: 'Perspective editorială',
+      createdAt: '2026-09-23T09:30:00.000Z', updatedAt: '2026-09-23T09:30:00.000Z', readTime: '11 min', views: 0, likes: 0, dislikes: 0, featured: true, editorPick: true,
+      title: { ro: 'Top 10 Mituri despre Coaching', en: 'Top 10 Myths About Coaching' },
+      body: {
+        ro: 'Coachingul are o problemă de identitate: este vândut uneori ca magie, apărat ca știință exactă și practicat ca o conversație în care coachul așteaptă să audă propria idee din gura clientului. Între aceste imagini, omul nu mai știe ce cumpără.\n\n1. MITUL: Un coach bun îți spune ce să faci. Dacă faci asta, poți fi consultant sau mentor. Valoarea coachingului nu este să ascundă răspunsul corect, ci să creeze condițiile în care clientul vede mai limpede ce alege și ce își asumă.\n\n2. MITUL: Întrebările puternice rezolvă conversația. Nu există întrebări magice. O întrebare spectaculoasă, pusă fără acord sau fără ascultare, este doar presiune în haine elegante.\n\n3. MITUL: Clientul trebuie reparat. Uneori problema nu este în interiorul persoanei, ci într-o structură nedreaptă, într-un mediu toxic, într-o boală sau într-o lipsă reală de resurse. A transforma orice suferință într-o problemă de mindset este orbire, nu responsabilizare.\n\n4. MITUL: Pozitivitatea vindecă întotdeauna. „Privește partea bună” poate închide durerea înainte să fie auzită. O sesiune matură ține împreună faptul că ceva este greu și faptul că un pas rămâne posibil.\n\n5. MITUL: Orice problemă este o credință limitativă. Nu orice obstacol este o poveste din capul tău. Unele sunt consecințe reale ale unei decizii, ale unei piețe, ale unei relații sau ale corpului.\n\n6. MITUL: Certificarea te face coach. Hârtia poate deschide ușa. Nu poate purta conversația în locul tău. Competența se construiește prin practică observată, feedback, supervizare, reflecție și limite etice.\n\n7. MITUL: Coachingul funcționează pentru toată lumea. Nu pentru orice problemă, în orice moment și în orice relație. Uneori omul are nevoie de psihoterapie, îngrijire medicală, mediere sau protecție. A face trimiterea corectă este responsabilitate, nu eșec comercial.\n\n8. MITUL: Emoția intensă înseamnă progres. Lacrimile și revelațiile pot conta, dar nu sunt scorul unei sesiuni. Uneori progresul este o observație mică, testată mâine.\n\n9. MITUL: Coachul trebuie să fie complet neutru. Coachul are valori și presupuneri. Maturitatea nu este să pretindă că nu există, ci să le observe, să nu le impună și să poată fi corectat. Neutralitatea mimată este influență fără responsabilitate.\n\n10. MITUL: Un coach bun vede cine poți deveni. Poate vedea o posibilitate, dar poate proiecta și propria poveste. Clientul nu a venit să devină personajul din imaginația coachului, ci să-și examineze viața cu mai multă libertate.\n\nMindfuck-ul coachingului este acesta: nu ești util pentru că știi unde trebuie să ajungă celălalt. Ești util când poți rămâne prezent lângă necunoscut fără să-l umpli imediat cu o explicație. Coachingul nu este arta de a schimba oameni, ci practica unor conversații în care realitatea, opțiunile și responsabilitatea devin mai clare. Uneori omul nu pleacă mai convins că este extraordinar. Pleacă mai puțin dispus să se mintă.',
+        en: 'Coaching has an identity problem: it is sometimes sold as magic, defended as exact science and practised as a conversation in which the coach waits to hear their own idea from the client. Between these images, people no longer know what they are buying.\n\n1. MYTH: A good coach tells you what to do. If you do that, you may be a consultant or mentor. Coaching is not hiding the correct answer; it is creating conditions in which the client can see what they choose and what they are willing to own.\n\n2. MYTH: Powerful questions solve the conversation. There are no magical questions. A spectacular question asked without agreement or listening is simply pressure in elegant clothing.\n\n3. MYTH: The client needs fixing. Sometimes the problem is not inside the person, but in an unfair structure, a toxic environment, illness or a real lack of resources. Turning every form of suffering into a mindset problem is blindness, not empowerment.\n\n4. MYTH: Positivity always heals. “Look on the bright side” can close pain before it has been heard. Mature coaching can hold together the fact that something is difficult and the fact that one step remains possible.\n\n5. MYTH: Every problem is a limiting belief. Not every obstacle is a story in your head. Some are real consequences of a decision, a market, a relationship or the body.\n\n6. MYTH: Certification makes you a coach. Paper may open a door. It cannot carry the conversation for you. Competence grows through observed practice, feedback, supervision, reflection and ethical boundaries.\n\n7. MYTH: Coaching works for everyone. Not for every problem, at every moment or in every relationship. Sometimes a person needs psychotherapy, medical care, mediation or protection. A correct referral is responsibility, not commercial failure.\n\n8. MYTH: Intense emotion means progress. Tears and revelations may matter, but they are not the score of a session. Sometimes progress is one small observation tested tomorrow.\n\n9. MYTH: A coach must be completely neutral. A coach has values and assumptions. Maturity means noticing them, not imposing them and being open to correction. Performed neutrality is influence without accountability.\n\n10. MYTH: A good coach sees who you can become. They may see a possibility, but they may also project their own story. The client did not come to become a character in the coach’s imagination, but to examine their life with more freedom.\n\nThe coaching mindfuck is this: you are not useful because you know where the other person should go. You are useful when you can stay present beside the unknown without immediately filling it with an explanation. Coaching is not the art of changing people, but the practice of conversations in which reality, options and responsibility become clearer. Sometimes people do not leave convinced they are extraordinary. They leave less willing to lie to themselves.'
+      },
+      reflection: { ro: 'Care dintre aceste mituri ți-ar fi cel mai greu să-l lași jos dacă ți-ar susține identitatea profesională?', en: 'Which of these myths would be hardest to release if it supported your professional identity?' },
+      replies: []
     }
   ];
   var topics = [];
@@ -148,7 +159,13 @@
   }
   function cloneSeed() { return seed.map(hydrate); }
   function readLocal() {
-    try { var data = JSON.parse(localStorage.getItem(KEY) || 'null'); return Array.isArray(data) && data.length ? data.map(hydrate) : cloneSeed(); }
+    try {
+      var data = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (!Array.isArray(data) || !data.length) return cloneSeed();
+      var existing = data.map(hydrate);
+      var known = existing.reduce(function (map, topic) { map[topic.id] = true; return map; }, {});
+      return existing.concat(seed.filter(function (topic) { return !known[topic.id]; }).map(hydrate));
+    }
     catch (e) { return cloneSeed(); }
   }
   function saveLocal() { try { localStorage.setItem(KEY, JSON.stringify(topics)); } catch (e) {} }
@@ -173,7 +190,9 @@
       'Ghid de orientare': { ro: 'Ghid de orientare', en: 'Orientation guide' },
       'practician reflexiv': { ro: 'practician reflexiv', en: 'reflective practitioner' },
       'coach în formare': { ro: 'coach în formare', en: 'coach in training' },
-      'Bibliotecă vie': { ro: 'Bibliotecă vie', en: 'Living library' }
+      'Bibliotecă vie': { ro: 'Bibliotecă vie', en: 'Living library' },
+      'Perspective editorială': { ro: 'Perspective editorială', en: 'Editorial perspective' },
+      'Editorial': { ro: 'Editorial', en: 'Editorial' }
     };
     return labels[role] ? value(labels[role]) : String(role || '');
   }

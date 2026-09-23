@@ -15,7 +15,7 @@
     { id:'hub',    href:'hub.html',       label:{ ro:'Paths',             en:'Paths' } },
     { id:'start',  href:'incepe.html',    label:{ ro:'Biblia începătorului', en:'Beginner bible' } },
     { id:'theory', href:'teorie.html',    label:{ ro:'Teorie',             en:'Theory' } },
-    { id:'forum',  href:'forum.html',     label:{ ro:'Jurnal',             en:'Journal' } },
+    { id:'forum',  href:'forum.html',     label:{ ro:'Blog',               en:'Blog' } },
     { id:'individual', href:'individual.html', label:{ ro:'Coaching 1:1', en:'1:1 Coaching' } },
     { id:'team',   href:'echipa.html',   label:{ ro:'Coaching de echipă', en:'Team Coaching' } }
   ];
@@ -84,6 +84,22 @@
     if(flag) flag.textContent = (lang === 'ro' ? '🇬🇧' : '🇷🇴');
   }
 
+  function polishBlogLabels(){
+    $$('.forum-page [data-i18n-ro], .forum-page [data-i18n-en]').forEach(function(el){
+      ['ro','en'].forEach(function(code){
+        var attr = 'data-i18n-' + code;
+        var value = el.getAttribute(attr);
+        if(!value) return;
+        value = value.replace(/Journal-ul/g, 'Blog-ul').replace(/Journal/g, 'Blog').replace(/Jurnalul/g, 'Blogul').replace(/Jurnal/g, 'Blog');
+        el.setAttribute(attr, value);
+      });
+    });
+    $$('a[href="forum.html"] [data-i18n-ro], a[href="forum.html"] [data-i18n-en]').forEach(function(el){
+      el.setAttribute('data-i18n-ro', 'Blog');
+      el.setAttribute('data-i18n-en', 'Blog');
+    });
+  }
+
   /* ---------- NAV ---------- */
   function renderNav(){
     var box = $('#navlinks');
@@ -95,7 +111,7 @@
       ['descopera','Explorează','Explore'],
       ['hub','Paths','Learning paths'],
       ['invata','Practică','Practice'],
-      ['forum','Jurnal','Journal'],
+      ['forum','Blog','Blog'],
       ['resurse','Bibliotecă','Library']
     ];
     html=groups.map(function(p){
@@ -695,6 +711,7 @@
   /* ---------- INIT ---------- */
   function boot(){
     initTheme();
+    polishBlogLabels();
     applyI18n();
     renderNav();
     initScrollFx();
@@ -713,6 +730,7 @@
     // sincronizare cu schimbarea de limbă făcută de app.js
     document.addEventListener('clp:lang', function(e){
       lang = e.detail.lang;
+      polishBlogLabels();
       applyI18n();
       renderNav();
     });

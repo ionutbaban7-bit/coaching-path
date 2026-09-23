@@ -7,7 +7,7 @@
      • local                  : `node server.js` → http://localhost:3000
    Node >= 18. Nu folosește nimic din npm: n-are ce să se strice.
 
-   v4.2.0 — CoachingHub Journal:
+   v4.3.0 — CoachingHub Journal:
      • articole, categorii, timp de citire, citiri și reacții like/dislike
      • API file-backed pentru articole propuse, răspunsuri și semnale editoriale
      • fallback local în Journal pe hosting static
@@ -83,6 +83,7 @@ const CLEAN = {
   '/hub': 'hub.html',
   '/forum': 'forum.html',
   '/journal': 'forum.html',
+  '/blog': 'forum.html',
   '/teorie': 'teorie.html',
   '/incepe': 'incepe.html',
   '/individual': 'individual.html',

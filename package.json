@@ -1,6 +1,6 @@
 {
   "name": "coachinghub-ro",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "private": true,
   "description": "coachinghub.ro — hub educațional RO/EN pentru învățare, practică, credențiale și comunitate în coaching.",
   "main": "server.js",
