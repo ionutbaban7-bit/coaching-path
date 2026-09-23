@@ -1,6 +1,6 @@
 {
   "name": "coachinghub-ro",
-  "version": "4.3.1",
+  "version": "4.4.0",
   "private": true,
   "description": "coachinghub.ro — hub educațional RO/EN pentru învățare, practică, credențiale și comunitate în coaching.",
   "main": "server.js",
@@ -24,7 +24,8 @@
     "qa:atlas": "node qa-tools/atlas.mjs",
     "qa:legacy": "node qa-tools/qa.mjs",
     "qa:academy": "node qa-tools/academy.mjs",
-    "qa:server": "node qa-tools/server.mjs"
+    "qa:server": "node qa-tools/server.mjs",
+    "qa:learning": "node qa-tools/learning.mjs"
   },
   "devDependencies": {
     "jsdom": "^30.0.1"

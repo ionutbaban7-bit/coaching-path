@@ -47,9 +47,9 @@
       {title:{ro:'Certificare: ICF, EMCC, ACC, PCC, MCC',en:'Credentials: ICF, EMCC, ACC, PCC, MCC'},url:'certificari.html'},
       {title:{ro:'Școli și programe de formare',en:'Schools and training programmes'},url:'scoli.html'},
       {title:{ro:'Greșeli de început și semnale de alarmă',en:'Beginner mistakes and warning signs'},url:'greseli.html'},
-      {title:{ro:'GROW: modelul unei conversații',en:'GROW: a conversation model'},url:'teorie.html#grow'},
+      {title:{ro:'GROW: modelul unei conversații',en:'GROW: a conversation model'},url:'modele.html#grow'},
       {title:{ro:'Mentor coaching și supervizare',en:'Mentor coaching and supervision'},url:'incepe.html#s7'},
-      ...A.competencies.map(c=>({title:c.name,url:'competente.html#'+c.id})),
+      ...A.competencies.map(c=>({title:c.name,url:c.url})),
       ...A.resources.map(r=>({title:{ro:r.title+' · '+r.description.ro,en:r.title+' · '+r.description.en},url:r.url}))
     ];
     function filter(){const needle=normalize(input.value.trim());const box=$('#acHomeResults'),status=$('#acHomeSearchStatus');box.replaceChildren();box.hidden=needle.length<2;if(box.hidden){status.textContent='';return;}const hits=entries.filter(e=>normalize(e.title.ro+' '+e.title.en).includes(needle));status.textContent=hits.length?T(hits.length+' rezultate · afișăm primele '+Math.min(6,hits.length),hits.length+' results · showing '+Math.min(6,hits.length)):T('Niciun rezultat. Încearcă „etică”, „ICF” sau „ascultă”.','No results. Try “ethics”, “ICF” or “listen”.');for(const item of hits.slice(0,6)){const li=document.createElement('li'),a=document.createElement('a');a.href=item.url;a.textContent=L(item.title)+' ↗';li.append(a);box.append(li);}}

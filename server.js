@@ -279,6 +279,7 @@ const CSP = [
   "connect-src 'self'",
   "form-action 'none'",
   "object-src 'none'",
+  "frame-src https://www.youtube-nocookie.com https://coachingfederation.org",
   "frame-ancestors 'none'"
 ].join('; ');
 

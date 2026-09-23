@@ -111,7 +111,8 @@ for (const f of files.filter((x) => x.endsWith('.css'))) {
 const pkg = JSON.parse(read(path.join(ROOT, 'package.json')));
 const versions = new Set();
 for (const f of htmlFiles) {
-  for (const m of read(f).matchAll(/\?v=([\d.]+)/g)) versions.add(m[1]);
+  // Only local asset versions. YouTube's ?v= parameter is a video identifier.
+  for (const m of read(f).matchAll(/(?:href|src)="(?:\.\/)?assets\/[^"?]+\?v=([^"&]+)/g)) versions.add(m[1]);
 }
 if (versions.size > 1) problems.push(`versiuni diferite în ?v= : ${[...versions].join(', ')}`);
 if (versions.size === 1 && ![...versions][0].startsWith(pkg.version)) {

@@ -14,11 +14,15 @@ const child=spawn(process.execPath,['server.js'],{env:{...process.env,PORT:Strin
 let count=0;const check=(v,s)=>{assert.ok(v,s);count++;};
 try{
   await Promise.race([once(child.stdout,'data'),once(child,'exit').then(()=>{throw Error('Server exited before listening');})]);
-  for(const name of ['descopera','competente','povesti','intrebari','greseli','invata','resurse','certificari','hub','forum','journal']){
+  for(const name of ['descopera','competente','povesti','intrebari','greseli','invata','resurse','certificari','hub','forum','journal','modele','dovezi','competenta-1-etica','competenta-8-crestere']){
     const r=await fetch(base+'/'+name+'/');check(r.status===200,name+': clean route');check((await r.text()).includes('academy.css?v='+pkgVersion),name+': current assets');check(r.headers.get('content-security-policy').includes("default-src 'self'"),'CSP preserved');
   }
   for(const name of ['/costuri','/costuri/','/costuri.html']){const r=await fetch(base+name,{redirect:'manual'});check(r.status===301&&r.headers.get('location')==='/certificari.html','legacy costs redirect '+name);}
-  let r=await fetch(base+'/this-page-does-not-exist');check(r.status===404,'missing route returns 404');check(r.headers.get('x-robots-tag')==='noindex','404 not indexed');
+  let r=await fetch(base+'/competenta-1-etica.html');
+  const policy=r.headers.get('content-security-policy');
+  check(policy.includes("frame-src https://www.youtube-nocookie.com https://coachingfederation.org"),'only the official document and video embed hosts are allowed');
+  check(policy.includes("object-src 'none'")&&policy.includes("frame-ancestors 'none'"),'embedding media does not loosen object or ancestor restrictions');
+  r=await fetch(base+'/this-page-does-not-exist');check(r.status===404,'missing route returns 404');check(r.headers.get('x-robots-tag')==='noindex','404 not indexed');
   r=await fetch(base+'/invata.html',{method:'POST'});check(r.status===405,'unexpected method rejected');
   r=await fetch(base+'/assets/js/academy.js?v='+pkgVersion,{method:'HEAD'});check(r.status===200&&r.headers.get('cache-control').includes('immutable'),'versioned script caching');
   r=await fetch(base+'/sw.js');check(r.headers.get('cache-control')==='no-cache','service worker revalidated');

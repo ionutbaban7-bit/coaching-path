@@ -6,6 +6,19 @@ Format bazat pe [Keep a Changelog](https://keepachangelog.com/) · versiuni [Sem
 Data de verificare a conținutului public: **22 septembrie 2026**.
 Pentru corecții editoriale, consultă secțiunea „Corecții” din pagina Legal.
 
+## [4.4.0] — 2026-09-23
+
+### Adăugat — Învățare aprofundată
+
+- Opt pagini distincte pentru competențele ICF 2025, cu denumirea oficială, explicații editoriale, exemple de practică, greșeli de evitat și exerciții.
+- Opt videoclipuri din seria oficială ICF 2025; player YouTube cu încărcare la cerere și link direct permanent.
+- Acces la definițiile integrale ICF, cu pagina exactă din PDF, viewer opțional și traducerea oficială română.
+- Diagramă despre conversația de coaching și GROW interactiv, accesibil cu tastatura și lizibil fără JavaScript.
+- Ghid GROW, CLEAR, OSKAR și Inner Game; exemple publice din cărți și distincție între sursa originală și adaptările fictive.
+- Cazuri Microsoft MCAPS, Intel și AstraZeneca, plus cercetări controlate, cu limitele datelor și surse pentru fiecare afirmație numerică.
+- Legături din Explorează, căutarea principală și Teorie, plus sitemap și active versionate 4.4.0.
+- Verificări de regresie pentru rute, limbă, GROW, încărcarea media și politica CSP.
+
 ## [4.3.1] — 2026-09-23
 
 ### Reparat — Blog

@@ -1,0 +1,114 @@
+{
+  "checkedOn": "2026-09-23",
+  "standardVersion": "ICF Core Competencies 2025",
+  "videoSeries": "ICF Core Competencies 2025 Updates",
+  "sources": {
+    "icf": "https://coachingfederation.org/resource/icf-core-competencies/",
+    "pdf": "https://coachingfederation.org/wp-content/uploads/2025/09/icf-cs-core-competencies-2025.pdf",
+    "romanian": "https://coachingfederation.ro/competentele-de-baza-icf-2025/",
+    "playlist": "https://www.youtube.com/playlist?list=PLMBtOVpaN5Dh-I78cax9v9FvxGCrfWhkR",
+    "grow": "https://www.performanceconsultants.com/resources/the-grow-model/",
+    "book": "https://www.performanceconsultants.com/resources/coaching-for-performance-book/",
+    "oskar": "https://www.thesolutionsfocus.co.uk/about-us/",
+    "clear": "https://assets.henley.ac.uk/defaultUploads/19.RES.057-Manifesto-for-Supervision-2019-online.pdf",
+    "habit": "https://www.mbs.works/wp-content/uploads/2021/06/CoachingHabit_PeekOpeningChapters.pdf",
+    "toolkit": "https://uk.sagepub.com/sites/default/files/upm-binaries/26777_01_Allison_%26_Harbour_CH_01.pdf",
+    "inner": "https://dev.theinnergame.com/the-power-of-your-imagination/",
+    "microsoft": "https://coachingfederation.org/wp-content/uploads/2026/01/icf-awards-microsoft-case-study-1.pdf",
+    "intel": "https://coachingfederation.org/wp-content/uploads/2025/02/icf-awards-intel-corporation-case-study.pdf",
+    "astrazeneca": "https://coachingfederation.org/app/uploads/2023/10/ICFCoachingImpactAwards2023_AZ_CaseStudy-final.pdf",
+    "rct": "https://research.vu.nl/en/publications/what-can-we-know-about-the-effectiveness-of-coaching-a-meta-analy/",
+    "review": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1089797/full"
+  },
+  "lessons": [
+    {
+      "id": "c1",
+      "url": "competenta-1-etica.html",
+      "pdfPage": 3,
+      "video": {
+        "id": "-WBkKvHP24M",
+        "title": "ICF Core Competency 1. Demonstrates Ethical Practice [2025 Update]",
+        "author": "International Coaching Federation",
+        "authorUrl": "https://www.youtube.com/@ICFHeadquarters"
+      }
+    },
+    {
+      "id": "c2",
+      "url": "competenta-2-mentalitate.html",
+      "pdfPage": 4,
+      "video": {
+        "id": "1hwdbVA0Lns",
+        "title": "ICF Core Competency 2. Embodies a Coaching Mindset [2025 Update]",
+        "author": "International Coaching Federation",
+        "authorUrl": "https://www.youtube.com/@ICFHeadquarters"
+      }
+    },
+    {
+      "id": "c3",
+      "url": "competenta-3-acorduri.html",
+      "pdfPage": 5,
+      "video": {
+        "id": "5HFpPR5gXo0",
+        "title": "ICF Core Competency 3. Establishes and Maintains Agreements [2025 Update]",
+        "author": "International Coaching Federation",
+        "authorUrl": "https://www.youtube.com/@ICFHeadquarters"
+      }
+    },
+    {
+      "id": "c4",
+      "url": "competenta-4-incredere.html",
+      "pdfPage": 6,
+      "video": {
+        "id": "kwb9PjIHYAA",
+        "title": "ICF Core Competency 4. Cultivates Trust and Safety [2025 Update]",
+        "author": "International Coaching Federation",
+        "authorUrl": "https://www.youtube.com/@ICFHeadquarters"
+      }
+    },
+    {
+      "id": "c5",
+      "url": "competenta-5-prezenta.html",
+      "pdfPage": 7,
+      "video": {
+        "id": "09xBvXkbfRE",
+        "title": "ICF Core Competency 5. Maintains Presence [2025 Update]",
+        "author": "International Coaching Federation",
+        "authorUrl": "https://www.youtube.com/@ICFHeadquarters"
+      }
+    },
+    {
+      "id": "c6",
+      "url": "competenta-6-ascultare.html",
+      "pdfPage": 8,
+      "video": {
+        "id": "EYoes3Nmbz8",
+        "title": "ICF Core Competency 6. Listens Actively [2025 Update]",
+        "author": "International Coaching Federation",
+        "authorUrl": "https://www.youtube.com/@ICFHeadquarters"
+      }
+    },
+    {
+      "id": "c7",
+      "url": "competenta-7-constientizare.html",
+      "pdfPage": 9,
+      "video": {
+        "id": "aoy2wtPhKYM",
+        "title": "ICF Core Competency 7. Evokes Awareness [2025 Update]",
+        "author": "International Coaching Federation",
+        "authorUrl": "https://www.youtube.com/@ICFHeadquarters"
+      }
+    },
+    {
+      "id": "c8",
+      "url": "competenta-8-crestere.html",
+      "pdfPage": 10,
+      "video": {
+        "id": "_B7VQA8WJxI",
+        "title": "ICF Core Competency 8. Facilitates Client Growth [2025 Update]",
+        "author": "International Coaching Federation",
+        "authorUrl": "https://www.youtube.com/@ICFHeadquarters"
+      }
+    }
+  ],
+  "editorialPolicy": "Official competency names are short quotations. Detailed explanations, question examples and diagrams are original educational material. Complete definitions remain available from ICF, with direct page links and an opt-in embedded viewer. Company figures are reported programme data, distinct from controlled research."
+}

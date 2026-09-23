@@ -43,15 +43,14 @@ try{
   }
   {
     const {w,d}=await load('competente.html','#c6');
-    check(d.querySelectorAll('[data-comp-panel]:not([hidden])').length===1,'one competency at a time');
-    check(!d.querySelector('#c6').hidden,'direct competency hash');
-    d.querySelector('[data-comp-link="c8"]').click();check(!d.querySelector('#c8').hidden&&w.location.hash==='#c8','competency navigation updates URL');
-    check(d.activeElement.id==='c8','competency focus follows navigation');
-    d.querySelector('#langBtn').click();check(d.querySelector('#c8 h2').textContent.includes('chosen step'),'competency translates without losing selection');w.close();
+    check(d.querySelectorAll('.learn-competency-card').length===8,'all eight competency lessons are discoverable');
+    check(d.querySelector('#c6 a').getAttribute('href')==='competenta-6-ascultare.html','legacy competency hash links to its dedicated lesson');
+    check(d.querySelector('#c8 a').getAttribute('href')==='competenta-8-crestere.html','growth has a separate stable URL');
+    d.querySelector('#langBtn').click();check(d.querySelector('#c8 h2').textContent.includes('progress'),'competency index translates');w.close();
   }
   let storage;
   {
-    const {w,d}=await load('index.html');const input=d.querySelector('#acHomeSearch');input.value='etica';event(w,input,'input');check(d.querySelectorAll('#acHomeResults a').length>0,'home search finds Romanian topics without diacritics');check([...d.querySelectorAll('#acHomeResults a')].some(a=>a.href.includes('competente.html#c1')),'home search goes straight to relevant competency');input.value='zzunknownzz';event(w,input,'input');check(d.querySelector('#acHomeSearchStatus').textContent.includes('Niciun rezultat'),'home search has no-results guidance');input.value='';event(w,input,'input');check(d.querySelector('#acHomeResults').hidden,'cleared home search returns to intent cards');w.close();
+    const {w,d}=await load('index.html');const input=d.querySelector('#acHomeSearch');input.value='etica';event(w,input,'input');check(d.querySelectorAll('#acHomeResults a').length>0,'home search finds Romanian topics without diacritics');check([...d.querySelectorAll('#acHomeResults a')].some(a=>a.href.includes('competenta-1-etica.html')),'home search goes straight to relevant competency');input.value='zzunknownzz';event(w,input,'input');check(d.querySelector('#acHomeSearchStatus').textContent.includes('Niciun rezultat'),'home search has no-results guidance');input.value='';event(w,input,'input');check(d.querySelector('#acHomeResults').hidden,'cleared home search returns to intent cards');w.close();
   }
   {
     const {w,d,errors}=await load('invata.html','#c7');const note=d.querySelector('#acReflection');
