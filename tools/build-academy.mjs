@@ -4,7 +4,7 @@ import vm from 'node:vm';
 const context = {window:{}};
 vm.runInNewContext(fs.readFileSync('assets/js/academy-data.js','utf8'), context);
 const A = context.window.ACADEMY;
-const VERSION = '4.3.0';
+const VERSION = '4.3.1';
 const SITE_NAME = 'coachinghub.ro';
 const SITE_URL = 'https://coachinghub.ro';
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -142,7 +142,8 @@ for(const file of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){
     .replaceAll('?v=2.0.0', '?v='+VERSION)
     .replaceAll('?v=3.0.0', '?v='+VERSION)
     .replaceAll('?v=4.0.0', '?v='+VERSION)
-    .replaceAll('?v=4.1.0', '?v='+VERSION);
+    .replaceAll('?v=4.1.0', '?v='+VERSION)
+    .replaceAll('?v=4.3.0', '?v='+VERSION);
   if(file==='certificari.html') h=h.replaceAll('16 septembrie 2026','22 septembrie 2026');
   h=h.replace(/<meta name="apple-mobile-web-app-capable"[^>]*>\s*/g,'')
     .replace(/<meta name="apple-mobile-web-app-title"[^>]*>\s*/g,'')

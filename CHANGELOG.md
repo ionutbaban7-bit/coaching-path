@@ -6,6 +6,13 @@ Format bazat pe [Keep a Changelog](https://keepachangelog.com/) · versiuni [Sem
 Data de verificare a conținutului public: **22 septembrie 2026**.
 Pentru corecții editoriale, consultă secțiunea „Corecții” din pagina Legal.
 
+## [4.3.1] — 2026-09-23
+
+### Reparat — Blog
+
+- Dialogul de articol stă deasupra antetului sticky, astfel încât butonul de închidere rămâne accesibil.
+- Query-urile CSS/JavaScript și cache-ul service worker au primit o versiune nouă pentru a invalida cache-ul vechi al browserului.
+
 ## [4.3.0] — 2026-09-23
 
 ### Modificat — CoachingHub Blog
