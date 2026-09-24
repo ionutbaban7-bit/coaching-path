@@ -41,7 +41,7 @@
     var saved = null;
     try{ saved = localStorage.getItem('cp_theme'); }catch(e){}
     if(!saved){
-      saved = 'light';
+      saved = 'dark';
     }
     applyTheme(saved);
     var btn = $('#themeBtn');
