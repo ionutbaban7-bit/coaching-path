@@ -23,6 +23,8 @@
   /* ---------- LIMBĂ ---------- */
   function getLang(){ try{ return localStorage.getItem('cp_lang') || 'ro'; }catch(e){ return 'ro'; } }
   function setLang(l){ try{ localStorage.setItem('cp_lang', l); }catch(e){} }
+  var requestedLang = new URLSearchParams(window.location.search).get('lang');
+  if(requestedLang === 'ro' || requestedLang === 'en') setLang(requestedLang);
   var lang = getLang();
 
   /* ---------- TEMĂ ---------- */
@@ -111,10 +113,12 @@
       ['descopera','Explorează','Explore'],
       ['hub','Paths','Learning paths'],
       ['invata','Practică','Practice'],
+      ['ateliere','Ateliere','Workshops'],
       ['forum','Blog','Blog'],
       ['resurse','Bibliotecă','Library']
     ];
     html=groups.map(function(p){
+      if(p[0]==='ateliere') return '<a href="https://puzzletogether-kx1v.onrender.com/?lang='+lang+'">'+p[lang==='ro'?1:2]+'</a>';
       var active=page===p[0]
         ||(p[0]==='hub'&&['certificari','traseul-meu','scoli','start'].indexOf(page)>=0)
         ||(p[0]==='invata'&&['competente','povesti','intrebari','greseli','individual','team'].indexOf(page)>=0)

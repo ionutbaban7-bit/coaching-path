@@ -29,7 +29,7 @@ try{
     check(errors.length===0,file+': runtime errors '+errors.join(';'));
     check(d.querySelectorAll('h1').length===1,file+': one h1');
     const ids=[...d.querySelectorAll('[id]')].map(n=>n.id);check(ids.length===new Set(ids).size,file+': unique IDs');
-    if(!['costuri.html','404.html'].includes(file))check(d.querySelectorAll('#navlinks a').length===5,file+': five clear navigation destinations');
+    if(!['costuri.html','404.html'].includes(file))check(d.querySelectorAll('#navlinks a').length===6,file+': six clear navigation destinations');
     check(!d.querySelector('a[href*="costuri.html"]'),file+': no cost destination');
     check(!/de populat|gata de populat|what.s left to populate/i.test(d.body.textContent),file+': no unfinished scaffolds');
     for(const a of d.querySelectorAll('a[href]')){
